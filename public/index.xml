@@ -7,9 +7,49 @@
       <language>en-us</language>
       <managingEditor>helder.burato@gmail.com (Helder B. Berto)</managingEditor>
       <webMaster>helder.burato@gmail.com (Helder B. Berto)</webMaster>
-      <lastBuildDate>Sun, 17 Oct 2021 00:00:00 GMT</lastBuildDate>
+      <lastBuildDate>Wed, 10 Nov 2021 00:00:00 GMT</lastBuildDate>
       <atom:link href="https://helderburato.com/index.xml" rel="self" type="application/rss+xml"/>
       
+  <item>
+    <guid>https://helderburato.com/reactjs-tips-tricks-avoid-nested-render-functions</guid>
+    <title>ReactJS Tips & Tricks: Avoid Nested Render Functions</title>
+    <link>https://helderburato.com/reactjs-tips-tricks-avoid-nested-render-functions</link>
+    <description>Avoid Nested Render Functions.</description>
+    <pubDate>Wed, 10 Nov 2021 00:00:00 GMT</pubDate>
+    <author>helder.burato@gmail.com (Helder B. Berto)</author>
+    <category>reactjs</category><category>javascript</category>
+  </item>
+
+  <item>
+    <guid>https://helderburato.com/reactjs-tips-tricks-avoid-shortcircuit-conditional-ui-rendering</guid>
+    <title>ReactJS Tips & Tricks: Avoid Short-Circuit Conditional UI Rendering</title>
+    <link>https://helderburato.com/reactjs-tips-tricks-avoid-shortcircuit-conditional-ui-rendering</link>
+    <description>Avoid Short-Circuit Conditional UI Rendering.</description>
+    <pubDate>Sun, 07 Nov 2021 00:00:00 GMT</pubDate>
+    <author>helder.burato@gmail.com (Helder B. Berto)</author>
+    <category>reactjs</category><category>javascript</category>
+  </item>
+
+  <item>
+    <guid>https://helderburato.com/generating-a-dictionary-from-a-list-using-typescript</guid>
+    <title>Generating a Dictionary from a List using TypeScript</title>
+    <link>https://helderburato.com/generating-a-dictionary-from-a-list-using-typescript</link>
+    <description>In this article, I will show you how to generate a dictionary from a list and use TypeScript Generics to help us.</description>
+    <pubDate>Tue, 02 Nov 2021 00:00:00 GMT</pubDate>
+    <author>helder.burato@gmail.com (Helder B. Berto)</author>
+    <category>typescript</category>
+  </item>
+
+  <item>
+    <guid>https://helderburato.com/structuring-a-better-readme-for-your-projects</guid>
+    <title>Structuring a better README for your projects</title>
+    <link>https://helderburato.com/structuring-a-better-readme-for-your-projects</link>
+    <description>Simple steps to create a better README for your projects.</description>
+    <pubDate>Sat, 30 Oct 2021 00:00:00 GMT</pubDate>
+    <author>helder.burato@gmail.com (Helder B. Berto)</author>
+    <category>oss</category><category>misc</category>
+  </item>
+
   <item>
     <guid>https://helderburato.com/why-software-testing</guid>
     <title>Why Software Testing?</title>
