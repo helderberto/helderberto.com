@@ -37,11 +37,11 @@ module.exports = {
           css: {
             color: theme('colors.gray.700'),
             a: {
-              color: theme('colors.blue.500'),
+              color: theme('colors.green.500'),
               '&:hover': {
-                color: theme('colors.blue.600'),
+                color: theme('colors.green.600'),
               },
-              code: { color: theme('colors.blue.400') },
+              code: { color: theme('colors.green.400') },
             },
             h1: {
               fontWeight: '700',
@@ -94,11 +94,11 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             a: {
-              color: theme('colors.blue.500'),
+              color: theme('colors.green.500'),
               '&:hover': {
-                color: theme('colors.blue.400'),
+                color: theme('colors.green.400'),
               },
-              code: { color: theme('colors.blue.400') },
+              code: { color: theme('colors.green.400') },
             },
             h1: {
               fontWeight: '700',
