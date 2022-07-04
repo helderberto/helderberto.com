@@ -19,11 +19,6 @@ export const SEO = {
       },
     ],
   },
-  twitter: {
-    handle: siteMetadata.twitter,
-    site: siteMetadata.twitter,
-    cardType: 'summary_large_image',
-  },
   additionalMetaTags: [
     {
       name: 'author',
