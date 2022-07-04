@@ -36,11 +36,10 @@ export default function About() {
               digital products.
             </p>
             <p>
-              Currently, I’m a Senior Software Engineer - Front End at{' '}
-              <a href="https://farfetch.com" target="blank">
-                Farfetch
+              Currently, I’m a Senior Software Engineer at{' '}
+              <a href="https://www.pagerduty.com/" target="blank">
+                PagerDuty
               </a>
-              , a company dedicated to generating innovation in the luxury fashion segment.
             </p>
             <p>
               Solving problems with my software development skills is what inspires me and keeps me
