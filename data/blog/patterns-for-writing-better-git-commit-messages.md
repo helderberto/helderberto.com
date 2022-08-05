@@ -70,7 +70,7 @@ Just as in the subject, use the imperative, present tense: "change" not "changed
 
 ### Commit Template
 
-[Go to my git commit template](https://github.com/helderburato/dotfiles/blob/master/git/.gittemplates/commit)
+[Go to my git commit template](https://github.com/helderberto/dotfiles/blob/master/git/.gittemplates/commit)
 
 ## References
 

@@ -126,7 +126,7 @@ Keep in mind when talking about immutability the initial values won't change, in
 
 Pure functions are used to avoid `side-effects` so guarantee when you pass an input it will always return the same output.
 
-You can read more about [What is a Pure Function? - DEV Community 👩‍💻👨‍💻](https://dev.to/helderburato/what-is-a-pure-function-1b74).
+You can read more about [What is a Pure Function? - DEV Community 👩‍💻👨‍💻](https://dev.to/helderberto/what-is-a-pure-function-1b74).
 
 # Wrapping Up
 

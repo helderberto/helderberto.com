@@ -164,7 +164,7 @@ _Note: It uses the base method [toString](https://developer.mozilla.org/en-US/do
 Now that we've implemented all the data manipulation methods, let's see our `Stack`
 implementation in action:
 
-%[https://gist.github.com/helderburato/ba99b60ddedf0a24f79fe042253deb4d]
+%[https://gist.github.com/helderberto/ba99b60ddedf0a24f79fe042253deb4d]
 
 ## Wrapping Up
 

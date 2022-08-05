@@ -25,7 +25,7 @@ My opinion is that everything available to read later will help you. In my case,
 
 ## Template for this type of note
 
-I have created [Note Template · Gist](https://gist.github.com/helderburato/2e7d91f8146545745f3662ff13358c31), feel free to comment and share your thoughts about the template on the gist link.
+I have created [Note Template · Gist](https://gist.github.com/helderberto/2e7d91f8146545745f3662ff13358c31), feel free to comment and share your thoughts about the template on the gist link.
 
 ---
 
@@ -89,7 +89,7 @@ I recommend the following platforms to do that:
 
 ## Share your practice with the world
 
-I always keep my projects in my [Github Profile](https://github.com/helderburato) and, even if it's a tutorial project, I save the projects from videos to keep track of my studies and generate a basis of content.
+I always keep my projects in my [Github Profile](https://github.com/helderberto) and, even if it's a tutorial project, I save the projects from videos to keep track of my studies and generate a basis of content.
 
 ## Use the platforms to your advantage
 
@@ -103,7 +103,7 @@ When it comes to platforms, I recommend you expose yourself to some platforms, s
 - [Codepen](https://codepen.io/)
 - [JS Bin](https://jsbin.com/?html,output)
 
-I use [Github](https://github.com/helderburato) and [my blog](http://helderburato.com/), but I have a lot of friends who enjoy the other platforms I've mentioned above.
+I use [Github](https://github.com/helderberto) and [my blog](http://helderberto.com/), but I have a lot of friends who enjoy the other platforms I've mentioned above.
 
 Those are some of the ways you can share your progress as a developer and be found by companies and people to share knowledge with.
 

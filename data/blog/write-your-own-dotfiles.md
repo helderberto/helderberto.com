@@ -20,7 +20,7 @@ _Photo from Unsplash by Elevate_
 
 ## Mac Setup
 
-I recommend the [Mathias Bynens .macos](https://github.com/helderburato/dotfiles/blob/master/mac/.macos) file this helped me a lot to create my own [.macos](https://github.com/helderburato/dotfiles/blob/master/mac/.macos) configurations.
+I recommend the [Mathias Bynens .macos](https://github.com/helderberto/dotfiles/blob/master/mac/.macos) file this helped me a lot to create my own [.macos](https://github.com/helderberto/dotfiles/blob/master/mac/.macos) configurations.
 
 Thanks to [Mathias Bynens](https://github.com/mathiasbynens) who shared these awesome configurations.
 
@@ -29,7 +29,7 @@ Thanks to [Mathias Bynens](https://github.com/mathiasbynens) who shared these aw
 ![Photo by Joanna Kosinska](https://dev-to-uploads.s3.amazonaws.com/i/zo9ugbn3hl2e1l1y5juc.jpg)
 _Photo from Unsplash by Joanna Kosinska_
 
-My dotfiles execute as a simple call-in [install.sh](https://github.com/helderburato/dotfiles/blob/master/install.sh).
+My dotfiles execute as a simple call-in [install.sh](https://github.com/helderberto/dotfiles/blob/master/install.sh).
 
 I followed in this project the principle of maintaining easy and simple to execute.
 
@@ -40,7 +40,7 @@ When I started to automate my build process and saw the other dotfiles from peop
 ![Photo by Rene Böhmer](https://dev-to-uploads.s3.amazonaws.com/i/h19i1953ov5z3dplomyx.jpg)
 _Photo from Unsplash by Rene Böhmer_
 
-However, if you want to see my [dotfiles](https://github.com/helderburato/dotfiles) and give some feedback I'm opened to discuss and share the knowledge I gained in this project.
+However, if you want to see my [dotfiles](https://github.com/helderberto/dotfiles) and give some feedback I'm opened to discuss and share the knowledge I gained in this project.
 
 _Note: You will note it's more focused on frontend development because that is my focus now._
 

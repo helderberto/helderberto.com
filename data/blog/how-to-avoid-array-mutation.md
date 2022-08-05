@@ -10,7 +10,7 @@ In this article, I'll focus on showing how to add, edit and remove items in an a
 
 Some things we need to keep in mind when writing code avoiding mutation is to return a new one after the update.
 
-It's a common approach when working with functional programming and if you want to understand some concepts of functional programming I recommend you read this [article](https://dev.to/helderburato/understanding-concepts-of-functional-programming-with-javascript-2g1d) I wrote some time ago.
+It's a common approach when working with functional programming and if you want to understand some concepts of functional programming I recommend you read this [article](https://dev.to/helderberto/understanding-concepts-of-functional-programming-with-javascript-2g1d) I wrote some time ago.
 
 ## Why Avoid Mutation
 

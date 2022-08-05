@@ -50,6 +50,6 @@ Considering the value of `number` variable is zero, it will return `null` that i
 
 ## Wrapping Up
 
-If you think this series of articles is helpful to you, or do you want to discuss some programming topics, feel free to reach out to me at @helderburato.
+If you think this series of articles is helpful to you, or do you want to discuss some programming topics, feel free to reach out to me at @helderberto.
 
 Thanks! ⚡️

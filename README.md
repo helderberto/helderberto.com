@@ -1,12 +1,12 @@
 # My personal blog
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/helderburato/helderburato.com)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/helderberto/helderberto.com)
 
-Personal blog written by Helder Burato Berto, feel free to access [here](http://helderburato.com/).
+Personal blog written by Helder B. Berto, feel free to access [here](http://helderberto.com).
 
 ## Quick Start Guide
 
-1. `npx degit https://github.com/helderburato/helderburato.com.git`
+1. `npx degit https://github.com/helderberto/helderberto.com.git`
 2. Personalize `siteMetadata.json`
 3. Modify `projectsData.js`
 4. Modify `headerNavLinks.js` to customize navigation links
