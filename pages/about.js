@@ -32,7 +32,7 @@ export default function About() {
           </div>
           <div className="pt-8 pb-8 prose dark:prose-dark max-w-none xl:col-span-2">
             <p>
-              I’m a software developer with over 10 years of experience in planning and developing
+              I’m a Software Engineer with over 10 years of experience in planning and developing
               digital products.
             </p>
             <p>
