@@ -15,7 +15,7 @@ export default function Home({ posts }) {
     <>
       <PageSeo title="Home" description={siteMetadata.description} url={siteMetadata.siteUrl} />
       <p className="text-lg leading-7 text-gray-500 dark:text-gray-400 ">
-        Hey! I'm Helder Berto. A Brazilian Software Engineer living in Porto, Portugal.
+        Hey, I'm Helder! A Brazilian Software Engineer living in Portugal.
       </p>
       <ListLayout posts={posts} />
     </>

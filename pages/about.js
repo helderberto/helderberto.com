@@ -23,7 +23,7 @@ export default function About() {
               {siteMetadata.author}
             </h3>
             <div className="text-gray-500 dark:text-gray-400">Brazilian Software Engineer</div>
-            <div className="text-gray-500 dark:text-gray-400">Living in Porto, Portugal</div>
+            <div className="text-gray-500 dark:text-gray-400">Living in Portugal</div>
             <div className="flex pt-6 space-x-3">
               <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} />
               <SocialIcon kind="github" href={siteMetadata.github} />
@@ -32,8 +32,8 @@ export default function About() {
           </div>
           <div className="pt-8 pb-8 prose dark:prose-dark max-w-none xl:col-span-2">
             <p>
-              I’m a Software Engineer with over 10 years of experience in planning and developing
-              digital products.
+              I'm a Brazilian software engineer, living in Portugal. For the past few years, I have
+              focused my career on the front end.
             </p>
             <p>
               Currently, I’m a Senior Software Engineer at{' '}
