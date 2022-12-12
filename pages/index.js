@@ -18,8 +18,7 @@ export default function Home({ posts }) {
         Hey there 👋! Welcome to my digital garden 🌱
       </p>
       <p className="text-lg leading-7 text-gray-500 dark:text-gray-400 ">
-        The goal of this page is to share my thoughts on programming and contribute to the
-        development community that helped me become the person I am today.
+        Sharing my thoughts, ideas, and learnings.
       </p>
       <ListLayout posts={posts} />
     </>
