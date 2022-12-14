@@ -43,8 +43,8 @@ export default function About() {
               in a constant search for knowledge.
             </p>
             <p>
-              I’m passionate about technologies such as JavaScript, HTML, and CSS. I’m familiar with
-              packages that use these technologies as a base.
+              I’m passionate about technologies such as JavaScript, TypeScript, HTML, and CSS. I’m
+              familiar with packages that use these technologies as a base.
             </p>
             <p>
               Packages and tools come and go, but some concepts stay the same, and the concepts are
