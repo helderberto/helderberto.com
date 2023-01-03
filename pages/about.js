@@ -31,7 +31,7 @@ export default function About() {
             </div>
           </div>
           <div className="pt-8 pb-8 prose dark:prose-dark max-w-none xl:col-span-2">
-            <p>I'm a Brazilian software engineer living in Portugal.</p>
+            <p>I'm a Brazilian Software Engineer living in Portugal.</p>
             <p>
               I’m a Senior Software Engineer at{' '}
               <a href="https://www.pagerduty.com/" target="blank">
