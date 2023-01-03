@@ -15,10 +15,11 @@ export default function Home({ posts }) {
     <>
       <PageSeo title="Home" description={siteMetadata.description} url={siteMetadata.siteUrl} />
       <p className="text-lg leading-7 mb-6 text-gray-500 dark:text-gray-400">
-        Hey there 👋! Welcome to my digital garden 🌱
+        Hey there! My name is Helder 👋
       </p>
       <p className="text-lg leading-7 text-gray-500 dark:text-gray-400 ">
-        Sharing my thoughts, ideas, and learnings.
+        I'm a Software Engineer, passionate about code best practices, clean code, and software
+        architecture
       </p>
       <ListLayout posts={posts} />
     </>
