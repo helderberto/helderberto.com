@@ -33,22 +33,23 @@ export default function About() {
           <div className="pt-8 pb-8 prose dark:prose-dark max-w-none xl:col-span-2">
             <p>I'm a Brazilian software engineer living in Portugal.</p>
             <p>
-              Currently, I’m a Senior Software Engineer at{' '}
+              I’m a Senior Software Engineer at{' '}
               <a href="https://www.pagerduty.com/" target="blank">
                 PagerDuty
-              </a>
+              </a>{' '}
+              focused on Front-End development.
             </p>
             <p>
               Solving problems with my software development skills is what inspires me and keeps me
               in a constant search for knowledge.
             </p>
             <p>
-              I’m passionate about technologies such as JavaScript, TypeScript, HTML, and CSS. I’m
-              familiar with packages that use these technologies as a base.
+              I’m passionate about technologies such as JavaScript, TypeScript, ReactJS, HTML, and
+              CSS. I’m familiar with packages that use these technologies as a base.
             </p>
             <p>
-              Packages and tools come and go, but some concepts stay the same, and the concepts are
-              what matter most to me.
+              Packages and tools come and go, but some concepts stay the same, and those concepts
+              are what matter most to me.
             </p>
           </div>
         </div>
