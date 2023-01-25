@@ -33,11 +33,10 @@ export default function About() {
           <div className="pt-8 pb-8 prose dark:prose-dark max-w-none xl:col-span-2">
             <p>I'm a Brazilian Software Engineer living in Portugal.</p>
             <p>
-              I’m a Senior Software Engineer at{' '}
+              I’m a Senior Software Engineer - Front-End at{' '}
               <a href="https://www.pagerduty.com/" target="blank">
                 PagerDuty
-              </a>{' '}
-              focused on Front-End development.
+              </a>
             </p>
             <p>
               Solving problems with my software development skills is what inspires me and keeps me
