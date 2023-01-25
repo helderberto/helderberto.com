@@ -22,8 +22,7 @@ export default function About() {
             <h3 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">
               {siteMetadata.author}
             </h3>
-            <div className="text-gray-500 dark:text-gray-400">Brazilian Software Engineer</div>
-            <div className="text-gray-500 dark:text-gray-400">Living in Portugal</div>
+            <div className="text-gray-500 dark:text-gray-400">Software Engineer - Front-end</div>
             <div className="flex pt-6 space-x-3">
               <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} />
               <SocialIcon kind="github" href={siteMetadata.github} />
@@ -33,7 +32,7 @@ export default function About() {
           <div className="pt-8 pb-8 prose dark:prose-dark max-w-none xl:col-span-2">
             <p>I'm a Brazilian Software Engineer living in Portugal.</p>
             <p>
-              I’m a Senior Software Engineer - Front-End at{' '}
+              I’m a Senior Software Engineer - Front-end at{' '}
               <a href="https://www.pagerduty.com/" target="blank">
                 PagerDuty
               </a>

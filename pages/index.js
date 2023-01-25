@@ -18,8 +18,8 @@ export default function Home({ posts }) {
         Hey there! My name is Helder 👋
       </p>
       <p className="text-lg leading-7 text-gray-500 dark:text-gray-400 ">
-        I'm a Software Engineer, passionate about code best practices, clean code, and software
-        architecture
+        I'm a Software Engineer, focused on front-end development, passionate about coding best
+        practices, clean code, and software architecture
       </p>
       <ListLayout posts={posts} />
     </>
