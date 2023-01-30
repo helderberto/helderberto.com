@@ -13,7 +13,7 @@ const LayoutWrapper = ({ children }) => {
           <div>
             <Link href="/" aria-label="Helder B. Berto">
               <div className="flex items-center justify-between">
-                <div className="h-6 text-2xl font-semibold sm:block">
+                <div className="h-6 text-2xl uppercase font-semibold sm:block">
                   {siteMetadata.headerTitle}
                 </div>
               </div>
