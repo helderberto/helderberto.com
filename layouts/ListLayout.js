@@ -64,7 +64,7 @@ export default function ListLayout({ posts, title }) {
                         {title}
                       </Link>
                     </h3>
-                    <div className="flex flex-wrap">
+                    <div className="flex flex-wrap mt-2">
                       {tags.map((tag) => (
                         <Tag key={tag} text={tag} />
                       ))}

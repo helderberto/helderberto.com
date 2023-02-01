@@ -19,7 +19,7 @@ export default function PostLayout({ children, frontMatter, next, prev }) {
       <BlogSeo url={`${siteMetadata.siteUrl}/blog/${frontMatter.slug}`} {...frontMatter} />
       <article>
         <div className="divide-y divide-gray-200 dark:divide-gray-700">
-          <header className="pt-6 xl:pb-6">
+          <header className="py-6">
             <div className="space-y-1 text-center">
               <dl className="space-y-10">
                 <div>
