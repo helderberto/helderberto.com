@@ -21,18 +21,13 @@ Let's dive into this approach and how to change in a better way.
 
 Basically, it is when you declare a part of UI render in a function inside of a component, such as:
 
-```js
-const Component = () => {
+```js App.js
+export default function Wrapper() {
   function renderSection() {
-    return <section>This is my section.</section>
+    return <section>A section under a React component.</section>
   }
 
-  return (
-    <div>
-      {renderSection()}
-      ...
-    </div>
-  )
+  return <div>{renderSection()}</div>
 }
 ```
 
@@ -44,15 +39,18 @@ It is much better to extract to a new component, it will help you to create unit
 
 Let's re-create the example I mentioned before, like the following:
 
-```js
-const Section = () => <section>This is my section.</section>
+```js App.js
+function Section() {
+  return <section>A section under a method.</section>
+}
 
-const Component = () => (
-  <div>
-    <Section />
-    ...
-  </div>
-)
+export default function Wrapper() {
+  return (
+    <div>
+      <Section />
+    </div>
+  )
+}
 ```
 
 Instead of using closures, now you have a pure function for `Section` component, that's more readable and easy to give their props.

@@ -4,6 +4,7 @@ import { getFiles, getFileBySlug, getAllFilesFrontMatter, formatSlug } from '@/l
 import PostLayout from '@/layouts/PostLayout'
 import MDXComponents from '@/components/MDXComponents'
 import PageTitle from '@/components/PageTitle'
+import CodeEditor from '@/components/CodeEditor'
 import generateRss from '@/lib/generate-rss'
 
 export async function getStaticPaths() {
@@ -34,13 +35,16 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Blog({ post, prev, next }) {
-  const { mdxSource, frontMatter } = post
+  const { mdxSource, isMdx, frontMatter } = post
 
   return (
     <>
       {frontMatter.draft !== true ? (
         <PostLayout frontMatter={frontMatter} prev={prev} next={next}>
-          <MDXRemote {...mdxSource} components={MDXComponents} />
+          <MDXRemote
+            components={isMdx ? { code: (props) => <CodeEditor {...props} /> } : MDXComponents}
+            {...mdxSource}
+          />
         </PostLayout>
       ) : (
         <div className="mt-24 text-center">
