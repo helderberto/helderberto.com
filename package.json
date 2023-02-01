@@ -7,8 +7,7 @@
     "dev": "next dev",
     "build": "next build && node ./scripts/generate-sitemap",
     "serve": "next start",
-    "analyze": "env ANALYZE=true next build",
-    "prepare": "husky install"
+    "analyze": "env ANALYZE=true next build"
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^1.20.8",
@@ -51,7 +50,6 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "file-loader": "^6.0.0",
     "globby": "12.0.2",
-    "husky": "^7.0.4",
     "lint-staged": "^11.2.6",
     "next-compose-plugins": "^2.2.1",
     "next-remote-watch": "^1.0.0",

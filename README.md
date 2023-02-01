@@ -18,11 +18,11 @@ Personal blog written by Helder B. Berto, feel free to access [here](http://held
 First, run the development server:
 
 ```bash
-yarn start
+npm start
 
 # or
 
-yarn dev
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -94,7 +94,7 @@ The first argument is the name of the post and the second optional argument is t
 Example code to generate the post called "My First Post" in markdown format
 
 ```
-node ./scripts/compose.js "My First Post" .md
+node ./scripts/compose.js "My First Post" md
 ```
 
 This will generate `./data/blog/my-first-post.md` with pre-filled front matter.
