@@ -5,9 +5,9 @@ tags: ['reactjs', 'javascript']
 summary: What do controlled and uncontrolled elements mean?
 ---
 
-When working with React, you will notice often used naming called "Controlled" and "Uncontrolled".
+When working with React, you will notice often used naming called _Controlled_ and _Uncontrolled_.
 
-So, what does it means? Let's dive into it.
+So, what do it mean? Let's dive into it.
 
 ## Uncontrolled Element
 
@@ -15,26 +15,26 @@ In the React world, a controlled element is an element that is managed by React.
 
 Let's check the following example:
 
-```js
-function Input() {
-  const [name, setName] = React.useState();
+```js template=react filename=App.js
+import React from 'react'
+
+export default function UncontrolledInput() {
+  const [name, setName] = React.useState()
 
   return (
-    <input
-      value={name},
-      onChange={(event) => setName(event.target.value)}
-    />
-  );
+    <>
+      <input value={name} onChange={(event) => setName(event.target.value)} />
+      <p>Current name: {name}</p>
+    </>
+  )
 }
 ```
 
 Because you don't set an initial value, when the user starts typing on the input, it will show a warning in the console tab of your browser, like:
 
-```
-Warning: A component is changing an uncontrolled input to be controlled.
-```
+_Warning: A component is changing an uncontrolled input to be controlled._
 
-**Why is this happening?**
+### Why is this happening?
 
 The default value of the state is an `undefined` value. On rendering the `input` element will be considered an `uncontrolled` element.
 
@@ -42,22 +42,24 @@ The default value of the state is an `undefined` value. On rendering the `input`
 
 Using the same example, let's move it to a controlled element.
 
-```js
-function Input() {
-  const [name, setName] = React.useState(''); // Start as an empty string
+```js template=react filename=App.js
+import React from 'react'
+
+export default function ControlledInput() {
+  const [name, setName] = React.useState('') // Start as an empty string
 
   return (
-    <input
-      value={name},
-      onChange={(event) => setName(event.target.value)}
-    />
-  );
+    <>
+      <input value={name} onChange={(event) => setName(event.target.value)} />
+      <p>Current name: {name}</p>
+    </>
+  )
 }
 ```
 
 Since you set it as an empty string, it will be a controlled element.
 
-When the user starts typing in the input, the `onChange` event updates the value of `name` from `''` to a new string.
+When the user starts typing in the input, the `onChange` event updates the value of _name_ from `''` to a new string.
 
 ## Wrapping Up
 
