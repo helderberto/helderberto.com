@@ -7,9 +7,19 @@
       <language>en-us</language>
       <managingEditor>helder.burato@gmail.com (Helder Berto)</managingEditor>
       <webMaster>helder.burato@gmail.com (Helder Berto)</webMaster>
-      <lastBuildDate>Wed, 10 Nov 2021 00:00:00 GMT</lastBuildDate>
+      <lastBuildDate>Wed, 01 Feb 2023 00:00:00 GMT</lastBuildDate>
       <atom:link href="https://helderberto.com/index.xml" rel="self" type="application/rss+xml"/>
       
+  <item>
+    <guid>https://helderberto.com/controlled-vs-uncontrolled-elements</guid>
+    <title>Controlled vs Uncontrolled Elements</title>
+    <link>https://helderberto.com/controlled-vs-uncontrolled-elements</link>
+    <description>What do controlled and uncontrolled elements mean?</description>
+    <pubDate>Wed, 01 Feb 2023 00:00:00 GMT</pubDate>
+    <author>helder.burato@gmail.com (Helder Berto)</author>
+    <category>reactjs</category><category>javascript</category>
+  </item>
+
   <item>
     <guid>https://helderberto.com/reactjs-tips-tricks-avoid-nested-render-functions</guid>
     <title>ReactJS Tips & Tricks: Avoid Nested Render Functions</title>
