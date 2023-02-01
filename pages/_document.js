@@ -1,3 +1,4 @@
+import { getSandpackCssText } from '@codesandbox/sandpack-react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 import { GA_TRACKING_ID } from '../lib/gtag'
@@ -63,6 +64,11 @@ class MyDocument extends Document {
             href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css"
             integrity="sha384-t5CR+zwDAROtph0PXGte6ia8heboACF9R5l/DiY+WZ3P2lxNgvJkQk5n7GPvLMYw"
             crossOrigin="anonymous"
+          />
+          <style
+            dangerouslySetInnerHTML={{ __html: getSandpackCssText() }}
+            id="sandpack"
+            key="sandpack-css"
           />
 
           {/* Global Site Tag (gtag.js) - Google Analytics */}
