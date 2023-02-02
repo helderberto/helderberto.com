@@ -11,8 +11,9 @@ const discussUrl = (slug) =>
 
 const postDateTemplate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
-export default function PostLayout({ children, frontMatter, next, prev }) {
+export default function PostLayout({ children, frontMatter, isMdx }) {
   const { slug, fileName, date, title, tags } = frontMatter
+  const sandpackClass = isMdx ? 'with-sandpack' : ''
 
   return (
     <SectionContainer>
@@ -44,7 +45,9 @@ export default function PostLayout({ children, frontMatter, next, prev }) {
           </header>
           <div className="pb-8 divide-y divide-gray-200 xl:divide-y-0 dark:divide-gray-700">
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0">
-              <div className="pt-10 pb-8 prose dark:prose-dark max-w-none">{children}</div>
+              <div className={`pt-10 pb-8 prose dark:prose-dark max-w-none ${sandpackClass}`}>
+                {children}
+              </div>
               <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
                 <Link href={discussUrl(slug)} rel="nofollow">
                   {'Discuss on Twitter'}

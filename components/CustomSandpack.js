@@ -1,7 +1,7 @@
 import { Sandpack } from '@codesandbox/sandpack-react'
 import { dracula } from '@codesandbox/sandpack-themes'
 
-const CodeEditor = (props) => {
+const CustomSandpack = (props) => {
   const { template = 'react', children, metastring, externalResources = [] } = props
   const [filename, ...params] = metastring.split(' ')
   const filePath = (template === 'react' ? '/' : '/src/') + filename
@@ -9,6 +9,7 @@ const CodeEditor = (props) => {
   let active = false
   let hidden = false
   let showConsole = false
+  let readOnly = false
 
   if (params.includes('hidden')) {
     hidden = true
@@ -20,6 +21,10 @@ const CodeEditor = (props) => {
 
   if (params.includes('showConsole')) {
     showConsole = true
+  }
+
+  if (params.includes('readOnly')) {
+    readOnly = true
   }
 
   return (
@@ -37,10 +42,11 @@ const CodeEditor = (props) => {
         showLineNumbers: false, // default - true
         resizablePanels: true,
         showConsole,
+        readOnly,
         externalResources,
       }}
     />
   )
 }
 
-export default CodeEditor
+export default CustomSandpack

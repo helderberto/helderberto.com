@@ -5,12 +5,26 @@
 .remark-code-title {
   @apply px-5 py-3 font-mono text-sm font-bold text-gray-200 bg-gray-700 rounded-t;
 }
+
 .remark-code-title + pre {
   @apply mt-0 rounded-t-none;
 }
+
 .task-list-item:before {
   @apply hidden;
 }
+
 html {
   scroll-behavior: smooth;
+}
+
+.prose.with-sandpack pre {
+  color: inherit;
+  background: none;
+  overflow-x: initial;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
 }

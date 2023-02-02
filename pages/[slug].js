@@ -4,7 +4,7 @@ import { getFiles, getFileBySlug, getAllFilesFrontMatter, formatSlug } from '@/l
 import PostLayout from '@/layouts/PostLayout'
 import MDXComponents from '@/components/MDXComponents'
 import PageTitle from '@/components/PageTitle'
-import CodeEditor from '@/components/CodeEditor'
+import CustomSandpack from '@/components/CustomSandpack'
 import generateRss from '@/lib/generate-rss'
 
 export async function getStaticPaths() {
@@ -40,9 +40,9 @@ export default function Blog({ post, prev, next }) {
   return (
     <>
       {frontMatter.draft !== true ? (
-        <PostLayout frontMatter={frontMatter} prev={prev} next={next}>
+        <PostLayout frontMatter={frontMatter} isMdx={isMdx} prev={prev} next={next}>
           <MDXRemote
-            components={isMdx ? { code: (props) => <CodeEditor {...props} /> } : MDXComponents}
+            components={isMdx ? { code: (props) => <CustomSandpack {...props} /> } : MDXComponents}
             {...mdxSource}
           />
         </PostLayout>
