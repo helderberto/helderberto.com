@@ -42,27 +42,27 @@ Create two functions a `pure function` and another `impure function`. Check out:
 ### Pure Function:
 
 ```javascript
-## ES6 ##
-const sum = (x, y) => x + y;
-
-## ES5 ##
+// ES5
 var sum: function (x, y) {
   return x + y;
 }
+
+// ES6
+const sum = (x, y) => x + y;
 ```
 
 ### Impure Function:
 
 ```javascript
-## ES6 ##
-const x = 20;
-const sum = (y) => x + y;
-
-## ES5 ##
-var x = 20;
+// ES5
+var x = 20
 var sum = function (y) {
-  return x + y;
+  return x + y
 }
+
+// ES6
+const x = 20
+const sum = (y) => x + y
 ```
 
 Note that the variable `x` is being defined in the global state of the application, so the _output_ of the _sum_ function will always depend on the global state change and not on the _input_ passed as a parameter, which makes the function dependent on external factors.
