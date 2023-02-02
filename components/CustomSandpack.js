@@ -1,14 +1,21 @@
-import { Sandpack } from '@codesandbox/sandpack-react'
+import {
+  SandpackProvider,
+  SandpackLayout,
+  SandpackPreview,
+  SandpackCodeEditor,
+  SandpackConsole,
+} from '@codesandbox/sandpack-react'
 import { dracula } from '@codesandbox/sandpack-themes'
 
 const CustomSandpack = (props) => {
-  const { template = 'react', children, metastring, externalResources = [] } = props
+  let { template = 'react', children, metastring, externalResources = [] } = props
   const [filename, ...params] = metastring.split(' ')
   const filePath = (template === 'react' ? '/' : '/src/') + filename
 
   let active = false
   let hidden = false
   let showConsole = false
+  let showPreview = true
   let readOnly = false
 
   if (params.includes('hidden')) {
@@ -27,8 +34,12 @@ const CustomSandpack = (props) => {
     readOnly = true
   }
 
+  if (params.includes('hidePreview')) {
+    showPreview = false
+  }
+
   return (
-    <Sandpack
+    <SandpackProvider
       template={template}
       theme={dracula}
       files={{
@@ -38,15 +49,18 @@ const CustomSandpack = (props) => {
           hidden,
         },
       }}
-      options={{
-        showLineNumbers: false, // default - true
-        resizablePanels: true,
-        showConsole,
-        readOnly,
-        wrapContent: true,
-        externalResources,
-      }}
-    />
+    >
+      <SandpackLayout>
+        <SandpackCodeEditor
+          showLineNumbers={false}
+          showTabs={false}
+          readOnly={readOnly}
+          wrapContent
+        />
+        <SandpackPreview hidden={!showPreview} />
+        <SandpackConsole hidden={!showConsole} />
+      </SandpackLayout>
+    </SandpackProvider>
   )
 }
 
