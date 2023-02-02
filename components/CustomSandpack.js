@@ -56,6 +56,7 @@ const CustomSandpack = (props) => {
           showTabs={false}
           readOnly={readOnly}
           wrapContent
+          externalResources={externalResources}
         />
         <SandpackPreview hidden={!showPreview} />
         <SandpackConsole hidden={!showConsole} />
