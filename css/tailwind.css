@@ -21,7 +21,7 @@ html {
 .prose.with-sandpack pre {
   color: inherit;
   background: none;
-  overflow-x: initial;
+  overflow: auto;
   font-size: inherit;
   line-height: inherit;
   margin: 0;
