@@ -18,11 +18,11 @@ It's very common the transformation of _this_ occurs as new method calls are mad
 
 One of the most common errors when we aren't aware of the _bind_ method is the attempt to execute methods with initially invalid contexts. Check out the following example:
 
-```js
+```js index.ts template=vanilla-ts showConsole hidePreview
 function cook() {
   console.log(this.ingredients)
 }
-cook() // => undefined
+console.log(cook()); // => undefined
 ```
 
 In the case that we run above we get the `undefined` value because `this` didn't receive a `ingredients` property.
@@ -31,7 +31,7 @@ In the case that we run above we get the `undefined` value because `this` didn't
 
 As we saw in the previous example the function expected a _this_ context with the _ingredients_ property, but didn't receive the _undefiend_ or invalid context so we will get an invalid result against the `cook` method. Check below the right way:
 
-```js
+```js index.ts template=vanilla-ts showConsole hidePreview
 function cook() {
   console.log(this.ingredients)
 }
@@ -40,7 +40,7 @@ let dinner = {
   ingredients: 'bacon',
 }
 let cookBoundToDinner = cook.bind(dinner)
-cookBoundToDinner() // => "bacon"
+console.log(cookBoundToDinner()); // => "bacon"
 ```
 
 You may notice in the previous example that we created the `dinner` object where we are setting the `ingredients: bacon` property and then we call the `cook` function using the _bind_ method with the `dinner` parameter that will be it's new context _this_.
@@ -49,7 +49,7 @@ You may notice in the previous example that we created the `dinner` object where
 
 Now that we know how to work with the _bind_ method let's do the previous, but without _bind_ method. Check below:
 
-```js
+```js index.ts template=vanilla-ts showConsole hidePreview
 let cook = function () {
   console.log(this.ingredients)
 }
@@ -64,7 +64,7 @@ let lunch = {
   cookLunch: cook,
   ingredients: 'salad',
 }
-lunch.cookLunch() // => "salad"
+console.log(lunch.cookLunch()); // => "salad"
 ```
 
 In the previous two examples we are using the `cook` method both in the`lunch` object and in the `dinner` object. Since the function is in the same context it will use the available property that fits your need which in the case is `ingredients` in which you returned when executing the function.
@@ -73,7 +73,7 @@ In the previous two examples we are using the `cook` method both in the`lunch` o
 
 You aren't limited to only assigning values to your properties, you can also use methods like properties. Check below:
 
-```js
+```js index.ts template=vanilla-ts showConsole hidePreview
 let calc = function () {
   return {
     sum: this.sum,
@@ -93,7 +93,7 @@ let methods = {
     return x / y
   },
 }
-calcBound = calc.bind(methods)
+const calcBound = calc.bind(methods)
 
 console.log(calcBound().sum(2, 2)) // => 4
 console.log(calcBound().mult(2, 3)) // => 6

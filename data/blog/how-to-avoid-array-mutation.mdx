@@ -29,7 +29,7 @@ The following steps will cause mutation into the array adding, removing and edit
 
 To mutate we'll use the following array:
 
-```js
+```ts index.ts template=vanilla-ts hidePreview readOnly
 const heroesMutate = ['Spider-man', 'Thor', 'Hulk', 'Iron Man']
 console.log(heroesMutate) // => ["Spider-man", "Thor", "Hulk", "Iron Man"]
 ```
@@ -44,7 +44,7 @@ Methods will be used:
 
 See the following use-case examples for these methods:
 
-```js
+```ts index.ts template=vanilla-ts hidePreview readOnly
 heroesMutate.push('Captain Marvel')
 console.log(heroesMutate) // => ["Spider-man", "Thor", "Hulk", "Iron Man", "Captain Marvel"]
 
@@ -59,7 +59,8 @@ console.log(heroesMutate) // => ["Deadpool", "Spider-man", "Black Panther", "Tho
 
 The following case will find index for the element we want to edit and set value to the found index:
 
-```js
+```ts index.ts template=vanilla-ts hidePreview readOnly
+const heroesMutate = ['Spider-man', 'Thor', 'Hulk', 'Iron Man']
 const indexDeadpool = heroesMutate.indexOf('Deadpool')
 heroesMutate[indexDeadpool] = 'Wolverine'
 
@@ -76,7 +77,7 @@ Methods will be used:
 
 See the following use-case examples for these methods:
 
-```js
+```ts index.ts template=vanilla-ts hidePreview readOnly
 heroesMutate.pop()
 console.log(heroesMutate) // => ["Wolverine", "Spider-man", "Black Panther", "Thor", "Hulk", "Iron Man"]
 
@@ -105,21 +106,19 @@ Methods will be used:
 
 See the following use-cases:
 
-```js
+```ts index.ts template=vanilla-ts hidePreview readOnly
 const villains = ['Loki', 'Thanos', 'Venom', 'Abomination']
+console.log(typeof villains === 'object') // => true
 ```
 
 Perhaps you're wondering, does `Object.freeze()` work in an array? And the answer is yes because in Javascript `array` are type `object`, you can check this with the following example:
-
-```js
-console.log(typeof villains === 'object') // => true
-```
 
 ### Including
 
 Add to the end of array:
 
-```js
+```ts index.ts template=vanilla-ts hidePreview readOnly
+const villains = ['Loki', 'Thanos', 'Venom', 'Abomination']
 const newVillains = villains.concat('Juggernaut')
 const newVillains2 = [...newVillains, 'Magneto']
 const newVillains3 = ['Red Skull', ...newVillains2]
@@ -132,7 +131,7 @@ console.log(newVillains3) // => ["Red Skull", "Loki", "Thanos", "Venom", "Abomin
 
 In the following example we'll add `Ultron` after `Thanos` in the array:
 
-```js
+```ts index.ts template=vanilla-ts hidePreview readOnly
 const newVillains = [...villains.slice(0, 2), 'Ultron', ...villains.slice(2, villains.length)]
 
 console.log(villains) // => ["Loki", "Thanos", "Venom", "Abomination"]
@@ -143,7 +142,7 @@ console.log(newVillains) // => ["Loki", "Thanos", "Ultron", "Venom", "Abominatio
 
 In the following example we'll edit `Venom` to `Galactus`:
 
-```js
+```ts index.ts template=vanilla-ts hidePreview readOnly
 const indexVenom = villains.indexOf('Venom')
 const newVillains = [
   ...villains.slice(0, indexVenom),
@@ -161,7 +160,7 @@ console.log(newVillains2) // => ["Loki", "Thanos", "Galactus", "Ultron"]
 
 In the following example we'll remove `Thanos` from the array:
 
-```js
+```ts index.ts template=vanilla-ts hidePreview readOnly
 const indexThanos = villains.indexOf('Thanos')
 const newVillains = [...villains.slice(0, indexHelder), ...villains.slice(indexHelder + 1)]
 const newVillains2 = newVillains.filter((v) => v !== 'Thanos')

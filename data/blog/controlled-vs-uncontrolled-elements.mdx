@@ -19,7 +19,12 @@ In the following example, you have an uncontrolled input element:
 import React from 'react'
 
 export default function UncontrolledInput() {
-  return <input value="Empty Value" onChange={() => console.log('It wont update the value.')} />
+  return (
+    <input
+      value="Empty Value"
+      onChange={() => console.log('It wont update the value.')}
+    />
+  )
 }
 ```
 
@@ -37,7 +42,10 @@ export default function UncontrolledInput() {
 
   return (
     <>
-      <input value={value} onChange={(event) => setValue(event.target.value)} />
+      <input
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+      />
       <p>Current value: {value}</p>
     </>
   )
@@ -64,12 +72,15 @@ Let's create an input managed by React:
 import React from 'react'
 
 export default function ControlledInput() {
-  const [name, setName] = React.useState('') // Start as an empty string
+  const [value, setValue] = React.useState('') // Start as an empty string
 
   return (
     <>
-      <input value={name} onChange={(event) => setName(event.target.value)} />
-      <p>Current name: {name}</p>
+      <input
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+      />
+      <p>Current name: {value}</p>
     </>
   )
 }

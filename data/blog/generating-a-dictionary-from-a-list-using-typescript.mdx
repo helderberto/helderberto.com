@@ -16,7 +16,7 @@ First, I will show you the example in JavaScript, just for you to understand the
 Let's create our implementation using just pure JavaScript to map values from our
 list to a dictionary.
 
-```js
+```ts index.ts template=vanilla-ts hidePreview readOnly
 function listToDict(list, idGen) {
   const dict = {}
 
@@ -31,7 +31,7 @@ function listToDict(list, idGen) {
 
 When passes a list as example it will returns:
 
-```js
+```ts index.ts template=vanilla-ts hidePreview readOnly
 const pets = [
   { name: 'Zelda', age: 2 },
   { name: 'Link', age: 4 },
@@ -43,7 +43,7 @@ console.log(dict)
 
 For now, everything is fine, but notice a thing when you try to execute with a non-existent key:
 
-```js
+```ts index.ts template=vanilla-ts hidePreview readOnly
 const pets = [
   { name: 'Zelda', age: 2 },
   { name: 'Link', age: 4 },
@@ -59,7 +59,7 @@ The point I want to show you is that it can be avoided in the development with T
 
 In the following example, we will use [TypeScript - Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html) to control in a more flexible way the values we receive and return.
 
-```ts
+```ts index.ts template=vanilla-ts hidePreview readOnly
 function listToDict<T>(list: T[], idGen: (arg: T) => string): { [key: string]: T } {
   const dict: { [key: string]: T } = {}
 
@@ -80,7 +80,7 @@ I will split the code part by part to explain to you the usage of Generics to he
 
 If you have the autocomplete configured in your editor of preference, you will receive the keys available to map your dictionary, such as:
 
-```ts
+```ts index.ts template=vanilla-ts hidePreview readOnly
 const pets = [
   { name: 'Zelda', age: 2 },
   { name: 'Link', age: 4 },
@@ -90,7 +90,7 @@ const dict = listToDict(pets, (item) => item.<WILL SHOW PROPERTIES FROM THE OBJE
 
 If you try the example with an inexistent key, you will receive an error:
 
-```ts
+```ts index.ts template=vanilla-ts hidePreview readOnly
 const pets = [
   { name: 'Zelda', age: 2 },
   { name: 'Link', age: 4 },

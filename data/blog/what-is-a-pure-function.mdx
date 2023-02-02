@@ -41,19 +41,21 @@ Create two functions a `pure function` and another `impure function`. Check out:
 
 ### Pure Function:
 
-```javascript
+```js index.ts template=vanilla-ts showConsole hidePreview
 // ES5
-var sum: function (x, y) {
+var sum = function (x, y) {
   return x + y;
 }
 
 // ES6
-const sum = (x, y) => x + y;
+const sum2 = (x, y) => x + y;
+
+console.log(sum2(1, 2)); // output: 3
 ```
 
 ### Impure Function:
 
-```javascript
+```js index.ts template=vanilla-ts showConsole hidePreview
 // ES5
 var x = 20
 var sum = function (y) {
@@ -61,8 +63,10 @@ var sum = function (y) {
 }
 
 // ES6
-const x = 20
-const sum = (y) => x + y
+const x2 = 20
+const sum2 = (y) => x2 + y
+
+console.log(sum2(1)) // output: 21
 ```
 
 Note that the variable `x` is being defined in the global state of the application, so the _output_ of the _sum_ function will always depend on the global state change and not on the _input_ passed as a parameter, which makes the function dependent on external factors.
