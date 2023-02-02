@@ -43,6 +43,7 @@ const CustomSandpack = (props) => {
         resizablePanels: true,
         showConsole,
         readOnly,
+        wrapContent: true,
         externalResources,
       }}
     />
