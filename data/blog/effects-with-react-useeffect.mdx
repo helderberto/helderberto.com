@@ -33,7 +33,7 @@ export default function App() {
 
   React.useEffect(() => {
     console.log('age changed', age);
-  }, [name]); // only triggers when age changes
+  }, [age]); // only triggers when age changes
 
   return (
     <div>
@@ -103,7 +103,7 @@ React.useEffect(() => {
 
 React.useEffect(() => {
   console.log('age changed', age);
-}, [name]); // only triggers when age changes
+}, [age]); // only triggers when age changes
 ```
 
 </SandpackEditor>
