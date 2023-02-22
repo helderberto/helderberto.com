@@ -20,7 +20,9 @@ The object **Proxy** is used to create custom behaviors it defaults to some para
 
 In this first step we will create a simple _Proxy_ for the purpose of using the _handler_, object where we will include a trap so that one of the properties of the object has a default value if the property is not defined. Let's do it?
 
-```js index.ts template=vanilla-ts showConsole hidePreview
+<SandpackEditor template="vanilla-ts" showPreview={false}>
+
+```ts src/index.ts
 const handler = {
   get: function(obj, prop) {
     return prop in obj ? obj[prop] : 1;
@@ -34,11 +36,15 @@ proxy.age = 20;
 console.log(proxy.age, proxy.active); // => 20 1
 ```
 
+</SandpackEditor>
+
 ## Create a validation
 
 Let's use the previous example and create a new trap in the _handler_ object by applying the _set_ method. Check below:
 
-```js index.ts template=vanilla-ts showConsole hidePreview
+<SandpackEditor template="vanilla-ts" showPreview={false}>
+
+```ts src/index.ts
 const handler = {
   get: function(obj, prop) {
     return prop in obj ? obj[prop] : 1;
@@ -70,11 +76,15 @@ proxyTwo.age = 'Hello World';
 console.log(proxyTwo.age); // => TypeError: The property age isn't a number.
 ```
 
+</SandpackEditor>
+
 ## Cancel the trap!
 
 Let's use the **Proxy.revocable()** to cancel the traps of a _proxy_. Check below:
 
-```js index.ts template=vanilla-ts showConsole hidePreview
+<SandpackEditor template="vanilla-ts" showPreview={false}>
+
+```ts src/index.ts
 const handler = {
   get: function(obj, prop) {
     return prop in obj ? obj[prop] : 1;
@@ -101,6 +111,8 @@ revoke(); // Revoke access to the proxy
 
 console.log(`${proxy.firstName} ${proxy.lastName}`); // => "TypeError: Cannot perform 'get' on a proxy that has been revoked"
 ```
+
+</SandpackEditor>
 
 After you call `revoke()` all operations related to the object **Proxy** will cause a `TypeError` this way you can prevent actions on undue objects.
 

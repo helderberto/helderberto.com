@@ -14,7 +14,9 @@ The abbreviation FP will be used within this article to reference `functional pr
 
 In this article we'll use the following object in our practical examples like the following:
 
-```ts index.ts template=vanilla-ts hidePreview readOnly
+<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
+
+```ts src/index.ts
 const animals = [
   {
     name: 'Max',
@@ -28,6 +30,8 @@ const animals = [
   },
 ]
 ```
+
+</SandpackEditor>
 
 ## What is functional programming?
 
@@ -45,7 +49,9 @@ In mathematical we write like `f(g(x))` when receiving the results from `g(x)` w
 
 See the following example:
 
-```ts index.ts template=vanilla-ts hidePreview readOnly
+<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
+
+```ts src/index.ts
 const isDog = (animals) => animals.filter((animal) => animal.species === 'dog')
 const isCat = (animals) => animals.filter((animal) => animal.species === 'cat')
 const likeCarrots = (animals) =>
@@ -58,11 +64,15 @@ console.log(likeCarrots(isCat(animals)))
 // => [{ name: "Teodore", species: "cat", likes: ["mice", "carrots" ]}]
 ```
 
+</SandpackEditor>
+
 ### Automate the Composition process
 
 Let's create an automation to previous example:
 
-```ts index.ts template=vanilla-ts hidePreview readOnly
+<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
+
+```ts src/index.ts
 const compose =
   (...fns) =>
   (x) =>
@@ -75,13 +85,17 @@ console.log(compose(isCat, likeCarrots)(animals))
 // => [{ name: "Teodore", species: "cat", likes: ["mice", "carrots" ]}]
 ```
 
+</SandpackEditor>
+
 The method called `compose` will execute all functions from right to left using `reduceRight`.
 
 _Note: we've got the same results with a much more readable and cleaner code._
 
 Normally, when want to execute sequentially, so we use the `pipe` method like the following example:
 
-```ts index.ts template=vanilla-ts hidePreview readOnly
+<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
+
+```ts src/index.ts
 const pipe =
   (...fns) =>
   (x) =>
@@ -94,6 +108,8 @@ console.log(pipe(isCat, likeCarrots)(animals))
 // => [{ name: "Teodore", species: "cat", likes: ["mice", "carrots" ]}]
 ```
 
+</SandpackEditor>
+
 _Note: we've got the same results from the composed method because we just filtered the results, however, in cases you want to print different value, with is a nice approach._
 
 I recommend the article [A quick introduction to pipe() and compose() in JavaScript](https://medium.com/free-code-camp/pipe-and-compose-in-javascript-5b04004ac937) where you may understand the concepts of pipe and compose better.
@@ -104,7 +120,9 @@ In immutability, we consider elements that won't mutate itself when we add a new
 
 See an example when I've added new animal and create a new instance from `animals`:
 
-```ts index.ts template=vanilla-ts hidePreview readOnly
+<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
+
+```ts src/index.ts
 const tildorCat = {
   name: 'Tildor',
   species: 'cat',
@@ -115,6 +133,8 @@ const mutatedAnimals = [...animals, tildorCat]
 console.log(animals.length) // => 2
 console.log(mutatedAnimals.length) // => 3
 ```
+
+</SandpackEditor>
 
 We've used the base `animals` to create a new instance with the new animal instance.
 

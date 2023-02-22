@@ -8,7 +8,9 @@ summary: Understanding React useEffect with practical examples
 
 Some practical examples of how to use the [React useEffect()](https://beta.reactjs.org/reference/react/useEffect) -
 
-```js App.js showConsole
+<SandpackEditor>
+
+```tsx App.tsx
 import React from "react";
 
 export default function App() {
@@ -42,11 +44,15 @@ export default function App() {
 }
 ```
 
+</SandpackEditor>
+
 ## On Mounting
 
 Similar to the legacy `componentDidMount` it will trigger on mounting the component:
 
-```ts index.ts template=vanilla-ts hidePreview readOnly
+<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
+
+```ts src/index.ts
 React.useEffect(() => {
   console.log('component mounted');
 
@@ -56,27 +62,39 @@ React.useEffect(() => {
 }, []); // empty array means it will only run on mounting
 ```
 
+</SandpackEditor>
+
 ## On Changing Values
 
-```ts index.ts template=vanilla-ts hidePreview readOnly
+<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
+
+```ts src/index.ts
 React.useEffect(() => {
   console.log('name changed', name);
 }, [name]); // only triggers when name changes
 ```
 
+</SandpackEditor>
+
 ## Separation of Concerns
 
 Instead of watching two values at the same useEffect, like the following:
 
-```ts index.ts template=vanilla-ts hidePreview readOnly
+<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
+
+```ts src/index.ts
 React.useEffect(() => {
   console.log({ name, age });
 }, [name, age]);
 ```
 
+</SandpackEditor>
+
 Think in separation of concerns, and split each it will be cleaner and easier for the next person who need to read your code, eg:
 
-```ts index.ts template=vanilla-ts hidePreview readOnly
+<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
+
+```ts src/index.ts
 // Separation of concerns
 // This is a good example of how to separate concerns splitting into two useEffects to handle each value
 React.useEffect(() => {
@@ -87,3 +105,5 @@ React.useEffect(() => {
   console.log('age changed', age);
 }, [name]); // only triggers when age changes
 ```
+
+</SandpackEditor>

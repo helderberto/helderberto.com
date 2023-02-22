@@ -2,9 +2,7 @@ import fs from 'fs'
 import { MDXRemote } from 'next-mdx-remote'
 import { getFiles, getFileBySlug, getAllFilesFrontMatter, formatSlug } from '@/lib/mdx'
 import PostLayout from '@/layouts/PostLayout'
-import MDXComponents from '@/components/MDXComponents'
 import PageTitle from '@/components/PageTitle'
-import CustomSandpack from '@/components/CustomSandpack'
 import generateRss from '@/lib/generate-rss'
 
 export async function getStaticPaths() {
@@ -35,16 +33,13 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Blog({ post, prev, next }) {
-  const { mdxSource, isMdx, frontMatter } = post
+  const { mdxSource, frontMatter } = post
 
   return (
     <>
       {frontMatter.draft !== true ? (
-        <PostLayout frontMatter={frontMatter} isMdx={isMdx} prev={prev} next={next}>
-          <MDXRemote
-            components={isMdx ? { code: (props) => <CustomSandpack {...props} /> } : MDXComponents}
-            {...mdxSource}
-          />
+        <PostLayout frontMatter={frontMatter} prev={prev} next={next}>
+          <MDXRemote {...mdxSource} />
         </PostLayout>
       ) : (
         <div className="mt-24 text-center">
