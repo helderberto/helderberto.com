@@ -11,13 +11,23 @@
       <atom:link href="https://helderberto.com/index.xml" rel="self" type="application/rss+xml"/>
       
   <item>
+    <guid>https://helderberto.com/effects-with-react-useeffect</guid>
+    <title>Effects with React useEffect</title>
+    <link>https://helderberto.com/effects-with-react-useeffect</link>
+    <description>Understanding React useEffect with practical examples</description>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 GMT</pubDate>
+    <author>helder.burato@gmail.com (Helder B. Berto)</author>
+    <category>reactjs</category><category>snippet</category><category>react-hook</category>
+  </item>
+
+  <item>
     <guid>https://helderberto.com/manipulating-the-dom-with-react-ref</guid>
     <title>Manipulating the DOM with React Ref</title>
     <link>https://helderberto.com/manipulating-the-dom-with-react-ref</link>
     <description>Using React ref to manipulate DOM nodes</description>
     <pubDate>Tue, 21 Feb 2023 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder B. Berto)</author>
-    <category>reactjs</category><category>javascript</category><category>dom</category><category>snippet</category>
+    <category>reactjs</category><category>javascript</category><category>dom</category><category>snippet</category><category>react-hook</category>
   </item>
 
   <item>
