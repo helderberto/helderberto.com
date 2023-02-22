@@ -58,9 +58,14 @@ const CustomSandpack = (props) => {
           wrapContent
           externalResources={externalResources}
         />
-        <SandpackPreview hidden={!showPreview} />
-        <SandpackConsole hidden={!showConsole} />
       </SandpackLayout>
+
+      {showConsole || showPreview ? (
+        <SandpackLayout>
+          <SandpackPreview hidden={!showPreview} />
+          <SandpackConsole hidden={!showConsole} />
+        </SandpackLayout>
+      ) : null}
     </SandpackProvider>
   )
 }
