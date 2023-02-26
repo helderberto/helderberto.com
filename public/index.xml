@@ -7,15 +7,15 @@
       <language>en-us</language>
       <managingEditor>helder.burato@gmail.com (Helder B. Berto)</managingEditor>
       <webMaster>helder.burato@gmail.com (Helder B. Berto)</webMaster>
-      <lastBuildDate>Sat, 25 Feb 2023 00:00:00 GMT</lastBuildDate>
+      <lastBuildDate>Sun, 26 Feb 2023 00:00:00 GMT</lastBuildDate>
       <atom:link href="https://helderberto.com/index.xml" rel="self" type="application/rss+xml"/>
       
   <item>
-    <guid>https://helderberto.com/improving-your-tldr-with-fzf</guid>
-    <title>Improving your TLDR with FZF</title>
-    <link>https://helderberto.com/improving-your-tldr-with-fzf</link>
-    <description>TLDR integrated with FZF</description>
-    <pubDate>Sat, 25 Feb 2023 00:00:00 GMT</pubDate>
+    <guid>https://helderberto.com/integrating-tldr-with-fzf</guid>
+    <title>Integrating TLDR with FZF</title>
+    <link>https://helderberto.com/integrating-tldr-with-fzf</link>
+    <description>TLDR + FZF for a better developer experience</description>
+    <pubDate>Sun, 26 Feb 2023 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder B. Berto)</author>
     <category>bash</category><category>fzf</category><category>snippet</category><category>shell</category>
   </item>
