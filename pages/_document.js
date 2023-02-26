@@ -71,18 +71,19 @@ class MyDocument extends Document {
             key="sandpack-css"
           />
 
-          {/* Global Site Tag (gtag.js) - Google Analytics */}
-          <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
+          {/* <!-- Google tag (gtag.js) v4 --> */}
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          ></script>
           <script
             dangerouslySetInnerHTML={{
               __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_TRACKING_ID}', {
-              page_path: window.location.pathname,
-            });
-          `,
+          gtag('js', new Date());
+
+          gtag('config', '${GA_TRACKING_ID}');`,
             }}
           />
         </Head>
