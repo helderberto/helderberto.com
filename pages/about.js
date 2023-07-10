@@ -22,7 +22,7 @@ export default function About() {
             <h3 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">
               {siteMetadata.author}
             </h3>
-            <div className="text-gray-500 dark:text-gray-400">Senior Front-end Engineer</div>
+            <div className="text-gray-500 dark:text-gray-400">Software Engineer — Front-End</div>
             <div className="flex pt-6 space-x-3">
               <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} />
               <SocialIcon kind="github" href={siteMetadata.github} />
@@ -30,24 +30,34 @@ export default function About() {
             </div>
           </div>
           <div className="pt-8 pb-8 prose dark:prose-dark max-w-none xl:col-span-2">
-            <p>I'm a Brazilian Front-end Engineer based in Portugal.</p>
             <p>
-              Currently, I'm a Senior Front-end Engineer at{' '}
-              <a href="https://www.pagerduty.com/" target="blank">
+              I'm a Software Engineer for over 12 years, collaborating with agencies, consulting
+              firms, start-ups, and product platforms.
+            </p>
+            <p>
+              Currently, I'm a Senior Software Engineer — Front-End at{' '}
+              <a href="https://www.pagerduty.com/" target="_blank" rel="noreferrer">
                 PagerDuty
-              </a>
+              </a>{' '}
+              , where my main focus lies in enhancing and creating user interfaces for our
+              customers.
             </p>
             <p>
-              Solving problems with my software development skills is what inspires me and keeps me
-              in a constant search for knowledge.
+              I'm an expert in front-end development, backed by extensive experience in back-end
+              development.
             </p>
             <p>
-              I’m passionate about technologies such as JavaScript, TypeScript, ReactJS, HTML, and
-              CSS. I’m familiar with packages that use these technologies as a base.
+              Throughout my career, I have successfully led various software projects, while also
+              taking on responsibilities such as mentoring and hiring talented software engineers.
             </p>
             <p>
-              Packages and tools come and go, but some concepts stay the same, and those concepts
-              are what matter most to me.
+              Over the past five years, I have extensively utilized the following tools: TypeScript,
+              JavaScript, React, Jest, React Testing Library, and Node.js.
+            </p>
+            <p>
+              While technologies constantly evolve, I firmly believe that certain fundamental
+              concepts remain timeless, and it is these principles that hold the utmost importance
+              to me.
             </p>
           </div>
         </div>
