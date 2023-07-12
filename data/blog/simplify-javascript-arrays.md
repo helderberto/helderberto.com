@@ -10,14 +10,10 @@ In this post we'll cover some methods of **JavaScript** that will make it easier
 
 ## Let's define our arrays
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 const beers = ['Heineken', 'San Diego', 'Coruja', 'Saint Bier']
 const ages = [20, 25, 19, 21, 42]
 ```
-
-</SandpackEditor>
 
 We created two arrays, where we will use methods that we will understand next.
 
@@ -29,23 +25,19 @@ Now that you've created the arrays you need yo work on, let's put your hand in t
 
 It allows you to test all the elements of your array. If any of the elements doesn't pass through the condition you defined, the return will be `false`. See example:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 // ES5
 function isGreaterThan(age) {
-  return age >= 18;
+  return age >= 18
 }
-const greater = ages.every(isGreaterThan);
+const greater = ages.every(isGreaterThan)
 
 // ES6
-const isGreaterThan = (age) => age > 18;
-const greater = ages.every(isGreaterThan);
+const isGreaterThan = (age) => age > 18
+const greater = ages.every(isGreaterThan)
 
-console.log(greater); // true
+console.log(greater) // true
 ```
-
-</SandpackEditor>
 
 The return of the `greater` variable must be `true` since all values in the `ages` array are greather than `18`.
 
@@ -55,15 +47,11 @@ _Note: If an empty array is given, the default return must be TRUE_
 
 It allows checking whether or not an element exists in the defined array. Example:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
+```ts
+console.log(beers.includes('Skol')) // false
 
-```ts src/index.ts
-console.log(beers.includes('Skol')); // false
-
-console.log(ages.includes(25)); // true
+console.log(ages.includes(25)) // true
 ```
-
-</SandpackEditor>
 
 In the cases mentioned above the returns will be `false` for `beers.includes('Skol')` and `true` for `ages.includes(25)`.
 
@@ -71,36 +59,28 @@ In the cases mentioned above the returns will be `false` for `beers.includes('Sk
 
 This method allows you to filter multiple elements with a condition you define. Example:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 // ES5
 function startWithS(word) {
-  return word.indexOf('S') === 0;
+  return word.indexOf('S') === 0
 }
 
 // ES6
-const startWithS = (word) => word.indexOf('S') === 0;
+const startWithS = (word) => word.indexOf('S') === 0
 
-const beersStartWithS = beers.filter(startWithS);
+const beersStartWithS = beers.filter(startWithS)
 
-console.log(beersStartWithS); // [0: 'San Diego', 1: Saint Bier]
+console.log(beersStartWithS) // [0: 'San Diego', 1: Saint Bier]
 ```
-
-</SandpackEditor>
 
 The return of the `beersStartWithS` variable should be:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 [
   0: 'San Diego',
   1: 'Saint Bier'
 ]
 ```
-
-</SandpackEditor>
 
 Since all returned elements begin with the letter `S`.
 
@@ -108,23 +88,19 @@ Since all returned elements begin with the letter `S`.
 
 The difference of this method compared to the `filter()` method is that first one found will be returned based in condition defined by you. See example:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 // ES5
 function findSanDiego(element) {
-  return element === 'San Diego';
+  return element === 'San Diego'
 }
 
 // ES6
-const findSanDiego = (element) => element === 'San Diego';
+const findSanDiego = (element) => element === 'San Diego'
 
-const beerSanDiego = beers.find(findSanDiego);
+const beerSanDiego = beers.find(findSanDiego)
 
-console.log(beerSanDiego); // 'San Diego'
+console.log(beerSanDiego) // 'San Diego'
 ```
-
-</SandpackEditor>
 
 We've created a filter to fetch the element called `San Diego` as our `beers` array has an element with this name, we will get the return `San Diego` in the variable `beerSanDiego`, if there were more elements with the same name we would receive the first one found in our `beers` array.
 
@@ -134,33 +110,25 @@ _Note: If there were no elements to be returned, we would get the `undefined` re
 
 This method traverses all elements of the array, executing functions for each element, and returning a new array as a result. Example:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 // ES5
 function upAge(age) {
-  return age + 1;
+  return age + 1
 }
 
 // ES6
-const upAge = (age) => age + 1;
+const upAge = (age) => age + 1
 
-const newAges = ages.map(upAge);
+const newAges = ages.map(upAge)
 
-console.log(newAges); // [0: 21, 1: 26, 2: 20, 3: 22, 4: 43]
+console.log(newAges) // [0: 21, 1: 26, 2: 20, 3: 22, 4: 43]
 ```
-
-</SandpackEditor>
 
 We will receive the following return in `newAges`:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 ;[(0: 21), (1: 26), (2: 20), (3: 22), (4: 43)]
 ```
-
-</SandpackEditor>
 
 Where `plus one` was added to its initial values.
 
@@ -168,23 +136,19 @@ Where `plus one` was added to its initial values.
 
 This method checks if a least one element satisfies the condition. Example:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 // ES5
 function hasHeinekenOrSaint(beer) {
-  return (beer === 'Saint Bier' || beer === 'Heineken');
+  return beer === 'Saint Bier' || beer === 'Heineken'
 }
 
 // ES6
-const hasHeinekenOrSaint = (beer) => (beer === 'Saint Bier' || beer === 'Heineken');
+const hasHeinekenOrSaint = (beer) => beer === 'Saint Bier' || beer === 'Heineken'
 
-const heinekenSaint = beers.some(hasHeinekenOrSaint);
+const heinekenSaint = beers.some(hasHeinekenOrSaint)
 
-console.log(heinekenSaint); // true
+console.log(heinekenSaint) // true
 ```
-
-</SandpackEditor>
 
 In this case it's being checked whether there are occasions for `Heineken` or `Saint Bier` elements. If it does the result will be `true`.
 
@@ -192,23 +156,19 @@ In this case it's being checked whether there are occasions for `Heineken` or `S
 
 You can use the reduce method for some cases, one of which is to facilitate calculations. Example:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 // ES5
 function reducerAge(accumulator, age) {
-  return accumulator + age;
+  return accumulator + age
 }
 
 // ES6
-const reducerAge = (accumulator, age) => accumulator + age;
+const reducerAge = (accumulator, age) => accumulator + age
 
-const sumAges = ages.reduce(reducerAge);
+const sumAges = ages.reduce(reducerAge)
 
-console.log(sumAges); // 127
+console.log(sumAges) // 127
 ```
-
-</SandpackEditor>
 
 The return in this case will be `127` the sum of all ages.
 

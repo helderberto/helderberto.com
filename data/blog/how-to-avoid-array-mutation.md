@@ -29,14 +29,10 @@ The following steps will cause mutation into the array adding, removing and edit
 
 To mutate we'll use the following array:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 const heroesMutate = ['Spider-man', 'Thor', 'Hulk', 'Iron Man']
 console.log(heroesMutate) // => ["Spider-man", "Thor", "Hulk", "Iron Man"]
 ```
-
-</SandpackEditor>
 
 ### Including
 
@@ -48,9 +44,7 @@ Methods will be used:
 
 See the following use-case examples for these methods:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 heroesMutate.push('Captain Marvel')
 console.log(heroesMutate) // => ["Spider-man", "Thor", "Hulk", "Iron Man", "Captain Marvel"]
 
@@ -61,23 +55,17 @@ heroesMutate.splice(2, 0, 'Black Panther')
 console.log(heroesMutate) // => ["Deadpool", "Spider-man", "Black Panther", "Thor", "Hulk", "Iron Man", "Captain Marvel"]
 ```
 
-</SandpackEditor>
-
 ### Editing
 
 The following case will find index for the element we want to edit and set value to the found index:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 const heroesMutate = ['Spider-man', 'Thor', 'Hulk', 'Iron Man']
 const indexDeadpool = heroesMutate.indexOf('Deadpool')
 heroesMutate[indexDeadpool] = 'Wolverine'
 
 console.log(heroesMutate) // => ["Wolverine", "Spider-man", "Black Panther", "Thor", "Hulk", "Iron Man", "Captain Marvel"]
 ```
-
-</SandpackEditor>
 
 ### Removing
 
@@ -89,9 +77,7 @@ Methods will be used:
 
 See the following use-case examples for these methods:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 heroesMutate.pop()
 console.log(heroesMutate) // => ["Wolverine", "Spider-man", "Black Panther", "Thor", "Hulk", "Iron Man"]
 
@@ -101,8 +87,6 @@ console.log(heroesMutate) // => ["Spider-man", "Black Panther", "Thor", "Hulk", 
 heroesMutate.splice(1, 1)
 console.log(heroesMutate) // => ["Spider-man", "Thor", "Hulk", "Iron Man"]
 ```
-
-</SandpackEditor>
 
 ---
 
@@ -122,14 +106,10 @@ Methods will be used:
 
 See the following use-cases:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 const villains = ['Loki', 'Thanos', 'Venom', 'Abomination']
 console.log(typeof villains === 'object') // => true
 ```
-
-</SandpackEditor>
 
 Perhaps you're wondering, does `Object.freeze()` work in an array? And the answer is yes because in Javascript `array` are type `object`, you can check this with the following example:
 
@@ -137,9 +117,7 @@ Perhaps you're wondering, does `Object.freeze()` work in an array? And the answe
 
 Add to the end of array:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 const villains = ['Loki', 'Thanos', 'Venom', 'Abomination']
 const newVillains = villains.concat('Juggernaut')
 const newVillains2 = [...newVillains, 'Magneto']
@@ -151,28 +129,20 @@ console.log(newVillains2) // => ["Loki", "Thanos", "Venom", "Abomination", "Jugg
 console.log(newVillains3) // => ["Red Skull", "Loki", "Thanos", "Venom", "Abomination", "Juggernaut", "Magneto"]
 ```
 
-</SandpackEditor>
-
 In the following example we'll add `Ultron` after `Thanos` in the array:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 const newVillains = [...villains.slice(0, 2), 'Ultron', ...villains.slice(2, villains.length)]
 
 console.log(villains) // => ["Loki", "Thanos", "Venom", "Abomination"]
 console.log(newVillains) // => ["Loki", "Thanos", "Ultron", "Venom", "Abomination"]
 ```
 
-</SandpackEditor>
-
 ### Editing
 
 In the following example we'll edit `Venom` to `Galactus`:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 const indexVenom = villains.indexOf('Venom')
 const newVillains = [
   ...villains.slice(0, indexVenom),
@@ -186,15 +156,11 @@ console.log(newVillains) // => ["Loki", "Thanos", "Galactus", "Abomination"]
 console.log(newVillains2) // => ["Loki", "Thanos", "Galactus", "Ultron"]
 ```
 
-</SandpackEditor>
-
 ### Removing
 
 In the following example we'll remove `Thanos` from the array:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 const indexThanos = villains.indexOf('Thanos')
 const newVillains = [...villains.slice(0, indexHelder), ...villains.slice(indexHelder + 1)]
 const newVillains2 = newVillains.filter((v) => v !== 'Thanos')
@@ -203,8 +169,6 @@ console.log(villains) // => ["Loki", "Thanos", "Venom", "Abomination"]
 console.log(newVillains) // => ["Loki", "Venom", "Abomination"]
 console.log(newVillains2) // => ["Loki", "Abomination"]
 ```
-
-</SandpackEditor>
 
 See that in all the examples that we developed above, a new instance of the array is created, thus avoiding the mutation of the initially defined arrays.
 

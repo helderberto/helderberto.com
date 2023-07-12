@@ -18,18 +18,13 @@ The items recently added to Stack are located near the top and the oldest near t
 
 First, we need to create our Stack as empty, such as:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 class Stack {
   constructor() {
     this.items = []
   }
 }
 ```
-
-</SandpackEditor>
-
 
 _Note: The `items` will be used to manipulate data from every instance of Stack's._
 
@@ -43,9 +38,7 @@ This is used to add new elements to the top of Stack. It can add one or more ele
 
 Let's implement it with the following code:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 class Stack {
   ...
 
@@ -55,8 +48,6 @@ class Stack {
 }
 ```
 
-</SandpackEditor>
-
 _Note: It uses the base array method [push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) to add to the `items`._
 
 #### `.pop()`
@@ -65,9 +56,7 @@ This is used to remove elements from the top of `Stack`.
 
 Let's implement it with the following code:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 class Stack {
   ...
 
@@ -77,8 +66,6 @@ class Stack {
 }
 ```
 
-</SandpackEditor>
-
 _Note: It uses the base array [pop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop)._
 
 #### `.peek()`
@@ -87,9 +74,7 @@ This is used to return the element from the top of `Stack`.
 
 Let's implement it with the following code:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 class Stack {
   ...
 
@@ -98,8 +83,6 @@ class Stack {
   }
 }
 ```
-
-</SandpackEditor>
 
 We've taken some steps in the example above, I'll describe them in some topics below:
 
@@ -112,9 +95,7 @@ This is used to check if `Stack` is empty. If so, the items will return as `true
 
 Let's implement it with the following code:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 class Stack {
   ...
 
@@ -124,8 +105,6 @@ class Stack {
 }
 ```
 
-</SandpackEditor>
-
 In the example above we check the `length` of items if it's equal to `zero`, they will return `true` of `false`.
 
 #### `.clear()`
@@ -134,9 +113,7 @@ This is used to clear `Stack` setting `items` to an empty array.
 
 Let's implement it with the following code:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 class Stack {
   ...
 
@@ -146,8 +123,6 @@ class Stack {
 }
 ```
 
-</SandpackEditor>
-
 No surprises in the example above, we just set the `items` to an empty array.
 
 #### `.size()`
@@ -156,9 +131,7 @@ This is used to check the size of `Stack`.
 
 Let's implement it with the following code:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 class Stack {
   ...
 
@@ -168,8 +141,6 @@ class Stack {
 }
 ```
 
-</SandpackEditor>
-
 Like in the other examples above, it uses [array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) to check the size of `Stack`.
 
 #### `.toString()`
@@ -178,9 +149,7 @@ This is used in cases we want to parse our `items` to a string.
 
 Let's implement it with the following code:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 class Stack {
   ...
 
@@ -190,24 +159,18 @@ class Stack {
 }
 ```
 
-</SandpackEditor>
-
 _Note: It uses the base method [toString](https://developer.mozilla.org/en-US/docs/Web/API/Location/toString)._
 
 Now that we've implemented all the data manipulation methods, let's see our `Stack`
 implementation in action:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
-const stack = new Stack();
-stack.push(['item1', 'item2']);
-console.log(stack.size()); // Output => 2
-stack.pop();
-console.log(stack.size()); // Output => 1
+```ts
+const stack = new Stack()
+stack.push(['item1', 'item2'])
+console.log(stack.size()) // Output => 2
+stack.pop()
+console.log(stack.size()) // Output => 1
 ```
-
-</SandpackEditor>
 
 ## Wrapping Up
 

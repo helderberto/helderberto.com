@@ -11,36 +11,36 @@ Some practical examples of how to use the [React useEffect()](https://beta.react
 <SandpackEditor>
 
 ```tsx App.tsx
-import React from "react";
+import React from 'react'
 
 export default function App() {
-  const [name, setName] = React.useState('');
-  const [age, setAge] = React.useState(0);
+  const [name, setName] = React.useState('')
+  const [age, setAge] = React.useState(0)
 
   React.useEffect(() => {
-    console.log('component mounted');
+    console.log('component mounted')
 
     return () => {
-      console.log('component unmounted');
+      console.log('component unmounted')
     }
-  }, []); // empty array means it will only run on mounting
+  }, []) // empty array means it will only run on mounting
 
   // Separation of concerns
   // This is a good example of how to separate concerns splitting into two useEffects to handle each value
   React.useEffect(() => {
-    console.log('name changed', name);
-  }, [name]); // only triggers when name changes
+    console.log('name changed', name)
+  }, [name]) // only triggers when name changes
 
   React.useEffect(() => {
-    console.log('age changed', age);
-  }, [age]); // only triggers when age changes
+    console.log('age changed', age)
+  }, [age]) // only triggers when age changes
 
   return (
     <div>
-      <input type="text" value={name} onChange={e => setName(e.target.value)} />
-      <input type="number" value={age} onChange={e => setAge(e.target.value)} />
+      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      <input type="number" value={age} onChange={(e) => setAge(e.target.value)} />
     </div>
-  );
+  )
 }
 ```
 
@@ -54,12 +54,12 @@ Similar to the legacy `componentDidMount` it will trigger on mounting the compon
 
 ```ts src/index.ts
 React.useEffect(() => {
-  console.log('component mounted');
+  console.log('component mounted')
 
   return () => {
-    console.log('component unmounted');
+    console.log('component unmounted')
   }
-}, []); // empty array means it will only run on mounting
+}, []) // empty array means it will only run on mounting
 ```
 
 </SandpackEditor>
@@ -70,8 +70,8 @@ React.useEffect(() => {
 
 ```ts src/index.ts
 React.useEffect(() => {
-  console.log('name changed', name);
-}, [name]); // only triggers when name changes
+  console.log('name changed', name)
+}, [name]) // only triggers when name changes
 ```
 
 </SandpackEditor>
@@ -84,8 +84,8 @@ Instead of watching two values at the same useEffect, like the following:
 
 ```ts src/index.ts
 React.useEffect(() => {
-  console.log({ name, age });
-}, [name, age]);
+  console.log({ name, age })
+}, [name, age])
 ```
 
 </SandpackEditor>
@@ -98,12 +98,12 @@ Think in separation of concerns, and split each it will be cleaner and easier fo
 // Separation of concerns
 // This is a good example of how to separate concerns splitting into two useEffects to handle each value
 React.useEffect(() => {
-  console.log('name changed', name);
-}, [name]); // only triggers when name changes
+  console.log('name changed', name)
+}, [name]) // only triggers when name changes
 
 React.useEffect(() => {
-  console.log('age changed', age);
-}, [age]); // only triggers when age changes
+  console.log('age changed', age)
+}, [age]) // only triggers when age changes
 ```
 
 </SandpackEditor>

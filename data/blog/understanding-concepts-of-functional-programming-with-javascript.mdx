@@ -14,8 +14,6 @@ The abbreviation FP will be used within this article to reference `functional pr
 
 In this article we'll use the following object in our practical examples like the following:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
 ```ts src/index.ts
 const animals = [
   {
@@ -49,8 +47,6 @@ In mathematical we write like `f(g(x))` when receiving the results from `g(x)` w
 
 See the following example:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
 ```ts src/index.ts
 const isDog = (animals) => animals.filter((animal) => animal.species === 'dog')
 const isCat = (animals) => animals.filter((animal) => animal.species === 'cat')
@@ -69,8 +65,6 @@ console.log(likeCarrots(isCat(animals)))
 ### Automate the Composition process
 
 Let's create an automation to previous example:
-
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
 
 ```ts src/index.ts
 const compose =
@@ -92,8 +86,6 @@ The method called `compose` will execute all functions from right to left using 
 _Note: we've got the same results with a much more readable and cleaner code._
 
 Normally, when want to execute sequentially, so we use the `pipe` method like the following example:
-
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
 
 ```ts src/index.ts
 const pipe =
@@ -119,8 +111,6 @@ I recommend the article [A quick introduction to pipe() and compose() in JavaScr
 In immutability, we consider elements that won't mutate itself when we add a new property or change.
 
 See an example when I've added new animal and create a new instance from `animals`:
-
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
 
 ```ts src/index.ts
 const tildorCat = {

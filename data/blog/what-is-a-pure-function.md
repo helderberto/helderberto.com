@@ -41,27 +41,21 @@ Create two functions a `pure function` and another `impure function`. Check out:
 
 ### Pure Function:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 // ES5
 var sum = function (x, y) {
-  return x + y;
+  return x + y
 }
 
 // ES6
-const sum2 = (x, y) => x + y;
+const sum2 = (x, y) => x + y
 
-console.log(sum2(1, 2)); // output: 3
+console.log(sum2(1, 2)) // output: 3
 ```
-
-</SandpackEditor>
 
 ### Impure Function:
 
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
-
-```ts src/index.ts
+```ts
 // ES5
 var x = 20
 var sum = function (y) {
@@ -74,8 +68,6 @@ const sum2 = (y) => x2 + y
 
 console.log(sum2(1)) // output: 21
 ```
-
-</SandpackEditor>
 
 Note that the variable `x` is being defined in the global state of the application, so the _output_ of the _sum_ function will always depend on the global state change and not on the _input_ passed as a parameter, which makes the function dependent on external factors.
 
