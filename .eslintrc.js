@@ -17,13 +17,7 @@ module.exports = {
     amd: true,
     node: true,
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:jsx-a11y/recommended',
-    'plugin:prettier/recommended',
-  ],
+  extends: ['eslint:recommended', 'next', 'plugin:prettier/recommended'],
   rules: {
     'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 'off',
