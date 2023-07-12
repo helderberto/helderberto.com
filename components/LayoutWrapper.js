@@ -3,6 +3,7 @@ import headerNavLinks from '@/data/headerNavLinks'
 import Link from './Link'
 import SectionContainer from './SectionContainer'
 import Footer from './Footer'
+import ThemeSwitch from './ThemeSwitch'
 import MobileNav from './MobileNav'
 
 const LayoutWrapper = ({ children }) => {
@@ -25,12 +26,13 @@ const LayoutWrapper = ({ children }) => {
                 <Link
                   key={link.title}
                   href={link.href}
-                  className="p-1 font-medium text-gray-900 sm:p-4 dark:text-gray-100"
+                  className="p-1 font-medium text-gray-800 sm:p-4 dark:hover:text-pink-600 hover:text-pink-600 dark:text-gray-100"
                 >
                   {link.title}
                 </Link>
               ))}
             </div>
+            <ThemeSwitch />
             <MobileNav />
           </div>
         </header>
