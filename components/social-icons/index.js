@@ -12,7 +12,7 @@ const components = {
   twitter: Twitter,
 }
 
-const SocialIcon = ({ kind, href, size = 8 }) => {
+const SocialIcon = ({ kind, href, size = 6 }) => {
   if (!href) return null
 
   const SocialSvg = components[kind]
