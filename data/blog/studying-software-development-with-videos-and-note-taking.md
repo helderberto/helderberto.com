@@ -1,7 +1,7 @@
 ---
 title: Studying Software Development with Videos and Note-Taking
 date: '2021-02-17'
-tags: ['misc', 'learn']
+tags: ['misc']
 draft: false
 summary: On this article, I'm going to share my process of studying software development with videos and note-taking.
 ---

@@ -1,7 +1,7 @@
 ---
 title: Integrating TLDR with FZF
 date: '2023-02-26'
-tags: [bash, fzf, snippet, shell]
+tags: [bash, shell]
 draft: false
 summary: TLDR + FZF for a better developer experience
 ---

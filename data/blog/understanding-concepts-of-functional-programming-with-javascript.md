@@ -1,7 +1,7 @@
 ---
 title: Understanding concepts of functional programming with JavaScript
 date: '2020-02-03'
-tags: ['javascript', 'functional-programming']
+tags: ['javascript', 'functional']
 draft: false
 summary: Let's understand the fundamental concepts of functional programming using JavaScript language.
 ---

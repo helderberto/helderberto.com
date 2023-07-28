@@ -1,7 +1,7 @@
 ---
 title: Upgrade Husky to Latest Version
 date: '2021-02-26'
-tags: ['git', 'bash', 'javascript']
+tags: ['git', 'javascript']
 draft: false
 summary: How to upgrade Husky package to the latest version 5.x
 ---

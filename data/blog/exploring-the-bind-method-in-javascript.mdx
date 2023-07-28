@@ -24,7 +24,7 @@ One of the most common errors when we aren't aware of the _bind_ method is the a
 function cook() {
   console.log(this.ingredients)
 }
-console.log(cook()); // => undefined
+console.log(cook()) // => undefined
 ```
 
 </SandpackEditor>
@@ -46,7 +46,7 @@ let dinner = {
   ingredients: 'bacon',
 }
 let cookBoundToDinner = cook.bind(dinner)
-console.log(cookBoundToDinner()); // => "bacon"
+console.log(cookBoundToDinner()) // => "bacon"
 ```
 
 </SandpackEditor>
@@ -74,7 +74,7 @@ let lunch = {
   cookLunch: cook,
   ingredients: 'salad',
 }
-console.log(lunch.cookLunch()); // => "salad"
+console.log(lunch.cookLunch()) // => "salad"
 ```
 
 </SandpackEditor>

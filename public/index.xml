@@ -17,7 +17,7 @@
     <description>Creating a component with a different node depending on the passed props</description>
     <pubDate>Sat, 04 Mar 2023 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder Berto)</author>
-    <category>reactjs</category><category>javascript</category><category>polymorphism</category><category>snippet</category>
+    <category>react</category><category>javascript</category>
   </item>
 
   <item>
@@ -27,7 +27,7 @@
     <description>TLDR + FZF for a better developer experience</description>
     <pubDate>Sun, 26 Feb 2023 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder Berto)</author>
-    <category>bash</category><category>fzf</category><category>snippet</category><category>shell</category>
+    <category>bash</category><category>shell</category>
   </item>
 
   <item>
@@ -37,7 +37,7 @@
     <description>Understanding React useEffect with practical examples</description>
     <pubDate>Tue, 21 Feb 2023 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder Berto)</author>
-    <category>reactjs</category><category>snippet</category><category>react-hook</category>
+    <category>react</category>
   </item>
 
   <item>
@@ -47,7 +47,7 @@
     <description>Using React ref to manipulate DOM nodes</description>
     <pubDate>Tue, 21 Feb 2023 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder Berto)</author>
-    <category>reactjs</category><category>javascript</category><category>dom</category><category>snippet</category><category>react-hook</category>
+    <category>react</category><category>javascript</category>
   </item>
 
   <item>
@@ -57,7 +57,7 @@
     <description>What do controlled and uncontrolled elements mean?</description>
     <pubDate>Wed, 01 Feb 2023 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder Berto)</author>
-    <category>reactjs</category><category>javascript</category>
+    <category>react</category><category>javascript</category>
   </item>
 
   <item>
@@ -67,7 +67,7 @@
     <description>Avoid Nested Render Functions.</description>
     <pubDate>Wed, 10 Nov 2021 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder Berto)</author>
-    <category>reactjs</category><category>javascript</category>
+    <category>react</category><category>javascript</category>
   </item>
 
   <item>
@@ -77,7 +77,7 @@
     <description>Avoid Short-Circuit Conditional UI Rendering.</description>
     <pubDate>Sun, 07 Nov 2021 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder Berto)</author>
-    <category>reactjs</category><category>javascript</category>
+    <category>react</category><category>javascript</category>
   </item>
 
   <item>
@@ -97,7 +97,7 @@
     <description>Simple steps to create a better README for your projects.</description>
     <pubDate>Sat, 30 Oct 2021 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder Berto)</author>
-    <category>oss</category><category>misc</category>
+    <category>misc</category>
   </item>
 
   <item>
@@ -117,7 +117,7 @@
     <description>How to upgrade Husky package to the latest version 5.x</description>
     <pubDate>Fri, 26 Feb 2021 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder Berto)</author>
-    <category>git</category><category>bash</category><category>javascript</category>
+    <category>git</category><category>javascript</category>
   </item>
 
   <item>
@@ -127,7 +127,7 @@
     <description>On this article, I'm going to share my process of studying software development with videos and note-taking.</description>
     <pubDate>Wed, 17 Feb 2021 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder Berto)</author>
-    <category>misc</category><category>learn</category>
+    <category>misc</category>
   </item>
 
   <item>
@@ -137,7 +137,7 @@
     <description>On this article, I'll show how to implement `Stack` data structure in JavaScript focusing on how simple it is and how it works.</description>
     <pubDate>Sun, 06 Dec 2020 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder Berto)</author>
-    <category>javascript</category><category>data-structure</category>
+    <category>javascript</category>
   </item>
 
   <item>
@@ -157,7 +157,7 @@
     <description>In this article, I'll focus on showing how to add, edit and remove items in an array causing mutation and non-mutation ways.</description>
     <pubDate>Thu, 02 Apr 2020 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder Berto)</author>
-    <category>javascript</category><category>functional-programming</category>
+    <category>javascript</category><category>functional</category>
   </item>
 
   <item>
@@ -167,7 +167,7 @@
     <description>Sometime ago I need to format my Mac twice times in the same week and it's was very painful to configure all the things.</description>
     <pubDate>Sun, 08 Mar 2020 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder Berto)</author>
-    <category>dotfiles</category><category>setup</category>
+    <category>dotfiles</category>
   </item>
 
   <item>
@@ -177,7 +177,7 @@
     <description>Let's understand the fundamental concepts of functional programming using JavaScript language.</description>
     <pubDate>Mon, 03 Feb 2020 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder Berto)</author>
-    <category>javascript</category><category>functional-programming</category>
+    <category>javascript</category><category>functional</category>
   </item>
 
   <item>
@@ -207,7 +207,7 @@
     <description>In this post we'll cover some methods of JavaScript that will make it easier for you to work with arrays and write more elegant codes.</description>
     <pubDate>Tue, 18 Jun 2019 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder Berto)</author>
-    <category>javascript</category><category>data-structure</category>
+    <category>javascript</category>
   </item>
 
   <item>
@@ -217,7 +217,7 @@
     <description>Whenever you are told about pure functions, keep the following in mind.</description>
     <pubDate>Sun, 16 Jun 2019 00:00:00 GMT</pubDate>
     <author>helder.burato@gmail.com (Helder Berto)</author>
-    <category>javascript</category><category>functional-programming</category>
+    <category>javascript</category><category>functional</category>
   </item>
 
     </channel>

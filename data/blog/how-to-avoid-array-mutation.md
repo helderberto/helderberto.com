@@ -1,7 +1,7 @@
 ---
 title: How to Avoid Array Mutation
 date: '2020-04-02'
-tags: ['javascript', 'functional-programming']
+tags: ['javascript', 'functional']
 draft: false
 summary: In this article, I'll focus on showing how to add, edit and remove items in an array causing mutation and non-mutation ways.
 ---

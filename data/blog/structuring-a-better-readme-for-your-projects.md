@@ -1,7 +1,7 @@
 ---
 title: Structuring a better README for your projects
 date: '2021-10-30'
-tags: ['oss', 'misc']
+tags: ['misc']
 draft: false
 summary: Simple steps to create a better README for your projects.
 ---

@@ -1,7 +1,7 @@
 ---
 title: Write your own Dotfiles
 date: '2020-03-08'
-tags: ['dotfiles', 'setup']
+tags: ['dotfiles']
 draft: false
 summary: Sometime ago I need to format my Mac twice times in the same week and it's was very painful to configure all the things.
 ---

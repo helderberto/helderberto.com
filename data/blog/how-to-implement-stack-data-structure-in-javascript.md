@@ -1,7 +1,7 @@
 ---
 title: How to Implement Stack Data Structure in JavaScript
 date: '2020-12-06'
-tags: ['javascript', 'data-structure']
+tags: ['javascript']
 draft: false
 summary: On this article, I'll show how to implement `Stack` data structure in JavaScript focusing on how simple it is and how it works.
 ---

@@ -1,7 +1,7 @@
 ---
 title: What is a Pure Function?
 date: '2019-06-16'
-tags: ['javascript', 'functional-programming']
+tags: ['javascript', 'functional']
 draft: false
 summary: Whenever you are told about pure functions, keep the following in mind.
 ---

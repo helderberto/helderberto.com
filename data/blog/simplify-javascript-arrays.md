@@ -1,7 +1,7 @@
 ---
 title: Simplify JavaScript Arrays
 date: '2019-06-18'
-tags: ['javascript', 'data-structure']
+tags: ['javascript']
 draft: false
 summary: In this post we'll cover some methods of JavaScript that will make it easier for you to work with arrays and write more elegant codes.
 ---

@@ -1,7 +1,7 @@
 ---
 title: Controlled vs Uncontrolled Elements
 date: '2023-02-01'
-tags: ['reactjs', 'javascript']
+tags: ['react', 'javascript']
 summary: What do controlled and uncontrolled elements mean?
 ---
 
@@ -21,7 +21,7 @@ In the following example, you have an uncontrolled input element:
 import React from 'react'
 
 export default function UncontrolledInput() {
-  return <input value="Empty Value" />;
+  return <input value="Empty Value" />
 }
 ```
 
@@ -43,10 +43,7 @@ export default function UncontrolledInput() {
 
   return (
     <>
-      <input
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
-      />
+      <input value={value} onChange={(event) => setValue(event.target.value)} />
       <p>Current value: {value}</p>
     </>
   )
@@ -81,10 +78,7 @@ export default function ControlledInput() {
 
   return (
     <>
-      <input
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
-      />
+      <input value={value} onChange={(event) => setValue(event.target.value)} />
       <p>Current name: {value}</p>
     </>
   )
