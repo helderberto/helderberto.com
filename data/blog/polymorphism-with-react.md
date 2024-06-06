@@ -16,9 +16,7 @@ In this article, we will create an example using Polymorphism in React.
 
 ## Solving the Problem without Polymorphism
 
-<SandpackEditor showConsole={false}>
-
-```tsx App.tsx
+```tsx
 import React from 'react'
 
 export default function LinkButton({ href, children }) {
@@ -40,15 +38,11 @@ export default function App() {
 }
 ```
 
-</SandpackEditor>
-
 It solves our problem, but imagine if we need to pass the `rest` of props to the component.
 
 It will involve updating the `button` and the `a`, like the following example:
 
-<SandpackEditor showConsole={false}>
-
-```tsx App.tsx
+```tsx
 import React from 'react'
 
 export default function LinkButton({ href, children, ...props }) {
@@ -74,17 +68,13 @@ export default function App() {
 }
 ```
 
-</SandpackEditor>
-
 And for every case you want to add props, you gonna need to maintain both cases, so much work, right?
 
 ## Solving the Problem with Polymorphism
 
 Let's create the same example using Polymorphism:
 
-<SandpackEditor showConsole={false}>
-
-```tsx App.tsx
+```tsx
 import React from 'react'
 
 export default function LinkButton({ href, children, ...props }) {
@@ -107,8 +97,6 @@ export default function App() {
   )
 }
 ```
-
-</SandpackEditor>
 
 You may be asking, and what about the `href` being passed to the `button`?
 

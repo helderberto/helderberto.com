@@ -8,9 +8,7 @@ summary: Understanding React useEffect with practical examples
 
 Some practical examples of how to use the [React useEffect()](https://beta.reactjs.org/reference/react/useEffect) -
 
-<SandpackEditor>
-
-```tsx App.tsx
+```tsx
 import React from 'react'
 
 export default function App() {
@@ -44,13 +42,9 @@ export default function App() {
 }
 ```
 
-</SandpackEditor>
-
 ## On Mounting
 
 Similar to the legacy `componentDidMount` it will trigger on mounting the component:
-
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
 
 ```ts src/index.ts
 React.useEffect(() => {
@@ -62,11 +56,7 @@ React.useEffect(() => {
 }, []) // empty array means it will only run on mounting
 ```
 
-</SandpackEditor>
-
 ## On Changing Values
-
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
 
 ```ts src/index.ts
 React.useEffect(() => {
@@ -74,13 +64,9 @@ React.useEffect(() => {
 }, [name]) // only triggers when name changes
 ```
 
-</SandpackEditor>
-
 ## Separation of Concerns
 
 Instead of watching two values at the same useEffect, like the following:
-
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
 
 ```ts src/index.ts
 React.useEffect(() => {
@@ -88,11 +74,7 @@ React.useEffect(() => {
 }, [name, age])
 ```
 
-</SandpackEditor>
-
 Think in separation of concerns, and split each it will be cleaner and easier for the next person who need to read your code, eg:
-
-<SandpackEditor template="vanilla-ts" showPreview={false} showConsole={false} readOnly>
 
 ```ts src/index.ts
 // Separation of concerns
@@ -105,5 +87,3 @@ React.useEffect(() => {
   console.log('age changed', age)
 }, [age]) // only triggers when age changes
 ```
-
-</SandpackEditor>

@@ -21,9 +21,7 @@ Let's dive into this approach and how to change in a better way.
 
 Basically, it is when you declare a part of UI render in a function inside of a component, such as:
 
-<SandpackEditor showConsole={false}>
-
-```tsx App.tsx
+```tsx
 export default function Wrapper() {
   function renderSection() {
     return <section>A section under a React component.</section>
@@ -33,8 +31,6 @@ export default function Wrapper() {
 }
 ```
 
-</SandpackEditor>
-
 Since components are just functions, it is the same as declaring new components inside the current `Component`.
 
 ## Extracting to a New Component
@@ -43,9 +39,7 @@ It is much better to extract to a new component, it will help you to create unit
 
 Let's re-create the example I mentioned before, like the following:
 
-<SandpackEditor showConsole={false}>
-
-```tsx App.tsx
+```tsx
 function Section() {
   return <section>A section under a method.</section>
 }
@@ -58,8 +52,6 @@ export default function Wrapper() {
   )
 }
 ```
-
-</SandpackEditor>
 
 Instead of using closures, now you have a pure function for `Section` component, that's more readable and easy to give their props.
 

@@ -15,17 +15,11 @@ This type of element is not managed by React.
 
 In the following example, you have an uncontrolled input element:
 
-<SandpackEditor>
-
-```tsx App.tsx
-import React from 'react'
-
+```tsx
 export default function UncontrolledInput() {
   return <input value="Empty Value" />
 }
 ```
-
-</SandpackEditor>
 
 Notice the component isn't doing anything, just printing an empty value `Empty value`.
 
@@ -33,11 +27,7 @@ You can't update, nor delete the value.
 
 Let's add an event handler for updating the value state:
 
-<SandpackEditor>
-
-```tsx App.tsx
-import React from 'react'
-
+```tsx
 export default function UncontrolledInput() {
   const [value, setValue] = React.useState()
 
@@ -49,8 +39,6 @@ export default function UncontrolledInput() {
   )
 }
 ```
-
-</SandpackEditor>
 
 Notice that even if we can update the input now, you have a warning on your browser console. Like the following:
 
@@ -68,11 +56,7 @@ The Controlled element is an element that is managed the event and values by Rea
 
 Let's create an input managed by React:
 
-<SandpackEditor>
-
-```tsx App.tsx
-import React from 'react'
-
+```tsx
 export default function ControlledInput() {
   const [value, setValue] = React.useState('') // Start as an empty string
 
@@ -84,8 +68,6 @@ export default function ControlledInput() {
   )
 }
 ```
-
-</SandpackEditor>
 
 Since you set it as an empty string, it will be a controlled element.
 

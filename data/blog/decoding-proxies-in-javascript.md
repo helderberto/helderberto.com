@@ -20,99 +20,87 @@ The object **Proxy** is used to create custom behaviors it defaults to some para
 
 In this first step we will create a simple _Proxy_ for the purpose of using the _handler_, object where we will include a trap so that one of the properties of the object has a default value if the property is not defined. Let's do it?
 
-<SandpackEditor template="vanilla-ts" showPreview={false}>
-
-```ts src/index.ts
+```ts
 const handler = {
-  get: function(obj, prop) {
-    return prop in obj ? obj[prop] : 1;
-  }
-};
+  get: function (obj, prop) {
+    return prop in obj ? obj[prop] : 1
+  },
+}
 
-const target = {};
-const proxy = new Proxy(target, handler);
-proxy.age = 20;
+const target = {}
+const proxy = new Proxy(target, handler)
+proxy.age = 20
 
-console.log(proxy.age, proxy.active); // => 20 1
+console.log(proxy.age, proxy.active) // => 20 1
 ```
-
-</SandpackEditor>
 
 ## Create a validation
 
 Let's use the previous example and create a new trap in the _handler_ object by applying the _set_ method. Check below:
 
-<SandpackEditor template="vanilla-ts" showPreview={false}>
-
-```ts src/index.ts
+```ts
 const handler = {
-  get: function(obj, prop) {
-    return prop in obj ? obj[prop] : 1;
+  get: function (obj, prop) {
+    return prop in obj ? obj[prop] : 1
   },
-  set: function(target, prop, value, receiver) {
+  set: function (target, prop, value, receiver) {
     if (prop === 'age') {
       if (!Number.isInteger(value)) {
-        throw new TypeError(`The property age isn't a number.`);
+        throw new TypeError(`The property age isn't a number.`)
       }
     }
 
     // For default the value will be add to the property in the object
-    target[prop] = value;
+    target[prop] = value
 
     // Indicate the success
-    return true;
-  }
-};
+    return true
+  },
+}
 
-const target = {};
-const proxyOne = new Proxy(target, handler);
-proxyOne.age = 20;
+const target = {}
+const proxyOne = new Proxy(target, handler)
+proxyOne.age = 20
 
-console.log(proxyOne.age, proxyOne.active); // => 20 1
+console.log(proxyOne.age, proxyOne.active) // => 20 1
 
-const proxyTwo = new Proxy(target, handler);
-proxyTwo.age = 'Hello World';
+const proxyTwo = new Proxy(target, handler)
+proxyTwo.age = 'Hello World'
 
-console.log(proxyTwo.age); // => TypeError: The property age isn't a number.
+console.log(proxyTwo.age) // => TypeError: The property age isn't a number.
 ```
-
-</SandpackEditor>
 
 ## Cancel the trap!
 
 Let's use the **Proxy.revocable()** to cancel the traps of a _proxy_. Check below:
 
-<SandpackEditor template="vanilla-ts" showPreview={false}>
-
-```ts src/index.ts
+```ts
 const handler = {
-  get: function(obj, prop) {
-    return prop in obj ? obj[prop] : 1;
+  get: function (obj, prop) {
+    return prop in obj ? obj[prop] : 1
   },
-  set: function(target, prop, value, receiver) {
+  set: function (target, prop, value, receiver) {
     // For default the value will be add to the property in the object
-    target[prop] = value;
+    target[prop] = value
 
     // Indicate the success
-    return true;
-  }
-};
+    return true
+  },
+}
 
 const target = {
-  firstName: "Helder",
-  lastName: "Burato Berto"
-};
+  firstName: 'Helder',
+  lastName: 'Burato Berto',
+}
 
-const { proxy, revoke } = Proxy.revocable(target, handler);
+const { proxy, revoke } = Proxy.revocable(target, handler)
 
-console.log(`${proxy.firstName} ${proxy.lastName}`); // => "Helder Burato Berto"
+console.log(`${proxy.firstName} ${proxy.lastName}`) // => "Helder Burato Berto"
 
-revoke(); // Revoke access to the proxy
+revoke() // Revoke access to the proxy
 
-console.log(`${proxy.firstName} ${proxy.lastName}`); // => "TypeError: Cannot perform 'get' on a proxy that has been revoked"
+console.log(`${proxy.firstName} ${proxy.lastName}`) // => "TypeError: Cannot perform 'get' on a proxy that has been revoked"
 ```
-
-</SandpackEditor>
 
 After you call `revoke()` all operations related to the object **Proxy** will cause a `TypeError` this way you can prevent actions on undue objects.
 

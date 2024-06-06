@@ -24,15 +24,11 @@ This conditional is a concise way to render UI components.
 
 Example of the **Short-Circuit conditional** approach:
 
-<SandpackEditor showConsole={false}>
-
-```tsx App.tsx
+```tsx
 export default function ShortCircuit({ number = 0 }) {
   return number && <div>Current: {number}</div>
 }
 ```
-
-</SandpackEditor>
 
 The component I mentioned before will backfire a `0`.
 
@@ -48,15 +44,11 @@ The way to avoid this issue is using the **ternary comparison** to be explicit a
 
 Fixing the `Component` using the **ternary comparison** such as:
 
-<SandpackEditor showConsole={false} showPreview={false}>
-
-```tsx App.tsx
+```tsx
 export default function TernaryComponent({ number = 0 }) {
   return number ? <div>Current: {number}</div> : null
 }
 ```
-
-</SandpackEditor>
 
 Considering the value of `number` variable is zero, it will return `null` that is the second option from the ternary on this case React won't render because it is a `null` value.
 
