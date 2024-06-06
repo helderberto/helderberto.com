@@ -46,7 +46,7 @@ export default function App() {
 
 Similar to the legacy `componentDidMount` it will trigger on mounting the component:
 
-```ts src/index.ts
+```ts
 React.useEffect(() => {
   console.log('component mounted')
 
@@ -58,7 +58,7 @@ React.useEffect(() => {
 
 ## On Changing Values
 
-```ts src/index.ts
+```ts
 React.useEffect(() => {
   console.log('name changed', name)
 }, [name]) // only triggers when name changes
@@ -68,7 +68,7 @@ React.useEffect(() => {
 
 Instead of watching two values at the same useEffect, like the following:
 
-```ts src/index.ts
+```ts
 React.useEffect(() => {
   console.log({ name, age })
 }, [name, age])
@@ -76,7 +76,7 @@ React.useEffect(() => {
 
 Think in separation of concerns, and split each it will be cleaner and easier for the next person who need to read your code, eg:
 
-```ts src/index.ts
+```ts
 // Separation of concerns
 // This is a good example of how to separate concerns splitting into two useEffects to handle each value
 React.useEffect(() => {

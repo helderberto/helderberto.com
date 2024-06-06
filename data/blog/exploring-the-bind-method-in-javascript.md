@@ -18,7 +18,7 @@ It's very common the transformation of _this_ occurs as new method calls are mad
 
 One of the most common errors when we aren't aware of the _bind_ method is the attempt to execute methods with initially invalid contexts. Check out the following example:
 
-```ts src/index.ts
+```ts
 function cook() {
   console.log(this.ingredients)
 }
@@ -31,7 +31,7 @@ In the case that we run above we get the `undefined` value because `this` didn't
 
 As we saw in the previous example the function expected a _this_ context with the _ingredients_ property, but didn't receive the _undefiend_ or invalid context so we will get an invalid result against the `cook` method. Check below the right way:
 
-```ts src/index.ts
+```ts
 function cook() {
   console.log(this.ingredients)
 }
@@ -49,7 +49,7 @@ You may notice in the previous example that we created the `dinner` object where
 
 Now that we know how to work with the _bind_ method let's do the previous, but without _bind_ method. Check below:
 
-```ts src/index.ts
+```ts
 let cook = function () {
   console.log(this.ingredients)
 }
@@ -73,7 +73,7 @@ In the previous two examples we are using the `cook` method both in the`lunch` o
 
 You aren't limited to only assigning values to your properties, you can also use methods like properties. Check below:
 
-```ts src/index.ts
+```ts
 let calc = function () {
   return {
     sum: this.sum,
