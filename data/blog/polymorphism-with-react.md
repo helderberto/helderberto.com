@@ -17,8 +17,6 @@ In this article, we will create an example using Polymorphism in React.
 ## Solving the Problem without Polymorphism
 
 ```tsx
-import React from 'react'
-
 export default function LinkButton({ href, children }) {
   if (href) {
     return <a href={href}>{children}</a>
@@ -43,8 +41,6 @@ It solves our problem, but imagine if we need to pass the `rest` of props to the
 It will involve updating the `button` and the `a`, like the following example:
 
 ```tsx
-import React from 'react'
-
 export default function LinkButton({ href, children, ...props }) {
   if (typeof href === 'string') {
     return (
@@ -75,8 +71,6 @@ And for every case you want to add props, you gonna need to maintain both cases,
 Let's create the same example using Polymorphism:
 
 ```tsx
-import React from 'react'
-
 export default function LinkButton({ href, children, ...props }) {
   const Tag = typeof href === 'string' ? 'a' : 'button'
 

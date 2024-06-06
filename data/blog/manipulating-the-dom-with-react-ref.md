@@ -15,8 +15,6 @@ After rendering the DOM element, it will enable the DOM node and its methods to 
 To ensure the "inputRef.current" will be available at the moment of the trigger "focus()", you can do an "early return" to bail out the effect early, like the following snippet:
 
 ```tsx
-import React from 'react'
-
 export default function Page() {
   const inputRef = React.useRef<HTMLInputElement>(null)
 

@@ -9,8 +9,6 @@ summary: Understanding React useEffect with practical examples
 Some practical examples of how to use the [React useEffect()](https://beta.reactjs.org/reference/react/useEffect) -
 
 ```tsx
-import React from 'react'
-
 export default function App() {
   const [name, setName] = React.useState('')
   const [age, setAge] = React.useState(0)
