@@ -15,8 +15,8 @@ export default function Home({ posts }) {
     <>
       <PageSeo title="Home" description={siteMetadata.description} url={siteMetadata.siteUrl} />
       <p className="text-lg leading-7 dark:text-gray-400">
-        Software Engineer, Husband, Father. I write about software development, and my daily
-        learnings.
+        Software Engineer focused on frontend development, husband, and father. I write about
+        software development and my daily learnings.
       </p>
       <ListLayout posts={posts} />
     </>
