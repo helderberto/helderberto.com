@@ -1,4 +1,5 @@
 import headerNavLinks from '@/data/headerNavLinks'
+import siteMetadata from '@/data/siteMetadata'
 import Image from 'next/image'
 import Footer from './Footer'
 import Link from './Link'
@@ -14,11 +15,11 @@ const LayoutWrapper = ({ children }) => {
           <div>
             <Link href="/" aria-label="Helder Burato Berto">
               <Image
-                src="/static/images/avatar.jpg"
-                alt="Helder Burato Berto"
-                className="rounded-full"
-                height="60"
-                width="60"
+                src={siteMetadata.image}
+                alt="avatar"
+                height="100"
+                width="100"
+                className="w-48 h-48 rounded-full"
               />
             </Link>
           </div>
