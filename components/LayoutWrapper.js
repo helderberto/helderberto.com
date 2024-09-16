@@ -1,10 +1,10 @@
-import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
-import Link from './Link'
-import SectionContainer from './SectionContainer'
+import Image from 'next/image'
 import Footer from './Footer'
-import ThemeSwitch from './ThemeSwitch'
+import Link from './Link'
 import MobileNav from './MobileNav'
+import SectionContainer from './SectionContainer'
+import ThemeSwitch from './ThemeSwitch'
 
 const LayoutWrapper = ({ children }) => {
   return (
@@ -13,11 +13,13 @@ const LayoutWrapper = ({ children }) => {
         <header className="flex items-center justify-between py-10">
           <div>
             <Link href="/" aria-label="Helder Burato Berto">
-              <div className="flex items-center justify-between">
-                <div className="h-6 text-2xl uppercase font-semibold sm:block">
-                  {siteMetadata.headerTitle}
-                </div>
-              </div>
+              <Image
+                src="/static/images/avatar.jpg"
+                alt="Helder Burato Berto"
+                className="rounded-full"
+                height="60"
+                width="60"
+              />
             </Link>
           </div>
           <div className="flex items-center text-base leading-5">
