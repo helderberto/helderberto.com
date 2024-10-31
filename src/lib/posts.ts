@@ -10,6 +10,9 @@ export interface Post {
   date: string;
   excerpt: string;
   content: string;
+  tags?: string[];
+  readingTime?: string;
+  lastModified?: string;
 }
 
 export async function getAllPosts(): Promise<Post[]> {
@@ -37,11 +40,18 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
+  // Calculate reading time (average 200 words per minute)
+  const wordCount = content.split(/\s+/g).length;
+  const readingTime = Math.ceil(wordCount / 200) + " min read";
+
   return {
     slug,
     title: data.title,
     date: data.date,
     excerpt: data.excerpt,
     content,
+    tags: data.tags || [],
+    readingTime,
+    lastModified: data.lastModified || data.date,
   };
 }
