@@ -2,8 +2,8 @@
   position: relative;
   margin: 1.5rem 0;
   border-radius: 0.75rem;
-  background: var(--code-bg, #1a1b26);
-  border: 1px solid var(--code-border, #2f3241);
+  background: var(--code-bg, #1e1e2e);
+  border: 1px solid var(--code-border, #313244);
   overflow: hidden;
   transition: border-color 0.2s ease;
 }
@@ -18,9 +18,9 @@
   right: 0.75rem;
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--code-meta, #787c99);
-  background: var(--code-bg, #1a1b26);
-  border: 1px solid var(--code-border, #2f3241);
+  color: var(--code-meta, #cdd6f4);
+  background: var(--code-bg, #1e1e2e);
+  border: 1px solid var(--code-border, #313244);
   padding: 0.25rem 0.75rem;
   border-radius: 0.375rem;
   cursor: pointer;
@@ -36,7 +36,7 @@
 .copyButton:hover {
   color: var(--primary);
   border-color: var(--primary);
-  background: var(--code-bg, #1a1b26);
+  background: var(--code-bg, #1e1e2e);
 }
 
 .pre {
@@ -48,19 +48,20 @@
   line-height: 1.7;
   tab-size: 2;
   background: transparent !important;
+  color: #cdd6f4;
 }
 
 .inlineCode {
   font-family: var(--font-mono);
   font-size: 0.875em;
   font-weight: 500;
-  background: var(--inline-code-bg, #2f3241);
-  color: var(--inline-code-color, #c0cdf3);
+  background: var(--inline-code-bg, #313244);
+  color: var(--inline-code-color, #cdd6f4);
   padding: 0.2em 0.4em;
   border-radius: 0.3em;
   white-space: nowrap;
   vertical-align: baseline;
-  border: 1px solid var(--inline-code-border, #363b54);
+  border: 1px solid var(--inline-code-border, #45475a);
 }
 
 /* Custom scrollbar */
@@ -69,28 +70,28 @@
 }
 
 .pre::-webkit-scrollbar-track {
-  background: var(--code-bg, #1a1b26);
+  background: var(--code-bg, #1e1e2e);
 }
 
 .pre::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb, #363b54);
+  background: var(--scrollbar-thumb, #45475a);
   border-radius: 0.375rem;
 }
 
 .pre::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbar-thumb-hover, #414863);
+  background: var(--scrollbar-thumb-hover, #585b70);
 }
 
-/* Token colors */
+/* Token colors - Catppuccin Mocha */
 .pre :global(.token.comment),
 .pre :global(.token.prolog),
 .pre :global(.token.doctype),
 .pre :global(.token.cdata) {
-  color: #787c99;
+  color: #6c7086;
 }
 
 .pre :global(.token.punctuation) {
-  color: #787c99;
+  color: #9399b2;
 }
 
 .pre :global(.token.property),
@@ -99,7 +100,7 @@
 .pre :global(.token.number),
 .pre :global(.token.constant),
 .pre :global(.token.symbol) {
-  color: #ff9e64;
+  color: #fab387;
 }
 
 .pre :global(.token.selector),
@@ -107,28 +108,28 @@
 .pre :global(.token.string),
 .pre :global(.token.char),
 .pre :global(.token.builtin) {
-  color: #9ece6a;
+  color: #a6e3a1;
 }
 
 .pre :global(.token.operator),
 .pre :global(.token.entity),
 .pre :global(.token.url),
 .pre :global(.token.variable) {
-  color: #bb9af7;
+  color: #cba6f7;
 }
 
 .pre :global(.token.atrule),
 .pre :global(.token.attr-value),
 .pre :global(.token.keyword) {
-  color: #7dcfff;
+  color: #89b4fa;
 }
 
 .pre :global(.token.function),
 .pre :global(.token.class-name) {
-  color: #ff9e64;
+  color: #f9e2af;
 }
 
 .pre :global(.token.regex),
 .pre :global(.token.important) {
-  color: #f7768e;
+  color: #f38ba8;
 }
