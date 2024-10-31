@@ -10,9 +10,9 @@ export default async function Home() {
       <section className={styles.intro}>
         <h1>Hey there! I'm Helder 👋</h1>
         <p>
-          Tech Lead and Senior Software Engineer building web applications with
-          React and TypeScript. Writing about software architecture, engineering
-          practices, and team leadership.
+          Senior Software Engineer building web applications with React and
+          TypeScript. Writing about software architecture, and engineering
+          practices.
         </p>
       </section>
 
