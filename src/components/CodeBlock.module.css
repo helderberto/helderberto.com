@@ -2,14 +2,14 @@
   position: relative;
   margin: 1.5rem 0;
   border-radius: 0.75rem;
-  background: var(--code-bg, #1e1e2e);
-  border: 1px solid var(--code-border, #313244);
+  background: #1e1e2e;
+  border: 1px solid #313244;
   overflow: hidden;
   transition: border-color 0.2s ease;
 }
 
 .codeWrapper:hover {
-  border-color: var(--primary);
+  border-color: #89b4fa;
 }
 
 .copyButton {
@@ -18,9 +18,9 @@
   right: 0.75rem;
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--code-meta, #cdd6f4);
-  background: var(--code-bg, #1e1e2e);
-  border: 1px solid var(--code-border, #313244);
+  color: #cdd6f4;
+  background: #1e1e2e;
+  border: 1px solid #313244;
   padding: 0.25rem 0.75rem;
   border-radius: 0.375rem;
   cursor: pointer;
@@ -34,9 +34,9 @@
 }
 
 .copyButton:hover {
-  color: var(--primary);
-  border-color: var(--primary);
-  background: var(--code-bg, #1e1e2e);
+  color: #89b4fa;
+  border-color: #89b4fa;
+  background: #1e1e2e;
 }
 
 .pre {
@@ -55,13 +55,13 @@
   font-family: var(--font-mono);
   font-size: 0.875em;
   font-weight: 500;
-  background: var(--inline-code-bg, #313244);
-  color: var(--inline-code-color, #cdd6f4);
+  background: #313244;
+  color: #cdd6f4;
   padding: 0.2em 0.4em;
   border-radius: 0.3em;
   white-space: nowrap;
   vertical-align: baseline;
-  border: 1px solid var(--inline-code-border, #45475a);
+  border: 1px solid #45475a;
 }
 
 /* Custom scrollbar */
@@ -70,36 +70,44 @@
 }
 
 .pre::-webkit-scrollbar-track {
-  background: var(--code-bg, #1e1e2e);
+  background: #1e1e2e;
 }
 
 .pre::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb, #45475a);
+  background: #45475a;
   border-radius: 0.375rem;
 }
 
 .pre::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbar-thumb-hover, #585b70);
+  background: #585b70;
 }
 
-/* Token colors - Catppuccin Mocha */
+/* Token colors - Official Catppuccin Mocha */
 .pre :global(.token.comment),
 .pre :global(.token.prolog),
 .pre :global(.token.doctype),
 .pre :global(.token.cdata) {
-  color: #6c7086;
+  color: #585b70;
 }
 
 .pre :global(.token.punctuation) {
-  color: #9399b2;
+  color: #cdd6f4;
+}
+
+.pre :global(.token.namespace) {
+  opacity: 0.7;
 }
 
 .pre :global(.token.property),
 .pre :global(.token.tag),
-.pre :global(.token.boolean),
-.pre :global(.token.number),
 .pre :global(.token.constant),
-.pre :global(.token.symbol) {
+.pre :global(.token.symbol),
+.pre :global(.token.deleted) {
+  color: #f38ba8;
+}
+
+.pre :global(.token.boolean),
+.pre :global(.token.number) {
   color: #fab387;
 }
 
@@ -107,29 +115,41 @@
 .pre :global(.token.attr-name),
 .pre :global(.token.string),
 .pre :global(.token.char),
-.pre :global(.token.builtin) {
+.pre :global(.token.builtin),
+.pre :global(.token.inserted) {
   color: #a6e3a1;
 }
 
 .pre :global(.token.operator),
 .pre :global(.token.entity),
 .pre :global(.token.url),
+.pre :global(.language-css .token.string),
+.pre :global(.style .token.string),
 .pre :global(.token.variable) {
-  color: #cba6f7;
+  color: #f5c2e7;
 }
 
 .pre :global(.token.atrule),
 .pre :global(.token.attr-value),
-.pre :global(.token.keyword) {
-  color: #89b4fa;
-}
-
 .pre :global(.token.function),
 .pre :global(.token.class-name) {
   color: #f9e2af;
 }
 
+.pre :global(.token.keyword) {
+  color: #cba6f7;
+}
+
 .pre :global(.token.regex),
 .pre :global(.token.important) {
-  color: #f38ba8;
+  color: #fab387;
+}
+
+.pre :global(.token.important),
+.pre :global(.token.bold) {
+  font-weight: bold;
+}
+
+.pre :global(.token.italic) {
+  font-style: italic;
 }
