@@ -8,10 +8,11 @@ export default async function Home() {
   return (
     <div className={styles.container}>
       <section className={styles.intro}>
-        <h1>Welcome to My Blog</h1>
+        <h1>Hey there! I'm Helder 👋</h1>
         <p>
-          Hi! I'm [Your Name]. This is my personal blog where I write about web
-          development, programming, and technology.
+          Tech Lead and Senior Software Engineer building web applications with
+          React and TypeScript. Writing about software architecture, engineering
+          practices, and team leadership.
         </p>
       </section>
 

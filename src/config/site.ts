@@ -1,12 +1,12 @@
 export const siteConfig = {
   name: "Helder Burato Berto",
-  title: "Helder Burato Berto - Blog",
+  title: "Helder Burato Berto - Senior Software Engineer",
   description:
-    "Personal blog where I share my thoughts and learnings about software development, tech, and life.",
-  url: "https://helderburato.com", // Update with your domain
-  ogImage: "https://helderburato.com/og.png", // Update with your OG image path
+    "Tech Lead with 10+ years of experience in web development. Writing about React, TypeScript, and software architecture. Building scalable applications and leading engineering teams.",
+  url: "https://helderberto.com",
+  ogImage: "/social-cover.png",
   links: {
-    twitter: "https://twitter.com/helderburato",
-    github: "https://github.com/helderburato",
+    github: "https://github.com/helderberto",
+    linkedin: "https://www.linkedin.com/in/helderberto/",
   },
 } as const;
