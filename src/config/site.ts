@@ -1,22 +1,36 @@
 export const siteConfig = {
   name: "Helder Burato Berto",
-  title: "Helder Burato Berto - Senior Software Engineer & Front-End Expert",
+  title: "Helder Burato Berto | Senior Software Engineer & React Expert",
   description:
-    "Senior Software Engineer with 13+ years of experience in React, TypeScript, and web development. Writing about software architecture, front-end development, and engineering leadership.",
+    "Expert Software Engineer with 13+ years specializing in React, TypeScript, and modern web development. Sharing insights on software architecture, front-end best practices, and engineering leadership.",
   url: "https://helderberto.com",
   ogImage: "/social-cover.png",
-  links: {
+  author: {
+    name: "Helder Burato Berto",
+    email: "your-email@example.com", // Add your email if you want to display it
+    role: "Senior Software Engineer",
+  },
+  social: {
     github: "https://github.com/helderberto",
     linkedin: "https://www.linkedin.com/in/helderberto/",
+    twitter: "@yourhandle", // Add if you have Twitter
   },
   keywords: [
-    "Software Engineer",
-    "Front-end Development",
-    "React",
-    "TypeScript",
+    "Senior Software Engineer",
+    "React Developer",
+    "TypeScript Expert",
+    "Front-end Architecture",
     "Web Development",
     "Technical Leadership",
     "Software Architecture",
     "Engineering Blog",
+    "JavaScript Development",
+    "Web Performance",
+    "React Best Practices",
+    "Front-end Engineering",
   ],
+  locale: "en_US",
+  type: "website",
+  themeColor: "#ffffff", // Add your brand color
+  canonicalUrl: "https://helderberto.com",
 } as const;

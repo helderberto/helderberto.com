@@ -1,22 +1,38 @@
 import SearchPosts from "@/components/SearchPosts";
 import { getAllPosts } from "@/lib/posts";
+import { Metadata } from "next";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: "Helder Santos | Senior Software Engineer",
+  description:
+    "Senior Software Engineer specializing in React and TypeScript. Blog about software architecture and engineering best practices.",
+  keywords: [
+    "React",
+    "TypeScript",
+    "Software Engineering",
+    "Web Development",
+    "Software Architecture",
+  ],
+};
 
 export default async function Home() {
   const posts = await getAllPosts();
 
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <section className={styles.intro}>
         <h1>Hey there! I'm Helder 👋</h1>
         <p>
-          Senior Software Engineer building web applications with React and
-          TypeScript. Writing about software architecture, and engineering
-          practices.
+          I specialize in building modern web applications with React and
+          TypeScript. Here, I share my insights about software architecture,
+          engineering practices, and web development best practices.
         </p>
       </section>
 
-      <SearchPosts initialPosts={posts} />
-    </div>
+      <section aria-label="Blog Posts">
+        <SearchPosts initialPosts={posts} />
+      </section>
+    </main>
   );
 }
