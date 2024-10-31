@@ -1,0 +1,14 @@
+{
+  "name": "Helder B. Berto",
+  "short_name": "Helder",
+  "icons": [
+    {
+      "src": "/android-chrome-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
