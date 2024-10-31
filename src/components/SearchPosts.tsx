@@ -24,7 +24,7 @@ const SearchPosts = ({ initialPosts }: SearchPostsProps) => {
   }, [search, initialPosts]);
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <div className={styles.container}>
         <input
           type="text"
@@ -32,6 +32,7 @@ const SearchPosts = ({ initialPosts }: SearchPostsProps) => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className={styles.input}
+          aria-label="Search posts"
         />
       </div>
       <div className={styles.results}>
