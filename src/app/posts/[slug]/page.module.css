@@ -1,0 +1,72 @@
+.article {
+  max-width: 65ch;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.header time {
+  color: var(--muted-foreground);
+}
+
+.content {
+  line-height: 1.6;
+}
+
+.content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 2rem 0 1rem;
+}
+
+.content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1.5rem 0 1rem;
+}
+
+.content p {
+  margin: 1rem 0;
+}
+
+.content a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.content ul,
+.content ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.content li {
+  margin: 0.5rem 0;
+}
+
+.content pre {
+  background-color: var(--muted);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.content code {
+  font-family: monospace;
+}
+
+.content blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: var(--muted-foreground);
+}

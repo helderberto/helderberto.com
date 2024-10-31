@@ -1,0 +1,248 @@
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/app/posts/[slug]/page.module.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+.page_article__XqhvA {
+  max-width: 65ch;
+  margin: 0 auto;
+}
+
+.page_header__UYQY8 {
+  margin-bottom: 2rem;
+}
+
+.page_header__UYQY8 h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.page_header__UYQY8 time {
+  color: var(--muted-foreground);
+}
+
+.page_content__4Z9Hs {
+  line-height: 1.6;
+}
+
+.page_content__4Z9Hs h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 2rem 0 1rem;
+}
+
+.page_content__4Z9Hs h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1.5rem 0 1rem;
+}
+
+.page_content__4Z9Hs p {
+  margin: 1rem 0;
+}
+
+.page_content__4Z9Hs a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.page_content__4Z9Hs ul,
+.page_content__4Z9Hs ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.page_content__4Z9Hs li {
+  margin: 0.5rem 0;
+}
+
+.page_content__4Z9Hs pre {
+  background-color: var(--muted);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.page_content__4Z9Hs code {
+  font-family: monospace;
+}
+
+.page_content__4Z9Hs blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: var(--muted-foreground);
+}
+
+/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./node_modules/prismjs/themes/prism-tomorrow.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************/
+/**
+ * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
+ * Based on https://github.com/chriskempson/tomorrow-theme
+ * @author Rose Pritchard
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #ccc;
+	background: none;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	hyphens: none;
+
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #2d2d2d;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #999;
+}
+
+.token.punctuation {
+	color: #ccc;
+}
+
+.token.tag,
+.token.attr-name,
+.token.namespace,
+.token.deleted {
+	color: #e2777a;
+}
+
+.token.function-name {
+	color: #6196cc;
+}
+
+.token.boolean,
+.token.number,
+.token.function {
+	color: #f08d49;
+}
+
+.token.property,
+.token.class-name,
+.token.constant,
+.token.symbol {
+	color: #f8c555;
+}
+
+.token.selector,
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.builtin {
+	color: #cc99cd;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+	color: #7ec699;
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+	color: #67cdcc;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+.token.inserted {
+	color: green;
+}
+
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/CodeBlock.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+.CodeBlock_codeWrapper__zgIl0 {
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #2d2d2d;
+}
+
+.CodeBlock_codeHeader__bye6E {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: #1f1f1f;
+  border-bottom: 1px solid #3d3d3d;
+}
+
+.CodeBlock_language__WmALN {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+}
+
+.CodeBlock_pre__3xNpN {
+  margin: 0 !important;
+  padding: 1rem !important;
+  overflow-x: auto;
+}
+
+/* Custom scrollbar styles */
+.CodeBlock_pre__3xNpN::-webkit-scrollbar {
+  height: 8px;
+}
+
+.CodeBlock_pre__3xNpN::-webkit-scrollbar-track {
+  background: #1f1f1f;
+}
+
+.CodeBlock_pre__3xNpN::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+  border-radius: 4px;
+}
+
+.CodeBlock_pre__3xNpN::-webkit-scrollbar-thumb:hover {
+  background: #5a5a5a;
+}
+

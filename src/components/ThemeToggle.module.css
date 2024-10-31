@@ -1,0 +1,72 @@
+.button {
+  position: relative;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.iconWrapper {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--foreground);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sunIcon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+.moonIcon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0);
+}
+
+:global(.dark) .sunIcon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0);
+}
+
+:global(.dark) .moonIcon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+/* Add subtle hover animation */
+.button:hover .icon {
+  color: var(--primary-foreground);
+}
+
+/* Add focus styles for accessibility */
+.button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Add active press effect */
+.button:active {
+  transform: translateY(0);
+}

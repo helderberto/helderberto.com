@@ -1,0 +1,36 @@
+.content {
+  max-width: 65ch;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 2rem 0 1rem;
+}
+
+.content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1.5rem 0 1rem;
+}
+
+.content p {
+  margin: 1rem 0;
+}
+
+.content a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.content ul,
+.content ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.content li {
+  margin: 0.5rem 0;
+}

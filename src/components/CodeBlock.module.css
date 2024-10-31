@@ -1,0 +1,45 @@
+.codeWrapper {
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #2d2d2d;
+}
+
+.codeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: #1f1f1f;
+  border-bottom: 1px solid #3d3d3d;
+}
+
+.language {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+}
+
+.pre {
+  margin: 0 !important;
+  padding: 1rem !important;
+  overflow-x: auto;
+}
+
+/* Custom scrollbar styles */
+.pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+.pre::-webkit-scrollbar-track {
+  background: #1f1f1f;
+}
+
+.pre::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+  border-radius: 4px;
+}
+
+.pre::-webkit-scrollbar-thumb:hover {
+  background: #5a5a5a;
+}
