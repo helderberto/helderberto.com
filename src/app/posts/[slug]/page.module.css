@@ -1,40 +1,80 @@
 .article {
-  max-width: 65ch;
+  width: 100%;
+  max-width: var(--max-width);
   margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
 .header {
-  margin-bottom: 2rem;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto 2rem;
 }
 
-.header h1 {
+.title {
   font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
-.header time {
+.date {
+  font-size: 1rem;
   color: var(--muted-foreground);
 }
 
 .content {
-  line-height: 1.6;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  font-size: 1.125rem;
+  line-height: 1.8;
 }
 
-.content h1 {
-  font-size: 2rem;
+/* Style markdown content */
+.content > * {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content h2 {
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin: 2.5rem 0 1.5rem;
+}
+
+.content h3 {
+  font-size: 1.5rem;
   font-weight: bold;
   margin: 2rem 0 1rem;
 }
 
-.content h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 1.5rem 0 1rem;
+.content p {
+  margin-bottom: 1.5rem;
 }
 
-.content p {
-  margin: 1rem 0;
+.content pre {
+  background-color: var(--muted);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.content code {
+  font-family: monospace;
+}
+
+.content ul,
+.content ol {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.content li {
+  margin-bottom: 0.5rem;
 }
 
 .content a {
@@ -42,31 +82,22 @@
   text-decoration: underline;
 }
 
-.content ul,
-.content ol {
-  margin: 1rem 0;
-  padding-left: 2rem;
-}
-
-.content li {
-  margin: 0.5rem 0;
-}
-
-.content pre {
-  background-color: var(--muted);
-  padding: 1rem;
-  border-radius: 0.5rem;
-  overflow-x: auto;
-  margin: 1rem 0;
-}
-
-.content code {
-  font-family: monospace;
+.content a:hover {
+  text-decoration: none;
 }
 
 .content blockquote {
   border-left: 4px solid var(--primary);
   padding-left: 1rem;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   color: var(--muted-foreground);
+}
+
+/* Update content elements to use full width */
+.content img,
+.content pre,
+.content iframe {
+  width: 100%;
+  max-width: 100%;
+  margin: 1.5rem auto;
 }

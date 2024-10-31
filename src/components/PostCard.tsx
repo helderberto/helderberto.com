@@ -9,9 +9,13 @@ interface PostCardProps {
 const PostCard = ({ post }: PostCardProps) => {
   return (
     <Link href={`/posts/${post.slug}`} className={styles.card}>
-      <h2 className={styles.title}>{post.title}</h2>
-      <p className={styles.date}>{post.date}</p>
-      <p className={styles.excerpt}>{post.excerpt}</p>
+      <article>
+        <h2 className={styles.title}>{post.title}</h2>
+        <time className={styles.date} dateTime={post.date}>
+          {post.date}
+        </time>
+        <p className={styles.excerpt}>{post.excerpt}</p>
+      </article>
     </Link>
   );
 };

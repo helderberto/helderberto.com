@@ -5,7 +5,10 @@
 }
 
 .intro {
-  max-width: 65ch;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 0;
 }
 
 .intro h1 {
