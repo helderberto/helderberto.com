@@ -30,6 +30,16 @@
   width: 100%;
 }
 
+/* Image styles */
+.markdownContent img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  margin: 2rem 0;
+  display: block;
+  border: 1px solid var(--border);
+}
+
 /* Markdown content styles */
 .markdownContent h2 {
   font-size: 1.875rem;
