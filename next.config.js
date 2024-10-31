@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export", // Static HTML export
-  distDir: "dist", // Custom build output directory
+  output: "export",
+  distDir: "dist",
   images: {
-    unoptimized: true, // Required for static export
+    unoptimized: true,
   },
 };
 
