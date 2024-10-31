@@ -10,6 +10,7 @@ import styles from "./layout.module.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
     template: `%s | ${siteConfig.name}`,
     default: siteConfig.title,
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteConfig.url,
+    url: new URL(siteConfig.url),
     title: siteConfig.title,
     description: siteConfig.description,
     siteName: siteConfig.name,

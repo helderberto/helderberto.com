@@ -1,45 +1,134 @@
 .codeWrapper {
+  position: relative;
   margin: 1.5rem 0;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
+  background: var(--code-bg, #1a1b26);
+  border: 1px solid var(--code-border, #2f3241);
   overflow: hidden;
-  background: #2d2d2d;
+  transition: border-color 0.2s ease;
 }
 
-.codeHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  background: #1f1f1f;
-  border-bottom: 1px solid #3d3d3d;
+.codeWrapper:hover {
+  border-color: var(--primary);
 }
 
-.language {
-  font-size: 0.875rem;
-  color: #9ca3af;
-  text-transform: uppercase;
+.copyButton {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--code-meta, #787c99);
+  background: var(--code-bg, #1a1b26);
+  border: 1px solid var(--code-border, #2f3241);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0;
+  z-index: 10;
+}
+
+.codeWrapper:hover .copyButton {
+  opacity: 1;
+}
+
+.copyButton:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--code-bg, #1a1b26);
 }
 
 .pre {
   margin: 0 !important;
-  padding: 1rem !important;
+  padding: 1.25rem !important;
   overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  tab-size: 2;
+  background: transparent !important;
 }
 
-/* Custom scrollbar styles */
+.inlineCode {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  font-weight: 500;
+  background: var(--inline-code-bg, #2f3241);
+  color: var(--inline-code-color, #c0cdf3);
+  padding: 0.2em 0.4em;
+  border-radius: 0.3em;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border: 1px solid var(--inline-code-border, #363b54);
+}
+
+/* Custom scrollbar */
 .pre::-webkit-scrollbar {
-  height: 8px;
+  height: 0.75rem;
 }
 
 .pre::-webkit-scrollbar-track {
-  background: #1f1f1f;
+  background: var(--code-bg, #1a1b26);
 }
 
 .pre::-webkit-scrollbar-thumb {
-  background: #4a4a4a;
-  border-radius: 4px;
+  background: var(--scrollbar-thumb, #363b54);
+  border-radius: 0.375rem;
 }
 
 .pre::-webkit-scrollbar-thumb:hover {
-  background: #5a5a5a;
+  background: var(--scrollbar-thumb-hover, #414863);
+}
+
+/* Token colors */
+.pre :global(.token.comment),
+.pre :global(.token.prolog),
+.pre :global(.token.doctype),
+.pre :global(.token.cdata) {
+  color: #787c99;
+}
+
+.pre :global(.token.punctuation) {
+  color: #787c99;
+}
+
+.pre :global(.token.property),
+.pre :global(.token.tag),
+.pre :global(.token.boolean),
+.pre :global(.token.number),
+.pre :global(.token.constant),
+.pre :global(.token.symbol) {
+  color: #ff9e64;
+}
+
+.pre :global(.token.selector),
+.pre :global(.token.attr-name),
+.pre :global(.token.string),
+.pre :global(.token.char),
+.pre :global(.token.builtin) {
+  color: #9ece6a;
+}
+
+.pre :global(.token.operator),
+.pre :global(.token.entity),
+.pre :global(.token.url),
+.pre :global(.token.variable) {
+  color: #bb9af7;
+}
+
+.pre :global(.token.atrule),
+.pre :global(.token.attr-value),
+.pre :global(.token.keyword) {
+  color: #7dcfff;
+}
+
+.pre :global(.token.function),
+.pre :global(.token.class-name) {
+  color: #ff9e64;
+}
+
+.pre :global(.token.regex),
+.pre :global(.token.important) {
+  color: #f7768e;
 }

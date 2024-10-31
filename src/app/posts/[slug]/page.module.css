@@ -6,9 +6,7 @@
 }
 
 .header {
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto 2rem;
+  margin-bottom: 2rem;
 }
 
 .title {
@@ -24,80 +22,74 @@
 }
 
 .content {
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
   font-size: 1.125rem;
   line-height: 1.8;
 }
 
-/* Style markdown content */
-.content > * {
+.markdownContent {
   width: 100%;
-  max-width: var(--max-width);
-  margin-left: auto;
-  margin-right: auto;
 }
 
-.content h2 {
+/* Markdown content styles */
+.markdownContent h2 {
   font-size: 1.875rem;
   font-weight: bold;
   margin: 2.5rem 0 1.5rem;
 }
 
-.content h3 {
+.markdownContent h3 {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 2rem 0 1rem;
 }
 
-.content p {
+.markdownContent p {
   margin-bottom: 1.5rem;
 }
 
-.content pre {
-  background-color: var(--muted);
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  overflow-x: auto;
-  margin: 1.5rem 0;
-}
-
-.content code {
-  font-family: monospace;
-}
-
-.content ul,
-.content ol {
+.markdownContent ul,
+.markdownContent ol {
   margin: 1.5rem 0;
   padding-left: 1.5rem;
 }
 
-.content li {
+.markdownContent li {
   margin-bottom: 0.5rem;
 }
 
-.content a {
+.markdownContent a {
   color: var(--primary);
   text-decoration: underline;
 }
 
-.content a:hover {
+.markdownContent a:hover {
   text-decoration: none;
 }
 
-.content blockquote {
+.markdownContent blockquote {
   border-left: 4px solid var(--primary);
   padding-left: 1rem;
   margin: 1.5rem 0;
   color: var(--muted-foreground);
 }
 
-/* Update content elements to use full width */
-.content img,
-.content pre,
-.content iframe {
-  width: 100%;
-  max-width: 100%;
-  margin: 1.5rem auto;
+/* Inline code styles */
+.inlineCode {
+  background: var(--muted);
+  color: var(--foreground);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  font-family: var(--font-mono);
+  display: inline-block;
+  line-height: normal;
+  vertical-align: baseline;
+  margin: 0 0.2em;
+}
+
+/* Code block container styles */
+.markdownContent pre {
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
