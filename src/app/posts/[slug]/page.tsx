@@ -1,5 +1,5 @@
 import { CodeBlock } from "@/components/CodeBlock";
-import { getPostBySlug } from "@/lib/posts";
+import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import Markdown from "markdown-to-jsx";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -26,6 +26,13 @@ export async function generateMetadata({
       description: "The post you're looking for doesn't exist",
     };
   }
+}
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
 }
 
 export default async function PostPage({ params }: PostPageProps) {
