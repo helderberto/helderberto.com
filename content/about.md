@@ -9,7 +9,7 @@ Currently, I'm a Senior Software Engineer at [PagerDuty](https://www.pagerduty.c
 My core expertise lies in:
 
 - Front-end Development (React, TypeScript, JavaScript)
-- Web Performance Optimization
+- Frontend Architecture & System Design
 - UI/UX Implementation
 - Technical Leadership
 - Team Mentorship
@@ -35,7 +35,7 @@ My current tech stack includes:
 - Jest & React Testing Library
 - Node.js
 - Modern CSS (CSS Modules, Styled Components)
-- Web Performance Optimization Tools
+- Frontend Architecture Tools & Patterns
 
 While I stay current with modern technologies, I believe in choosing the right tool for each project and maintaining focus on fundamental software engineering principles that stand the test of time.
 
@@ -43,9 +43,9 @@ While I stay current with modern technologies, I believe in choosing the right t
 
 I regularly write about:
 
-- Software Architecture
+- Frontend Architecture & Design Patterns
 - Front-end Development Best Practices
-- Web Performance Optimization
+- Scaling Frontend Applications
 - Engineering Leadership
 - Technical Decision Making
 
