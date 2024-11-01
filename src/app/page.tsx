@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Helder Santos | Senior Software Engineer",
+  title: "Helder Burato Berto | Senior Software Engineer",
   description:
     "Senior Software Engineer specializing in React and TypeScript. Blog about software architecture and engineering best practices.",
   keywords: [
