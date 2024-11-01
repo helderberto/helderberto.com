@@ -11,8 +11,8 @@ const Header = () => {
           <Image
             src="/profile.jpg"
             alt="Profile Picture"
-            width={40}
-            height={40}
+            width={56}
+            height={56}
             className={styles.profileImage}
           />
         </Link>

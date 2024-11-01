@@ -4,7 +4,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(0.625rem);
   padding: 0 1rem;
 }
 
@@ -28,7 +28,7 @@
 
 .profileImage {
   border-radius: 50%;
-  border: 2px solid var(--border);
+  border: 0.125rem solid var(--border);
   transition: border-color 0.2s ease;
 }
 
@@ -66,4 +66,17 @@
 .link[aria-current="page"] {
   color: var(--primary);
   background-color: var(--muted);
+}
+
+.avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
