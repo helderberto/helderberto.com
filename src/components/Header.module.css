@@ -63,7 +63,8 @@
 }
 
 /* Active state for the current page */
-.link[aria-current="page"] {
+.link[aria-current="page"],
+.active {
   color: var(--primary);
   background-color: var(--muted);
 }
