@@ -1,6 +1,6 @@
 "use client";
 
-import { Post } from "@/lib/types";
+import { Post } from "@/lib/posts";
 import { useState } from "react";
 import { EmptyState } from "./EmptyState";
 import PostCard from "./PostCard";
