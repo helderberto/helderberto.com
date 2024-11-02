@@ -1,7 +1,8 @@
 "use client";
 
-import { Post } from "@/lib/posts";
-import { useEffect, useState } from "react";
+import { Post } from "@/lib/types";
+import { useState } from "react";
+import { EmptyState } from "./EmptyState";
 import PostCard from "./PostCard";
 import styles from "./SearchPosts.module.css";
 
@@ -9,19 +10,12 @@ interface SearchPostsProps {
   initialPosts: Post[];
 }
 
-const SearchPosts = ({ initialPosts }: SearchPostsProps) => {
-  const [search, setSearch] = useState("");
-  const [filteredPosts, setFilteredPosts] = useState<Post[]>(initialPosts);
+export default function SearchPosts({ initialPosts }: SearchPostsProps) {
+  const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    const filtered = initialPosts.filter(
-      (post) =>
-        post.title.toLowerCase().includes(search.toLowerCase()) ||
-        post.excerpt.toLowerCase().includes(search.toLowerCase()) ||
-        post.content.toLowerCase().includes(search.toLowerCase())
-    );
-    setFilteredPosts(filtered);
-  }, [search, initialPosts]);
+  const filteredPosts = initialPosts.filter((post) =>
+    post.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className={styles.wrapper}>
@@ -29,19 +23,25 @@ const SearchPosts = ({ initialPosts }: SearchPostsProps) => {
         <input
           type="text"
           placeholder="Search posts..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
           className={styles.input}
-          aria-label="Search posts"
         />
       </div>
+
       <div className={styles.results}>
-        {filteredPosts.map((post) => (
-          <PostCard key={post.slug} post={post} />
-        ))}
+        {filteredPosts.length > 0 ? (
+          filteredPosts.map((post) => <PostCard key={post.slug} post={post} />)
+        ) : (
+          <EmptyState
+            message={
+              searchQuery
+                ? `No posts found for "${searchQuery}"`
+                : "No posts found"
+            }
+          />
+        )}
       </div>
     </div>
   );
-};
-
-export default SearchPosts;
+}

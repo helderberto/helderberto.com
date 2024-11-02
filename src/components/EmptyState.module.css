@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  width: 100%;
+  padding: 2rem;
+  background: var(--muted);
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  grid-column: 1 / -1;
+}
+
+.message {
+  color: var(--muted-foreground);
+  font-size: 1.1rem;
+  text-align: center;
+}

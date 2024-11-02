@@ -17,18 +17,22 @@ export default function AboutPage() {
   const { content } = matter(fileContents);
 
   return (
-    <article className={styles.content}>
-      <Markdown
-        options={{
-          overrides: {
-            code: {
-              component: CodeBlock,
-            },
-          },
-        }}
-      >
-        {content}
-      </Markdown>
-    </article>
+    <main className={styles.container}>
+      <div className={styles.content}>
+        <article>
+          <Markdown
+            options={{
+              overrides: {
+                code: {
+                  component: CodeBlock,
+                },
+              },
+            }}
+          >
+            {content}
+          </Markdown>
+        </article>
+      </div>
+    </main>
   );
 }
