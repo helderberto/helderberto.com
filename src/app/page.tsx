@@ -21,18 +21,20 @@ export default async function Home() {
 
   return (
     <main className={styles.container}>
-      <section className={styles.intro}>
-        <h1>Hey there! I'm Helder 👋</h1>
-        <p>
-          I specialize in building modern web applications with React and
-          TypeScript. Here, I share my insights about software architecture,
-          engineering practices, and web development best practices.
-        </p>
-      </section>
+      <div className={styles.content}>
+        <section className={styles.intro}>
+          <h1>Hey there! I'm Helder 👋</h1>
+          <p>
+            I specialize in building modern web applications with React and
+            TypeScript. Here, I share my insights about software architecture,
+            engineering practices, and web development best practices.
+          </p>
+        </section>
 
-      <section className={styles.posts} aria-label="Blog Posts">
-        <SearchPosts initialPosts={posts} />
-      </section>
+        <section className={styles.posts} aria-label="Blog Posts">
+          <SearchPosts initialPosts={posts} />
+        </section>
+      </div>
     </main>
   );
 }
