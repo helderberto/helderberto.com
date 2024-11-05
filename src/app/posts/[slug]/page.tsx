@@ -9,9 +9,9 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import styles from "./page.module.css";
 
-type Props = {
-  params: { slug: string };
-};
+interface Props {
+  params: Promise<{ slug: string }>;
+}
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -21,8 +21,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resolvedParams = await Promise.resolve(params);
-  const post = await getPostBySlug(resolvedParams.slug).catch(() => null);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug).catch(() => null);
 
   if (!post) {
     return {
@@ -31,10 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const url = new URL(
-    `/posts/${resolvedParams.slug}`,
-    siteConfig.url
-  ).toString();
+  const url = new URL(`/posts/${slug}`, siteConfig.url).toString();
 
   return {
     title: post.title,
@@ -56,17 +53,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Page({ params }: Props) {
-  const resolvedParams = await Promise.resolve(params);
-  const post = await getPostBySlug(resolvedParams.slug).catch(() => null);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug).catch(() => null);
 
   if (!post) {
     notFound();
   }
 
-  const url = new URL(
-    `/posts/${resolvedParams.slug}`,
-    siteConfig.url
-  ).toString();
+  const url = new URL(`/posts/${slug}`, siteConfig.url).toString();
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
