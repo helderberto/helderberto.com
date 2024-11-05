@@ -1,4 +1,6 @@
 import { CodeBlock } from "@/components/CodeBlock";
+import { Comments } from "@/components/Comments";
+import { PostHeader } from "@/components/PostHeader";
 import { siteConfig } from "@/config/site";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import Markdown from "markdown-to-jsx";
@@ -7,16 +9,16 @@ import { notFound } from "next/navigation";
 import styles from "./page.module.css";
 
 interface PostPageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }> | { slug: string };
 }
 
 export async function generateMetadata({
   params,
 }: PostPageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+
   try {
-    const post = await getPostBySlug(params.slug);
+    const post = await getPostBySlug(resolvedParams.slug);
     return {
       title: post.title,
       description: post.excerpt,
@@ -50,13 +52,10 @@ export async function generateStaticParams() {
 }
 
 export default async function PostPage({ params }: PostPageProps) {
+  const resolvedParams = await params;
+
   try {
-    const post = await getPostBySlug(params.slug);
-    const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
+    const post = await getPostBySlug(resolvedParams.slug);
 
     const jsonLd = {
       "@context": "https://schema.org",
@@ -70,7 +69,7 @@ export default async function PostPage({ params }: PostPageProps) {
         url: siteConfig.url,
       },
       description: post.excerpt,
-      url: `${siteConfig.url}/posts/${params.slug}`,
+      url: `${siteConfig.url}/${resolvedParams.slug}`,
       publisher: {
         "@type": "Person",
         name: siteConfig.name,
@@ -85,12 +84,7 @@ export default async function PostPage({ params }: PostPageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <article className={styles.article}>
-          <header className={styles.header}>
-            <h1 className={styles.title}>{post.title}</h1>
-            <time className={styles.date} dateTime={post.date}>
-              {formattedDate}
-            </time>
-          </header>
+          <PostHeader title={post.title} date={post.date} />
           <div className={`${styles.content} ${styles.markdownContent}`}>
             <Markdown
               options={{
@@ -104,6 +98,7 @@ export default async function PostPage({ params }: PostPageProps) {
               {post.content}
             </Markdown>
           </div>
+          <Comments />
         </article>
       </>
     );

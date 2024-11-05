@@ -2,10 +2,9 @@
   position: relative;
   margin: 1.5rem 0;
   border-radius: 0.75rem;
-  background: #1e1e2e;
-  border: 1px solid #313244;
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
   overflow: hidden;
-  transition: border-color 0.2s ease;
 }
 
 .codeWrapper:hover {
@@ -39,117 +38,120 @@
   background: #1e1e2e;
 }
 
-.pre {
-  margin: 0 !important;
-  padding: 1.25rem !important;
-  overflow-x: auto;
+.codeWrapper pre {
+  margin: 0;
+  padding: 1.25rem;
+}
+
+.codeWrapper code {
   font-family: var(--font-mono);
   font-size: 0.875rem;
   line-height: 1.7;
-  tab-size: 2;
-  background: transparent !important;
-  color: #cdd6f4;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  border: none;
 }
 
 .inlineCode {
   font-family: var(--font-mono);
   font-size: 0.875rem;
   font-weight: 500;
-  background: #313244;
-  color: #cdd6f4;
+  background: var(--inline-code-bg);
+  color: var(--inline-code-color);
   padding: 0.2rem 0.4rem;
   border-radius: 0.3rem;
   white-space: nowrap;
   vertical-align: baseline;
-  border: 1px solid #45475a;
+  border: 1px solid var(--inline-code-border);
 }
 
 /* Custom scrollbar */
-.pre::-webkit-scrollbar {
+.codeWrapper::-webkit-scrollbar {
   height: 0.75rem;
 }
 
-.pre::-webkit-scrollbar-track {
+.codeWrapper::-webkit-scrollbar-track {
   background: #1e1e2e;
 }
 
-.pre::-webkit-scrollbar-thumb {
+.codeWrapper::-webkit-scrollbar-thumb {
   background: #45475a;
   border-radius: 0.375rem;
 }
 
-.pre::-webkit-scrollbar-thumb:hover {
+.codeWrapper::-webkit-scrollbar-thumb:hover {
   background: #585b70;
 }
 
 /* Token colors - Official Catppuccin Mocha */
-.pre :global(.token.comment),
-.pre :global(.token.prolog),
-.pre :global(.token.doctype),
-.pre :global(.token.cdata) {
+.codeWrapper :global(.token.comment),
+.codeWrapper :global(.token.prolog),
+.codeWrapper :global(.token.doctype),
+.codeWrapper :global(.token.cdata) {
   color: #585b70;
 }
 
-.pre :global(.token.punctuation) {
+.codeWrapper :global(.token.punctuation) {
   color: #cdd6f4;
 }
 
-.pre :global(.token.namespace) {
+.codeWrapper :global(.token.namespace) {
   opacity: 0.7;
 }
 
-.pre :global(.token.property),
-.pre :global(.token.tag),
-.pre :global(.token.constant),
-.pre :global(.token.symbol),
-.pre :global(.token.deleted) {
+.codeWrapper :global(.token.property),
+.codeWrapper :global(.token.tag),
+.codeWrapper :global(.token.constant),
+.codeWrapper :global(.token.symbol),
+.codeWrapper :global(.token.deleted) {
   color: #f38ba8;
 }
 
-.pre :global(.token.boolean),
-.pre :global(.token.number) {
+.codeWrapper :global(.token.boolean),
+.codeWrapper :global(.token.number) {
   color: #fab387;
 }
 
-.pre :global(.token.selector),
-.pre :global(.token.attr-name),
-.pre :global(.token.string),
-.pre :global(.token.char),
-.pre :global(.token.builtin),
-.pre :global(.token.inserted) {
+.codeWrapper :global(.token.selector),
+.codeWrapper :global(.token.attr-name),
+.codeWrapper :global(.token.string),
+.codeWrapper :global(.token.char),
+.codeWrapper :global(.token.builtin),
+.codeWrapper :global(.token.inserted) {
   color: #a6e3a1;
 }
 
-.pre :global(.token.operator),
-.pre :global(.token.entity),
-.pre :global(.token.url),
-.pre :global(.language-css .token.string),
-.pre :global(.style .token.string),
-.pre :global(.token.variable) {
+.codeWrapper :global(.token.operator),
+.codeWrapper :global(.token.entity),
+.codeWrapper :global(.token.url),
+.codeWrapper :global(.language-css .token.string),
+.codeWrapper :global(.style .token.string),
+.codeWrapper :global(.token.variable) {
   color: #f5c2e7;
 }
 
-.pre :global(.token.atrule),
-.pre :global(.token.attr-value),
-.pre :global(.token.function),
-.pre :global(.token.class-name) {
+.codeWrapper :global(.token.atrule),
+.codeWrapper :global(.token.attr-value),
+.codeWrapper :global(.token.function),
+.codeWrapper :global(.token.class-name) {
   color: #f9e2af;
 }
 
-.pre :global(.token.keyword) {
+.codeWrapper :global(.token.keyword) {
   color: #cba6f7;
 }
 
-.pre :global(.token.regex),
-.pre :global(.token.important) {
+.codeWrapper :global(.token.regex),
+.codeWrapper :global(.token.important) {
   color: #fab387;
 }
 
-.pre :global(.token.important),
-.pre :global(.token.bold) {
+.codeWrapper :global(.token.important),
+.codeWrapper :global(.token.bold) {
   font-weight: bold;
 }
 
-.pre :global(.token.italic) {
+.codeWrapper :global(.token.italic) {
   font-style: italic;
 }

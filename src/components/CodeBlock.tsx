@@ -9,7 +9,7 @@ import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-tsx";
 import "prismjs/components/prism-typescript";
 import "prismjs/themes/prism-tomorrow.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from "./CodeBlock.module.css";
 
 interface CodeBlockProps {
@@ -18,8 +18,6 @@ interface CodeBlockProps {
 }
 
 export function CodeBlock({ className, children }: CodeBlockProps) {
-  const [isCopied, setIsCopied] = useState(false);
-
   useEffect(() => {
     Prism.highlightAll();
   }, [children]);
@@ -29,26 +27,13 @@ export function CodeBlock({ className, children }: CodeBlockProps) {
     return <code className={styles.inlineCode}>{children}</code>;
   }
 
-  const rawLanguage = className.replace("lang-", "") || "plaintext";
-
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(children);
-    setIsCopied(true);
-    setTimeout(() => setIsCopied(false), 2000);
-  };
+  const language = className.replace("lang-", "");
 
   return (
-    <pre className={styles.codeWrapper}>
-      <button
-        onClick={handleCopy}
-        className={styles.copyButton}
-        aria-label="Copy code to clipboard"
-      >
-        {isCopied ? "Copied!" : "Copy"}
-      </button>
-      <code className={`${styles.pre} language-${rawLanguage}`}>
-        {children}
-      </code>
-    </pre>
+    <div className={styles.codeWrapper}>
+      <pre>
+        <code className={`language-${language}`}>{children}</code>
+      </pre>
+    </div>
   );
 }
