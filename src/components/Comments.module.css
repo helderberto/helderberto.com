@@ -1,0 +1,16 @@
+.comments {
+  width: 100%;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+/* Make utterances iframe full width */
+.comments :global(.utterances) {
+  max-width: 100% !important;
+}
+
+/* Add some spacing between comments and content */
+.comments :global(.utterances-frame) {
+  margin-top: 1rem;
+}

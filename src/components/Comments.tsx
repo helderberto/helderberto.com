@@ -1,6 +1,8 @@
 "use client";
+
 import { useTheme } from "next-themes";
 import { useEffect, useRef } from "react";
+import styles from "./Comments.module.css";
 
 export function Comments() {
   const { theme } = useTheme();
@@ -35,5 +37,5 @@ export function Comments() {
     };
   }, [theme]);
 
-  return <div ref={elementRef} className="mt-10" />;
+  return <div ref={elementRef} className={styles.comments} />;
 }

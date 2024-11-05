@@ -5,22 +5,6 @@
   padding: 2rem 2rem;
 }
 
-.header {
-  margin-bottom: 2rem;
-}
-
-.title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.date {
-  font-size: 1rem;
-  color: var(--muted-foreground);
-}
-
 .content {
   font-size: 1.125rem;
   line-height: 1.8;
@@ -74,38 +58,4 @@
 
 .markdownContent a:hover {
   text-decoration: none;
-}
-
-.markdownContent blockquote {
-  border-left: 4px solid var(--primary);
-  padding-left: 1rem;
-  margin: 1.5rem 0;
-  color: var(--muted-foreground);
-}
-
-/* Inline code styles */
-.inlineCode {
-  background: var(--muted);
-  color: var(--foreground);
-  padding: 0.2rem 0.4rem;
-  border-radius: 0.25rem;
-  font-size: 0.9rem;
-  font-family: var(--font-mono);
-  display: inline-block;
-  line-height: normal;
-  vertical-align: baseline;
-  margin: 0 0.2rem;
-}
-
-/* Code block container styles */
-.markdownContent pre {
-  margin: 1.5rem 0;
-  border-radius: 0.5rem;
-  overflow: hidden;
-}
-
-/* Comments section */
-.article :global(.utterances) {
-  max-width: 100%;
-  margin: 2rem 0 0;
 }
