@@ -1,3 +1,5 @@
+"use client";
+
 import { siteConfig } from "@/config/site";
 import { useTheme } from "next-themes";
 import { useEffect, useRef } from "react";
