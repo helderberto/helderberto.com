@@ -52,14 +52,14 @@ const useScript = (params: {
   }, [url]);
 };
 
-export const Comments = () => {
+export const Comments = ({ url }: { url: string }) => {
   const commentRef = useRef(null);
   const { theme } = useTheme();
 
   useScript({
     url: "https://utteranc.es/client.js",
     theme: theme || "github-dark",
-    issueTerm: "url",
+    issueTerm: url,
     repo: siteConfig.comments.repo,
     ref: commentRef,
   });

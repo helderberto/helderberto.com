@@ -99,7 +99,7 @@ export default async function Page({ params }: Props) {
         </Markdown>
       </div>
 
-      <Comments />
+      <Comments url={url} />
     </article>
   );
 }
