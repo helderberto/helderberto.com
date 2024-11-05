@@ -1,5 +1,6 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 import styles from "./Comments.module.css";
 
@@ -7,17 +8,21 @@ interface CommentsProps {
   repo: string;
   issueTerm: string;
   label?: string;
-  theme?: "github-light" | "github-dark";
 }
 
 export function Comments({
   repo,
   issueTerm,
   label = "Comments",
-  theme = "github-light",
 }: CommentsProps) {
   const commentsRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
+  const { theme, systemTheme } = useTheme();
+
+  // Determine the actual theme (system, light, or dark)
+  const currentTheme = theme === "system" ? systemTheme : theme;
+  const utterancesTheme =
+    currentTheme === "dark" ? "github-dark" : "github-light";
 
   useEffect(() => {
     // Skip if already loaded
@@ -32,7 +37,7 @@ export function Comments({
       repo,
       "issue-term": issueTerm,
       label,
-      theme,
+      theme: utterancesTheme,
       crossorigin: "anonymous",
       async: "true",
     };
@@ -62,7 +67,25 @@ export function Comments({
     return () => {
       window.removeEventListener("message", handler);
     };
-  }, [repo, issueTerm, label, theme, loaded]);
+  }, [repo, issueTerm, label, utterancesTheme, loaded]);
+
+  // Update theme when website theme changes
+  useEffect(() => {
+    if (!loaded) return;
+
+    const iframe =
+      commentsRef.current?.querySelector<HTMLIFrameElement>(
+        ".utterances-frame"
+      );
+    if (!iframe) return;
+
+    const message = {
+      type: "set-theme",
+      theme: utterancesTheme,
+    };
+
+    iframe.contentWindow?.postMessage(message, "https://utteranc.es");
+  }, [utterancesTheme, loaded]);
 
   return (
     <div className={styles.comments}>
