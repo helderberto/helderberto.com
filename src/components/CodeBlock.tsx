@@ -9,7 +9,7 @@ import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-tsx";
 import "prismjs/components/prism-typescript";
 import "prismjs/themes/prism-tomorrow.css";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./CodeBlock.module.css";
 
 interface CodeBlockProps {
@@ -17,7 +17,29 @@ interface CodeBlockProps {
   children: string;
 }
 
-export function CodeBlock({ className, children }: CodeBlockProps) {
+export function CodeBlock({ children, className }: CodeBlockProps) {
+  const [copied, setCopied] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout>();
+
+  const handleCopy = () => {
+    if (typeof children === "string") {
+      navigator.clipboard.writeText(children);
+      setCopied(true);
+
+      timeoutRef.current = setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
   useEffect(() => {
     Prism.highlightAll();
   }, [children]);
@@ -30,8 +52,15 @@ export function CodeBlock({ className, children }: CodeBlockProps) {
   const language = className.replace("lang-", "");
 
   return (
-    <div className={styles.codeWrapper}>
-      <pre>
+    <div className={styles.wrapper}>
+      <pre className={`${styles.pre} ${className || ""}`}>
+        <button
+          onClick={handleCopy}
+          className={styles.copyButton}
+          aria-label="Copy code"
+        >
+          {copied ? "Copied!" : "Copy"}
+        </button>
         <code className={`language-${language}`}>{children}</code>
       </pre>
     </div>
