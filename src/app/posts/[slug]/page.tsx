@@ -1,5 +1,4 @@
 import { CodeBlock } from "@/components/CodeBlock";
-import { Comments } from "@/components/Comments";
 import { JsonLd } from "@/components/JsonLd";
 import { PostHeader } from "@/components/PostHeader";
 import { siteConfig } from "@/config/site";
@@ -98,8 +97,6 @@ export default async function Page({ params }: Props) {
           {post.content}
         </Markdown>
       </div>
-
-      <Comments url={url} />
     </article>
   );
 }
