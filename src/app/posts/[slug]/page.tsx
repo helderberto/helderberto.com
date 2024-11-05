@@ -99,11 +99,7 @@ export default async function Page({ params }: Props) {
         </Markdown>
       </div>
 
-      <Comments
-        repo={siteConfig.comments.repo}
-        issueTerm={slug}
-        label="Comments"
-      />
+      <Comments />
     </article>
   );
 }

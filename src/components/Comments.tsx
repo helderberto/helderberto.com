@@ -1,109 +1,70 @@
-"use client";
-
+import { siteConfig } from "@/config/site";
 import { useTheme } from "next-themes";
-import { useEffect, useRef, useState } from "react";
-import styles from "./Comments.module.css";
+import { useEffect, useRef } from "react";
 
-interface CommentsProps {
-  repo: string;
-  issueTerm: string;
-  label?: string;
-}
-
-// Custom hook for handling utterances script
-const useUtterances = (params: {
+const useScript = (params: {
   url: string;
   theme: string;
   issueTerm: string;
   repo: string;
-  label?: string;
-  ref: React.RefObject<HTMLDivElement>;
+  ref: React.RefObject<HTMLElement>;
 }) => {
-  const [status, setStatus] = useState<"idle" | "loading" | "ready" | "error">(
-    "loading"
-  );
-  const { url, theme, issueTerm, repo, label, ref } = params;
+  const { url, theme, issueTerm, repo, ref } = params;
 
   useEffect(() => {
     if (!url) {
-      setStatus("idle");
       return;
     }
 
-    const script = document.createElement("script");
-    const utterancesConfig = {
-      src: url,
-      theme,
-      "issue-term": issueTerm,
-      repo,
-      label,
-      crossorigin: "anonymous",
-      async: "true",
+    let script = document.createElement("script");
+    script.src = url;
+    script.async = true;
+    script.crossOrigin = "anonymous";
+    script.setAttribute("theme", theme);
+    script.setAttribute("issue-term", issueTerm);
+    script.setAttribute("repo", repo);
+
+    if (ref.current) {
+      ref.current.appendChild(script);
+    }
+
+    // store status of the script
+    const setAttributeStatus = (event: Event) => {
+      if (event.type === "load") {
+        console.log("Script loaded successfully");
+      } else if (event.type === "error") {
+        console.error("Error loading script:", event);
+      }
     };
 
-    Object.entries(utterancesConfig).forEach(([key, value]) => {
-      script.setAttribute(key, value as string);
-    });
-
-    const setScriptStatus = (event: Event) => {
-      setStatus(event.type === "load" ? "ready" : "error");
-    };
-
-    script.addEventListener("load", setScriptStatus);
-    script.addEventListener("error", setScriptStatus);
-    ref.current?.appendChild(script);
+    script.addEventListener("load", setAttributeStatus);
+    script.addEventListener("error", setAttributeStatus);
 
     return () => {
-      script.removeEventListener("load", setScriptStatus);
-      script.removeEventListener("error", setScriptStatus);
+      // useEffect clean up
+      if (script) {
+        script.removeEventListener("load", setAttributeStatus);
+        script.removeEventListener("error", setAttributeStatus);
+      }
     };
-  }, [url, theme, issueTerm, repo, ref, label]);
-
-  return status;
+  }, [url]);
 };
 
-export function Comments({
-  repo,
-  issueTerm,
-  label = "Comments",
-}: CommentsProps) {
-  const commentsRef = useRef<HTMLDivElement>(null);
-  const { theme, systemTheme } = useTheme();
+export const Comments = () => {
+  const commentRef = useRef(null);
+  const { theme } = useTheme();
 
-  const currentTheme = theme === "system" ? systemTheme : theme;
-  const utterancesTheme =
-    currentTheme === "dark" ? "github-dark" : "github-light";
-
-  const status = useUtterances({
+  useScript({
     url: "https://utteranc.es/client.js",
-    theme: utterancesTheme,
-    issueTerm,
-    repo,
-    label,
-    ref: commentsRef,
+    theme: theme || "github-dark",
+    issueTerm: "url",
+    repo: siteConfig.comments.repo,
+    ref: commentRef,
   });
 
-  // Update theme when website theme changes
-  useEffect(() => {
-    if (status !== "ready") return;
-
-    const iframe =
-      commentsRef.current?.querySelector<HTMLIFrameElement>(
-        ".utterances-frame"
-      );
-    if (!iframe) return;
-
-    const message = {
-      type: "set-theme",
-      theme: utterancesTheme,
-    };
-
-    iframe.contentWindow?.postMessage(message, "https://utteranc.es");
-  }, [utterancesTheme, status]);
-
   return (
-    <div className={styles.comments}>
-      <div ref={commentsRef} />
+    <div className="w-full">
+      <div ref={commentRef}></div>
     </div>
   );
-}
+};
