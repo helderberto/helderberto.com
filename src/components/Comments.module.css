@@ -1,14 +1,19 @@
 .comments {
   margin-top: 2rem;
   width: 100%;
+  min-height: 250px;
 }
 
 /* Make utterances iframe full width */
 .comments :global(.utterances) {
   max-width: 100% !important;
+  margin: 0;
 }
 
 /* Add some spacing between comments and content */
 .comments :global(.utterances-frame) {
   margin-top: 1rem;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
 }

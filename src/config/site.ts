@@ -33,5 +33,5 @@ export const siteConfig = {
   themeColor: "#ffffff", // Add your brand color
   canonicalUrl: "https://helderberto.com",
   githubUsername: "helderberto", // Replace with your GitHub username
-  githubRepo: "website", // Replace with your repository name
+  githubRepo: "helderberto.com", // Make sure this matches your actual repository name
 } as const;

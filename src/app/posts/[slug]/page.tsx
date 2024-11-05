@@ -100,7 +100,7 @@ export default async function Page({ params }: Props) {
       </div>
       <Comments
         repo={`${siteConfig.githubUsername}/${siteConfig.githubRepo}`}
-        issueTerm={slug}
+        issueTerm={`pathname/${slug}`}
         theme="github-dark"
       />
     </article>

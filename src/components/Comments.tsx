@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./Comments.module.css";
 
 interface CommentsProps {
@@ -17,18 +17,18 @@ export function Comments({
   theme = "github-light",
 }: CommentsProps) {
   const commentsRef = useRef<HTMLDivElement>(null);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Remove any existing script first
-    const existingScript = document.querySelector('script[src*="utteranc"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
+    // Skip if already loaded
+    if (loaded) return;
+
+    const utterancesOrigin = "https://utteranc.es";
 
     // Create and append the new script
     const script = document.createElement("script");
     const config = {
-      src: "https://utteranc.es/client.js",
+      src: `${utterancesOrigin}/client.js`,
       repo,
       "issue-term": issueTerm,
       label,
@@ -41,13 +41,32 @@ export function Comments({
       script.setAttribute(key, value);
     });
 
+    // Add load event listener
+    script.onload = () => {
+      setLoaded(true);
+    };
+
+    // Handle authentication message
+    const handler = (event: MessageEvent) => {
+      if (event.origin !== utterancesOrigin) return;
+      if (event.data.type === "authorized") {
+        // Reload the comments section when auth is successful
+        const iframe = commentsRef.current?.querySelector("iframe");
+        if (iframe) iframe.contentWindow?.location.reload();
+      }
+    };
+
+    window.addEventListener("message", handler);
     commentsRef.current?.appendChild(script);
 
     return () => {
-      // Cleanup script on unmount
-      script.remove();
+      window.removeEventListener("message", handler);
     };
-  }, [repo, issueTerm, label, theme]);
+  }, [repo, issueTerm, label, theme, loaded]);
 
-  return <div ref={commentsRef} className={styles.comments} />;
+  return (
+    <div className={styles.comments}>
+      <div ref={commentsRef} />
+    </div>
+  );
 }
