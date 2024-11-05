@@ -20,17 +20,15 @@ export const Comments = ({ url }: { url: string }) => {
       utterancesEl.remove();
     }
 
-    const pathname = new URL(url).pathname;
-
     const script = document.createElement("script");
     script.src = "https://utteranc.es/client.js";
     script.async = true;
     script.crossOrigin = "anonymous";
     script.setAttribute("repo", siteConfig.comments.repo);
-    script.setAttribute("issue-term", "pathname");
-    script.setAttribute("path", pathname);
-    script.setAttribute("label", siteConfig.comments.label);
+    script.setAttribute("issue-term", "title");
     script.setAttribute("theme", utterancesTheme);
+    script.setAttribute("label", siteConfig.comments.label);
+    script.setAttribute("origin", new URL(siteConfig.url).origin);
 
     scriptParentElement?.appendChild(script);
 
