@@ -14,29 +14,55 @@ import styles from "./CodeBlock.module.css";
 
 interface CodeBlockProps {
   className?: string;
-  children: string;
+  children: React.ReactNode;
 }
 
 export function CodeBlock({ children, className }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
+  const [buttonPosition, setButtonPosition] = useState({ top: 0, right: 0 });
   const timeoutRef = useRef<NodeJS.Timeout>();
+  const codeRef = useRef<HTMLElement>(null);
+  const preRef = useRef<HTMLPreElement>(null);
 
-  const handleCopy = () => {
-    if (typeof children === "string") {
-      navigator.clipboard.writeText(children);
+  const handleCopy = async () => {
+    if (!codeRef.current) return;
+
+    try {
+      const code = codeRef.current.textContent || "";
+      await navigator.clipboard.writeText(code);
       setCopied(true);
+
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
 
       timeoutRef.current = setTimeout(() => {
         setCopied(false);
       }, 2000);
+    } catch (err) {
+      console.error("Failed to copy code:", err);
     }
   };
 
   useEffect(() => {
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
+    const updateButtonPosition = () => {
+      if (preRef.current) {
+        const rect = preRef.current.getBoundingClientRect();
+        setButtonPosition({
+          top: rect.top + 8,
+          right: window.innerWidth - (rect.right - 8),
+        });
       }
+    };
+
+    // Update position initially and on scroll/resize
+    updateButtonPosition();
+    window.addEventListener("scroll", updateButtonPosition);
+    window.addEventListener("resize", updateButtonPosition);
+
+    return () => {
+      window.removeEventListener("scroll", updateButtonPosition);
+      window.removeEventListener("resize", updateButtonPosition);
     };
   }, []);
 
@@ -53,15 +79,21 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
 
   return (
     <div className={styles.wrapper}>
-      <pre className={`${styles.pre} ${className || ""}`}>
+      <pre ref={preRef} className={`${styles.pre} ${className || ""}`}>
         <button
           onClick={handleCopy}
-          className={styles.copyButton}
+          className={`${styles.copyButton} ${copied ? styles.copied : ""}`}
           aria-label="Copy code"
+          style={{
+            top: `${buttonPosition.top}px`,
+            right: `${buttonPosition.right}px`,
+          }}
         >
           {copied ? "Copied!" : "Copy"}
         </button>
-        <code className={`language-${language}`}>{children}</code>
+        <code ref={codeRef} className={`language-${language}`}>
+          {children}
+        </code>
       </pre>
     </div>
   );
