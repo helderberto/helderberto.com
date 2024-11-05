@@ -19,8 +19,8 @@ interface CodeBlockProps {
 
 export function CodeBlock({ children, className }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const codeRef = useRef<HTMLElement>(null);
-  const preRef = useRef<HTMLPreElement>(null);
 
   const handleCopy = () => {
     if (typeof children === "string") {
@@ -30,27 +30,38 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
     }
   };
 
+  // Handle mounting state
   useEffect(() => {
-    Prism.highlightAll();
-  }, [children]);
+    setMounted(true);
+  }, []);
+
+  // Handle syntax highlighting after mount
+  useEffect(() => {
+    if (mounted && codeRef.current) {
+      Prism.highlightElement(codeRef.current);
+    }
+  }, [mounted, children]);
 
   // If there's no className, it's an inline code
   if (!className) {
     return <code className={styles.inlineCode}>{children}</code>;
   }
 
-  const language = className.replace("lang-", "");
+  // Clean up the language className
+  const language = className.replace(/^lang-/, "").replace(/^language-/, "");
 
   return (
     <div className={styles.codeBlockContainer}>
-      <pre ref={preRef} className={`${styles.pre} ${className || ""}`}>
-        <button
-          onClick={handleCopy}
-          className={`${styles.copyButton} ${copied ? styles.copied : ""}`}
-          aria-label="Copy code"
-        >
-          {copied ? "Copied!" : "Copy"}
-        </button>
+      <pre className={styles.pre}>
+        {mounted && (
+          <button
+            onClick={handleCopy}
+            className={`${styles.copyButton} ${copied ? styles.copied : ""}`}
+            aria-label="Copy code"
+          >
+            {copied ? "Copied!" : "Copy"}
+          </button>
+        )}
         <code ref={codeRef} className={`language-${language}`}>
           {children}
         </code>
