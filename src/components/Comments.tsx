@@ -1,41 +1,53 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import { useEffect, useRef } from "react";
 import styles from "./Comments.module.css";
 
-export function Comments() {
-  const { theme } = useTheme();
-  const elementRef = useRef<HTMLDivElement>(null);
+interface CommentsProps {
+  repo: string;
+  issueTerm: string;
+  label?: string;
+  theme?: "github-light" | "github-dark";
+}
+
+export function Comments({
+  repo,
+  issueTerm,
+  label = "Comments",
+  theme = "github-light",
+}: CommentsProps) {
+  const commentsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Remove any existing utterances elements
-    const utterancesElement = elementRef.current?.querySelector(".utterances");
-    if (utterancesElement) {
-      utterancesElement.remove();
+    // Remove any existing script first
+    const existingScript = document.querySelector('script[src*="utteranc"]');
+    if (existingScript) {
+      existingScript.remove();
     }
 
-    const scriptElement = document.createElement("script");
-    const attributes = {
+    // Create and append the new script
+    const script = document.createElement("script");
+    const config = {
       src: "https://utteranc.es/client.js",
-      repo: "helderberto/website", // Replace with your repo
-      "issue-term": "pathname",
-      label: "💬 comments",
-      theme: theme === "dark" ? "github-dark" : "github-light",
+      repo,
+      "issue-term": issueTerm,
+      label,
+      theme,
       crossorigin: "anonymous",
       async: "true",
     };
 
-    Object.entries(attributes).forEach(([key, value]) => {
-      scriptElement.setAttribute(key, value);
+    Object.entries(config).forEach(([key, value]) => {
+      script.setAttribute(key, value);
     });
 
-    elementRef.current?.appendChild(scriptElement);
+    commentsRef.current?.appendChild(script);
 
     return () => {
-      scriptElement.remove();
+      // Cleanup script on unmount
+      script.remove();
     };
-  }, [theme]);
+  }, [repo, issueTerm, label, theme]);
 
-  return <div ref={elementRef} className={styles.comments} />;
+  return <div ref={commentsRef} className={styles.comments} />;
 }

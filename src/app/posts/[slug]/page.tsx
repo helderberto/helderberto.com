@@ -98,7 +98,11 @@ export default async function Page({ params }: Props) {
           {post.content}
         </Markdown>
       </div>
-      <Comments />
+      <Comments
+        repo={`${siteConfig.githubUsername}/${siteConfig.githubRepo}`}
+        issueTerm={slug}
+        theme="github-dark"
+      />
     </article>
   );
 }

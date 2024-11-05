@@ -13,7 +13,6 @@ export const siteConfig = {
   social: {
     github: "https://github.com/helderberto",
     linkedin: "https://www.linkedin.com/in/helderberto/",
-    twitter: "@yourhandle", // Add if you have Twitter
   },
   keywords: [
     "Senior Software Engineer",
@@ -33,4 +32,6 @@ export const siteConfig = {
   type: "website",
   themeColor: "#ffffff", // Add your brand color
   canonicalUrl: "https://helderberto.com",
+  githubUsername: "helderberto", // Replace with your GitHub username
+  githubRepo: "website", // Replace with your repository name
 } as const;
