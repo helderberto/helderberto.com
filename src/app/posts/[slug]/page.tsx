@@ -16,9 +16,13 @@ export async function generateMetadata({
   params,
 }: PostPageProps): Promise<Metadata> {
   const resolvedParams = await params;
+  const slug = resolvedParams.slug;
+  if (!slug) return notFound();
 
   try {
-    const post = await getPostBySlug(resolvedParams.slug);
+    const post = await getPostBySlug(slug);
+    const url = `${siteConfig.url}/posts/${slug}`;
+
     return {
       title: post.title,
       description: post.excerpt,
@@ -28,7 +32,7 @@ export async function generateMetadata({
         type: "article",
         publishedTime: post.date,
         authors: [siteConfig.name],
-        url: `${siteConfig.url}/posts/${params.slug}`,
+        url,
       },
       twitter: {
         card: "summary_large_image",
@@ -53,9 +57,12 @@ export async function generateStaticParams() {
 
 export default async function PostPage({ params }: PostPageProps) {
   const resolvedParams = await params;
+  const slug = resolvedParams.slug;
+  if (!slug) return notFound();
 
   try {
-    const post = await getPostBySlug(resolvedParams.slug);
+    const post = await getPostBySlug(slug);
+    const url = `${siteConfig.url}/posts/${slug}`;
 
     const jsonLd = {
       "@context": "https://schema.org",
@@ -69,7 +76,7 @@ export default async function PostPage({ params }: PostPageProps) {
         url: siteConfig.url,
       },
       description: post.excerpt,
-      url: `${siteConfig.url}/${resolvedParams.slug}`,
+      url,
       publisher: {
         "@type": "Person",
         name: siteConfig.name,

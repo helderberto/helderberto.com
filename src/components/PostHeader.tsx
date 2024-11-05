@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/app/[slug]/page.module.css";
+import styles from "./PostHeader.module.css";
 
 interface PostHeaderProps {
   title: string;
