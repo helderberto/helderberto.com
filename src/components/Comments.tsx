@@ -3,70 +3,45 @@
 import { siteConfig } from "@/config/site";
 import { useTheme } from "next-themes";
 import { useEffect, useRef } from "react";
-
-const useScript = (params: {
-  url: string;
-  theme: string;
-  issueTerm: string;
-  repo: string;
-  ref: React.RefObject<HTMLElement>;
-}) => {
-  const { url, theme, issueTerm, repo, ref } = params;
-
-  useEffect(() => {
-    if (!url) {
-      return;
-    }
-
-    let script = document.createElement("script");
-    script.src = url;
-    script.async = true;
-    script.crossOrigin = "anonymous";
-    script.setAttribute("theme", theme);
-    script.setAttribute("issue-term", issueTerm);
-    script.setAttribute("repo", repo);
-
-    if (ref.current) {
-      ref.current.appendChild(script);
-    }
-
-    // store status of the script
-    const setAttributeStatus = (event: Event) => {
-      if (event.type === "load") {
-        console.log("Script loaded successfully");
-      } else if (event.type === "error") {
-        console.error("Error loading script:", event);
-      }
-    };
-
-    script.addEventListener("load", setAttributeStatus);
-    script.addEventListener("error", setAttributeStatus);
-
-    return () => {
-      // useEffect clean up
-      if (script) {
-        script.removeEventListener("load", setAttributeStatus);
-        script.removeEventListener("error", setAttributeStatus);
-      }
-    };
-  }, [url]);
-};
+import styles from "./Comments.module.css";
 
 export const Comments = ({ url }: { url: string }) => {
-  const commentRef = useRef(null);
-  const { theme } = useTheme();
+  const commentRef = useRef<HTMLDivElement>(null);
+  const { theme, systemTheme } = useTheme();
 
-  useScript({
-    url: "https://utteranc.es/client.js",
-    theme: theme || "github-dark",
-    issueTerm: url,
-    repo: siteConfig.comments.repo,
-    ref: commentRef,
-  });
+  const currentTheme = theme === "system" ? systemTheme : theme;
+  const utterancesTheme =
+    currentTheme === "dark" ? "github-dark" : "github-light";
+
+  useEffect(() => {
+    const scriptParentElement = commentRef.current;
+    const utterancesEl = scriptParentElement?.querySelector(".utterances");
+    if (utterancesEl) {
+      utterancesEl.remove();
+    }
+
+    const pathname = new URL(url).pathname;
+
+    const script = document.createElement("script");
+    script.src = "https://utteranc.es/client.js";
+    script.async = true;
+    script.crossOrigin = "anonymous";
+    script.setAttribute("repo", siteConfig.comments.repo);
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("path", pathname);
+    script.setAttribute("label", siteConfig.comments.label);
+    script.setAttribute("theme", utterancesTheme);
+
+    scriptParentElement?.appendChild(script);
+
+    return () => {
+      script.remove();
+    };
+  }, [utterancesTheme, url]);
 
   return (
-    <div className="w-full">
-      <div ref={commentRef}></div>
+    <div className={styles.comments}>
+      <div ref={commentRef} />
     </div>
   );
 };

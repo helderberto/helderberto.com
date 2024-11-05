@@ -7,7 +7,7 @@ export const siteConfig = {
   ogImage: "/social-cover.png",
   author: {
     name: "Helder Burato Berto",
-    email: "your-email@example.com", // Add your email if you want to display it
+    email: "helder.burato@gmail.com",
     role: "Senior Software Engineer",
   },
   social: {
@@ -30,10 +30,10 @@ export const siteConfig = {
   ],
   locale: "en_US",
   type: "website",
-  themeColor: "#ffffff", // Add your brand color
+  themeColor: "#ffffff",
   canonicalUrl: "https://helderberto.com",
   comments: {
-    repo: "helderberto/website", // Replace with your GitHub repo
-    label: "Comments", // Optional
+    repo: "helderberto/website",
+    label: "Comment",
   },
 } as const;
