@@ -1,29 +1,37 @@
-.wrapper {
+.codeBlockContainer {
   position: relative;
+  width: 100%;
 }
 
 .pre {
   position: relative;
   overflow-x: auto;
-  padding: 1rem;
+  padding: 2.75rem 1.25rem 1.25rem 1.25rem;
   border-radius: 0.75rem;
   background: #1e1e2e;
   border: 1px solid #313244;
   overflow: hidden;
+  margin: 0;
 }
 
 .copyButton {
-  position: fixed;
-  z-index: 10;
-  padding: 4px 8px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
+  position: absolute;
+  top: 0.875rem;
+  right: 1rem;
+  padding: 0.35rem 0.75rem;
+  background-color: rgba(45, 45, 45, 0.8);
   color: #fff;
-  font-size: 12px;
-  opacity: 0;
-  transition: all 0.2s ease;
+  border: 1px solid #666;
+  border-radius: 4px;
   cursor: pointer;
+  font-size: 0.875rem;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+}
+
+.copyButton:hover {
+  background-color: #3d3d3d;
 }
 
 .copied {

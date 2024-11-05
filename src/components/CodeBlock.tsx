@@ -19,52 +19,16 @@ interface CodeBlockProps {
 
 export function CodeBlock({ children, className }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
-  const [buttonPosition, setButtonPosition] = useState({ top: 0, right: 0 });
-  const timeoutRef = useRef<NodeJS.Timeout>();
   const codeRef = useRef<HTMLElement>(null);
   const preRef = useRef<HTMLPreElement>(null);
 
-  const handleCopy = async () => {
-    if (!codeRef.current) return;
-
-    try {
-      const code = codeRef.current.textContent || "";
-      await navigator.clipboard.writeText(code);
+  const handleCopy = () => {
+    if (typeof children === "string") {
+      navigator.clipboard.writeText(children);
       setCopied(true);
-
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-
-      timeoutRef.current = setTimeout(() => {
-        setCopied(false);
-      }, 2000);
-    } catch (err) {
-      console.error("Failed to copy code:", err);
+      setTimeout(() => setCopied(false), 2000);
     }
   };
-
-  useEffect(() => {
-    const updateButtonPosition = () => {
-      if (preRef.current) {
-        const rect = preRef.current.getBoundingClientRect();
-        setButtonPosition({
-          top: rect.top + 8,
-          right: window.innerWidth - (rect.right - 8),
-        });
-      }
-    };
-
-    // Update position initially and on scroll/resize
-    updateButtonPosition();
-    window.addEventListener("scroll", updateButtonPosition);
-    window.addEventListener("resize", updateButtonPosition);
-
-    return () => {
-      window.removeEventListener("scroll", updateButtonPosition);
-      window.removeEventListener("resize", updateButtonPosition);
-    };
-  }, []);
 
   useEffect(() => {
     Prism.highlightAll();
@@ -78,16 +42,12 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
   const language = className.replace("lang-", "");
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.codeBlockContainer}>
       <pre ref={preRef} className={`${styles.pre} ${className || ""}`}>
         <button
           onClick={handleCopy}
           className={`${styles.copyButton} ${copied ? styles.copied : ""}`}
           aria-label="Copy code"
-          style={{
-            top: `${buttonPosition.top}px`,
-            right: `${buttonPosition.right}px`,
-          }}
         >
           {copied ? "Copied!" : "Copy"}
         </button>
