@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useRef } from "react";
 import styles from "./Comments.module.css";
 
-export const Comments = ({ url }: { url: string }) => {
+export const Comments = () => {
   const commentRef = useRef<HTMLDivElement>(null);
   const { theme, systemTheme } = useTheme();
 
@@ -21,21 +21,16 @@ export const Comments = ({ url }: { url: string }) => {
     }
 
     const script = document.createElement("script");
-    script.src = "https://utteranc.es/client.js";
-    script.async = true;
-    script.crossOrigin = "anonymous";
+    script.setAttribute("src", "https://utteranc.es/client.js");
     script.setAttribute("repo", siteConfig.comments.repo);
-    script.setAttribute("issue-term", "title");
+    script.setAttribute("crossorigin", "anonymous");
+    script.setAttribute("issue-term", "url");
     script.setAttribute("theme", utterancesTheme);
     script.setAttribute("label", siteConfig.comments.label);
-    script.setAttribute("origin", new URL(siteConfig.url).origin);
+    script.setAttribute("async", "true");
 
-    scriptParentElement?.appendChild(script);
-
-    return () => {
-      script.remove();
-    };
-  }, [utterancesTheme, url]);
+    commentRef.current?.appendChild(script);
+  }, [utterancesTheme]);
 
   return (
     <div className={styles.comments}>

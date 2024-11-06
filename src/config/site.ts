@@ -33,7 +33,7 @@ export const siteConfig = {
   themeColor: "#ffffff",
   canonicalUrl: "https://helderberto.com",
   comments: {
-    repo: "helderberto/website",
+    repo: "helderberto/helderberto.com",
     label: "Comment",
   },
 } as const;
