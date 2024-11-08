@@ -1,6 +1,12 @@
 .comments {
-  margin-top: 4rem;
-  width: 100%;
+  border-top: 1px solid #e5e5e5;
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+}
+
+/* Dark mode styles - this will work with your theme setup */
+:global(.dark) .comments {
+  border-color: #262626;
 }
 
 /* Make sure the utterances iframe takes full width */
