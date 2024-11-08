@@ -4,17 +4,14 @@
   padding-top: 2.5rem;
 }
 
-/* Dark mode styles - this will work with your theme setup */
+/* Dark mode */
 :global(.dark) .comments {
   border-color: #262626;
 }
 
-/* Make sure the utterances iframe takes full width */
-.comments :global(.utterances) {
-  max-width: 100% !important;
-}
-
-/* Target the iframe directly if needed */
+/* Utterances container and iframe */
+.comments :global(.utterances),
 .comments :global(.utterances-frame) {
   width: 100% !important;
+  max-width: 100% !important;
 }
