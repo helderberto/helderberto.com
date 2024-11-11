@@ -59,3 +59,15 @@
 .markdownContent a:hover {
   text-decoration: none;
 }
+
+.content hr {
+  border: none;
+  height: 1px;
+  background-color: #e5e5e5;
+  margin: 2.5rem 0;
+}
+
+/* Dark mode */
+:global(.dark) .content hr {
+  background-color: #262626;
+}
