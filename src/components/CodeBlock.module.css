@@ -19,25 +19,27 @@
   top: var(--spacing-3);
   right: var(--spacing-4);
   padding: var(--spacing-1) var(--spacing-3);
-  background-color: rgba(45, 45, 45, 0.8);
-  color: var(--primary-foreground);
-  border: 1px solid var(--border);
+  background-color: var(--code-header-bg);
+  color: var(--foreground);
+  border: 1px solid var(--code-border);
   border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: var(--font-size-sm);
   z-index: var(--z-10);
   backdrop-filter: blur(4px);
   transition: all 0.2s ease;
+  opacity: 0.8;
 }
 
 .copyButton:hover {
   background-color: var(--muted);
+  opacity: 1;
 }
 
 .copied {
-  background: rgba(166, 227, 161, 0.2) !important; /* Catppuccin green */
-  border-color: rgba(166, 227, 161, 0.4) !important;
-  color: #a6e3a1 !important;
+  background-color: var(--success-light, rgba(166, 227, 161, 0.2)) !important;
+  border-color: var(--success-border, rgba(166, 227, 161, 0.4)) !important;
+  color: var(--success-foreground, #a6e3a1) !important;
 }
 
 /* Show button on hover for desktop */
@@ -51,13 +53,13 @@
 @media (hover: none) {
   .copyButton {
     opacity: 1;
-    background: rgba(255, 255, 255, 0.15);
+    background-color: var(--code-header-bg);
     backdrop-filter: blur(4px);
   }
 }
 
 .copyButton:active {
-  background: rgba(255, 255, 255, 0.2);
+  background-color: var(--muted);
 }
 
 .codeWrapper pre {

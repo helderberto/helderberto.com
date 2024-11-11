@@ -101,6 +101,11 @@
   --z-40: 40;
   --z-50: 50;
   --z-auto: auto;
+
+  /* Success state colors */
+  --success-light: rgba(166, 227, 161, 0.2);
+  --success-border: rgba(166, 227, 161, 0.4);
+  --success-foreground: #a6e3a1;
 }
 
 /* Dark theme colors */
@@ -129,6 +134,11 @@
   --inline-code-border: #363b54;
   --scrollbar-thumb: #363b54;
   --scrollbar-thumb-hover: #414863;
+
+  /* Success state colors - dark theme */
+  --success-light: rgba(166, 227, 161, 0.2);
+  --success-border: rgba(166, 227, 161, 0.4);
+  --success-foreground: #a6e3a1;
 }
 
 /* Base styles */
