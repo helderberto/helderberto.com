@@ -1,12 +1,7 @@
 .comments {
-  border-top: 1px solid #e5e5e5;
-  margin-top: 2.5rem;
-  padding-top: 2.5rem;
-}
-
-/* Dark mode */
-:global(.dark) .comments {
-  border-color: #262626;
+  border-top: 1px solid var(--border);
+  margin-top: var(--spacing-10);
+  padding-top: var(--spacing-10);
 }
 
 /* Utterances container and iframe */
