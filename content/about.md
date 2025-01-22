@@ -1,6 +1,6 @@
 # About Me
 
-I'm a Senior Software Engineer with over 13 years of experience in web development, specializing in building scalable and performant web applications.
+I'm a Senior Software Engineer with over 14 years of experience in web development, specializing in building scalable and performant web applications.
 
 Currently, I'm a Senior Software Engineer at [PagerDuty](https://www.pagerduty.com/), where I lead front-end development initiatives and architect user interface solutions that enhance the digital operations platform.
 
