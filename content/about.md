@@ -1,52 +1,51 @@
 # About Me
 
-I'm a Senior Software Engineer with over 14 years of experience in web development, specializing in building scalable and performant web applications.
+I'm a Senior Software Engineer with over a decade of experience in web development, passionate about architecting scalable, maintainable, and high-performance web applications.
 
-Currently, I'm a Senior Software Engineer at [PagerDuty](https://www.pagerduty.com/), where I lead front-end development initiatives and architect user interface solutions that enhance the digital operations platform.
+Currently, I work at [PagerDuty](https://www.pagerduty.com/) as a Senior Software Engineer, where I lead front-end initiatives and design user interface solutions that elevate the digital operations platform.
 
 ## Expertise
 
-My core expertise lies in:
+My main areas of expertise include:
 
-- Front-end Development (React, TypeScript, JavaScript)
-- Frontend Architecture & System Design
+- Frontend Development (React, TypeScript, JavaScript, Vite)
+- Frontend Architecture & System Design focused on scalability and maintainability
 - UI/UX Implementation
-- Technical Leadership
-- Team Mentorship
+- Technical Leadership & Team Mentorship
 
-I have a strong foundation in back-end development, which helps me build comprehensive full-stack solutions when needed.
+I also have a solid background in back-end development, enabling me to deliver robust full-stack solutions when needed.
 
 ## Professional Impact
 
-Throughout my career, I've:
+Throughout my career, I have:
 
-- Led multiple successful software projects from conception to delivery
-- Mentored and coached junior and mid-level engineers
-- Contributed to hiring and building high-performing engineering teams
-- Implemented best practices and coding standards
-- Improved application performance and user experience
+- Led successful software projects from concept to launch
+- Mentored and supported engineers at various career stages
+- Helped build and hire high-performing engineering teams
+- Established and promoted best practices and coding standards
+- Consistently improved application performance and user experience
 
 ## Technical Stack
 
-My current tech stack includes:
+My current stack includes:
 
-- TypeScript/JavaScript
-- React & React Ecosystem
-- Jest & React Testing Library
+- TypeScript / JavaScript
+- React & the React Ecosystem
+- Vitest, Jest & React Testing Library
 - Node.js
 - Modern CSS (CSS Modules, Styled Components)
 - Frontend Architecture Tools & Patterns
 
-While I stay current with modern technologies, I believe in choosing the right tool for each project and maintaining focus on fundamental software engineering principles that stand the test of time.
+While I keep up with the latest technologies, I believe in choosing the right tool for each challenge and always prioritizing fundamental engineering principles that stand the test of time.
 
 ## Writing & Sharing
 
 I regularly write about:
 
 - Frontend Architecture & Design Patterns
-- Front-end Development Best Practices
-- Scaling Frontend Applications
+- Best Practices in Front-end Development
+- Scaling and Maintaining Frontend Applications
 - Engineering Leadership
-- Technical Decision Making
+- Technical Decision-Making
 
-Feel free to explore my blog posts or connect with me on [GitHub](https://github.com/helderberto), [LinkedIn](https://www.linkedin.com/in/helderberto/), or reach out via email at [helder.burato@gmail.com](mailto:helder.burato@gmail.com).
+Feel free to check out my blog posts or connect with me on [GitHub](https://github.com/helderberto), [LinkedIn](https://www.linkedin.com/in/helderberto/), or reach out via email at [helder.burato@gmail.com](mailto:helder.burato@gmail.com).
