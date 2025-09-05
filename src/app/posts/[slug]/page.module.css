@@ -12,7 +12,8 @@
 }
 
 .content {
-  font-size: var(--font-size-body);
+  font-family: var(--font-family-reading);
+  font-size: var(--font-size-body-reading);
   line-height: var(--line-height-body-relaxed);
   max-width: none;
 }
@@ -57,7 +58,8 @@
 }
 
 .markdownContent p {
-  font-size: var(--font-size-body);
+  font-family: var(--font-family-reading);
+  font-size: var(--font-size-body-reading);
   line-height: var(--line-height-body-relaxed);
   margin-bottom: 1rem;
   color: var(--foreground);
@@ -65,7 +67,8 @@
 
 .markdownContent ul,
 .markdownContent ol {
-  font-size: var(--font-size-body);
+  font-family: var(--font-family-reading);
+  font-size: var(--font-size-body-reading);
   line-height: var(--line-height-body-relaxed);
   margin: 1rem 0;
   padding-left: 1.5rem;
@@ -99,12 +102,13 @@
 }
 
 .markdownContent blockquote {
+  font-family: var(--font-family-reading);
   border-left: 4px solid var(--primary);
   padding-left: 1.5rem;
   margin: 1.5rem 0;
   font-style: italic;
   color: var(--muted-foreground);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-body-reading);
   line-height: var(--line-height-body-relaxed);
 }
 

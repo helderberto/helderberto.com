@@ -28,6 +28,7 @@
   /* Typography */
   --font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  --font-family-reading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   /* Font Sizes */
   --font-size-xs: 0.75rem; /* 12px */
@@ -42,6 +43,7 @@
 
   /* Content Typography - Optimized for readability */
   --font-size-body: 1rem; /* 16px - main content */
+  --font-size-body-reading: 1.0625rem; /* 17px - optimized for reading */
   --font-size-body-sm: 0.875rem; /* 14px - secondary content */
   --font-size-caption: 0.75rem; /* 12px - captions, metadata */
   
