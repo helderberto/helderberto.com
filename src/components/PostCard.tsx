@@ -9,10 +9,10 @@ interface PostCardProps {
 const PostCard = ({ post }: PostCardProps) => {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      month: 'long', 
-      day: 'numeric', 
-      year: 'numeric' 
+    return date.toLocaleDateString("en-US", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
     });
   };
 

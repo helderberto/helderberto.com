@@ -9,9 +9,9 @@ interface PostHeaderProps {
 
 export function PostHeader({ title, date }: PostHeaderProps) {
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
     day: "numeric",
+    month: "long",
+    year: "numeric",
   });
 
   return (
