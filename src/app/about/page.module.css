@@ -41,6 +41,14 @@
 .content a {
   color: var(--primary);
   text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: all 0.2s ease;
+}
+
+.content a:hover {
+  color: var(--primary);
+  text-decoration-thickness: 2px;
 }
 
 .content ul,
