@@ -11,6 +11,8 @@
   margin: 0;
   font-size: 0;
   border-radius: 0.5rem;
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
 }
 
 .pre code {
@@ -22,7 +24,7 @@
   padding: 0;
   border-radius: 0;
   border: none;
-  color: #4c4f69;
+  color: #3c3f57;
   display: block;
 }
 
@@ -70,12 +72,12 @@
 .pre :global(.token.prolog),
 .pre :global(.token.doctype),
 .pre :global(.token.cdata) {
-  color: #6c6f85;
+  color: #5c5f77;
   font-style: italic;
 }
 
 .pre :global(.token.punctuation) {
-  color: #4c4f69;
+  color: #3c3f57;
 }
 
 .pre :global(.token.namespace) {

@@ -96,13 +96,13 @@
   --ring: #3b82f6;
 
   /* Code theme colors - light - Catppuccin Latte */
-  --code-bg: #eff1f5;
+  --code-bg: #f4f4f5;
   --code-header-bg: #e6e9ef;
-  --code-border: #dce0e8;
+  --code-border: #e1e5e9;
   --code-meta: #6c6f85;
-  --inline-code-bg: #dce0e8;
+  --inline-code-bg: #f1f3f4;
   --inline-code-color: #d20f39;
-  --inline-code-border: #acb0be;
+  --inline-code-border: #d0d7de;
   --scrollbar-thumb: #bcc0cc;
   --scrollbar-thumb-hover: #9ca0b0;
 
@@ -215,4 +215,10 @@ code {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--scrollbar-thumb-hover);
+}
+
+/* Remove default Prism.js backgrounds */
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: none !important;
 }
