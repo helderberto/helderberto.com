@@ -1,16 +1,32 @@
 .header {
-  margin-bottom: var(--spacing-12);
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
 }
 
 .title {
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-5xl);
   font-weight: var(--font-weight-bold);
-  margin-bottom: var(--spacing-4);
+  margin-bottom: 1rem;
   line-height: var(--line-height-tight);
   color: var(--foreground);
+  letter-spacing: -0.025em;
 }
 
 .date {
   font-size: var(--font-size-base);
   color: var(--muted-foreground);
+  font-weight: var(--font-weight-normal);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--font-size-4xl);
+    line-height: var(--line-height-heading);
+  }
+  
+  .header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
 }

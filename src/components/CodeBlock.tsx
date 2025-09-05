@@ -18,17 +18,8 @@ interface CodeBlockProps {
 }
 
 export function CodeBlock({ children, className }: CodeBlockProps) {
-  const [copied, setCopied] = useState(false);
   const [mounted, setMounted] = useState(false);
   const codeRef = useRef<HTMLElement>(null);
-
-  const handleCopy = () => {
-    if (typeof children === "string") {
-      navigator.clipboard.writeText(children);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
 
   // Handle mounting state
   useEffect(() => {
@@ -53,15 +44,6 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
   return (
     <div className={styles.codeBlockContainer}>
       <pre className={styles.pre}>
-        {mounted && (
-          <button
-            onClick={handleCopy}
-            className={`${styles.copyButton} ${copied ? styles.copied : ""}`}
-            aria-label="Copy code"
-          >
-            {copied ? "Copied!" : "Copy"}
-          </button>
-        )}
         <code ref={codeRef} className={`language-${language}`}>
           {children}
         </code>

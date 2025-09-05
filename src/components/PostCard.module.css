@@ -7,9 +7,9 @@
 }
 
 .title {
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.4;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-snug);
   color: var(--foreground);
   text-decoration: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -23,7 +23,7 @@
 }
 
 .date {
-  font-size: 0.875rem;
+  font-size: var(--font-size-caption);
   color: var(--muted-foreground);
   white-space: nowrap;
   font-style: italic;

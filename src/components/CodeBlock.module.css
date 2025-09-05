@@ -1,73 +1,22 @@
 .codeBlockContainer {
   position: relative;
   width: 100%;
+  margin: 2rem 0;
 }
 
 .pre {
   position: relative;
   overflow-x: auto;
-  padding: var(--spacing-10) var(--spacing-5) var(--spacing-5) var(--spacing-5);
-  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
   background: var(--code-bg);
   border: 1px solid var(--code-border);
   overflow: hidden;
   margin: 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-.copyButton {
-  position: absolute;
-  top: var(--spacing-3);
-  right: var(--spacing-4);
-  padding: var(--spacing-1) var(--spacing-3);
-  background-color: var(--code-header-bg);
-  color: var(--foreground);
-  border: 1px solid var(--code-border);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-size: var(--font-size-sm);
-  z-index: var(--z-10);
-  backdrop-filter: blur(4px);
-  transition: all 0.2s ease;
-  opacity: 0.8;
-}
-
-.copyButton:hover {
-  background-color: var(--muted);
-  opacity: 1;
-}
-
-.copied {
-  background-color: var(--success-light, rgba(166, 227, 161, 0.2)) !important;
-  border-color: var(--success-border, rgba(166, 227, 161, 0.4)) !important;
-  color: var(--success-foreground, #a6e3a1) !important;
-}
-
-/* Show button on hover for desktop */
-@media (hover: hover) {
-  .wrapper:hover .copyButton {
-    opacity: 1;
-  }
-}
-
-/* Show button by default on touch devices */
-@media (hover: none) {
-  .copyButton {
-    opacity: 1;
-    background-color: var(--code-header-bg);
-    backdrop-filter: blur(4px);
-  }
-}
-
-.copyButton:active {
-  background-color: var(--muted);
-}
-
-.codeWrapper pre {
-  margin: 0;
-  padding: 1.25rem;
-}
-
-.codeWrapper code {
+.pre code {
   font-family: var(--font-family-mono);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-relaxed);
@@ -79,12 +28,12 @@
 
 .inlineCode {
   font-family: var(--font-family-mono);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-size: 0.9em;
+  font-weight: 500;
   background: var(--inline-code-bg);
   color: var(--inline-code-color);
-  padding: var(--spacing-1) var(--spacing-2);
-  border-radius: var(--radius-sm);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
   white-space: nowrap;
   vertical-align: baseline;
   border: 1px solid var(--inline-code-border);
@@ -109,73 +58,73 @@
 }
 
 /* Token colors - Official Catppuccin Mocha */
-.codeWrapper :global(.token.comment),
-.codeWrapper :global(.token.prolog),
-.codeWrapper :global(.token.doctype),
-.codeWrapper :global(.token.cdata) {
+.pre :global(.token.comment),
+.pre :global(.token.prolog),
+.pre :global(.token.doctype),
+.pre :global(.token.cdata) {
   color: #585b70;
 }
 
-.codeWrapper :global(.token.punctuation) {
+.pre :global(.token.punctuation) {
   color: #cdd6f4;
 }
 
-.codeWrapper :global(.token.namespace) {
+.pre :global(.token.namespace) {
   opacity: 0.7;
 }
 
-.codeWrapper :global(.token.property),
-.codeWrapper :global(.token.tag),
-.codeWrapper :global(.token.constant),
-.codeWrapper :global(.token.symbol),
-.codeWrapper :global(.token.deleted) {
+.pre :global(.token.property),
+.pre :global(.token.tag),
+.pre :global(.token.constant),
+.pre :global(.token.symbol),
+.pre :global(.token.deleted) {
   color: #f38ba8;
 }
 
-.codeWrapper :global(.token.boolean),
-.codeWrapper :global(.token.number) {
+.pre :global(.token.boolean),
+.pre :global(.token.number) {
   color: #fab387;
 }
 
-.codeWrapper :global(.token.selector),
-.codeWrapper :global(.token.attr-name),
-.codeWrapper :global(.token.string),
-.codeWrapper :global(.token.char),
-.codeWrapper :global(.token.builtin),
-.codeWrapper :global(.token.inserted) {
+.pre :global(.token.selector),
+.pre :global(.token.attr-name),
+.pre :global(.token.string),
+.pre :global(.token.char),
+.pre :global(.token.builtin),
+.pre :global(.token.inserted) {
   color: #a6e3a1;
 }
 
-.codeWrapper :global(.token.operator),
-.codeWrapper :global(.token.entity),
-.codeWrapper :global(.token.url),
-.codeWrapper :global(.language-css .token.string),
-.codeWrapper :global(.style .token.string),
-.codeWrapper :global(.token.variable) {
+.pre :global(.token.operator),
+.pre :global(.token.entity),
+.pre :global(.token.url),
+.pre :global(.language-css .token.string),
+.pre :global(.style .token.string),
+.pre :global(.token.variable) {
   color: #f5c2e7;
 }
 
-.codeWrapper :global(.token.atrule),
-.codeWrapper :global(.token.attr-value),
-.codeWrapper :global(.token.function),
-.codeWrapper :global(.token.class-name) {
+.pre :global(.token.atrule),
+.pre :global(.token.attr-value),
+.pre :global(.token.function),
+.pre :global(.token.class-name) {
   color: #f9e2af;
 }
 
-.codeWrapper :global(.token.keyword) {
+.pre :global(.token.keyword) {
   color: #cba6f7;
 }
 
-.codeWrapper :global(.token.regex),
-.codeWrapper :global(.token.important) {
+.pre :global(.token.regex),
+.pre :global(.token.important) {
   color: #fab387;
 }
 
-.codeWrapper :global(.token.important),
-.codeWrapper :global(.token.bold) {
+.pre :global(.token.important),
+.pre :global(.token.bold) {
   font-weight: bold;
 }
 
-.codeWrapper :global(.token.italic) {
+.pre :global(.token.italic) {
   font-style: italic;
 }
