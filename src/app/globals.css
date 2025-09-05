@@ -37,14 +37,14 @@
   --font-size-lg: 1.125rem; /* 18px */
   --font-size-xl: 1.25rem; /* 20px */
   --font-size-2xl: 1.5rem; /* 24px */
-  --font-size-3xl: 1.875rem; /* 30px */
-  --font-size-4xl: 2.25rem; /* 36px */
-  --font-size-5xl: 3rem; /* 48px */
+  --font-size-3xl: 1.75rem; /* 28px */
+  --font-size-4xl: 2rem; /* 32px */
+  --font-size-5xl: 2.5rem; /* 40px */
 
   /* Content Typography - Optimized for readability */
-  --font-size-body: 1.125rem; /* 18px - main content */
-  --font-size-body-sm: 1rem; /* 16px - secondary content */
-  --font-size-caption: 0.875rem; /* 14px - captions, metadata */
+  --font-size-body: 1rem; /* 16px - main content */
+  --font-size-body-sm: 0.875rem; /* 14px - secondary content */
+  --font-size-caption: 0.75rem; /* 12px - captions, metadata */
   
   /* Font Weights */
   --font-weight-normal: 400;
@@ -61,9 +61,9 @@
   --line-height-loose: 1.75;
   
   /* Content Line Heights */
-  --line-height-heading: 1.2;
-  --line-height-body: 1.6;
-  --line-height-body-relaxed: 1.7;
+  --line-height-heading: 1.1;
+  --line-height-body: 1.5;
+  --line-height-body-relaxed: 1.6;
 
   /* Layout */
   --container-sm: 640px;

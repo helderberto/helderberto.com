@@ -2,12 +2,12 @@
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 3rem 2rem 4rem 2rem;
+  padding: 2rem 2rem 3rem 2rem;
 }
 
 @media (max-width: 768px) {
   .article {
-    padding: 2rem 1rem 3rem 1rem;
+    padding: 1.5rem 1rem 2rem 1rem;
   }
 }
 
@@ -36,7 +36,7 @@
   font-size: var(--font-size-4xl);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading);
-  margin: 3rem 0 1.5rem 0;
+  margin: 2rem 0 1rem 0;
   color: var(--foreground);
 }
 
@@ -44,7 +44,7 @@
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-heading);
-  margin: 2.5rem 0 1.5rem 0;
+  margin: 2rem 0 1rem 0;
   color: var(--foreground);
 }
 
@@ -52,14 +52,14 @@
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-snug);
-  margin: 2rem 0 1rem 0;
+  margin: 1.5rem 0 0.75rem 0;
   color: var(--foreground);
 }
 
 .markdownContent p {
   font-size: var(--font-size-body);
   line-height: var(--line-height-body-relaxed);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: var(--foreground);
 }
 
@@ -67,12 +67,12 @@
 .markdownContent ol {
   font-size: var(--font-size-body);
   line-height: var(--line-height-body-relaxed);
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   padding-left: 1.5rem;
 }
 
 .markdownContent li {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .markdownContent a {
@@ -101,7 +101,7 @@
 .markdownContent blockquote {
   border-left: 4px solid var(--primary);
   padding-left: 1.5rem;
-  margin: 2rem 0;
+  margin: 1.5rem 0;
   font-style: italic;
   color: var(--muted-foreground);
   font-size: var(--font-size-body);
@@ -112,11 +112,11 @@
   border: none;
   height: 1px;
   background: var(--border);
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 
 .markdownContent pre {
-  margin: 2rem 0 !important;
+  margin: 1.5rem 0 !important;
 }
 
 .markdownContent code:not(pre code) {
