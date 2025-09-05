@@ -4,11 +4,10 @@ import { siteConfig } from "@/config/site";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// Using system fonts instead of custom fonts
 import "./globals.css";
 import styles from "./layout.module.css";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -90,7 +89,7 @@ export default function RootLayout({
         />
         <link rel="manifest" href="/favicons/site.webmanifest" />
       </head>
-      <body className={inter.className}>
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
