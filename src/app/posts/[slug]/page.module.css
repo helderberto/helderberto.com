@@ -62,7 +62,7 @@
   font-size: var(--font-size-body-reading);
   line-height: var(--line-height-body-relaxed);
   margin-bottom: 1rem;
-  color: var(--foreground);
+  color: var(--accent-foreground);
 }
 
 .markdownContent ul,
@@ -72,6 +72,7 @@
   line-height: var(--line-height-body-relaxed);
   margin: 1rem 0;
   padding-left: 1.5rem;
+  color: var(--accent-foreground);
 }
 
 .markdownContent li {
