@@ -17,6 +17,24 @@ export default function SearchPosts({ initialPosts }: SearchPostsProps) {
     post.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const groupPostsByYear = (posts: Post[]) => {
+    const grouped: { [year: string]: Post[] } = {};
+    
+    posts.forEach((post) => {
+      const year = new Date(post.date).getFullYear().toString();
+      if (!grouped[year]) {
+        grouped[year] = [];
+      }
+      grouped[year].push(post);
+    });
+
+    return Object.entries(grouped).sort(([yearA], [yearB]) => 
+      parseInt(yearB) - parseInt(yearA)
+    );
+  };
+
+  const groupedPosts = groupPostsByYear(filteredPosts);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -31,7 +49,16 @@ export default function SearchPosts({ initialPosts }: SearchPostsProps) {
 
       <div className={styles.results}>
         {filteredPosts.length > 0 ? (
-          filteredPosts.map((post) => <PostCard key={post.slug} post={post} />)
+          groupedPosts.map(([year, posts]) => (
+            <div key={year} className={styles.yearGroup}>
+              <h2 className={styles.yearHeading}>{year}</h2>
+              <div className={styles.postsList}>
+                {posts.map((post) => (
+                  <PostCard key={post.slug} post={post} />
+                ))}
+              </div>
+            </div>
+          ))
         ) : (
           <EmptyState
             message={

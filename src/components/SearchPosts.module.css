@@ -1,5 +1,6 @@
 .wrapper {
   width: 100%;
+  max-width: var(--max-width);
 }
 
 .container {
@@ -34,21 +35,30 @@
 }
 
 .results {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(1, 1fr);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: var(--max-width);
 }
 
-@media (min-width: 48rem) {
-  .results {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.yearGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
-@media (min-width: 64rem) {
-  .results {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.yearHeading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.postsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .searchInput {

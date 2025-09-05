@@ -7,16 +7,24 @@ interface PostCardProps {
 }
 
 const PostCard = ({ post }: PostCardProps) => {
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+      month: 'long', 
+      day: 'numeric', 
+      year: 'numeric' 
+    });
+  };
+
   return (
-    <Link href={`/posts/${post.slug}`} className={styles.card}>
-      <article>
-        <h2 className={styles.title}>{post.title}</h2>
-        <time className={styles.date} dateTime={post.date}>
-          {post.date}
-        </time>
-        <p className={styles.excerpt}>{post.excerpt}</p>
-      </article>
-    </Link>
+    <div className={styles.item}>
+      <time className={styles.date} dateTime={post.date}>
+        {formatDate(post.date)}
+      </time>
+      <Link href={`/posts/${post.slug}`} className={styles.title}>
+        {post.title}
+      </Link>
+    </div>
   );
 };
 
