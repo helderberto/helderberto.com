@@ -7,66 +7,75 @@
 .pre {
   position: relative;
   overflow-x: auto;
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  background: var(--code-bg);
-  border: 1px solid var(--code-border);
-  overflow: hidden;
+  padding: 1.25rem 1.5rem;
   margin: 0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  font-size: 0;
+  border-radius: 0.5rem;
 }
 
 .pre code {
   font-family: var(--font-family-mono);
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-relaxed);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  font-weight: 400;
   background: none;
   padding: 0;
   border-radius: 0;
   border: none;
+  color: #4c4f69;
+  display: block;
+}
+
+/* Dark theme code color - Catppuccin Mocha */
+:global(.dark) .pre code {
+  color: #cdd6f4;
 }
 
 .inlineCode {
   font-family: var(--font-family-mono);
-  font-size: 0.9em;
+  font-size: 0.875em;
   font-weight: 500;
   background: var(--inline-code-bg);
   color: var(--inline-code-color);
-  padding: 0.2em 0.4em;
-  border-radius: 0.25rem;
+  padding: 0.15em 0.4em;
+  border-radius: 0.375rem;
   white-space: nowrap;
   vertical-align: baseline;
   border: 1px solid var(--inline-code-border);
+  position: relative;
+  top: -0.05em;
 }
 
 /* Custom scrollbar */
 .pre::-webkit-scrollbar {
-  height: var(--spacing-3);
+  height: 0.5rem;
 }
 
 .pre::-webkit-scrollbar-track {
-  background: var(--code-bg);
+  background: transparent;
 }
 
 .pre::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb);
-  border-radius: var(--radius-sm);
+  border-radius: 0.25rem;
 }
 
 .pre::-webkit-scrollbar-thumb:hover {
   background: var(--scrollbar-thumb-hover);
 }
 
-/* Token colors - Official Catppuccin Mocha */
+/* Token colors - Catppuccin Theme */
+/* Light theme syntax highlighting - Catppuccin Latte */
 .pre :global(.token.comment),
 .pre :global(.token.prolog),
 .pre :global(.token.doctype),
 .pre :global(.token.cdata) {
-  color: #585b70;
+  color: #6c6f85;
+  font-style: italic;
 }
 
 .pre :global(.token.punctuation) {
-  color: #cdd6f4;
+  color: #4c4f69;
 }
 
 .pre :global(.token.namespace) {
@@ -78,12 +87,12 @@
 .pre :global(.token.constant),
 .pre :global(.token.symbol),
 .pre :global(.token.deleted) {
-  color: #f38ba8;
+  color: #d20f39;
 }
 
 .pre :global(.token.boolean),
 .pre :global(.token.number) {
-  color: #fab387;
+  color: #fe640b;
 }
 
 .pre :global(.token.selector),
@@ -92,7 +101,7 @@
 .pre :global(.token.char),
 .pre :global(.token.builtin),
 .pre :global(.token.inserted) {
-  color: #a6e3a1;
+  color: #40a02b;
 }
 
 .pre :global(.token.operator),
@@ -101,23 +110,24 @@
 .pre :global(.language-css .token.string),
 .pre :global(.style .token.string),
 .pre :global(.token.variable) {
-  color: #f5c2e7;
+  color: #ea76cb;
 }
 
 .pre :global(.token.atrule),
 .pre :global(.token.attr-value),
 .pre :global(.token.function),
 .pre :global(.token.class-name) {
-  color: #f9e2af;
+  color: #df8e1d;
 }
 
 .pre :global(.token.keyword) {
-  color: #cba6f7;
+  color: #8839ef;
+  font-weight: 600;
 }
 
 .pre :global(.token.regex),
 .pre :global(.token.important) {
-  color: #fab387;
+  color: #fe640b;
 }
 
 .pre :global(.token.important),
@@ -127,4 +137,65 @@
 
 .pre :global(.token.italic) {
   font-style: italic;
+}
+
+/* Dark theme syntax highlighting - Catppuccin Mocha */
+:global(.dark) .pre :global(.token.comment),
+:global(.dark) .pre :global(.token.prolog),
+:global(.dark) .pre :global(.token.doctype),
+:global(.dark) .pre :global(.token.cdata) {
+  color: #6c7086;
+  font-style: italic;
+}
+
+:global(.dark) .pre :global(.token.punctuation) {
+  color: #cdd6f4;
+}
+
+:global(.dark) .pre :global(.token.property),
+:global(.dark) .pre :global(.token.tag),
+:global(.dark) .pre :global(.token.constant),
+:global(.dark) .pre :global(.token.symbol),
+:global(.dark) .pre :global(.token.deleted) {
+  color: #f38ba8;
+}
+
+:global(.dark) .pre :global(.token.boolean),
+:global(.dark) .pre :global(.token.number) {
+  color: #fab387;
+}
+
+:global(.dark) .pre :global(.token.selector),
+:global(.dark) .pre :global(.token.attr-name),
+:global(.dark) .pre :global(.token.string),
+:global(.dark) .pre :global(.token.char),
+:global(.dark) .pre :global(.token.builtin),
+:global(.dark) .pre :global(.token.inserted) {
+  color: #a6e3a1;
+}
+
+:global(.dark) .pre :global(.token.operator),
+:global(.dark) .pre :global(.token.entity),
+:global(.dark) .pre :global(.token.url),
+:global(.dark) .pre :global(.language-css .token.string),
+:global(.dark) .pre :global(.style .token.string),
+:global(.dark) .pre :global(.token.variable) {
+  color: #f5c2e7;
+}
+
+:global(.dark) .pre :global(.token.atrule),
+:global(.dark) .pre :global(.token.attr-value),
+:global(.dark) .pre :global(.token.function),
+:global(.dark) .pre :global(.token.class-name) {
+  color: #f9e2af;
+}
+
+:global(.dark) .pre :global(.token.keyword) {
+  color: #cba6f7;
+  font-weight: 600;
+}
+
+:global(.dark) .pre :global(.token.regex),
+:global(.dark) .pre :global(.token.important) {
+  color: #fab387;
 }

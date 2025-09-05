@@ -124,7 +124,16 @@
 }
 
 .markdownContent code:not(pre code) {
-  font-size: 0.9em;
+  font-family: var(--font-family-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: var(--inline-code-bg);
+  color: var(--inline-code-color);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--inline-code-border);
+  position: relative;
+  top: -0.0625rem;
 }
 
 /* Add better spacing between elements */
