@@ -85,6 +85,7 @@
   --foreground: #000000;
   --primary: #1d4ed8;
   --primary-rgb: 29, 78, 216;
+  --primary-hover: #1e40af;
   --primary-foreground: #ffffff;
   --muted: #f3f4f6;
   --muted-foreground: #6b7280;
@@ -107,6 +108,7 @@
   --foreground: #f0f6fc;
   --primary: #60a5fa;
   --primary-rgb: 96, 165, 250;
+  --primary-hover: #3b82f6;
   --primary-foreground: #0d1117;
   --muted: #21262d;
   --muted-foreground: #8b949e;
@@ -195,10 +197,60 @@ code {
   font-family: var(--font-family-mono);
 }
 
+/* Enhanced Link Styles */
+a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* Navigation and button-style links */
+a.nav-link {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  border: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+/* Logo and special links without underlines */
+a.no-underline {
+  text-decoration: none;
+}
+
+a.nav-link:hover {
+  background: rgba(var(--primary-rgb), 0.1);
+  border-color: rgba(var(--primary-rgb), 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.15);
+}
+
+/* Active state for navigation links */
+a.nav-link.active,
+a.nav-link[aria-current="page"] {
+  background: rgba(var(--primary-rgb), 0.1);
+  border-color: rgba(var(--primary-rgb), 0.3);
+  color: var(--primary);
+}
+
 /* Focus Styles */
 :focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
+}
+
+a:focus-visible {
+  outline-offset: 4px;
+  box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.2);
 }
 
 /* Scrollbar Styles */

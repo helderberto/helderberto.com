@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header className={`${styles.header} sticky-top`}>
       <div className={`${styles.container} container-sm flex-between`}>
-        <Link href="/" className={`${styles.logo} transition-transform`}>
+        <Link href="/" className={`${styles.logo} no-underline transition-transform`}>
           <Image
             src="/profile.jpg"
             alt="Profile Picture"
@@ -23,14 +23,15 @@ const Header = () => {
 
         <div className={`${styles.rightSection} flex-center`}>
           <nav className={`${styles.nav} flex-center`}>
-            <Link href="/" className={`${styles.link} transition-smooth`}>
+            <Link 
+              href="/" 
+              className={`${styles.link} nav-link ${pathname === "/" ? "active" : ""}`}
+            >
               Home
             </Link>
             <Link
               href="/about"
-              className={`${styles.link} transition-smooth ${
-                pathname === "/about" ? styles.active : ""
-              }`}
+              className={`${styles.link} nav-link ${pathname === "/about" ? "active" : ""}`}
             >
               About
             </Link>
