@@ -1,7 +1,3 @@
-.content {
-  padding: 0 var(--container-padding);
-}
-
 .intro {
   padding: var(--spacing-responsive-lg) 0;
 }

@@ -1,15 +1,13 @@
 .header {
   margin-bottom: var(--spacing-responsive-xl);
-  text-align: center;
 }
 
 .title {
   font-size: var(--heading-h1-page);
   font-weight: var(--font-weight-bold);
-  margin-bottom: var(--spacing-responsive-lg);
+  margin-bottom: var(--spacing-responsive-xs);
   line-height: var(--line-height-tight);
   color: var(--foreground);
-  text-align: center;
 }
 
 .date {

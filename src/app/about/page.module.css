@@ -1,7 +1,3 @@
-.content {
-  padding: 0 var(--container-padding);
-}
-
 /* Markdown content styles */
 .content article {
   font-size: var(--text-responsive);
@@ -13,7 +9,6 @@
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading);
   margin: var(--spacing-responsive-lg) 0 var(--spacing-responsive-lg);
-  text-align: center;
 }
 
 .content h2 {
