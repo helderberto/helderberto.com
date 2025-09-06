@@ -1,24 +1,15 @@
 .header {
   border-bottom: 1px solid var(--border);
   background-color: var(--background);
-  position: sticky;
-  top: 0;
-  z-index: 100;
   backdrop-filter: blur(0.625rem);
 }
 
 .container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 1rem 2rem;
 }
 
 .logo {
   text-decoration: none;
-  transition: transform 0.2s ease;
 }
 
 .logo:hover {
@@ -36,15 +27,11 @@
 }
 
 .rightSection {
-  display: flex;
-  align-items: center;
   gap: 1.5rem;
 }
 
 .nav {
-  display: flex;
   gap: 1.5rem;
-  align-items: center;
 }
 
 .link {
@@ -53,7 +40,6 @@
   font-weight: 500;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  transition: all 0.2s ease;
 }
 
 .link:hover {

@@ -17,7 +17,7 @@ export default function AboutPage() {
   const { content } = matter(fileContents);
 
   return (
-    <main className={styles.container}>
+    <main className="flex-col gap-lg container-sm">
       <div className={styles.content}>
         <article>
           <Markdown

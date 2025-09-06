@@ -208,12 +208,56 @@ body {
   font-size: var(--font-size-base);
 }
 
-/* Container utility class */
+/* Layout utility classes */
 .container {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--spacing-4);
+}
+
+.container-sm {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Common spacing utilities */
+.gap-xs { gap: var(--spacing-2); }
+.gap-sm { gap: var(--spacing-4); }
+.gap-md { gap: var(--spacing-6); }
+.gap-lg { gap: var(--spacing-8); }
+
+/* Common positioning */
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-50);
+}
+
+/* Common transitions */
+.transition-smooth {
+  transition: all 0.2s ease;
+}
+
+.transition-transform {
+  transition: transform 0.2s ease;
 }
 
 /* Typography utilities */

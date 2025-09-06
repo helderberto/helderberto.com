@@ -20,7 +20,7 @@ export default async function Home() {
   const posts = await getAllPosts();
 
   return (
-    <main className={styles.container}>
+    <main className="flex-col gap-lg container-sm">
       <div className={styles.content}>
         <section className={styles.intro}>
           <h1>Hey there! I'm Helder 👋</h1>

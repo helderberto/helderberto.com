@@ -9,9 +9,9 @@ const Header = () => {
   const pathname = usePathname();
 
   return (
-    <header className={styles.header}>
-      <div className={styles.container}>
-        <Link href="/" className={styles.logo}>
+    <header className={`${styles.header} sticky-top`}>
+      <div className={`${styles.container} container-sm flex-between`}>
+        <Link href="/" className={`${styles.logo} transition-transform`}>
           <Image
             src="/profile.jpg"
             alt="Profile Picture"
@@ -21,14 +21,14 @@ const Header = () => {
           />
         </Link>
 
-        <div className={styles.rightSection}>
-          <nav className={styles.nav}>
-            <Link href="/" className={`${styles.link}`}>
+        <div className={`${styles.rightSection} flex-center`}>
+          <nav className={`${styles.nav} flex-center`}>
+            <Link href="/" className={`${styles.link} transition-smooth`}>
               Home
             </Link>
             <Link
               href="/about"
-              className={`${styles.link} ${
+              className={`${styles.link} transition-smooth ${
                 pathname === "/about" ? styles.active : ""
               }`}
             >

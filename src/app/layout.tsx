@@ -97,7 +97,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className={styles.main}>{children}</main>
+          <main className={`${styles.main} container-sm`}>{children}</main>
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
