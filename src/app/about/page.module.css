@@ -9,7 +9,6 @@
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading-large);
   margin: 0 0 var(--content-spacing-heading);
-  text-align: center;
 }
 
 .content h2 {

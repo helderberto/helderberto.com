@@ -2,17 +2,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 200px;
+  min-height: 12.5rem;
   width: 100%;
-  padding: 2rem;
+  padding: var(--content-spacing-section);
   background: var(--muted);
-  border-radius: 0.75rem;
+  border-radius: var(--radius-xl);
   border: 1px solid var(--border);
   grid-column: 1 / -1;
 }
 
 .message {
   color: var(--muted-foreground);
-  font-size: 1.1rem;
+  font-size: var(--text-responsive);
   text-align: center;
 }

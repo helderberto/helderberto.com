@@ -5,17 +5,17 @@
 
 .container {
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: var(--content-spacing-section);
 }
 
 .input {
   width: 100%;
-  padding: 0.75rem 1.25rem;
-  border-radius: 0.5rem;
-  border: 0.0938rem solid var(--border);
+  padding: var(--spacing-responsive-sm) var(--content-spacing-list);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
   background-color: var(--background);
   color: var(--foreground);
-  font-size: 1rem;
+  font-size: var(--text-responsive);
   transition: all 0.2s ease-in-out;
 }
 
@@ -30,21 +30,20 @@
 .input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 0.125rem var(--primary-foreground);
-  transform: translateY(-0.0625rem);
+  box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.1);
+  transform: translateY(-1px);
 }
 
 .results {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: var(--content-spacing-section);
   max-width: var(--max-width);
 }
 
 .yearGroup {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 .yearHeading {
@@ -52,34 +51,10 @@
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-snug);
   color: var(--foreground);
-  margin-bottom: 1rem;
-  margin-top: 0;
+  margin-bottom: var(--spacing-responsive-sm);
 }
 
 .postsList {
   display: flex;
   flex-direction: column;
-  gap: 0;
-}
-
-.searchInput {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.05);
-  color: inherit;
-  margin-bottom: 2rem;
-}
-
-.searchInput:focus {
-  outline: none;
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.posts {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }

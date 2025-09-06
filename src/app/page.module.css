@@ -2,8 +2,7 @@
   font-size: var(--heading-h1-page);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading-large);
-  margin-bottom: var(--spacing-6);
-  text-align: center;
+  margin: 0 0 var(--content-spacing-heading);
 }
 
 .intro p {

@@ -1,7 +1,7 @@
 .comments {
   border-top: 1px solid var(--border);
-  margin-top: var(--spacing-10);
-  padding-top: var(--spacing-10);
+  margin-top: var(--content-spacing-section);
+  padding-top: var(--content-spacing-section);
 }
 
 /* Utterances container and iframe */
