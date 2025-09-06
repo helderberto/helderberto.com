@@ -93,18 +93,21 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Line Heights - Optimized for readability */
+  /* Line Heights - Enhanced for readability */
   --line-height-none: 1;
-  --line-height-tight: 1.1;
-  --line-height-snug: 1.25;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.6;
-  --line-height-loose: 1.75;
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.4;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.7;
+  --line-height-loose: 1.8;
 
-  /* Content Line Heights */
-  --line-height-heading: 1.1;
-  --line-height-body: 1.5;
-  --line-height-body-relaxed: 1.6;
+  /* Content Line Heights - Optimized for different content types */
+  --line-height-heading: 1.2;
+  --line-height-heading-large: 1.1;
+  --line-height-body: 1.6;
+  --line-height-body-relaxed: 1.7;
+  --line-height-reading: 1.75;
+  --line-height-caption: 1.4;
 
   /* Layout */
   --container-sm: 640px;
@@ -119,6 +122,18 @@
   --spacing-responsive-md: clamp(0.75rem, 3vw, 1.5rem);
   --spacing-responsive-lg: clamp(1rem, 4vw, 2rem);
   --spacing-responsive-xl: clamp(1.5rem, 5vw, 3rem);
+  --spacing-responsive-2xl: clamp(2rem, 6vw, 4rem);
+
+  /* Content Spacing - For better readability */
+  --content-spacing-paragraph: clamp(1rem, 3vw, 1.5rem);
+  --content-spacing-section: clamp(2rem, 5vw, 3rem);
+  --content-spacing-heading: clamp(1.5rem, 4vw, 2.5rem);
+  --content-spacing-list: clamp(0.75rem, 2vw, 1.25rem);
+
+  /* Reading Flow Spacing */
+  --reading-margin-paragraph: clamp(1.25rem, 3vw, 1.75rem);
+  --reading-margin-heading: clamp(2rem, 5vw, 3rem);
+  --reading-margin-list: clamp(1rem, 3vw, 1.5rem);
 
   /* Container Responsive Padding */
   --container-padding: clamp(0.75rem, 3vw, 2rem);
@@ -283,12 +298,58 @@ body {
 /* Responsive typography utilities - use clamp for automatic scaling */
 .text-responsive {
   font-size: var(--text-responsive);
-  line-height: var(--line-height-relaxed);
+  line-height: var(--line-height-body-relaxed);
 }
 
 .text-responsive-lg {
   font-size: var(--text-responsive-lg);
-  line-height: var(--line-height-relaxed);
+  line-height: var(--line-height-body-relaxed);
+}
+
+.text-reading {
+  font-size: var(--text-responsive);
+  line-height: var(--line-height-reading);
+}
+
+.text-reading-lg {
+  font-size: var(--text-responsive-lg);
+  line-height: var(--line-height-reading);
+}
+
+/* Content spacing utilities for better readability */
+.content-flow > * + * {
+  margin-top: var(--content-spacing-paragraph);
+}
+
+.content-flow > h1,
+.content-flow > h2,
+.content-flow > h3 {
+  margin-top: var(--reading-margin-heading);
+}
+
+.content-flow > h1 + *,
+.content-flow > h2 + *,
+.content-flow > h3 + * {
+  margin-top: var(--content-spacing-list);
+}
+
+.content-flow > ul,
+.content-flow > ol {
+  margin-top: var(--reading-margin-list);
+  margin-bottom: var(--reading-margin-list);
+}
+
+.content-flow > p {
+  margin-bottom: var(--reading-margin-paragraph);
+}
+
+/* Section spacing utilities */
+.section-spacing {
+  margin-bottom: var(--content-spacing-section);
+}
+
+.reading-spacing {
+  margin-bottom: var(--reading-margin-paragraph);
 }
 
 /* Typography utilities */

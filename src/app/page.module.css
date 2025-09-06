@@ -1,20 +1,18 @@
-.intro {
-  padding: var(--spacing-responsive-lg) 0;
-}
-
 .intro h1 {
   font-size: var(--heading-h1-page);
   font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-heading);
-  margin-bottom: var(--spacing-responsive-lg);
+  line-height: var(--line-height-heading-large);
+  margin-bottom: var(--spacing-6);
   text-align: center;
 }
 
 .intro p {
-  font-size: var(--text-responsive);
-  line-height: var(--line-height-relaxed);
+  font-size: var(--text-responsive-lg);
+  line-height: var(--line-height-reading);
+  margin-bottom: var(--reading-margin-heading);
 }
 
 .posts {
   width: 100%;
+  margin-top: var(--content-spacing-section);
 }

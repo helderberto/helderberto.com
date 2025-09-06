@@ -1,3 +1,4 @@
 .main {
-  padding: var(--spacing-responsive-lg) 0;
+  padding: var(--content-spacing-section) 0;
+  line-height: var(--line-height-body);
 }

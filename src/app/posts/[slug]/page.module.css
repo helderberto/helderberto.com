@@ -1,11 +1,12 @@
 .article {
-  padding: var(--spacing-responsive-lg) var(--container-padding) var(--spacing-responsive-xl) var(--container-padding);
+  padding: 0 var(--container-padding) var(--spacing-responsive-2xl)
+    var(--container-padding);
 }
 
 .content {
   font-family: var(--font-family-reading);
   font-size: var(--text-responsive);
-  line-height: var(--line-height-body-relaxed);
+  line-height: var(--line-height-reading);
   max-width: none;
 }
 
@@ -18,17 +19,17 @@
   max-width: 100%;
   height: auto;
   border-radius: var(--radius-xl);
-  margin: var(--spacing-responsive-lg) 0;
+  margin: var(--reading-margin-heading) 0;
   display: block;
   border: 1px solid var(--border);
 }
 
-/* Markdown content styles */
+/* Markdown content styles - Enhanced for reading */
 .markdownContent h1 {
   font-size: var(--heading-h1-page);
   font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-heading);
-  margin: var(--spacing-responsive-lg) 0 var(--spacing-responsive-lg) 0;
+  line-height: var(--line-height-heading-large);
+  margin: var(--content-spacing-section) 0 var(--content-spacing-heading) 0;
   color: var(--foreground);
   text-align: center;
 }
@@ -37,23 +38,31 @@
   font-size: var(--heading-h2);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-heading);
-  margin: var(--spacing-responsive-lg) 0 var(--spacing-responsive-sm) 0;
+  margin: var(--reading-margin-heading) 0 var(--content-spacing-list) 0;
   color: var(--foreground);
 }
 
 .markdownContent h3 {
   font-size: var(--heading-h3);
   font-weight: var(--font-weight-semibold);
-  line-height: var(--line-height-snug);
-  margin: var(--spacing-responsive-md) 0 var(--spacing-responsive-xs) 0;
+  line-height: var(--line-height-heading);
+  margin: var(--content-spacing-heading) 0 var(--content-spacing-list) 0;
+  color: var(--foreground);
+}
+
+.markdownContent h4 {
+  font-size: var(--heading-h4);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-heading);
+  margin: var(--content-spacing-list) 0 var(--spacing-responsive-xs) 0;
   color: var(--foreground);
 }
 
 .markdownContent p {
   font-family: var(--font-family-reading);
   font-size: var(--text-responsive);
-  line-height: var(--line-height-body-relaxed);
-  margin-bottom: var(--spacing-responsive-sm);
+  line-height: var(--line-height-reading);
+  margin-bottom: var(--reading-margin-paragraph);
   color: var(--accent-foreground);
 }
 
@@ -61,21 +70,22 @@
 .markdownContent ol {
   font-family: var(--font-family-reading);
   font-size: var(--text-responsive);
-  line-height: var(--line-height-body-relaxed);
-  margin: var(--spacing-responsive-sm) 0;
-  padding-left: var(--spacing-responsive-md);
+  line-height: var(--line-height-reading);
+  margin: var(--reading-margin-list) 0;
+  padding-left: var(--content-spacing-heading);
   color: var(--accent-foreground);
 }
 
 .markdownContent li {
-  margin-bottom: var(--spacing-responsive-xs);
+  margin-bottom: var(--content-spacing-list);
+  line-height: var(--line-height-reading);
 }
 
 .markdownContent a {
   color: var(--primary);
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
+  text-underline-offset: 0.125rem;
   transition: all 0.2s ease;
 }
 
@@ -97,23 +107,23 @@
 .markdownContent blockquote {
   font-family: var(--font-family-reading);
   border-left: 0.25rem solid var(--primary);
-  padding-left: var(--spacing-responsive-md);
-  margin: var(--spacing-responsive-md) 0;
+  padding-left: var(--content-spacing-heading);
+  margin: var(--reading-margin-heading) 0;
   font-style: italic;
   color: var(--muted-foreground);
   font-size: var(--text-responsive);
-  line-height: var(--line-height-body-relaxed);
+  line-height: var(--line-height-reading);
 }
 
 .markdownContent hr {
   border: none;
   height: 1px;
   background: var(--border);
-  margin: var(--spacing-responsive-lg) 0;
+  margin: var(--reading-margin-heading) 0;
 }
 
 .markdownContent pre {
-  margin: var(--spacing-responsive-md) 0 !important;
+  margin: var(--content-spacing-heading) 0 !important;
 }
 
 .markdownContent code:not(pre code) {

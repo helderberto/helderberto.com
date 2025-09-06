@@ -1,34 +1,42 @@
-/* Markdown content styles */
+/* Markdown content styles - Enhanced for readability */
 .content article {
   font-size: var(--text-responsive);
-  line-height: var(--line-height-relaxed);
+  line-height: var(--line-height-reading);
 }
 
 .content h1 {
   font-size: var(--heading-h1-page);
   font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-heading);
-  margin: var(--spacing-responsive-lg) 0 var(--spacing-responsive-lg);
+  line-height: var(--line-height-heading-large);
+  margin: 0 0 var(--content-spacing-heading);
+  text-align: center;
 }
 
 .content h2 {
   font-size: var(--heading-h2);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading);
-  margin: var(--spacing-responsive-md) 0 var(--spacing-responsive-sm);
+  margin: var(--reading-margin-heading) 0 var(--content-spacing-list);
+}
+
+.content h3 {
+  font-size: var(--heading-h3);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  margin: var(--content-spacing-heading) 0 var(--content-spacing-list);
 }
 
 .content p {
   font-size: var(--text-responsive);
-  line-height: var(--line-height-relaxed);
-  margin: var(--spacing-responsive-sm) 0;
+  line-height: var(--line-height-reading);
+  margin-bottom: var(--reading-margin-paragraph);
 }
 
 .content a {
   color: var(--primary);
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
+  text-underline-offset: 0.125rem;
   transition: all 0.2s ease;
 }
 
@@ -39,10 +47,20 @@
 
 .content ul,
 .content ol {
-  margin: var(--spacing-responsive-sm) 0;
-  padding-left: var(--spacing-responsive-lg);
+  margin: var(--reading-margin-list) 0;
+  padding-left: var(--content-spacing-heading);
+  line-height: var(--line-height-reading);
 }
 
 .content li {
-  margin: var(--spacing-responsive-xs) 0;
+  margin-bottom: var(--content-spacing-list);
+}
+
+.content blockquote {
+  margin: var(--reading-margin-heading) 0;
+  padding-left: var(--content-spacing-heading);
+  border-left: 0.25rem solid var(--primary);
+  font-style: italic;
+  color: var(--muted-foreground);
+  line-height: var(--line-height-reading);
 }
