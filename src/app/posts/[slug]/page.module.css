@@ -4,7 +4,54 @@
 
 @media (max-width: 768px) {
   .article {
-    padding: 1.5rem 1rem 2rem 1rem;
+    padding: 1.5rem var(--spacing-4) 2rem var(--spacing-4);
+  }
+
+  .markdownContent h1 {
+    font-size: var(--heading-h1-page-mobile);
+    line-height: var(--line-height-tight);
+    margin: 1.5rem 0 1.5rem 0;
+  }
+
+  .markdownContent h2 {
+    font-size: var(--heading-h2-mobile);
+    line-height: var(--line-height-snug);
+    margin: 1.5rem 0 1rem 0;
+  }
+
+  .markdownContent h3 {
+    font-size: var(--heading-h3-mobile);
+    line-height: var(--line-height-snug);
+    margin: 1.25rem 0 0.75rem 0;
+  }
+
+  .markdownContent p {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-body-relaxed);
+    margin-bottom: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .article {
+    padding: 1rem var(--spacing-3) 1.5rem var(--spacing-3);
+  }
+
+  .markdownContent h1 {
+    font-size: var(--heading-h1-mobile);
+    margin: 1rem 0 1rem 0;
+  }
+
+  .markdownContent h2 {
+    font-size: var(--heading-h3-mobile);
+  }
+
+  .markdownContent h3 {
+    font-size: var(--heading-h4-mobile);
+  }
+
+  .markdownContent p {
+    font-size: var(--font-size-body);
   }
 }
 

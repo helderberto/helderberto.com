@@ -12,6 +12,24 @@
   text-align: center;
 }
 
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--heading-h1-page-mobile);
+    margin-bottom: 1.5rem;
+  }
+  
+  .date {
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: var(--heading-h1-mobile);
+    margin-bottom: 1rem;
+  }
+}
+
 .date {
   font-size: var(--font-size-sm);
   color: var(--muted-foreground);

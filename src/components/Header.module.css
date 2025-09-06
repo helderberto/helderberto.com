@@ -66,3 +66,51 @@
   height: 100%;
   object-fit: cover;
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0.75rem var(--spacing-4);
+  }
+  
+  .rightSection {
+    gap: 1rem;
+  }
+  
+  .nav {
+    gap: 1rem;
+  }
+  
+  .link {
+    padding: 0.375rem;
+    font-size: var(--font-size-sm);
+  }
+  
+  .profileImage {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem var(--spacing-3);
+  }
+  
+  .rightSection {
+    gap: 0.75rem;
+  }
+  
+  .nav {
+    gap: 0.75rem;
+  }
+  
+  .link {
+    padding: 0.25rem;
+    font-size: var(--font-size-xs);
+  }
+  
+  .profileImage {
+    width: 40px;
+    height: 40px;
+  }
+}

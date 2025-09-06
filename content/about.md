@@ -48,4 +48,4 @@ I regularly write about:
 - Engineering Leadership
 - Technical Decision-Making
 
-Feel free to check out my blog posts or connect with me on [GitHub](https://github.com/helderberto), [LinkedIn](https://www.linkedin.com/in/helderberto/), or reach out via email at [helder.burato@gmail.com](mailto:helder.burato@gmail.com).
+Feel free to reach out to me on [LinkedIn](https://www.linkedin.com/in/helderberto/), [GitHub](https://github.com/helderberto), or over [email](mailto:helder.burato@gmail.com).
