@@ -91,6 +91,8 @@
   --muted-foreground: #6b7280;
   --accent-foreground: #1f2937;
   --border: #e5e7eb;
+  --nav-link-color: #1f2937;
+  --post-border: #e5e7eb;
 
   /* Code Colors - Light */
   --code-bg: #f4f4f5;
@@ -114,6 +116,8 @@
   --muted-foreground: #8b949e;
   --accent-foreground: #f0f6fc;
   --border: #30363d;
+  --nav-link-color: #ffffff;
+  --post-border: #30363d;
 
   /* Code Colors - Dark */
   --code-bg: #1e1e2e;
@@ -203,12 +207,16 @@ a {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
-  transition: color 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
 }
 
 a:hover {
   color: var(--primary-hover);
   text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transform: translateY(-1px);
 }
 
 /* Navigation and button-style links */
@@ -220,18 +228,14 @@ a.nav-link {
   border: 1px solid transparent;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
-}
-
-/* Logo and special links without underlines */
-a.no-underline {
-  text-decoration: none;
+  color: var(--nav-link-color);
 }
 
 a.nav-link:hover {
+  color: var(--nav-link-color);
   background: rgba(var(--primary-rgb), 0.1);
   border-color: rgba(var(--primary-rgb), 0.2);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.15);
 }
 
 /* Active state for navigation links */
@@ -239,7 +243,12 @@ a.nav-link.active,
 a.nav-link[aria-current="page"] {
   background: rgba(var(--primary-rgb), 0.1);
   border-color: rgba(var(--primary-rgb), 0.3);
-  color: var(--primary);
+  color: var(--nav-link-color);
+}
+
+/* Logo and special links without underlines */
+a.no-underline {
+  text-decoration: none;
 }
 
 /* Focus Styles */
