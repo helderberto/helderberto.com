@@ -17,10 +17,11 @@
 }
 
 .intro h1 {
-  font-size: var(--font-size-5xl);
+  font-size: var(--heading-h1-page);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading);
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .intro p {
@@ -30,7 +31,7 @@
 
 @media (max-width: 768px) {
   .intro h1 {
-    font-size: var(--font-size-3xl);
+    font-size: var(--heading-h1);
     line-height: var(--line-height-snug);
   }
 }

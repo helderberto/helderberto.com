@@ -4,9 +4,9 @@
 }
 
 .title {
-  font-size: var(--font-size-5xl);
+  font-size: var(--heading-h1-page);
   font-weight: var(--font-weight-bold);
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
   line-height: var(--line-height-tight);
   color: var(--foreground);
   text-align: center;

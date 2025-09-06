@@ -19,14 +19,15 @@
 }
 
 .content h1 {
-  font-size: var(--font-size-5xl);
+  font-size: var(--heading-h1-page);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading);
-  margin: 2rem 0 1rem;
+  margin: 2rem 0 2rem;
+  text-align: center;
 }
 
 .content h2 {
-  font-size: var(--font-size-2xl);
+  font-size: var(--heading-h2);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading);
   margin: 1.5rem 0 1rem;
@@ -63,6 +64,6 @@
 
 @media (max-width: 768px) {
   .content h1 {
-    font-size: 1.8rem;
+    font-size: var(--heading-h1);
   }
 }
