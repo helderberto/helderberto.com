@@ -1,37 +1,19 @@
 .header {
-  margin-bottom: 3rem;
+  margin-bottom: var(--spacing-responsive-xl);
   text-align: center;
 }
 
 .title {
   font-size: var(--heading-h1-page);
   font-weight: var(--font-weight-bold);
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-responsive-lg);
   line-height: var(--line-height-tight);
   color: var(--foreground);
   text-align: center;
 }
 
-@media (max-width: 768px) {
-  .title {
-    font-size: var(--heading-h1-page-mobile);
-    margin-bottom: 1.5rem;
-  }
-  
-  .date {
-    font-size: var(--font-size-xs);
-  }
-}
-
-@media (max-width: 480px) {
-  .title {
-    font-size: var(--heading-h1-mobile);
-    margin-bottom: 1rem;
-  }
-}
-
 .date {
-  font-size: var(--font-size-sm);
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
   color: var(--muted-foreground);
   font-weight: var(--font-weight-medium);
   letter-spacing: 0.05em;

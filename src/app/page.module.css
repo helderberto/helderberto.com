@@ -1,58 +1,22 @@
 .content {
-  padding: 0 2rem;
+  padding: 0 var(--container-padding);
 }
 
 .intro {
-  padding: 2rem 0;
+  padding: var(--spacing-responsive-lg) 0;
 }
 
 .intro h1 {
   font-size: var(--heading-h1-page);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading);
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-responsive-lg);
   text-align: center;
 }
 
 .intro p {
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-body);
-}
-
-@media (max-width: 768px) {
-  .intro {
-    padding: 1.5rem 0;
-  }
-
-  .intro h1 {
-    font-size: var(--heading-h1-page-mobile);
-    line-height: var(--line-height-tight);
-    margin-bottom: 1.5rem;
-  }
-
-  .intro p {
-    font-size: var(--font-size-lg);
-    line-height: var(--line-height-relaxed);
-  }
-
-  .content {
-    padding: 0 var(--spacing-4);
-  }
-}
-
-@media (max-width: 480px) {
-  .intro h1 {
-    font-size: var(--heading-h1-mobile);
-    margin-bottom: 1rem;
-  }
-
-  .intro p {
-    font-size: var(--font-size-base);
-  }
-
-  .content {
-    padding: 0 var(--spacing-3);
-  }
+  font-size: var(--text-responsive);
+  line-height: var(--line-height-relaxed);
 }
 
 .posts {

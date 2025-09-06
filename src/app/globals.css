@@ -70,33 +70,21 @@
   --font-size-caption: 0.75rem;
   /* 12px - captions, metadata */
 
-  /* Heading Sizes - Consistent hierarchy */
-  --heading-h1: var(--font-size-5xl);
-  /* 40px - Main page titles */
-  --heading-h1-page: 3rem;
-  /* 48px - Large centered page titles */
-  --heading-h2: var(--font-size-3xl);
-  /* 28px - Section headings */
-  --heading-h3: var(--font-size-2xl);
-  /* 24px - Subsection headings */
-  --heading-h4: var(--font-size-xl);
-  /* 20px - Minor headings */
-  --heading-h5: var(--font-size-lg);
-  /* 18px - Small headings */
-  --heading-h6: var(--font-size-base);
+  /* Responsive Heading Sizes - Automatically scale */
+  --heading-h1: clamp(1.75rem, 4vw, 2.5rem);
+  /* 28px-40px - Main page titles */
+  --heading-h1-page: clamp(2rem, 5vw, 3rem);
+  /* 32px-48px - Large centered page titles */
+  --heading-h2: clamp(1.25rem, 3vw, 1.75rem);
+  /* 20px-28px - Section headings */
+  --heading-h3: clamp(1.125rem, 2.5vw, 1.5rem);
+  /* 18px-24px - Subsection headings */
+  --heading-h4: clamp(1rem, 2vw, 1.25rem);
+  /* 16px-20px - Minor headings */
+  --heading-h5: clamp(1rem, 1.5vw, 1.125rem);
+  /* 16px-18px - Small headings */
+  --heading-h6: 1rem;
   /* 16px - Smallest headings */
-
-  /* Mobile Heading Sizes - Optimized for small screens */
-  --heading-h1-mobile: var(--font-size-3xl);
-  /* 28px - Mobile main titles */
-  --heading-h1-page-mobile: var(--font-size-4xl);
-  /* 32px - Mobile large page titles */
-  --heading-h2-mobile: var(--font-size-xl);
-  /* 20px - Mobile section headings */
-  --heading-h3-mobile: var(--font-size-lg);
-  /* 18px - Mobile subsection headings */
-  --heading-h4-mobile: var(--font-size-base);
-  /* 16px - Mobile minor headings */
 
   /* Font Weights */
   --font-weight-light: 300;
@@ -125,11 +113,24 @@
   --max-width: 50rem;
   /* 800px */
 
-  /* Responsive Breakpoints */
-  --breakpoint-xs: 480px;
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
+  /* Responsive Spacing - Automatically scale */
+  --spacing-responsive-xs: clamp(0.25rem, 1vw, 0.5rem);
+  --spacing-responsive-sm: clamp(0.5rem, 2vw, 1rem);
+  --spacing-responsive-md: clamp(0.75rem, 3vw, 1.5rem);
+  --spacing-responsive-lg: clamp(1rem, 4vw, 2rem);
+  --spacing-responsive-xl: clamp(1.5rem, 5vw, 3rem);
+
+  /* Container Responsive Padding */
+  --container-padding: clamp(0.75rem, 3vw, 2rem);
+  
+  /* Component Spacing */
+  --header-padding: clamp(0.5rem, 2vw, 1rem);
+  --nav-gap: clamp(0.75rem, 2vw, 1.5rem);
+  --card-padding: clamp(0.25rem, 1vw, 0.5rem);
+  
+  /* Text Responsive Sizes */
+  --text-responsive: clamp(1rem, 2vw, 1.125rem);
+  --text-responsive-lg: clamp(1.125rem, 2.5vw, 1.25rem);
 
   /* Border Radius */
   --radius-sm: 0.25rem;
@@ -231,12 +232,13 @@ body {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--spacing-4);
+  padding: 0 var(--container-padding);
 }
 
 .container-sm {
   max-width: var(--max-width);
   margin: 0 auto;
+  padding: 0 var(--container-padding);
 }
 
 .flex-center {
@@ -257,10 +259,10 @@ body {
 }
 
 /* Common spacing utilities */
-.gap-xs { gap: var(--spacing-2); }
-.gap-sm { gap: var(--spacing-4); }
-.gap-md { gap: var(--spacing-6); }
-.gap-lg { gap: var(--spacing-8); }
+.gap-xs { gap: var(--spacing-responsive-xs); }
+.gap-sm { gap: var(--spacing-responsive-sm); }
+.gap-md { gap: var(--spacing-responsive-md); }
+.gap-lg { gap: var(--spacing-responsive-lg); }
 
 /* Common positioning */
 .sticky-top {
@@ -278,84 +280,15 @@ body {
   transition: transform 0.2s ease;
 }
 
-/* Mobile-first responsive typography utilities */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 var(--spacing-4);
-  }
-  
-  .container-sm {
-    padding: 0 var(--spacing-4);
-  }
-
-  /* Mobile heading utilities */
-  .mobile-h1 {
-    font-size: var(--heading-h1-mobile);
-    line-height: var(--line-height-tight);
-    margin-bottom: 1.5rem;
-  }
-
-  .mobile-h1-page {
-    font-size: var(--heading-h1-page-mobile);
-    line-height: var(--line-height-tight);
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
-
-  .mobile-h2 {
-    font-size: var(--heading-h2-mobile);
-    line-height: var(--line-height-snug);
-    margin: 1.5rem 0 1rem;
-  }
-
-  .mobile-h3 {
-    font-size: var(--heading-h3-mobile);
-    line-height: var(--line-height-snug);
-    margin: 1.25rem 0 0.75rem;
-  }
-
-  /* Mobile text improvements */
-  .mobile-text {
-    font-size: var(--font-size-body);
-    line-height: var(--line-height-relaxed);
-  }
-
-  .mobile-text-lg {
-    font-size: var(--font-size-lg);
-    line-height: var(--line-height-relaxed);
-  }
-
-  /* Mobile spacing adjustments */
-  .gap-xs { gap: var(--spacing-1); }
-  .gap-sm { gap: var(--spacing-3); }
-  .gap-md { gap: var(--spacing-4); }
-  .gap-lg { gap: var(--spacing-6); }
+/* Responsive typography utilities - use clamp for automatic scaling */
+.text-responsive {
+  font-size: var(--text-responsive);
+  line-height: var(--line-height-relaxed);
 }
 
-@media (max-width: 480px) {
-  .container {
-    padding: 0 var(--spacing-3);
-  }
-  
-  .container-sm {
-    padding: 0 var(--spacing-3);
-  }
-
-  /* Extra small screen adjustments */
-  .mobile-h1-page {
-    font-size: var(--heading-h1-mobile);
-    margin-bottom: 1rem;
-  }
-
-  .mobile-h2 {
-    font-size: var(--heading-h3-mobile);
-  }
-
-  /* Tighter spacing on very small screens */
-  .gap-xs { gap: var(--spacing-1); }
-  .gap-sm { gap: var(--spacing-2); }
-  .gap-md { gap: var(--spacing-3); }
-  .gap-lg { gap: var(--spacing-4); }
+.text-responsive-lg {
+  font-size: var(--text-responsive-lg);
+  line-height: var(--line-height-relaxed);
 }
 
 /* Typography utilities */

@@ -2,18 +2,11 @@
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--spacing-4);
+  padding: 0 var(--container-padding);
 }
 
 .content {
   color: var(--foreground);
   line-height: var(--line-height-relaxed);
-  font-size: var(--font-size-lg);
-}
-
-/* Add any responsive styles if needed */
-@media (min-width: 768px) {
-  .container {
-    padding: 0 var(--spacing-6);
-  }
+  font-size: var(--text-responsive-lg);
 }

@@ -2,19 +2,19 @@
   display: flex;
   align-items: baseline;
   color: var(--foreground);
-  padding: 0.25rem 0;
-  gap: 1rem;
+  padding: var(--card-padding) 0;
+  gap: var(--spacing-responsive-sm);
 }
 
 .title {
-  font-size: var(--font-size-base);
+  font-size: var(--text-responsive);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-snug);
   color: var(--foreground);
   text-decoration: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.2s ease-in-out;
-  padding: 0.5rem 0;
+  padding: var(--card-padding) 0;
 }
 
 .title:hover {
@@ -23,7 +23,7 @@
 }
 
 .date {
-  font-size: var(--font-size-caption);
+  font-size: clamp(0.625rem, 1.5vw, 0.75rem);
   color: var(--muted-foreground);
   white-space: nowrap;
   font-style: italic;
@@ -33,24 +33,9 @@
   .item {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
-    padding: 0.5rem 0;
-  }
-  
-  .title {
-    font-size: var(--font-size-lg);
-    line-height: var(--line-height-snug);
-    padding: 0.375rem 0;
   }
   
   .date {
     white-space: normal;
-    font-size: var(--font-size-xs);
-  }
-}
-
-@media (max-width: 480px) {
-  .title {
-    font-size: var(--font-size-base);
   }
 }

@@ -1,63 +1,10 @@
 .article {
-  padding: 2rem 2rem 3rem 2rem;
-}
-
-@media (max-width: 768px) {
-  .article {
-    padding: 1.5rem var(--spacing-4) 2rem var(--spacing-4);
-  }
-
-  .markdownContent h1 {
-    font-size: var(--heading-h1-page-mobile);
-    line-height: var(--line-height-tight);
-    margin: 1.5rem 0 1.5rem 0;
-  }
-
-  .markdownContent h2 {
-    font-size: var(--heading-h2-mobile);
-    line-height: var(--line-height-snug);
-    margin: 1.5rem 0 1rem 0;
-  }
-
-  .markdownContent h3 {
-    font-size: var(--heading-h3-mobile);
-    line-height: var(--line-height-snug);
-    margin: 1.25rem 0 0.75rem 0;
-  }
-
-  .markdownContent p {
-    font-size: var(--font-size-lg);
-    line-height: var(--line-height-body-relaxed);
-    margin-bottom: 1.25rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .article {
-    padding: 1rem var(--spacing-3) 1.5rem var(--spacing-3);
-  }
-
-  .markdownContent h1 {
-    font-size: var(--heading-h1-mobile);
-    margin: 1rem 0 1rem 0;
-  }
-
-  .markdownContent h2 {
-    font-size: var(--heading-h3-mobile);
-  }
-
-  .markdownContent h3 {
-    font-size: var(--heading-h4-mobile);
-  }
-
-  .markdownContent p {
-    font-size: var(--font-size-body);
-  }
+  padding: var(--spacing-responsive-lg) var(--container-padding) var(--spacing-responsive-xl) var(--container-padding);
 }
 
 .content {
   font-family: var(--font-family-reading);
-  font-size: var(--font-size-body-reading);
+  font-size: var(--text-responsive);
   line-height: var(--line-height-body-relaxed);
   max-width: none;
 }
@@ -70,8 +17,8 @@
 .markdownContent img {
   max-width: 100%;
   height: auto;
-  border-radius: 0.75rem;
-  margin: 2rem 0;
+  border-radius: var(--radius-xl);
+  margin: var(--spacing-responsive-lg) 0;
   display: block;
   border: 1px solid var(--border);
 }
@@ -81,7 +28,7 @@
   font-size: var(--heading-h1-page);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading);
-  margin: 2rem 0 2rem 0;
+  margin: var(--spacing-responsive-lg) 0 var(--spacing-responsive-lg) 0;
   color: var(--foreground);
   text-align: center;
 }
@@ -90,7 +37,7 @@
   font-size: var(--heading-h2);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-heading);
-  margin: 2rem 0 1rem 0;
+  margin: var(--spacing-responsive-lg) 0 var(--spacing-responsive-sm) 0;
   color: var(--foreground);
 }
 
@@ -98,30 +45,30 @@
   font-size: var(--heading-h3);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-snug);
-  margin: 1.5rem 0 0.75rem 0;
+  margin: var(--spacing-responsive-md) 0 var(--spacing-responsive-xs) 0;
   color: var(--foreground);
 }
 
 .markdownContent p {
   font-family: var(--font-family-reading);
-  font-size: var(--font-size-body-reading);
+  font-size: var(--text-responsive);
   line-height: var(--line-height-body-relaxed);
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-responsive-sm);
   color: var(--accent-foreground);
 }
 
 .markdownContent ul,
 .markdownContent ol {
   font-family: var(--font-family-reading);
-  font-size: var(--font-size-body-reading);
+  font-size: var(--text-responsive);
   line-height: var(--line-height-body-relaxed);
-  margin: 1rem 0;
-  padding-left: 1.5rem;
+  margin: var(--spacing-responsive-sm) 0;
+  padding-left: var(--spacing-responsive-md);
   color: var(--accent-foreground);
 }
 
 .markdownContent li {
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-responsive-xs);
 }
 
 .markdownContent a {
@@ -149,12 +96,12 @@
 
 .markdownContent blockquote {
   font-family: var(--font-family-reading);
-  border-left: 4px solid var(--primary);
-  padding-left: 1.5rem;
-  margin: 1.5rem 0;
+  border-left: 0.25rem solid var(--primary);
+  padding-left: var(--spacing-responsive-md);
+  margin: var(--spacing-responsive-md) 0;
   font-style: italic;
   color: var(--muted-foreground);
-  font-size: var(--font-size-body-reading);
+  font-size: var(--text-responsive);
   line-height: var(--line-height-body-relaxed);
 }
 
@@ -162,11 +109,11 @@
   border: none;
   height: 1px;
   background: var(--border);
-  margin: 2rem 0;
+  margin: var(--spacing-responsive-lg) 0;
 }
 
 .markdownContent pre {
-  margin: 1.5rem 0 !important;
+  margin: var(--spacing-responsive-md) 0 !important;
 }
 
 .markdownContent code:not(pre code) {
