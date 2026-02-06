@@ -28,7 +28,7 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
 
   // Handle syntax highlighting after mount
   useEffect(() => {
-    if (mounted && codeRef.current) {
+    if (mounted && codeRef.current && codeRef.current.parentElement) {
       Prism.highlightElement(codeRef.current);
     }
   }, [mounted, children]);
