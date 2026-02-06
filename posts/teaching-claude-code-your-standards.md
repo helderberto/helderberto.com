@@ -125,27 +125,25 @@ My global instruction: "Extreme concision in all interactions and commits. Sacri
 - Less noise
 - Commit messages match my style
 
-## Measuring Impact
-
-Using the tool to improve the tool itself - I asked Claude Code to analyze my git history and code reviews after implementing these configs:
+## What Changes
 
 **Immutability enforcement:**
 
-- Caught 8 `.push()` mutations in first two weeks
-- Zero array mutation bugs reached code review
-- Reduced mutation-related bugs by ~90%
+- AI catches mutations I'd miss in review
+- Array mutation bugs get caught before commit
+- Consistent patterns across codebase
 
 **Commit consistency:**
 
-- 95% of commits match conventional commit style
-- No more "fix stuff" or "wip" messages
-- PR descriptions follow template structure 100%
+- Commits follow conventional commit style
+- Messages match my terse style
+- PR descriptions follow template structure
 
-**Code review velocity:**
+**Code review:**
 
-- 40% reduction in "why did you do this?" comments
-- Fewer rounds of revision per PR
-- Reviewers focus on logic, not style violations
+- Fewer style-related comments
+- Less back-and-forth on conventions
+- Reviews focus on logic, not formatting
 
 ## Learnings
 
