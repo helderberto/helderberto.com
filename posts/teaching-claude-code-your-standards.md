@@ -4,13 +4,11 @@ date: "2026-02-06"
 excerpt: "How to configure Claude Code with custom skills, docs, and workflows to enforce your coding standards consistently"
 ---
 
-Claude Code is a powerful CLI tool, but its power comes from configuration. Without clear instructions, it's chaotic. With them, it becomes an extension of your development standards. This article shows how I've configured Claude Code to enforce immutability, follow TDD, automate workflows, and maintain consistency across all my projects.
+Ever had an AI refactor your entire file when you asked for a one-line fix? Or add comments to every function?
 
-> **Note:** AI tooling moves fast. This reflects my current workflow, which will likely shift as the tools evolve.
+Claude Code's power comes from configuration. Without clear instructions, it's chaotic. With them, it becomes an extension of your development standards. This article shows how I've configured Claude Code to enforce immutability, follow TDD, automate workflows, and maintain consistency.
 
-Ever had an AI refactor your entire file when you asked for a one-line fix? Or add comments to every function? Claude Code can be powerful or chaotic depending on how you configure it.
-
-After using it extensively, I've learned that treating it like a junior dev who needs clear instructions yields the best results. Here's what works now.
+> **Note:** AI tooling moves fast. This reflects my current workflow.
 
 ## Know What You're Doing First
 
@@ -171,6 +169,12 @@ My full config: [github.com/helderberto/dotfiles](https://github.com/helderberto
 
 Consistent code, faster reviews, fewer "why did you do that?" moments. The AI becomes an extension of your standards, not a wildcard.
 
----
+## Wrapping Up
 
-Config approach: Teach once, enforce forever.
+AI without constraints is unpredictable. With clear docs, custom skills, and enforced standards, it becomes reliable.
+
+Invest time upfront defining your standards. The AI will enforce them consistently across every session. No more hoping it does the right thing.
+
+The config is the product. Treat it like code: version control it, test it, refactor it.
+
+Teach once. Enforce forever.
