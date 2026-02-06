@@ -43,8 +43,8 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
 
   return (
     <div className={styles.codeBlockContainer}>
-      <pre className={styles.pre}>
-        <code ref={codeRef} className={`language-${language}`}>
+      <pre className={styles.pre} suppressHydrationWarning>
+        <code ref={codeRef} className={`language-${language}`} suppressHydrationWarning>
           {children}
         </code>
       </pre>

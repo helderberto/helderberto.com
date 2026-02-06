@@ -72,13 +72,40 @@
   font-size: var(--text-responsive);
   line-height: var(--line-height-reading);
   margin: var(--reading-margin-list) 0;
-  padding-left: var(--content-spacing-heading);
+  padding-left: 2rem;
   color: var(--accent-foreground);
 }
 
 .markdownContent li {
-  margin-bottom: var(--content-spacing-list);
+  margin-bottom: var(--spacing-responsive-sm);
   line-height: var(--line-height-reading);
+  padding-left: 0.5rem;
+}
+
+.markdownContent ul li::marker {
+  color: var(--primary);
+}
+
+.markdownContent ol li::marker {
+  color: var(--primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.markdownContent li > ul,
+.markdownContent li > ol {
+  margin-top: var(--spacing-responsive-xs);
+  margin-bottom: var(--spacing-responsive-xs);
+  padding-left: 1.5rem;
+}
+
+.markdownContent ul ul li::marker,
+.markdownContent ol ul li::marker {
+  content: "○";
+  font-size: 0.875rem;
+}
+
+.markdownContent li > p {
+  margin-bottom: var(--spacing-responsive-xs);
 }
 
 /* Links use global styles from globals.css */
