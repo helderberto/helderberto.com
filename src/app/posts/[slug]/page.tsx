@@ -1,10 +1,9 @@
-import { CodeBlock } from "@/components/CodeBlock";
 import { Comments } from "@/components/Comments";
 import { JsonLd } from "@/components/JsonLd";
+import { MarkdownContent } from "@/components/MarkdownContent";
 import { PostHeader } from "@/components/PostHeader";
 import { siteConfig } from "@/config/site";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
-import Markdown from "markdown-to-jsx";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import styles from "./page.module.css";
@@ -89,17 +88,7 @@ export default async function Page({ params }: Props) {
       <JsonLd data={jsonLd} />
       <PostHeader title={post.title} date={post.date} />
       <div className={`${styles.content} ${styles.markdownContent}`}>
-        <Markdown
-          options={{
-            overrides: {
-              code: {
-                component: CodeBlock,
-              },
-            },
-          }}
-        >
-          {post.content}
-        </Markdown>
+        <MarkdownContent content={post.content} />
         <Comments />
       </div>
     </article>

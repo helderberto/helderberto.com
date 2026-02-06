@@ -1,7 +1,6 @@
-import { CodeBlock } from "@/components/CodeBlock";
+import { MarkdownContent } from "@/components/MarkdownContent";
 import fs from "fs";
 import matter from "gray-matter";
-import Markdown from "markdown-to-jsx";
 import { Metadata } from "next";
 import path from "path";
 import styles from "./page.module.css";
@@ -20,17 +19,7 @@ export default function AboutPage() {
     <main className="flex-col gap-lg container-sm">
       <div className={styles.content}>
         <article>
-          <Markdown
-            options={{
-              overrides: {
-                code: {
-                  component: CodeBlock,
-                },
-              },
-            }}
-          >
-            {content}
-          </Markdown>
+          <MarkdownContent content={content} />
         </article>
       </div>
     </main>
