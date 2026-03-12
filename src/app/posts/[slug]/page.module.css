@@ -1,37 +1,31 @@
 .article {
-  padding: 0 var(--container-padding) var(--spacing-responsive-2xl)
-    var(--container-padding);
+  padding-bottom: var(--spacing-responsive-2xl);
 }
 
 .content {
-  font-family: var(--font-family-reading);
   font-size: var(--text-responsive);
   line-height: var(--line-height-reading);
-  max-width: none;
 }
 
 .markdownContent {
   width: 100%;
 }
 
-/* Image styles */
 .markdownContent img {
   max-width: 100%;
   height: auto;
   border-radius: var(--radius-xl);
   margin: var(--reading-margin-heading) 0;
   display: block;
-  border: 1px solid var(--border);
+  border: 0.0625rem solid var(--border);
 }
 
-/* Markdown content styles - Enhanced for reading */
 .markdownContent h1 {
   font-size: var(--heading-h1-page);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading-large);
   margin: var(--content-spacing-section) 0 var(--content-spacing-heading) 0;
   color: var(--foreground);
-  text-align: center;
 }
 
 .markdownContent h2 {
@@ -59,27 +53,25 @@
 }
 
 .markdownContent p {
-  font-family: var(--font-family-reading);
   font-size: var(--text-responsive);
   line-height: var(--line-height-reading);
   margin-bottom: var(--reading-margin-paragraph);
-  color: var(--accent-foreground);
+  color: var(--foreground);
 }
 
 .markdownContent ul,
 .markdownContent ol {
-  font-family: var(--font-family-reading);
   font-size: var(--text-responsive);
   line-height: var(--line-height-reading);
   margin: var(--reading-margin-list) 0;
-  padding-left: 2rem;
-  color: var(--accent-foreground);
+  padding-left: 1.5rem;
+  color: var(--foreground);
 }
 
 .markdownContent li {
   margin-bottom: var(--spacing-responsive-sm);
   line-height: var(--line-height-reading);
-  padding-left: 0.5rem;
+  padding-left: 0.375rem;
 }
 
 .markdownContent ul li::marker {
@@ -95,20 +87,18 @@
 .markdownContent li > ol {
   margin-top: var(--spacing-responsive-xs);
   margin-bottom: var(--spacing-responsive-xs);
-  padding-left: 1.5rem;
+  padding-left: 1.25rem;
 }
 
 .markdownContent ul ul li::marker,
 .markdownContent ol ul li::marker {
   content: "○";
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
 }
 
 .markdownContent li > p {
   margin-bottom: var(--spacing-responsive-xs);
 }
-
-/* Links use global styles from globals.css */
 
 .markdownContent strong {
   font-weight: var(--font-weight-semibold);
@@ -121,7 +111,6 @@
 }
 
 .markdownContent blockquote {
-  font-family: var(--font-family-reading);
   border-left: 0.25rem solid var(--primary);
   padding-left: var(--content-spacing-heading);
   margin: var(--reading-margin-heading) 0;
@@ -133,7 +122,7 @@
 
 .markdownContent hr {
   border: none;
-  height: 1px;
+  height: 0.0625rem;
   background: var(--border);
   margin: var(--reading-margin-heading) 0;
 }
@@ -143,28 +132,22 @@
 }
 
 .markdownContent code:not(pre code) {
-  font-family: var(--font-family-mono);
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
   background: var(--inline-code-bg);
   color: var(--inline-code-color);
   padding: 0.125rem 0.375rem;
-  border-radius: 0.25rem;
-  border: 1px solid var(--inline-code-border);
+  border-radius: var(--radius);
+  border: 0.0625rem solid var(--inline-code-border);
   position: relative;
   top: -0.0625rem;
 }
 
-/* Add better spacing between elements */
 .markdownContent > *:first-child {
   margin-top: 0 !important;
 }
 
 .markdownContent > *:last-child {
   margin-bottom: 0 !important;
-}
-
-/* Dark mode adjustments */
-:global(.dark) .markdownContent hr {
-  background: #262626;
 }

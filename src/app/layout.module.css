@@ -1,4 +1,6 @@
 .main {
-  padding: var(--content-spacing-section) 0;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--content-spacing-section) var(--container-padding) var(--spacing-responsive-2xl);
   line-height: var(--line-height-body);
 }

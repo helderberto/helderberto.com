@@ -2,13 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 12.5rem;
+  min-height: 10rem;
   width: 100%;
   padding: var(--content-spacing-section);
   background: var(--muted);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border);
-  grid-column: 1 / -1;
+  border-radius: var(--radius-lg);
+  border: 0.0625rem solid var(--border);
 }
 
 .message {

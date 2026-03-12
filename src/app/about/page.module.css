@@ -1,5 +1,4 @@
-/* Markdown content styles - Enhanced for readability */
-.content article {
+.content {
   font-size: var(--text-responsive);
   line-height: var(--line-height-reading);
 }
@@ -8,7 +7,7 @@
   font-size: var(--heading-h1-page);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading-large);
-  margin: 0 0 var(--content-spacing-heading);
+  margin-bottom: var(--content-spacing-heading);
 }
 
 .content h2 {
@@ -29,15 +28,15 @@
   font-size: var(--text-responsive);
   line-height: var(--line-height-reading);
   margin-bottom: var(--reading-margin-paragraph);
+  color: var(--foreground);
 }
-
-/* Links use global styles from globals.css */
 
 .content ul,
 .content ol {
-  margin: var(--reading-margin-list) 0;
-  padding-left: var(--content-spacing-heading);
+  font-size: var(--text-responsive);
   line-height: var(--line-height-reading);
+  margin: var(--reading-margin-list) 0;
+  padding-left: 1.5rem;
 }
 
 .content li {

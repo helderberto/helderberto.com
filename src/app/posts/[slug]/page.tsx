@@ -84,7 +84,7 @@ export default async function Page({ params }: Props) {
   };
 
   return (
-    <article className={`${styles.article} container-sm`}>
+    <article className={styles.article}>
       <JsonLd data={jsonLd} />
       <PostHeader title={post.title} date={post.date} />
       <div className={`${styles.content} ${styles.markdownContent}`}>
