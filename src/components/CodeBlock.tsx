@@ -9,7 +9,7 @@ import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-tsx";
 import "prismjs/components/prism-typescript";
 import "prismjs/themes/prism-tomorrow.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./CodeBlock.module.css";
 
 interface CodeBlockProps {
@@ -18,20 +18,13 @@ interface CodeBlockProps {
 }
 
 export function CodeBlock({ children, className }: CodeBlockProps) {
-  const [mounted, setMounted] = useState(false);
   const codeRef = useRef<HTMLElement>(null);
 
-  // Handle mounting state
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Handle syntax highlighting after mount
-  useEffect(() => {
-    if (mounted && codeRef.current && codeRef.current.parentElement) {
+    if (codeRef.current && codeRef.current.parentElement) {
       Prism.highlightElement(codeRef.current);
     }
-  }, [mounted, children]);
+  }, [children]);
 
   // If there's no className, it's an inline code
   if (!className) {
