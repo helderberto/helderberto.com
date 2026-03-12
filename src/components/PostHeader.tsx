@@ -16,7 +16,7 @@ export function PostHeader({ title, date }: PostHeaderProps) {
 
   return (
     <header className={styles.header}>
-      <h1 className={styles.title}>{title}</h1>
+      <h1 id="post-title" className={styles.title}>{title}</h1>
       <time className={styles.date} dateTime={date}>
         {formattedDate}
       </time>

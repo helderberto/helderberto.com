@@ -151,3 +151,9 @@
 .markdownContent > *:last-child {
   margin-bottom: 0 !important;
 }
+
+.comments {
+  margin-top: var(--reading-margin-heading);
+  padding-top: var(--content-spacing-section);
+  border-top: 0.0625rem solid var(--border);
+}

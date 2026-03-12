@@ -84,13 +84,15 @@ export default async function Page({ params }: Props) {
   };
 
   return (
-    <article className={styles.article}>
+    <article className={styles.article} aria-labelledby="post-title">
       <JsonLd data={jsonLd} />
       <PostHeader title={post.title} date={post.date} />
       <div className={`${styles.content} ${styles.markdownContent}`}>
         <MarkdownContent content={post.content} />
-        <Comments />
       </div>
+      <section aria-label="Comments" className={styles.comments}>
+        <Comments />
+      </section>
     </article>
   );
 }

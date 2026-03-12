@@ -17,7 +17,7 @@ export default async function Home() {
     <>
       <section className={styles.intro}>
         <h1>
-          <span className={styles.wave}>👋</span>
+          <span className={styles.wave} aria-hidden="true">👋</span>
           Hey! I&apos;m Helder
         </h1>
         <p>

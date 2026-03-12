@@ -16,7 +16,7 @@ export default function AboutPage() {
   const { content } = matter(fileContents);
 
   return (
-    <article className={styles.content}>
+    <article className={styles.content} aria-label="About Me">
       <MarkdownContent content={content} />
     </article>
   );
