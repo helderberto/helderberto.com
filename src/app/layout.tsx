@@ -99,8 +99,8 @@ export default function RootLayout({
           <Header />
           <main className={styles.main}>{children}</main>
         </ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
+        {process.env.VERCEL && <Analytics />}
+        {process.env.VERCEL && <SpeedInsights />}
       </body>
     </html>
   );

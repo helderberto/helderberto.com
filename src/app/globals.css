@@ -30,6 +30,16 @@
   --scrollbar-thumb: #d4d4d4;
   --scrollbar-thumb-hover: #a3a3a3;
 
+  /* Syntax highlighting — Catppuccin Latte (light) */
+  --syntax-base: #3c3f57;
+  --syntax-comment: #5c5f77;
+  --syntax-tag: #d20f39;
+  --syntax-number: #fe640b;
+  --syntax-string: #40a02b;
+  --syntax-operator: #ea76cb;
+  --syntax-function: #df8e1d;
+  --syntax-keyword: #8839ef;
+
   /* Layout */
   --max-width: 48rem;
   --container-padding: clamp(1rem, 4vw, 2rem);
@@ -104,6 +114,16 @@
   --inline-code-border: #3f3f3f;
   --scrollbar-thumb: #3f3f3f;
   --scrollbar-thumb-hover: #525252;
+
+  /* Syntax highlighting — Catppuccin Mocha (dark) */
+  --syntax-base: #cdd6f4;
+  --syntax-comment: #a6adc8;
+  --syntax-tag: #f38ba8;
+  --syntax-number: #fab387;
+  --syntax-string: #a6e3a1;
+  --syntax-operator: #f5c2e7;
+  --syntax-function: #f9e2af;
+  --syntax-keyword: #cba6f7;
 }
 
 /* Base */

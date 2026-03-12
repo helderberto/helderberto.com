@@ -1,6 +1,7 @@
 "use client";
 
 import { Post } from "@/lib/posts";
+import { Search } from "lucide-react";
 import { useState } from "react";
 import { EmptyState } from "./EmptyState";
 import PostCard from "./PostCard";
@@ -41,6 +42,7 @@ export default function SearchPosts({ initialPosts }: SearchPostsProps) {
         <label htmlFor="search-posts" className="sr-only">
           Search posts
         </label>
+        <Search className={styles.searchIcon} aria-hidden="true" />
         <input
           id="search-posts"
           type="search"

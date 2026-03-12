@@ -1,8 +1,10 @@
 .container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  min-height: 10rem;
+  justify-content: center;
+  gap: var(--spacing-responsive-sm);
+  min-height: 12rem;
   width: 100%;
   padding: var(--content-spacing-section);
   background: var(--muted);
@@ -10,8 +12,15 @@
   border: 0.0625rem solid var(--border);
 }
 
+.icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--muted-foreground);
+  opacity: 0.5;
+}
+
 .message {
   color: var(--muted-foreground);
-  font-size: var(--text-responsive);
+  font-size: var(--font-size-sm);
   text-align: center;
 }
