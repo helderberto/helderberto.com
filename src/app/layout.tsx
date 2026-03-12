@@ -97,10 +97,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className={`${styles.main} container-sm`}>{children}</main>
+          <main className={styles.main}>{children}</main>
         </ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
+        {process.env.VERCEL && <Analytics />}
+        {process.env.VERCEL && <SpeedInsights />}
       </body>
     </html>
   );

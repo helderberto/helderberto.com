@@ -16,12 +16,8 @@ export default function AboutPage() {
   const { content } = matter(fileContents);
 
   return (
-    <main className="flex-col gap-lg container-sm">
-      <div className={styles.content}>
-        <article>
-          <MarkdownContent content={content} />
-        </article>
-      </div>
-    </main>
+    <article className={styles.content} aria-label="About Me">
+      <MarkdownContent content={content} />
+    </article>
   );
 }

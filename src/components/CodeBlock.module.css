@@ -10,40 +10,35 @@
   padding: 1.25rem 1.5rem;
   margin: 0;
   font-size: 0;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-lg);
   background: var(--code-bg);
-  border: 1px solid var(--code-border);
+  border: 0.0625rem solid var(--code-border);
 }
 
 .pre code {
-  font-family: var(--font-family-mono);
-  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
   line-height: 1.45;
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   background: none;
   padding: 0;
   border-radius: 0;
   border: none;
-  color: #3c3f57;
+  color: var(--syntax-base);
   display: block;
 }
 
-/* Dark theme code color - Catppuccin Mocha */
-:global(.dark) .pre code {
-  color: #cdd6f4;
-}
-
 .inlineCode {
-  font-family: var(--font-family-mono);
+  font-family: var(--font-mono);
   font-size: 0.875em;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   background: var(--inline-code-bg);
   color: var(--inline-code-color);
   padding: 0.15em 0.4em;
-  border-radius: 0.375rem;
+  border-radius: var(--radius);
   white-space: nowrap;
   vertical-align: baseline;
-  border: 1px solid var(--inline-code-border);
+  border: 0.0625rem solid var(--inline-code-border);
   position: relative;
   top: -0.05em;
 }
@@ -59,25 +54,24 @@
 
 .pre::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb);
-  border-radius: 0.25rem;
+  border-radius: var(--radius);
 }
 
 .pre::-webkit-scrollbar-thumb:hover {
   background: var(--scrollbar-thumb-hover);
 }
 
-/* Token colors - Catppuccin Theme */
-/* Light theme syntax highlighting - Catppuccin Latte */
+/* Token colors — Catppuccin (theme-aware via CSS variables) */
 .pre :global(.token.comment),
 .pre :global(.token.prolog),
 .pre :global(.token.doctype),
 .pre :global(.token.cdata) {
-  color: #5c5f77;
+  color: var(--syntax-comment);
   font-style: italic;
 }
 
 .pre :global(.token.punctuation) {
-  color: #3c3f57;
+  color: var(--syntax-base);
 }
 
 .pre :global(.token.namespace) {
@@ -89,12 +83,12 @@
 .pre :global(.token.constant),
 .pre :global(.token.symbol),
 .pre :global(.token.deleted) {
-  color: #d20f39;
+  color: var(--syntax-tag);
 }
 
 .pre :global(.token.boolean),
 .pre :global(.token.number) {
-  color: #fe640b;
+  color: var(--syntax-number);
 }
 
 .pre :global(.token.selector),
@@ -103,7 +97,7 @@
 .pre :global(.token.char),
 .pre :global(.token.builtin),
 .pre :global(.token.inserted) {
-  color: #40a02b;
+  color: var(--syntax-string);
 }
 
 .pre :global(.token.operator),
@@ -112,24 +106,24 @@
 .pre :global(.language-css .token.string),
 .pre :global(.style .token.string),
 .pre :global(.token.variable) {
-  color: #ea76cb;
+  color: var(--syntax-operator);
 }
 
 .pre :global(.token.atrule),
 .pre :global(.token.attr-value),
 .pre :global(.token.function),
 .pre :global(.token.class-name) {
-  color: #df8e1d;
+  color: var(--syntax-function);
 }
 
 .pre :global(.token.keyword) {
-  color: #8839ef;
-  font-weight: 600;
+  color: var(--syntax-keyword);
+  font-weight: var(--font-weight-semibold);
 }
 
 .pre :global(.token.regex),
 .pre :global(.token.important) {
-  color: #fe640b;
+  color: var(--syntax-number);
 }
 
 .pre :global(.token.important),
@@ -139,65 +133,4 @@
 
 .pre :global(.token.italic) {
   font-style: italic;
-}
-
-/* Dark theme syntax highlighting - Catppuccin Mocha */
-:global(.dark) .pre :global(.token.comment),
-:global(.dark) .pre :global(.token.prolog),
-:global(.dark) .pre :global(.token.doctype),
-:global(.dark) .pre :global(.token.cdata) {
-  color: #6c7086;
-  font-style: italic;
-}
-
-:global(.dark) .pre :global(.token.punctuation) {
-  color: #cdd6f4;
-}
-
-:global(.dark) .pre :global(.token.property),
-:global(.dark) .pre :global(.token.tag),
-:global(.dark) .pre :global(.token.constant),
-:global(.dark) .pre :global(.token.symbol),
-:global(.dark) .pre :global(.token.deleted) {
-  color: #f38ba8;
-}
-
-:global(.dark) .pre :global(.token.boolean),
-:global(.dark) .pre :global(.token.number) {
-  color: #fab387;
-}
-
-:global(.dark) .pre :global(.token.selector),
-:global(.dark) .pre :global(.token.attr-name),
-:global(.dark) .pre :global(.token.string),
-:global(.dark) .pre :global(.token.char),
-:global(.dark) .pre :global(.token.builtin),
-:global(.dark) .pre :global(.token.inserted) {
-  color: #a6e3a1;
-}
-
-:global(.dark) .pre :global(.token.operator),
-:global(.dark) .pre :global(.token.entity),
-:global(.dark) .pre :global(.token.url),
-:global(.dark) .pre :global(.language-css .token.string),
-:global(.dark) .pre :global(.style .token.string),
-:global(.dark) .pre :global(.token.variable) {
-  color: #f5c2e7;
-}
-
-:global(.dark) .pre :global(.token.atrule),
-:global(.dark) .pre :global(.token.attr-value),
-:global(.dark) .pre :global(.token.function),
-:global(.dark) .pre :global(.token.class-name) {
-  color: #f9e2af;
-}
-
-:global(.dark) .pre :global(.token.keyword) {
-  color: #cba6f7;
-  font-weight: 600;
-}
-
-:global(.dark) .pre :global(.token.regex),
-:global(.dark) .pre :global(.token.important) {
-  color: #fab387;
 }

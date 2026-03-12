@@ -1,6 +1,7 @@
 "use client";
 
 import { Post } from "@/lib/posts";
+import { Search } from "lucide-react";
 import { useState } from "react";
 import { EmptyState } from "./EmptyState";
 import PostCard from "./PostCard";
@@ -19,7 +20,7 @@ export default function SearchPosts({ initialPosts }: SearchPostsProps) {
 
   const groupPostsByYear = (posts: Post[]) => {
     const grouped: { [year: string]: Post[] } = {};
-    
+
     posts.forEach((post) => {
       const year = new Date(post.date).getFullYear().toString();
       if (!grouped[year]) {
@@ -28,8 +29,8 @@ export default function SearchPosts({ initialPosts }: SearchPostsProps) {
       grouped[year].push(post);
     });
 
-    return Object.entries(grouped).sort(([yearA], [yearB]) => 
-      parseInt(yearB) - parseInt(yearA)
+    return Object.entries(grouped).sort(
+      ([yearA], [yearB]) => parseInt(yearB) - parseInt(yearA)
     );
   };
 
@@ -38,8 +39,13 @@ export default function SearchPosts({ initialPosts }: SearchPostsProps) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
+        <label htmlFor="search-posts" className="sr-only">
+          Search posts
+        </label>
+        <Search className={styles.searchIcon} aria-hidden="true" />
         <input
-          type="text"
+          id="search-posts"
+          type="search"
           placeholder="Search posts..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
@@ -47,16 +53,27 @@ export default function SearchPosts({ initialPosts }: SearchPostsProps) {
         />
       </div>
 
+      <div
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className="sr-only"
+      >
+        {searchQuery
+          ? `${filteredPosts.length} post${filteredPosts.length !== 1 ? "s" : ""} found`
+          : ""}
+      </div>
+
       <div className={styles.results}>
         {filteredPosts.length > 0 ? (
           groupedPosts.map(([year, posts]) => (
             <div key={year} className={styles.yearGroup}>
               <h2 className={styles.yearHeading}>{year}</h2>
-              <div className={styles.postsList}>
+              <ul className={styles.postsList}>
                 {posts.map((post) => (
                   <PostCard key={post.slug} post={post} />
                 ))}
-              </div>
+              </ul>
             </div>
           ))
         ) : (

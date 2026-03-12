@@ -17,14 +17,14 @@ const PostCard = ({ post }: PostCardProps) => {
   };
 
   return (
-    <div className={styles.item}>
+    <li className={styles.item}>
       <time className={styles.date} dateTime={post.date}>
         {formatDate(post.date)}
       </time>
       <Link href={`/posts/${post.slug}`} className={styles.title}>
         {post.title}
       </Link>
-    </div>
+    </li>
   );
 };
 
