@@ -1,8 +1,8 @@
-import { siteConfig } from "@/config/site";
-import { getAllPosts } from "@/lib/posts";
-import { MetadataRoute } from "next";
+import { siteConfig } from '@/config/site';
+import { getAllPosts } from '@/lib/posts';
+import { MetadataRoute } from 'next';
 
-export const dynamic = "force-static";
+export const dynamic = 'force-static';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getAllPosts();
@@ -10,7 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const postEntries = posts.map((post) => ({
     url: `${siteConfig.url}/posts/${post.slug}`,
     lastModified: post.date,
-    changeFrequency: "monthly" as const,
+    changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
 
@@ -18,13 +18,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: siteConfig.url,
       lastModified: new Date(),
-      changeFrequency: "daily",
+      changeFrequency: 'daily',
       priority: 1,
     },
     {
       url: `${siteConfig.url}/about`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: 'monthly',
       priority: 0.8,
     },
     ...postEntries,

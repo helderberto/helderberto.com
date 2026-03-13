@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { Post } from "@/lib/posts";
-import { Search } from "lucide-react";
-import { useState } from "react";
-import { EmptyState } from "./EmptyState";
-import PostCard from "./PostCard";
-import styles from "./SearchPosts.module.css";
+import { Post } from '@/lib/posts';
+import { Search } from 'lucide-react';
+import { useState } from 'react';
+import { EmptyState } from './EmptyState';
+import PostCard from './PostCard';
+import styles from './SearchPosts.module.css';
 
 interface SearchPostsProps {
   initialPosts: Post[];
 }
 
 export default function SearchPosts({ initialPosts }: SearchPostsProps) {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
 
   const filteredPosts = initialPosts.filter((post) =>
-    post.title.toLowerCase().includes(searchQuery.toLowerCase())
+    post.title.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   const groupPostsByYear = (posts: Post[]) => {
@@ -30,7 +30,7 @@ export default function SearchPosts({ initialPosts }: SearchPostsProps) {
     });
 
     return Object.entries(grouped).sort(
-      ([yearA], [yearB]) => parseInt(yearB) - parseInt(yearA)
+      ([yearA], [yearB]) => parseInt(yearB) - parseInt(yearA),
     );
   };
 
@@ -60,8 +60,8 @@ export default function SearchPosts({ initialPosts }: SearchPostsProps) {
         className="sr-only"
       >
         {searchQuery
-          ? `${filteredPosts.length} post${filteredPosts.length !== 1 ? "s" : ""} found`
-          : ""}
+          ? `${filteredPosts.length} post${filteredPosts.length !== 1 ? 's' : ''} found`
+          : ''}
       </div>
 
       <div className={styles.results}>
@@ -81,7 +81,7 @@ export default function SearchPosts({ initialPosts }: SearchPostsProps) {
             message={
               searchQuery
                 ? `No posts found for "${searchQuery}"`
-                : "No posts found"
+                : 'No posts found'
             }
           />
         )}

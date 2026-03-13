@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import Markdown from "markdown-to-jsx";
-import { CodeBlock } from "./CodeBlock";
+import Markdown from 'markdown-to-jsx';
+import { CodeBlock } from './CodeBlock';
 
 interface MarkdownContentProps {
   content: string;

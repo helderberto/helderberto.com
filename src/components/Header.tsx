@@ -1,9 +1,9 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import styles from "./Header.module.css";
-import { ThemeToggle } from "./ThemeToggle";
+'use client';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import styles from './Header.module.css';
+import { ThemeToggle } from './ThemeToggle';
 
 const Header = () => {
   const pathname = usePathname();
@@ -25,15 +25,15 @@ const Header = () => {
           <nav className={styles.nav} aria-label="Main navigation">
             <Link
               href="/"
-              className={`${styles.link} ${pathname === "/" ? styles.active : ""}`}
-              aria-current={pathname === "/" ? "page" : undefined}
+              className={`${styles.link} ${pathname === '/' ? styles.active : ''}`}
+              aria-current={pathname === '/' ? 'page' : undefined}
             >
               Home
             </Link>
             <Link
               href="/about"
-              className={`${styles.link} ${pathname === "/about" ? styles.active : ""}`}
-              aria-current={pathname === "/about" ? "page" : undefined}
+              className={`${styles.link} ${pathname === '/about' ? styles.active : ''}`}
+              aria-current={pathname === '/about' ? 'page' : undefined}
             >
               About
             </Link>

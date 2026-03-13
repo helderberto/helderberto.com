@@ -1,6 +1,6 @@
-import { Post } from "@/lib/posts";
-import Link from "next/link";
-import styles from "./PostCard.module.css";
+import { Post } from '@/lib/posts';
+import Link from 'next/link';
+import styles from './PostCard.module.css';
 
 interface PostCardProps {
   post: Post;
@@ -9,10 +9,10 @@ interface PostCardProps {
 const PostCard = ({ post }: PostCardProps) => {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
+    return date.toLocaleDateString('en-US', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
     });
   };
 

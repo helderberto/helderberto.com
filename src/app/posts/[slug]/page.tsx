@@ -1,12 +1,12 @@
-import { Comments } from "@/components/Comments";
-import { JsonLd } from "@/components/JsonLd";
-import { MarkdownContent } from "@/components/MarkdownContent";
-import { PostHeader } from "@/components/PostHeader";
-import { siteConfig } from "@/config/site";
-import { getAllPosts, getPostBySlug } from "@/lib/posts";
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import styles from "./page.module.css";
+import { Comments } from '@/components/Comments';
+import { JsonLd } from '@/components/JsonLd';
+import { MarkdownContent } from '@/components/MarkdownContent';
+import { PostHeader } from '@/components/PostHeader';
+import { siteConfig } from '@/config/site';
+import { getAllPosts, getPostBySlug } from '@/lib/posts';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import styles from './page.module.css';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!post) {
     return {
-      title: "Post Not Found",
+      title: 'Post Not Found',
       description: "The post you're looking for doesn't exist",
     };
   }
@@ -38,13 +38,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      type: "article",
+      type: 'article',
       publishedTime: post.date,
       authors: [siteConfig.name],
       url,
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
     },
@@ -64,20 +64,20 @@ export default async function Page({ params }: Props) {
 
   const url = new URL(`/posts/${slug}`, siteConfig.url).toString();
   const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
     headline: post.title,
     datePublished: post.date,
     dateModified: post.date,
     author: {
-      "@type": "Person",
+      '@type': 'Person',
       name: siteConfig.name,
       url: siteConfig.url,
     },
     description: post.excerpt,
     url,
     publisher: {
-      "@type": "Person",
+      '@type': 'Person',
       name: siteConfig.name,
       url: siteConfig.url,
     },

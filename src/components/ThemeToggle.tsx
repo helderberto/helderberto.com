@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
-import styles from "./ThemeToggle.module.css";
+import { Moon, Sun } from 'lucide-react';
+import { useTheme } from 'next-themes';
+import styles from './ThemeToggle.module.css';
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 
   return (
     <button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       className={styles.button}
       aria-label="Toggle theme"
     >

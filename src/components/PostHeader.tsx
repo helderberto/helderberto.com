@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import styles from "./PostHeader.module.css";
+import styles from './PostHeader.module.css';
 
 interface PostHeaderProps {
   title: string;
@@ -8,15 +8,17 @@ interface PostHeaderProps {
 }
 
 export function PostHeader({ title, date }: PostHeaderProps) {
-  const formattedDate = new Date(date).toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
+  const formattedDate = new Date(date).toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
   });
 
   return (
     <header className={styles.header}>
-      <h1 id="post-title" className={styles.title}>{title}</h1>
+      <h1 id="post-title" className={styles.title}>
+        {title}
+      </h1>
       <time className={styles.date} dateTime={date}>
         {formattedDate}
       </time>
