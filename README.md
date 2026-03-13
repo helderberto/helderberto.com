@@ -44,4 +44,4 @@ excerpt: "Brief description"
 
 ## License
 
-[MIT License](LICENSE) © [Helder Berto](https://helderberto.com)
+[MIT License](LICENSE) © [Helder Burato Berto](https://helderberto.com)
