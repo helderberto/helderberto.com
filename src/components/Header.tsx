@@ -18,6 +18,7 @@ const Header = () => {
             width={32}
             height={32}
             className={styles.profileImage}
+            priority
           />
         </Link>
 
