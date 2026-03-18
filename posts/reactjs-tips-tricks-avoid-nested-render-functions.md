@@ -1,7 +1,7 @@
 ---
-title: "ReactJS Tips & Tricks: Avoid Nested Render Functions"
-date: "2021-11-10"
-excerpt: "Avoid Nested Render Functions."
+title: 'ReactJS Tips & Tricks: Avoid Nested Render Functions'
+date: '2021-11-10'
+excerpt: 'Avoid Nested Render Functions.'
 ---
 
 ## ReactJS Tips & Tricks (Series)

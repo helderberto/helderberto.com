@@ -1,7 +1,7 @@
 ---
-title: "Integrating TLDR with FZF"
-date: "2023-02-26"
-excerpt: "TLDR + FZF for a better developer experience"
+title: 'Integrating TLDR with FZF'
+date: '2023-02-26'
+excerpt: 'TLDR + FZF for a better developer experience'
 ---
 
 In this post, we gonna dive into [TLDR](https://formulae.brew.sh/formula/tldr) with [fzf](https://formulae.brew.sh/formula/fzf) search.

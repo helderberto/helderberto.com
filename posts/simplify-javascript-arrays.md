@@ -1,6 +1,6 @@
 ---
-title: "Simplify JavaScript Arrays"
-date: "2019-06-18"
+title: 'Simplify JavaScript Arrays'
+date: '2019-06-18'
 excerpt: "In this post we'll cover some methods of JavaScript that will make it easier for you to work with arrays and write more elegant codes."
 ---
 
@@ -9,7 +9,7 @@ In this post we'll cover some methods of **JavaScript** that will make it easier
 ## Let's define our arrays
 
 ```ts
-const beers = ["Heineken", "San Diego", "Coruja", "Saint Bier"];
+const beers = ['Heineken', 'San Diego', 'Coruja', 'Saint Bier'];
 const ages = [20, 25, 19, 21, 42];
 ```
 
@@ -46,7 +46,7 @@ _Note: If an empty array is given, the default return must be TRUE_
 It allows checking whether or not an element exists in the defined array. Example:
 
 ```ts
-console.log(beers.includes("Skol")); // false
+console.log(beers.includes('Skol')); // false
 
 console.log(ages.includes(25)); // true
 ```
@@ -60,11 +60,11 @@ This method allows you to filter multiple elements with a condition you define. 
 ```ts
 // ES5
 function startWithS(word) {
-  return word.indexOf("S") === 0;
+  return word.indexOf('S') === 0;
 }
 
 // ES6
-const startWithS = (word) => word.indexOf("S") === 0;
+const startWithS = (word) => word.indexOf('S') === 0;
 
 const beersStartWithS = beers.filter(startWithS);
 
@@ -89,11 +89,11 @@ The difference of this method compared to the `filter()` method is that first on
 ```ts
 // ES5
 function findSanDiego(element) {
-  return element === "San Diego";
+  return element === 'San Diego';
 }
 
 // ES6
-const findSanDiego = (element) => element === "San Diego";
+const findSanDiego = (element) => element === 'San Diego';
 
 const beerSanDiego = beers.find(findSanDiego);
 
@@ -137,12 +137,12 @@ This method checks if a least one element satisfies the condition. Example:
 ```ts
 // ES5
 function hasHeinekenOrSaint(beer) {
-  return beer === "Saint Bier" || beer === "Heineken";
+  return beer === 'Saint Bier' || beer === 'Heineken';
 }
 
 // ES6
 const hasHeinekenOrSaint = (beer) =>
-  beer === "Saint Bier" || beer === "Heineken";
+  beer === 'Saint Bier' || beer === 'Heineken';
 
 const heinekenSaint = beers.some(hasHeinekenOrSaint);
 

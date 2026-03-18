@@ -1,7 +1,7 @@
 ---
-title: "Building Shareable AI Agent Skills"
-date: "2026-02-13"
-excerpt: "How to create reusable AI workflows that work across coding agents, version control them, and share them with the community"
+title: 'Building Shareable AI Agent Skills'
+date: '2026-02-13'
+excerpt: 'How to create reusable AI workflows that work across coding agents, version control them, and share them with the community'
 ---
 
 You're typing the same instructions to Claude Code every session. "Create a commit following repo style." "Run tests before pushing." "Check coverage on these changes."
@@ -39,7 +39,7 @@ No more manual `git add -A && git commit && git push` dance.
 - Cline
 - Windsurf
 - Replit
-- + more
+- - more
 
 **Version controlled** - Skills are git-tracked markdown:
 

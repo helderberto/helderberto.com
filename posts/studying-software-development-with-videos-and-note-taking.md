@@ -1,6 +1,6 @@
 ---
-title: "Studying Software Development with Videos and Note-Taking"
-date: "2021-02-17"
+title: 'Studying Software Development with Videos and Note-Taking'
+date: '2021-02-17'
 excerpt: "On this article, I'm going to share my process of studying software development with videos and note-taking."
 ---
 
@@ -53,7 +53,7 @@ JavaScript, Programming Operators
 ##### Problem
 
 ```js
-const user = { name: "Helder" };
+const user = { name: 'Helder' };
 const zipcode = user.address.zipcode;
 console.log(zipcode); // => "TypeError: Cannot read property 'zipcode' of undefined
 ```
@@ -61,7 +61,7 @@ console.log(zipcode); // => "TypeError: Cannot read property 'zipcode' of undefi
 ##### Solution
 
 ```js
-const user = { name: "Helder" };
+const user = { name: 'Helder' };
 const zipcode = user?.address?.zipcode;
 console.log(zipcode); // => undefined
 ```

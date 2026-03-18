@@ -1,7 +1,7 @@
 ---
 title: "What Your Claude Code Agents Don't Need to Be Told"
-date: "2026-02-09"
-excerpt: "How to identify and remove generic noise from your Claude Code configuration so the context window is spent on what actually matters"
+date: '2026-02-09'
+excerpt: 'How to identify and remove generic noise from your Claude Code configuration so the context window is spent on what actually matters'
 ---
 
 Claude Code has a finite context window. Every token matters. Your agent definitions, skill files, and docs all compete for that space with the actual code you're asking it to analyze.
@@ -16,7 +16,7 @@ I hit this wall while working on a frontend feature. My agents were loaded with 
 
 My TypeScript enforcer agent included examples of how to use spread operators, how to write early returns, and when to use `Set` instead of `Array.find()`. The model already knows all of that.
 
-What it *doesn't* know: our project uses a formatjs babel plugin with `ast: true`, which compiles i18n messages to AST at build time. This causes parameterized messages like `{count} active` to render variable names literally in tests. That's a gotcha worth documenting, it cost me real debugging time.
+What it _doesn't_ know: our project uses a formatjs babel plugin with `ast: true`, which compiles i18n messages to AST at build time. This causes parameterized messages like `{count} active` to render variable names literally in tests. That's a gotcha worth documenting, it cost me real debugging time.
 
 The distinction is simple: **generic programming knowledge is noise. Project-specific knowledge is signal.**
 
@@ -36,12 +36,14 @@ I found identical sections copy-pasted across every agent:
 
 ```markdown
 ## Commands to Use
+
 - `Glob` - Find files
 - `Grep` - Search for patterns
 - `Read` - Examine content
 - `Bash` - Run scripts
 
 ## Success Criteria
+
 The agent is successful when...
 ```
 
@@ -49,7 +51,7 @@ The model already knows its available tools from the system prompt. "Success cri
 
 ### 3. Is this a checklist or an essay?
 
-The model doesn't need you to explain *how* to extract a function. It needs to know *when* you want it flagged.
+The model doesn't need you to explain _how_ to extract a function. It needs to know _when_ you want it flagged.
 
 **Before (essay with examples):**
 
@@ -61,12 +63,12 @@ Evaluate function complexity and cognitive load...
 **Long functions example:**
 // ⚠️ Too long (>50 lines)
 const processOrder = (order) => {
-  // ... 80 lines of logic
+// ... 80 lines of logic
 };
 
 // ✅ Extracted
-const validateOrder = (order) => { /* ... */ };
-const calculateTotal = (order) => { /* ... */ };
+const validateOrder = (order) => { /_ ... _/ };
+const calculateTotal = (order) => { /_ ... _/ };
 ...
 ```
 
@@ -74,19 +76,20 @@ const calculateTotal = (order) => { /* ... */ };
 
 ```markdown
 ### Readability
+
 - Functions >50 lines → extract
 - Nesting >3 levels → early returns
 - Magic numbers → named constants
 - Unclear names
 ```
 
-Same rules. The model fills in the *how*.
+Same rules. The model fills in the _how_.
 
 ## Agents vs Skills: Different Problems, Different Tools
 
 I had a "dependency auditor" agent, hundreds of lines of instructions for what amounts to running `npm audit` and `npm outdated`. That's not a judgment call. That's a command sequence.
 
-**Agents** solve problems requiring judgment: code review, test quality assessment, TypeScript enforcement. They need checklists of *what to look for*.
+**Agents** solve problems requiring judgment: code review, test quality assessment, TypeScript enforcement. They need checklists of _what to look for_.
 
 **Skills** solve problems with deterministic steps: commit, push, lint, audit. They need a sequence of commands and rules about when to stop.
 
@@ -96,17 +99,21 @@ The dependency auditor became a skill:
 # Dependency Audit
 
 ## Commands
+
 Run in parallel:
+
 - `npm audit` - security vulnerabilities
 - `npm outdated` - outdated packages
 
 ## Workflow
+
 1. Run security audit and outdated check
 2. Report critical vulnerabilities with fix commands
 3. List outdated packages (major vs minor/patch)
 4. Check for unused deps: grep imports in src/
 
 ## Rules
+
 - Use `npm audit`, never `npx`
 - Prioritize: security > major updates > unused > minor updates
 ```
@@ -131,6 +138,7 @@ My `/ship` skill (stage → commit → push) had no quality gates. It would happ
 
 ```markdown
 ## Workflow
+
 1. Review all changes
 2. Run quality checks in parallel:
    - `npm run lint`
@@ -171,12 +179,12 @@ Whether that tradeoff matters depends on how close to the context limit you work
 ## Takeaways
 
 1. **Generic knowledge is noise**: If the model already knows it, it doesn't belong in your config
-2. **Checklists over essays**: Tell it *what* to check, not *how*
+2. **Checklists over essays**: Tell it _what_ to check, not _how_
 3. **Skills for commands, agents for judgment**: Match the tool to the problem
 4. **One focused agent beats three overlapping ones**: Merge and consolidate
 5. **Document what only you know**: Project gotchas, team conventions, configuration quirks
 6. **Workflows should fail fast**: Add quality gates before destructive operations
 
-Your Claude Code configuration should contain what only *you* know about your project. Everything else is already in the model.
+Your Claude Code configuration should contain what only _you_ know about your project. Everything else is already in the model.
 
 My full config: [github.com/helderberto/dotfiles](https://github.com/helderberto/dotfiles/tree/main/claude/.claude)

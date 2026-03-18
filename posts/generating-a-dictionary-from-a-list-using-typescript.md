@@ -1,7 +1,7 @@
 ---
-title: "Generating a Dictionary from a List using TypeScript"
-date: "2021-11-02"
-excerpt: "In this article, I will show you how to generate a dictionary from a list and use TypeScript Generics to help us."
+title: 'Generating a Dictionary from a List using TypeScript'
+date: '2021-11-02'
+excerpt: 'In this article, I will show you how to generate a dictionary from a list and use TypeScript Generics to help us.'
 ---
 
 On this article, I will show you how to generate a dictionary from a list and use
@@ -31,8 +31,8 @@ When passes a list as example it will returns:
 
 ```js
 const pets = [
-  { name: "Zelda", age: 2 },
-  { name: "Link", age: 4 },
+  { name: 'Zelda', age: 2 },
+  { name: 'Link', age: 4 },
 ];
 const dict = listToDict(pets, (item) => item.name);
 console.log(dict);
@@ -43,8 +43,8 @@ For now, everything is fine, but notice a thing when you try to execute with a n
 
 ```ts
 const pets = [
-  { name: "Zelda", age: 2 },
-  { name: "Link", age: 4 },
+  { name: 'Zelda', age: 2 },
+  { name: 'Link', age: 4 },
 ];
 const dict = listToDict(pets, (item) => item.something); // => Focus here
 ```
@@ -60,7 +60,7 @@ In the following example, we will use [TypeScript - Generics](https://www.typesc
 ```ts
 function listToDict<T>(
   list: T[],
-  idGen: (arg: T) => string
+  idGen: (arg: T) => string,
 ): { [key: string]: T } {
   const dict: { [key: string]: T } = {};
 
@@ -93,8 +93,8 @@ If you try the example with an inexistent key, you will receive an error:
 
 ```ts
 const pets = [
-  { name: "Zelda", age: 2 },
-  { name: "Link", age: 4 },
+  { name: 'Zelda', age: 2 },
+  { name: 'Link', age: 4 },
 ];
 const dict = listToDict(pets, (item) => item.something); // => It will returns 'undefined' but will throws an error.
 ```

@@ -1,7 +1,7 @@
 ---
-title: "Polymorphism with React"
-date: "2023-03-04"
-excerpt: "Creating a component with a different node depending on the passed props"
+title: 'Polymorphism with React'
+date: '2023-03-04'
+excerpt: 'Creating a component with a different node depending on the passed props'
 ---
 
 In this article, we will create an example using Polymorphism in React.
@@ -40,7 +40,7 @@ It will involve updating the `button` and the `a`, like the following example:
 
 ```tsx
 export default function LinkButton({ href, children, ...props }) {
-  if (typeof href === "string") {
+  if (typeof href === 'string') {
     return (
       <a href={href} {...props}>
         {children}
@@ -70,7 +70,7 @@ Let's create the same example using Polymorphism:
 
 ```tsx
 export default function LinkButton({ href, children, ...props }) {
-  const Tag = typeof href === "string" ? "a" : "button";
+  const Tag = typeof href === 'string' ? 'a' : 'button';
 
   return (
     <Tag href={href} {...props}>

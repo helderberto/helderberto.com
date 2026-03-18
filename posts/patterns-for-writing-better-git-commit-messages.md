@@ -1,6 +1,6 @@
 ---
-title: "Patterns for Writing Better Git Commit Messages"
-date: "2020-09-10"
+title: 'Patterns for Writing Better Git Commit Messages'
+date: '2020-09-10'
 excerpt: "It's an opinionated guide I keep with me to consult every time I catch myself in doubt if I'm writing nice commit messages with context of what I'm delivering."
 ---
 

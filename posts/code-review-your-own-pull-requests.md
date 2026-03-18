@@ -1,7 +1,7 @@
 ---
-title: "Code Review your Own Pull Requests"
-date: "2024-11-08"
-excerpt: "Discover how self-reviewing your pull requests can elevate code quality, catch overlooked issues, and streamline the development process."
+title: 'Code Review your Own Pull Requests'
+date: '2024-11-08'
+excerpt: 'Discover how self-reviewing your pull requests can elevate code quality, catch overlooked issues, and streamline the development process.'
 ---
 
 As engineers, we often consider our job done after opening a pull request and asking for people to do the review.

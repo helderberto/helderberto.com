@@ -1,7 +1,7 @@
 ---
-title: "What is a Pure Function?"
-date: "2019-06-16"
-excerpt: "Whenever you are told about pure functions, keep the following in mind."
+title: 'What is a Pure Function?'
+date: '2019-06-16'
+excerpt: 'Whenever you are told about pure functions, keep the following in mind.'
 ---
 
 Whenever you are told about pure functions, keep the following in mind.

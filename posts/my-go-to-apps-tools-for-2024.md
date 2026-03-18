@@ -1,7 +1,7 @@
 ---
-title: "My Go-To Apps and Tools for 2024"
-date: "2024-11-07"
-excerpt: "Essential apps and tools that boost my productivity in 2024"
+title: 'My Go-To Apps and Tools for 2024'
+date: '2024-11-07'
+excerpt: 'Essential apps and tools that boost my productivity in 2024'
 ---
 
 Following the tradition of [Elton Minetto](https://eltonminetto.dev/), who shares his most used apps and services (you can read his 2024 version [here](https://eltonminetto.dev/en/post/2024-11-04-apps-services-2024/)), I'd like to share my own list of essential tools that boost my productivity and help me stay in the flow.

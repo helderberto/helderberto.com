@@ -1,7 +1,7 @@
 ---
-title: "Upgrade Husky to Latest Version"
-date: "2021-02-26"
-excerpt: "How to upgrade Husky package to the latest version 5.x"
+title: 'Upgrade Husky to Latest Version'
+date: '2021-02-26'
+excerpt: 'How to upgrade Husky package to the latest version 5.x'
 ---
 
 In this post, I'll show you how to upgrade from [Husky - Git hooks](https://typicode.github.io/husky/#/) v4.x to v5.x.

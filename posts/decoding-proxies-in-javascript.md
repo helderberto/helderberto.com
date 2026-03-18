@@ -1,7 +1,7 @@
 ---
-title: "Decoding Proxies in JavaScript"
-date: "2019-06-22"
-excerpt: "In this post we will approach the object Proxy included in the version ECMAScript 6, creating the possibility of interception and making possible creation of customized methods."
+title: 'Decoding Proxies in JavaScript'
+date: '2019-06-22'
+excerpt: 'In this post we will approach the object Proxy included in the version ECMAScript 6, creating the possibility of interception and making possible creation of customized methods.'
 ---
 
 In this post we will approach the object **Proxy** included in the version ECMAScript 6, creating the possibility of interception and making possible creation of customized methods.
@@ -42,7 +42,7 @@ const handler = {
     return prop in obj ? obj[prop] : 1;
   },
   set: function (target, prop, value, receiver) {
-    if (prop === "age") {
+    if (prop === 'age') {
       if (!Number.isInteger(value)) {
         throw new TypeError(`The property age isn't a number.`);
       }
@@ -63,7 +63,7 @@ proxyOne.age = 20;
 console.log(proxyOne.age, proxyOne.active); // => 20 1
 
 const proxyTwo = new Proxy(target, handler);
-proxyTwo.age = "Hello World";
+proxyTwo.age = 'Hello World';
 
 console.log(proxyTwo.age); // => TypeError: The property age isn't a number.
 ```
@@ -87,8 +87,8 @@ const handler = {
 };
 
 const target = {
-  firstName: "Helder",
-  lastName: "Burato Berto",
+  firstName: 'Helder',
+  lastName: 'Burato Berto',
 };
 
 const { proxy, revoke } = Proxy.revocable(target, handler);

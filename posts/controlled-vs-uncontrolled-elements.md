@@ -1,7 +1,7 @@
 ---
-title: "Controlled vs Uncontrolled Elements"
-date: "2023-02-01"
-excerpt: "What do controlled and uncontrolled elements mean?"
+title: 'Controlled vs Uncontrolled Elements'
+date: '2023-02-01'
+excerpt: 'What do controlled and uncontrolled elements mean?'
 ---
 
 When working with React, you will notice often used naming called _Controlled_ and _Uncontrolled_.
@@ -57,7 +57,7 @@ Let's create an input managed by React:
 
 ```tsx
 export default function ControlledInput() {
-  const [value, setValue] = React.useState(""); // Start as an empty string
+  const [value, setValue] = React.useState(''); // Start as an empty string
 
   return (
     <>

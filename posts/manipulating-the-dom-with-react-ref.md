@@ -1,7 +1,7 @@
 ---
-title: "Manipulating the DOM with React Ref"
-date: "2023-02-21"
-excerpt: "Using React ref to manipulate DOM nodes"
+title: 'Manipulating the DOM with React Ref'
+date: '2023-02-21'
+excerpt: 'Using React ref to manipulate DOM nodes'
 ---
 
 When you found something like `document.querySelector('.something')` in your React codebase, it's probably a code smell.

@@ -1,7 +1,7 @@
 ---
-title: "Structuring a better README for your projects"
-date: "2021-10-30"
-excerpt: "Simple steps to create a better README for your projects."
+title: 'Structuring a better README for your projects'
+date: '2021-10-30'
+excerpt: 'Simple steps to create a better README for your projects.'
 ---
 
 In this article, I will share some of the thoughts I keep in mind to create a better README for my projects.

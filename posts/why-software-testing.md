@@ -1,7 +1,7 @@
 ---
-title: "Why Software Testing?"
-date: "2021-10-17"
-excerpt: "Some principles about Software Testing."
+title: 'Why Software Testing?'
+date: '2021-10-17'
+excerpt: 'Some principles about Software Testing.'
 ---
 
 "It is unthinkable to develop professionally without including tests" - Fabio Vedovelli

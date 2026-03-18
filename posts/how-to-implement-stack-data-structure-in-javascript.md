@@ -1,6 +1,6 @@
 ---
-title: "How to Implement Stack Data Structure in JavaScript"
-date: "2020-12-06"
+title: 'How to Implement Stack Data Structure in JavaScript'
+date: '2020-12-06'
 excerpt: "On this article, I'll show how to implement `Stack` data structure in JavaScript focusing on how simple it is and how it works."
 ---
 
@@ -164,7 +164,7 @@ implementation in action:
 
 ```ts
 const stack = new Stack();
-stack.push(["item1", "item2"]);
+stack.push(['item1', 'item2']);
 console.log(stack.size()); // Output => 2
 stack.pop();
 console.log(stack.size()); // Output => 1

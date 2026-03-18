@@ -1,6 +1,6 @@
 ---
-title: "Write your own Dotfiles"
-date: "2020-03-08"
+title: 'Write your own Dotfiles'
+date: '2020-03-08'
 excerpt: "Sometime ago I need to format my Mac twice times in the same week and it's was very painful to configure all the things."
 ---
 

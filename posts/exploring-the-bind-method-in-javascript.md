@@ -1,6 +1,6 @@
 ---
-title: "Exploring the bind method in JavaScript"
-date: "2019-06-24"
+title: 'Exploring the bind method in JavaScript'
+date: '2019-06-24'
 excerpt: "In this article we will cover the 'bind' functionality that makes up the JavaScript language."
 ---
 
@@ -35,7 +35,7 @@ function cook() {
 }
 
 let dinner = {
-  ingredients: "bacon",
+  ingredients: 'bacon',
 };
 let cookBoundToDinner = cook.bind(dinner);
 console.log(cookBoundToDinner()); // => "bacon"
@@ -54,13 +54,13 @@ let cook = function () {
 
 let dinner = {
   cookDinner: cook,
-  ingredients: "bacon",
+  ingredients: 'bacon',
 };
 dinner.cookDinner(); // => "bacon"
 
 let lunch = {
   cookLunch: cook,
-  ingredients: "salad",
+  ingredients: 'salad',
 };
 console.log(lunch.cookLunch()); // => "salad"
 ```

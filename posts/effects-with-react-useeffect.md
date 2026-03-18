@@ -1,32 +1,32 @@
 ---
-title: "Effects with React useEffect"
-date: "2023-02-21"
-excerpt: "Understanding React useEffect with practical examples"
+title: 'Effects with React useEffect'
+date: '2023-02-21'
+excerpt: 'Understanding React useEffect with practical examples'
 ---
 
 Some practical examples of how to use the [React useEffect()](https://beta.reactjs.org/reference/react/useEffect) -
 
 ```tsx
 export default function App() {
-  const [name, setName] = React.useState("");
+  const [name, setName] = React.useState('');
   const [age, setAge] = React.useState(0);
 
   React.useEffect(() => {
-    console.log("component mounted");
+    console.log('component mounted');
 
     return () => {
-      console.log("component unmounted");
+      console.log('component unmounted');
     };
   }, []); // empty array means it will only run on mounting
 
   // Separation of concerns
   // This is a good example of how to separate concerns splitting into two useEffects to handle each value
   React.useEffect(() => {
-    console.log("name changed", name);
+    console.log('name changed', name);
   }, [name]); // only triggers when name changes
 
   React.useEffect(() => {
-    console.log("age changed", age);
+    console.log('age changed', age);
   }, [age]); // only triggers when age changes
 
   return (
@@ -52,10 +52,10 @@ Similar to the legacy `componentDidMount` it will trigger on mounting the compon
 
 ```ts
 React.useEffect(() => {
-  console.log("component mounted");
+  console.log('component mounted');
 
   return () => {
-    console.log("component unmounted");
+    console.log('component unmounted');
   };
 }, []); // empty array means it will only run on mounting
 ```
@@ -64,7 +64,7 @@ React.useEffect(() => {
 
 ```ts
 React.useEffect(() => {
-  console.log("name changed", name);
+  console.log('name changed', name);
 }, [name]); // only triggers when name changes
 ```
 
@@ -84,10 +84,10 @@ Think in separation of concerns, and split each it will be cleaner and easier fo
 // Separation of concerns
 // This is a good example of how to separate concerns splitting into two useEffects to handle each value
 React.useEffect(() => {
-  console.log("name changed", name);
+  console.log('name changed', name);
 }, [name]); // only triggers when name changes
 
 React.useEffect(() => {
-  console.log("age changed", age);
+  console.log('age changed', age);
 }, [age]); // only triggers when age changes
 ```

@@ -1,7 +1,7 @@
 ---
-title: "ReactJS Tips & Tricks: Avoid Short-Circuit Conditional UI Rendering"
-date: "2021-11-07"
-excerpt: "Avoid Short-Circuit Conditional UI Rendering."
+title: 'ReactJS Tips & Tricks: Avoid Short-Circuit Conditional UI Rendering'
+date: '2021-11-07'
+excerpt: 'Avoid Short-Circuit Conditional UI Rendering.'
 ---
 
 ## ReactJS Tips & Tricks (Series)

@@ -1,7 +1,7 @@
 ---
-title: "Teaching Claude Code Your Standards"
-date: "2026-02-06"
-excerpt: "How to configure Claude Code with custom skills, docs, and workflows to enforce your coding standards consistently"
+title: 'Teaching Claude Code Your Standards'
+date: '2026-02-06'
+excerpt: 'How to configure Claude Code with custom skills, docs, and workflows to enforce your coding standards consistently'
 ---
 
 Ever had an AI refactor your entire file when you asked for a one-line fix? Or add comments to every function?

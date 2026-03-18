@@ -1,6 +1,6 @@
 ---
-title: "Understanding concepts of functional programming with JavaScript"
-date: "2020-02-03"
+title: 'Understanding concepts of functional programming with JavaScript'
+date: '2020-02-03'
 excerpt: "Let's understand the fundamental concepts of functional programming using JavaScript language."
 ---
 
@@ -15,14 +15,14 @@ In this article we'll use the following object in our practical examples like th
 ```ts
 const animals = [
   {
-    name: "Max",
-    species: "dog",
-    likes: ["bones", "carrots"],
+    name: 'Max',
+    species: 'dog',
+    likes: ['bones', 'carrots'],
   },
   {
-    name: "Teodore",
-    species: "cat",
-    likes: ["mice", "carrots"],
+    name: 'Teodore',
+    species: 'cat',
+    likes: ['mice', 'carrots'],
   },
 ];
 ```
@@ -44,11 +44,11 @@ In mathematical we write like `f(g(x))` when receiving the results from `g(x)` w
 See the following example:
 
 ```ts
-const isDog = (animals) => animals.filter((animal) => animal.species === "dog");
-const isCat = (animals) => animals.filter((animal) => animal.species === "cat");
+const isDog = (animals) => animals.filter((animal) => animal.species === 'dog');
+const isCat = (animals) => animals.filter((animal) => animal.species === 'cat');
 const likeCarrots = (animals) =>
   animals.filter((animal) =>
-    animal.likes.find((like) => like.includes("carrots"))
+    animal.likes.find((like) => like.includes('carrots')),
   );
 
 console.log(likeCarrots(isDog(animals)));
@@ -106,9 +106,9 @@ See an example when I've added new animal and create a new instance from `animal
 
 ```ts
 const tildorCat = {
-  name: "Tildor",
-  species: "cat",
-  likes: ["mice", "carrots"],
+  name: 'Tildor',
+  species: 'cat',
+  likes: ['mice', 'carrots'],
 };
 const mutatedAnimals = [...animals, tildorCat];
 
