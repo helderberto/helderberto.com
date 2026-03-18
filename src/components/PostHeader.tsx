@@ -1,13 +1,12 @@
-'use client';
-
 import styles from './PostHeader.module.css';
 
 interface PostHeaderProps {
   title: string;
   date: string;
+  readingTime?: string;
 }
 
-export function PostHeader({ title, date }: PostHeaderProps) {
+export function PostHeader({ title, date, readingTime }: PostHeaderProps) {
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
     day: 'numeric',
     month: 'long',
@@ -19,9 +18,14 @@ export function PostHeader({ title, date }: PostHeaderProps) {
       <h1 id="post-title" className={styles.title}>
         {title}
       </h1>
-      <time className={styles.date} dateTime={date}>
-        {formattedDate}
-      </time>
+      <div className={styles.meta}>
+        <time className={styles.date} dateTime={date}>
+          {formattedDate}
+        </time>
+        {readingTime && (
+          <span className={styles.readingTime}>{readingTime}</span>
+        )}
+      </div>
     </header>
   );
 }

@@ -86,9 +86,13 @@ export default async function Page({ params }: Props) {
   return (
     <article className={styles.article} aria-labelledby="post-title">
       <JsonLd data={jsonLd} />
-      <PostHeader title={post.title} date={post.date} />
+      <PostHeader
+        title={post.title}
+        date={post.date}
+        readingTime={post.readingTime}
+      />
       <div className={`${styles.content} ${styles.markdownContent}`}>
-        <MarkdownContent content={post.content} />
+        <MarkdownContent content={post.content!} />
       </div>
       <section aria-label="Comments" className={styles.comments}>
         <Comments />

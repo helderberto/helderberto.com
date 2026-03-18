@@ -14,7 +14,7 @@
 .wave {
   display: inline-block;
   margin-right: 0.375rem;
-  animation: wave 2.5s ease-in-out infinite;
+  animation: wave 2.5s ease-in-out 3;
   transform-origin: 70% 80%;
 }
 

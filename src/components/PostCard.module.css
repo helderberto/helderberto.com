@@ -21,10 +21,12 @@
   line-height: var(--line-height-snug);
   color: var(--foreground);
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, transform 0.15s ease;
+  display: inline-block;
 }
 
 .title:hover {
   color: var(--primary);
   opacity: 1;
+  transform: translateX(0.25rem);
 }

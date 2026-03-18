@@ -12,31 +12,33 @@ export const Comments = () => {
   useEffect(() => {
     const commentsTheme = theme === 'dark' ? 'github-dark' : 'github-light';
 
+    const existingFrame =
+      commentBox.current?.querySelector<HTMLIFrameElement>('.utterances-frame');
+    if (existingFrame) {
+      existingFrame.contentWindow?.postMessage(
+        { type: 'set-theme', theme: commentsTheme },
+        'https://utteranc.es',
+      );
+      return;
+    }
+
+    if (!commentBox.current) return;
+
     const commentScript = document.createElement('script');
     commentScript.async = true;
     commentScript.src = 'https://utteranc.es/client.js';
-    // define the name of the repository you created here as 'owner/repo'
-    // or import it from your config file if you have one.
     commentScript.setAttribute('repo', siteConfig.comments.repo);
-    // define the blog post -> issue mapping (e.g. page pathname, page url).
-    // here the issues will be created with the page pathname as the issue title.
     commentScript.setAttribute('issue-term', 'pathname');
-    // define a custom label that you want added to your posts.
     commentScript.setAttribute('label', siteConfig.comments.label);
-    // define if you want to use dark or light theme.
     commentScript.setAttribute('theme', commentsTheme);
     commentScript.setAttribute('crossorigin', 'anonymous');
 
-    // we will append this script as a child to the ref element we have created above
-    if (commentBox && commentBox.current) {
-      commentBox.current.appendChild(commentScript);
-    } else {
-      console.log(`Error adding utterances comments on: ${commentBox}`);
-    }
+    commentBox.current.appendChild(commentScript);
 
     return () => {
-      commentScript.remove();
-      document.querySelectorAll('.utterances').forEach((el) => el.remove());
+      commentBox.current
+        ?.querySelectorAll('.utterances, script')
+        .forEach((el) => el.remove());
     };
   }, [theme]);
 

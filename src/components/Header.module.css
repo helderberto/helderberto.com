@@ -62,4 +62,5 @@
 
 .link.active {
   color: var(--foreground);
+  background: var(--muted);
 }

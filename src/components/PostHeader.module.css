@@ -12,10 +12,27 @@
   margin-bottom: var(--spacing-responsive-sm);
 }
 
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .date {
   font-size: var(--font-size-xs);
   color: var(--muted-foreground);
   font-weight: var(--font-weight-medium);
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+.readingTime {
+  font-size: var(--font-size-xs);
+  color: var(--muted-foreground);
+  font-weight: var(--font-weight-medium);
+}
+
+.readingTime::before {
+  content: '·';
+  margin-right: 0.75rem;
 }
