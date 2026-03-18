@@ -29,9 +29,9 @@ Add markdown files to `posts/` with frontmatter:
 
 ```markdown
 ---
-title: "Post Title"
-date: "YYYY-MM-DD"
-excerpt: "Brief description"
+title: 'Post Title'
+date: 'YYYY-MM-DD'
+excerpt: 'Brief description'
 ---
 ```
 
