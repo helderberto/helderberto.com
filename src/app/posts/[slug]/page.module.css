@@ -92,7 +92,7 @@
 
 .markdownContent ul ul li::marker,
 .markdownContent ol ul li::marker {
-  content: "○";
+  content: '○';
   font-size: var(--font-size-sm);
 }
 

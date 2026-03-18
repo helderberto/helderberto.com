@@ -28,7 +28,9 @@
   color: var(--foreground);
   font-size: var(--font-size-sm);
   font-family: var(--font-sans);
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
 }
 
 .input::placeholder {
