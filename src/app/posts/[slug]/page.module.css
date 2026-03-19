@@ -144,6 +144,40 @@
   top: -0.0625rem;
 }
 
+.markdownContent table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--reading-margin-heading) 0;
+  font-size: var(--font-size-sm);
+}
+
+.markdownContent thead {
+  border-bottom: 0.125rem solid var(--border);
+}
+
+.markdownContent th {
+  padding: 0.625rem 1rem;
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+
+.markdownContent td {
+  padding: 0.625rem 1rem;
+  color: var(--foreground);
+  border-bottom: 0.0625rem solid var(--border);
+  vertical-align: middle;
+}
+
+.markdownContent tr:last-child td {
+  border-bottom: none;
+}
+
+.markdownContent tbody tr:hover {
+  background: var(--muted);
+}
+
 .markdownContent > *:first-child {
   margin-top: 0 !important;
 }
