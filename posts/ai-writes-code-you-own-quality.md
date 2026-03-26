@@ -35,7 +35,9 @@ TDD becomes even more powerful with AI. The engineer defines WHAT to test. AI ha
 describe('SearchFilter', () => {
   it('renders input with placeholder', () => {
     render(<SearchFilter onSearch={vi.fn()} />);
-    expect(screen.getByPlaceholderText('Search products...')).toBeInTheDocument();
+    expect(
+      screen.getByPlaceholderText('Search products...'),
+    ).toBeInTheDocument();
   });
 
   it('calls onSearch after user stops typing', async () => {
@@ -149,7 +151,7 @@ AI tends to over-comment. It explains the obvious:
 
 ```typescript
 // Loop through the array and filter items
-const filtered = items.filter(item => item.active);
+const filtered = items.filter((item) => item.active);
 
 // Set the state with filtered items
 setItems(filtered);
@@ -161,7 +163,7 @@ Good comments explain why something exists or what business logic it represents:
 
 ```typescript
 // Archived items are processed by a nightly batch job, not shown in the UI
-const filtered = items.filter(item => item.active);
+const filtered = items.filter((item) => item.active);
 ```
 
 But before writing any comment, ask: can the code explain itself? A well-named function or variable often eliminates the need for a comment entirely. Comments should exist only when the code can't tell the full story on its own.

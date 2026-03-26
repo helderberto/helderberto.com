@@ -14,13 +14,13 @@ Hooks are shell commands that run at lifecycle events during a Claude Code sessi
 
 ## Hook Types
 
-| Hook | When it runs | Can block? |
-|------|-------------|-----------|
-| `PreToolUse` | Before a tool executes | Yes (non-zero exit) |
-| `PostToolUse` | After a tool executes | No |
-| `Notification` | When Claude sends a notification | No |
-| `Stop` | When Claude's turn ends | No |
-| `SubagentStop` | When a subagent finishes | No |
+| Hook           | When it runs                     | Can block?          |
+| -------------- | -------------------------------- | ------------------- |
+| `PreToolUse`   | Before a tool executes           | Yes (non-zero exit) |
+| `PostToolUse`  | After a tool executes            | No                  |
+| `Notification` | When Claude sends a notification | No                  |
+| `Stop`         | When Claude's turn ends          | No                  |
+| `SubagentStop` | When a subagent finishes         | No                  |
 
 `PreToolUse` is the most powerful: it can stop a tool from running entirely.
 
@@ -353,6 +353,7 @@ Hooks run in order. First failure blocks the rest.
 The real cost isn't latency. A `grep` or `jq` command adds single-digit milliseconds. The cost is pairing a **slow operation with a high-frequency tool call**.
 
 Avoid:
+
 - Pairing heavy operations with broad matchers. Running `tsc --noEmit` on every `Edit` recompiles the full project each time. Scope it to `Bash` and trigger only on `git push`.
 - Overly broad matchers. If your hook only cares about `.ts` files, don't match all `Write` calls and filter inside the script. Use the most specific matcher you can.
 
