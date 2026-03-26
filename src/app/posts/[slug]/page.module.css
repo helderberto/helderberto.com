@@ -129,6 +129,8 @@
 
 .markdownContent pre {
   margin: var(--content-spacing-heading) 0 !important;
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 .markdownContent code:not(pre code) {

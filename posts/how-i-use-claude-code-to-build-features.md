@@ -28,7 +28,7 @@ A living spec eliminates this. The AI reads the same source of truth every time.
 
 Before writing any code, I switch to plan mode using `Shift+Tab` in Claude Code, then describe the feature. I end the prompt asking Claude to generate a `SPEC.md` once we finish the planning session:
 
-```
+```plaintext
 I want to add a dark mode toggle that persists across sessions.
 The preference should be stored in localStorage and applied on initial render.
 
@@ -38,7 +38,7 @@ At the end of our planning, generate a SPEC.md with the agreed context, tasks, a
 
 The `@` syntax in Claude Code lets you reference files directly in your prompt. Use it to point at existing files during planning so Claude has the right context before proposing anything:
 
-```
+```plaintext
 @src/components/Header.tsx @src/hooks/
 
 I want to add a dark mode toggle to the Header.
@@ -83,7 +83,7 @@ Keep the spec to: feature context, chosen approach, task checklist, and key deci
 
 When starting a new session to implement, I always reference the spec explicitly using `@`:
 
-```
+```plaintext
 @SPEC.md Continue from the next unchecked task.
 ```
 
@@ -123,7 +123,7 @@ Then `/clear` and resume from the first sub-task. Same pattern, smaller scope.
 
 **Resuming a session:**
 
-```
+```plaintext
 @SPEC.md Continue from the next unchecked task.
 ```
 
@@ -131,7 +131,7 @@ One sentence. Claude reads the file, sees what's done, and picks up exactly wher
 
 **Pausing mid-session:**
 
-```
+```plaintext
 We are pausing here. Update SPEC.md with our current progress, mark completed tasks,
 and add a note under a "## Next Steps" section for the next session. Then I will /clear.
 ```

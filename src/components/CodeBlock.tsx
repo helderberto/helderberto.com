@@ -26,13 +26,16 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
     }
   }, [children]);
 
-  // If there's no className, it's an inline code
   if (!className) {
-    return <code className={styles.inlineCode}>{children}</code>;
+    const isBlock = typeof children === 'string' && children.includes('\n');
+    if (!isBlock) {
+      return <code className={styles.inlineCode}>{children}</code>;
+    }
   }
 
-  // Clean up the language className
-  const language = className.replace(/^lang-/, '').replace(/^language-/, '');
+  const language = (className ?? 'plaintext')
+    .replace(/^lang-/, '')
+    .replace(/^language-/, '');
 
   return (
     <div className={styles.codeBlockContainer}>
