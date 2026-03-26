@@ -56,14 +56,17 @@ Once I'm happy with the plan, I save it to `SPEC.md` at the project root. A task
 # Dark Mode Toggle
 
 ## Context
+
 Persist user theme preference using localStorage. Apply on initial render to avoid flash.
 
 ## Approach
+
 - Store preference as `theme` key in localStorage (`"dark"` | `"light"`)
 - Read on mount in `ThemeProvider`, default to system preference if unset
 - Toggle button in `Header`, updates state and localStorage in sync
 
 ## Tasks
+
 - [ ] Add `useTheme` hook in `src/hooks/useTheme.ts`
 - [ ] Update `ThemeProvider` to read from localStorage on mount
 - [ ] Add toggle button to `Header` component
@@ -71,6 +74,7 @@ Persist user theme preference using localStorage. Apply on initial render to avo
 - [ ] Write integration test for persistence across render
 
 ## Decisions
+
 - No server-side preference (client only for now)
 - System preference as fallback, not default dark
 ```
@@ -149,7 +153,7 @@ Don't clear mid-task. Finish it, mark it done, then clear.
 
 ## Agents Along the Way
 
-The SPEC.md is the backbone, but it's not the whole picture. Throughout the workflow I also trigger specialized agents at key moments. For example, a `code-reviewer` agent at the end of implementation to catch issues before committing.
+The SPEC.md is the backbone, but it's not the whole picture. Throughout the workflow I also trigger specialized agents at key moments. For example, a [`code-reviewer`](https://github.com/helderberto/dotfiles/blob/main/dot_claude/agents/code-reviewer.md) agent at the end of implementation to catch issues before committing.
 
 Claude Code supports custom agents and there are several I rely on regularly. That's a topic for a future post.
 
