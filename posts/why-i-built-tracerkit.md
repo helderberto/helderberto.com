@@ -63,15 +63,19 @@ status: created
 # Dark Mode
 
 ## Problem Statement
+
 ...
 
 ## User Stories
+
 1. As a user, I want to toggle between light and dark themes...
 
 ## Implementation Decisions
+
 ...
 
 ## Out of Scope
+
 ...
 ```
 
@@ -149,14 +153,14 @@ On `done`, it archives the PRD and plan to `.tracerkit/archives/dark-mode/` and 
 
 ## What Changed, What Didn't
 
-| Before (manual SPEC.md) | After (TracerKit) |
-| --- | --- |
-| Spec structure varies per feature | Same structure every time via interview |
-| Tasks marked done by hand | Verification agent checks against codebase |
-| Finished specs accumulate | Auto-archived on completion |
-| No cross-feature visibility | `/tk:brief` dashboard |
-| Flat task lists | Phased tracer-bullet slices |
-| Decisions drift mid-session | Architectural decisions locked in plan header |
+| Before (manual SPEC.md)           | After (TracerKit)                             |
+| --------------------------------- | --------------------------------------------- |
+| Spec structure varies per feature | Same structure every time via interview       |
+| Tasks marked done by hand         | Verification agent checks against codebase    |
+| Finished specs accumulate         | Auto-archived on completion                   |
+| No cross-feature visibility       | `/tk:brief` dashboard                         |
+| Flat task lists                   | Phased tracer-bullet slices                   |
+| Decisions drift mid-session       | Architectural decisions locked in plan header |
 
 What didn't change:
 
@@ -207,5 +211,6 @@ If you try TracerKit, I'd like to hear how it fits your workflow. Share what wor
 **Related:**
 
 - [How I Use Claude Code to Build Features](/posts/how-i-use-claude-code-to-build-features)
-- [Claude Code Hooks](/posts/claude-code-hooks)
+- [AI Writes Code. You Own Quality.](/posts/ai-writes-code-you-own-quality)
 - [Teaching Claude Code Your Standards](/posts/teaching-claude-code-your-standards)
+- [Claude Code Hooks](/posts/claude-code-hooks)
