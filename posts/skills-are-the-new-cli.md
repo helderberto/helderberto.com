@@ -184,7 +184,7 @@ My `ship` skill gates on quality before touching `git`:
 4. Push with `git push`
 ```
 
-Say "ship it" or "commit and push" and the skill runs your linter, your tests, groups your changes by concern, commits each group separately, and pushes. Four CLIs, one phrase. No `--force` escape hatch.
+Say "ship it" or "commit and push." The skill runs your linter, your tests, groups your changes by concern, commits each group separately, and pushes. Four CLIs, one phrase. No `--force` escape hatch.
 
 The `atomic-commits` skill that `ship` relies on reads the full diff and reasons about which files belong together:
 
@@ -269,6 +269,6 @@ Skills follow an [open standard](https://agentskills.io), work across multiple A
 
 ## Resources
 
-- [Agent Skills](https://agentskills.io/home) — the open standard for skills
-- [Claude Code Skills](https://code.claude.com/docs/en/skills) — skills in Claude Code
-- [Cursor Skills](https://cursor.com/docs/skills) — skills in Cursor
+- [Agent Skills](https://agentskills.io/home): the open standard for skills
+- [Claude Code Skills](https://code.claude.com/docs/en/skills): skills in Claude Code
+- [Cursor Skills](https://cursor.com/docs/skills): skills in Cursor
