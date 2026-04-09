@@ -266,3 +266,9 @@ Skills don't compete with that. They sit on top, calling the right tools at the 
 The shift is in where the context lives. With CLIs, you carry it. With skills, the Markdown file carries it. Your conventions, your gotchas, your preferred tools, all encoded once and applied every time.
 
 Skills follow an [open standard](https://agentskills.io), work across multiple AI tools, and cost nothing to distribute. A single Markdown file. No build step. No runtime. For developer workflows that require project knowledge, adaptive behavior, and multi-step reasoning, that's enough.
+
+## Resources
+
+- [Agent Skills](https://agentskills.io/home) — the open standard for skills
+- [Claude Code Skills](https://code.claude.com/docs/en/skills) — skills in Claude Code
+- [Cursor Skills](https://cursor.com/docs/skills) — skills in Cursor
