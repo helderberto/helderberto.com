@@ -130,7 +130,6 @@ AI tooling will keep evolving. The need for deterministic, structured contracts 
 
 **Related:**
 
-- [Why I Built TracerKit](/posts/why-i-built-tracerkit)
 - [AI Writes Code. You Own Quality.](/posts/ai-writes-code-you-own-quality)
 - [Skills Are the New CLI](/posts/skills-are-the-new-cli)
 - [Teaching Claude Code Your Standards](/posts/teaching-claude-code-your-standards)
