@@ -116,11 +116,11 @@ The PR checklist is the same one agents use: nine sections present, real before/
 
 The repository is [github.com/helderberto/migflow](https://github.com/helderberto/migflow). Issues, ideas, and "this playbook would have saved me three days" stories are all welcome.
 
-## The Core Idea
+## Wrapping Up
 
 > A migration is a contract, not a tutorial.
 
-Same instinct as [TracerKit](/posts/why-i-built-tracerkit): structure beats discipline. Asking an agent to migrate code without a contract is asking it to be disciplined on your behalf. It will not be. None of us are, every time.
+Structure beats discipline. Asking an agent to migrate code without a contract is asking it to be disciplined on your behalf. It will not be. None of us are, every time.
 
 MigFlow is the contract. The agent does the work.
 
