@@ -1,6 +1,6 @@
 # About Me
 
-I'm a Senior Software Engineer with 14+ years of experience crafting scalable, maintainable, and high-performance web applications. I'm passionate about architecting solutions that solve real-world challenges today while remaining robust and adaptable for the future.
+I'm a Senior Software Engineer with 15+ years of experience crafting scalable, maintainable, and high-performance web applications. I'm passionate about architecting solutions that solve real-world challenges today while remaining robust and adaptable for the future.
 
 Currently, I'm a Senior Software Engineer (L4) at [PagerDuty](https://www.pagerduty.com/), where I architect highly scalable front-end applications. As a member of the Frontend Architecture Strategy Team (fe/ast), I collaborate with cross-functional peers to define technology standards and establish UI building patterns that optimize customer experiences across our digital operations platform.
 
