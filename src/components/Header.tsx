@@ -1,11 +1,17 @@
 'use client';
+import { Post } from '@/lib/posts';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { CommandPalette } from './CommandPalette';
 import styles from './Header.module.css';
 import { ThemeToggle } from './ThemeToggle';
 
-const Header = () => {
+interface HeaderProps {
+  posts: Post[];
+}
+
+const Header = ({ posts }: HeaderProps) => {
   const pathname = usePathname();
 
   return (
@@ -39,6 +45,7 @@ const Header = () => {
               About
             </Link>
           </nav>
+          <CommandPalette posts={posts} />
           <ThemeToggle />
         </div>
       </div>

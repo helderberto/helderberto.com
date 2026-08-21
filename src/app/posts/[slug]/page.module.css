@@ -1,4 +1,6 @@
 .article {
+  max-width: var(--max-width-prose);
+  margin: 0 auto;
   padding-bottom: var(--spacing-responsive-2xl);
 }
 

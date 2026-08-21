@@ -1,3 +1,30 @@
+.about {
+  display: grid;
+  grid-template-columns: minmax(14rem, 18rem) 1fr;
+  gap: var(--spacing-responsive-xl);
+  align-items: start;
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  border: 0.0625rem solid var(--border);
+}
+
+@media (max-width: 48rem) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .photo {
+    max-width: 20rem;
+    margin: 0 auto;
+  }
+}
+
 .content {
   font-size: var(--text-responsive);
   line-height: var(--line-height-reading);

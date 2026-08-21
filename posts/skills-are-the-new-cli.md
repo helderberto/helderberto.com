@@ -65,8 +65,8 @@ My `coverage` skill doesn't just run tests. It correlates test coverage with you
 2. Run test suite with coverage
 3. Parse lcov.info:
    SF:src/utils/helper.ts
-   DA:10,1    # line 10, covered
-   DA:11,0    # line 11, NOT covered
+   DA:10,1 # line 10, covered
+   DA:11,0 # line 11, NOT covered
 4. Match changed lines against coverage data
 5. Report only uncovered lines you actually changed
 ```
@@ -116,11 +116,11 @@ One question at a time. Lead with your recommended answer
 (mark it "Recommended" and list first). Explore code instead
 of asking when possible.
 
-| Branch           | Key questions                  | Skip when              |
-| Scope & Surface  | Where? New page? Roles?        | CLI/library            |
-| Data & Concepts  | Definitions, existing data     | Never skip             |
-| Behavior         | Interactions, filtering        | No user-facing behavior|
-| Boundaries       | Out of scope, deferred         | Never skip             |
+| Branch | Key questions | Skip when |
+| Scope & Surface | Where? New page? Roles? | CLI/library |
+| Data & Concepts | Definitions, existing data | Never skip |
+| Behavior | Interactions, filtering | No user-facing behavior|
+| Boundaries | Out of scope, deferred | Never skip |
 ```
 
 It interviews you one question at a time, explores the codebase to answer questions before asking them, and skips entire branches when they don't apply. A CLI prompt wizard can ask questions. It can't reason about whether to skip them.
@@ -138,6 +138,7 @@ Use a general-purpose subagent (read-only, no file writes):
 4. Compare user stories from the PRD against actual behavior
 
 Classify findings:
+
 - BLOCKERS — prevent transitioning to done
 - SUGGESTIONS — improvements, don't block
 ```
@@ -148,6 +149,7 @@ My `safe-repo` skill takes a different approach. It pairs a bash script with ski
 
 ```markdown
 ## Workflow
+
 1. Run `bash scripts/scan-secrets.sh`
 2. Check for sensitive tracked files
 3. Analyze git history for removed secrets

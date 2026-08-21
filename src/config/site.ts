@@ -40,6 +40,8 @@ export const siteConfig = {
   canonicalUrl: 'https://helderberto.com',
   comments: {
     repo: 'helderberto/helderberto.com',
-    label: 'Comment',
+    repoId: 'R_kgDONIpxLw',
+    category: 'Announcements',
+    categoryId: 'DIC_kwDONIpxL84DD5Ts',
   },
 } as const;

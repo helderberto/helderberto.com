@@ -80,11 +80,11 @@ The agent does not declare done. The checklist does.
 
 The same playbooks are exposed three different ways for machines, plus a browsable site for humans:
 
-| Channel | Endpoint | Use case |
-|---|---|---|
-| **MCP** (Model Context Protocol, the standard for plugging tools into AI assistants) | `/api/mcp` | Native integration for Claude Code, Claude Desktop, Cursor, Windsurf, any MCP-compatible client |
-| **JSON API** | `/playbooks.json`, `/playbooks/<slug>.json` | Scripts, CI pipelines, anything that speaks HTTP |
-| **llms.txt** (a small text file convention for telling AI tools what your site contains) | `/llms.txt` | Retrieval systems, ChatGPT context loaders, llmstxt.org-aware tools |
+| Channel                                                                                  | Endpoint                                    | Use case                                                                                        |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| **MCP** (Model Context Protocol, the standard for plugging tools into AI assistants)     | `/api/mcp`                                  | Native integration for Claude Code, Claude Desktop, Cursor, Windsurf, any MCP-compatible client |
+| **JSON API**                                                                             | `/playbooks.json`, `/playbooks/<slug>.json` | Scripts, CI pipelines, anything that speaks HTTP                                                |
+| **llms.txt** (a small text file convention for telling AI tools what your site contains) | `/llms.txt`                                 | Retrieval systems, ChatGPT context loaders, llmstxt.org-aware tools                             |
 
 Over MCP, the agent can call `list_playbooks`, `get_playbook`, or `search_playbooks` as if they were built-in tools. No copy-paste, no scraping. It calls `get_playbook("enzyme-to-rtl")` and gets the structured content directly.
 
