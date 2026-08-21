@@ -46,6 +46,7 @@
   --syntax-keyword: #8839ef;
 
   /* Layout */
+  --blur-header: 0.75rem;
   --max-width: 68rem;
   --max-width-prose: clamp(44rem, 60vw, 48rem);
   --container-padding: clamp(1rem, 4vw, 2rem);
