@@ -141,6 +141,10 @@ html {
   overflow-x: clip;
 }
 
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
 body {
   background: var(--background);
   background-image:

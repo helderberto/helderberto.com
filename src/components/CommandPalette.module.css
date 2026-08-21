@@ -66,6 +66,11 @@
   gap: 0.625rem;
   padding: 0.875rem 1rem;
   border-bottom: 0.0625rem solid var(--border);
+  transition: border-color 0.15s ease;
+}
+
+.inputWrapper:focus-within {
+  border-bottom-color: rgba(var(--primary-rgb), 0.5);
 }
 
 .searchIcon {
@@ -114,6 +119,9 @@
   color: var(--foreground);
   cursor: pointer;
   font-size: var(--font-size-sm);
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
 }
 
 .option[aria-selected='true'] {
