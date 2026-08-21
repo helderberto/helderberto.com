@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
   keywords: [...siteConfig.keywords],
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default async function Home() {

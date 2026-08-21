@@ -1,5 +1,6 @@
 import { Footer } from '@/components/Footer';
 import Header from '@/components/Header';
+import { JsonLd } from '@/components/JsonLd';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { siteConfig } from '@/config/site';
 import { getAllPosts } from '@/lib/posts';
@@ -25,12 +26,6 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  alternates: {
-    canonical: '/',
-    types: {
-      'application/rss+xml': '/feed.xml',
-    },
-  },
   title: {
     template: `%s | ${siteConfig.name}`,
     default: siteConfig.title,
@@ -86,26 +81,34 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <head>
+        {/* Next 16.3 stopped emitting metadata alternates.types in static export */}
         <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/favicons/apple-touch-icon.png"
+          rel="alternate"
+          type="application/rss+xml"
+          title="RSS feed"
+          href="/feed.xml"
         />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicons/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicons/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/favicons/site.webmanifest" />
       </head>
       <body>
+        <JsonLd
+          data={{
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: siteConfig.name,
+            url: siteConfig.url,
+            jobTitle: siteConfig.author.role,
+            sameAs: [siteConfig.social.github, siteConfig.social.linkedin],
+          }}
+        />
+        <JsonLd
+          data={{
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: siteConfig.name,
+            url: siteConfig.url,
+            description: siteConfig.description,
+          }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

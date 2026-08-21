@@ -9,6 +9,9 @@ import styles from './page.module.css';
 export const metadata: Metadata = {
   title: 'About Me',
   description: 'Learn more about me and my blog',
+  alternates: {
+    canonical: '/about',
+  },
 };
 
 export default function AboutPage() {
