@@ -10,6 +10,7 @@ import {
   Linkedin,
   Monitor,
   Moon,
+  Rss,
   Search,
   Sun,
   User,
@@ -114,6 +115,13 @@ export function CommandPalette({ posts }: CommandPaletteProps) {
         icon: Linkedin,
         run: () =>
           window.open(siteConfig.social.linkedin, '_blank', 'noopener'),
+      },
+      {
+        id: 'connect-rss',
+        group: 'Connect',
+        label: 'RSS feed',
+        icon: Rss,
+        run: () => window.open('/feed.xml', '_blank', 'noopener'),
       },
     ];
 

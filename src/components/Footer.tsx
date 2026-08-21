@@ -1,5 +1,5 @@
 import { siteConfig } from '@/config/site';
-import { Github, Linkedin } from 'lucide-react';
+import { Github, Linkedin, Rss } from 'lucide-react';
 import Link from 'next/link';
 import styles from './Footer.module.css';
 
@@ -36,6 +36,13 @@ export function Footer() {
             rel="noopener noreferrer"
           >
             <Linkedin className={styles.icon} aria-hidden="true" />
+          </a>
+          <a
+            href="/feed.xml"
+            className={styles.socialLink}
+            aria-label="RSS feed"
+          >
+            <Rss className={styles.icon} aria-hidden="true" />
           </a>
         </div>
       </div>
