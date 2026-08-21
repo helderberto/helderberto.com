@@ -8,14 +8,14 @@ export const siteConfig = {
   author: {
     name: 'Helder Burato Berto',
     email: 'helder.burato@gmail.com',
-    role: 'Senior Software Engineer',
+    role: 'Software Engineer',
   },
   social: {
     github: 'https://github.com/helderberto',
     linkedin: 'https://www.linkedin.com/in/helderberto/',
   },
   keywords: [
-    'Senior Software Engineer',
+    'Software Engineer',
     'React Developer',
     'TypeScript Expert',
     'Frontend Architect',
