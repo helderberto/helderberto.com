@@ -25,6 +25,16 @@
   height: 0.875rem;
 }
 
+.triggerLabel {
+  line-height: 1;
+}
+
+@media (max-width: 30rem) {
+  .triggerLabel {
+    display: none;
+  }
+}
+
 .kbd {
   font-family: var(--font-mono);
   font-size: var(--font-size-xs);

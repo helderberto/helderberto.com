@@ -8,8 +8,10 @@ import {
   Github,
   Home,
   Linkedin,
+  Monitor,
+  Moon,
   Search,
-  SunMoon,
+  Sun,
   User,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
@@ -41,7 +43,7 @@ export function CommandPalette({ posts }: CommandPaletteProps) {
       : '⌘',
   );
   const router = useRouter();
-  const { resolvedTheme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
 
   const items = useMemo(() => {
     const navigation: PaletteItem[] = [
@@ -69,11 +71,25 @@ export function CommandPalette({ posts }: CommandPaletteProps) {
     }));
     const actions: PaletteItem[] = [
       {
-        id: 'action-theme',
+        id: 'action-theme-light',
         group: 'Actions',
-        label: 'Toggle theme',
-        icon: SunMoon,
-        run: () => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
+        label: 'Theme: Light',
+        icon: Sun,
+        run: () => setTheme('light'),
+      },
+      {
+        id: 'action-theme-dark',
+        group: 'Actions',
+        label: 'Theme: Dark',
+        icon: Moon,
+        run: () => setTheme('dark'),
+      },
+      {
+        id: 'action-theme-system',
+        group: 'Actions',
+        label: 'Theme: System',
+        icon: Monitor,
+        run: () => setTheme('system'),
       },
       {
         id: 'action-copy',
@@ -108,7 +124,7 @@ export function CommandPalette({ posts }: CommandPaletteProps) {
     return [...navigation, ...postItems, ...actions, ...connect].filter(
       (item) => item.label.toLowerCase().includes(normalized),
     );
-  }, [posts, query, resolvedTheme, router, setTheme]);
+  }, [posts, query, router, setTheme]);
 
   const openPalette = () => {
     setQuery('');
@@ -184,6 +200,7 @@ export function CommandPalette({ posts }: CommandPaletteProps) {
         aria-label="Open command palette"
       >
         <Search className={styles.triggerIcon} aria-hidden="true" />
+        <span className={styles.triggerLabel}>Search</span>
         <kbd className={styles.kbd} suppressHydrationWarning>
           {modifierKey} K
         </kbd>
