@@ -2,6 +2,7 @@ import { MarkdownContent } from '@/components/MarkdownContent';
 import fs from 'fs';
 import matter from 'gray-matter';
 import { Metadata } from 'next';
+import Image from 'next/image';
 import path from 'path';
 import styles from './page.module.css';
 
@@ -17,6 +18,14 @@ export default function AboutPage() {
 
   return (
     <article className={styles.content} aria-label="About Me">
+      <Image
+        src="/about-photo.jpg"
+        alt="Helder Burato Berto smiling in sunglasses at a marina"
+        width={640}
+        height={640}
+        className={styles.photo}
+        priority
+      />
       <MarkdownContent content={content} />
     </article>
   );
