@@ -218,6 +218,8 @@ export function CommandPalette({ posts }: CommandPaletteProps) {
         <div className={styles.inputWrapper}>
           <Search className={styles.searchIcon} aria-hidden="true" />
           <input
+            id="command-palette-input"
+            name="command-palette-query"
             type="text"
             role="combobox"
             aria-expanded="true"
