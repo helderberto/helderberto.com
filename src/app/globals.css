@@ -10,24 +10,27 @@
 :root {
   /* Fonts */
   --font-sans:
-    ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    var(--font-inter), ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji';
   --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace;
 
   /* Colors — Light */
-  --background: #ffffff;
-  --foreground: #111111;
-  --primary: #2563eb;
-  --primary-rgb: 37, 99, 235;
-  --muted: #f5f5f5;
-  --muted-foreground: #6b6b6b;
-  --border: #e5e5e5;
+  --background: #faf9f7;
+  --foreground: #1c1917;
+  --primary: #b45309;
+  --primary-rgb: 180, 83, 9;
+  --muted: #f0ede8;
+  --muted-foreground: #6f6a63;
+  --border: #e5e0d8;
+  --surface: #ffffff;
+  --grid-rgb: 28, 25, 23;
 
   /* Code colors — Light */
-  --code-bg: #f4f4f5;
-  --code-border: #e4e4e7;
-  --inline-code-bg: #f4f4f5;
-  --inline-code-color: #dc2626;
-  --inline-code-border: #e4e4e7;
+  --code-bg: #f3f1ec;
+  --code-border: #e5e0d8;
+  --inline-code-bg: #f3f1ec;
+  --inline-code-color: #9a3412;
+  --inline-code-border: #e5e0d8;
   --scrollbar-thumb: #d4d4d4;
   --scrollbar-thumb-hover: #a3a3a3;
 
@@ -42,7 +45,8 @@
   --syntax-keyword: #8839ef;
 
   /* Layout */
-  --max-width: 48rem;
+  --max-width: 68rem;
+  --max-width-prose: clamp(44rem, 60vw, 48rem);
   --container-padding: clamp(1rem, 4vw, 2rem);
   --header-padding: 0.875rem;
   --radius: 0.375rem;
@@ -100,19 +104,21 @@
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --primary: #60a5fa;
-  --primary-rgb: 96, 165, 250;
-  --muted: #161616;
-  --muted-foreground: #a3a3a3;
-  --border: #2a2a2a;
+  --background: #0c0a09;
+  --foreground: #ece9e4;
+  --primary: #fbbf24;
+  --primary-rgb: 251, 191, 36;
+  --muted: #1a1613;
+  --muted-foreground: #a8a29e;
+  --border: #2a241f;
+  --surface: #171310;
+  --grid-rgb: 236, 233, 228;
 
-  --code-bg: #161616;
-  --code-border: #2a2a2a;
-  --inline-code-bg: #262626;
-  --inline-code-color: #f87171;
-  --inline-code-border: #3f3f3f;
+  --code-bg: #171310;
+  --code-border: #2a241f;
+  --inline-code-bg: #262019;
+  --inline-code-color: #fbbf24;
+  --inline-code-border: #3a322a;
   --scrollbar-thumb: #3f3f3f;
   --scrollbar-thumb-hover: #525252;
 
@@ -130,6 +136,17 @@
 /* Base */
 body {
   background: var(--background);
+  background-image:
+    linear-gradient(
+      rgba(var(--grid-rgb), 0.035) 0.0625rem,
+      transparent 0.0625rem
+    ),
+    linear-gradient(
+      90deg,
+      rgba(var(--grid-rgb), 0.035) 0.0625rem,
+      transparent 0.0625rem
+    );
+  background-size: 2.75rem 2.75rem;
   color: var(--foreground);
   font-family: var(--font-sans);
   font-size: 1rem;
@@ -152,6 +169,7 @@ h5,
 h6 {
   line-height: var(--line-height-heading);
   font-weight: var(--font-weight-bold);
+  letter-spacing: -0.03em;
 }
 
 code {
@@ -161,13 +179,17 @@ code {
 a {
   color: var(--primary);
   text-decoration: underline;
+  text-decoration-color: rgba(var(--primary-rgb), 0.4);
   text-decoration-thickness: 0.0625rem;
   text-underline-offset: 0.1875rem;
-  transition: opacity 0.15s ease;
+  transition:
+    text-decoration-color 0.15s ease,
+    opacity 0.15s ease;
 }
 
 a:hover {
-  opacity: 0.75;
+  text-decoration-color: currentColor;
+  opacity: 0.85;
 }
 
 :focus-visible {
@@ -207,4 +229,14 @@ pre[class*='language-'] {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -1,12 +1,20 @@
+import { Footer } from '@/components/Footer';
 import Header from '@/components/Header';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { siteConfig } from '@/config/site';
+import { getAllPosts } from '@/lib/posts';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
-// Using system fonts instead of custom fonts
+import { Inter } from 'next/font/google';
 import './globals.css';
 import styles from './layout.module.css';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -58,13 +66,15 @@ export const metadata: Metadata = {
   manifest: '/site.webmanifest',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const posts = await getAllPosts();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={inter.variable}>
       <head>
         <link
           rel="apple-touch-icon"
@@ -92,8 +102,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
+          <Header posts={posts} />
           <main className={styles.main}>{children}</main>
+          <Footer />
         </ThemeProvider>
         {process.env.VERCEL && <Analytics />}
         {process.env.VERCEL && <SpeedInsights />}
