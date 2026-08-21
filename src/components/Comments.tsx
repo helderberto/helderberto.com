@@ -7,13 +7,17 @@ import styles from './Comments.module.css';
 
 export const Comments = () => {
   const commentBox = useRef<HTMLDivElement>(null);
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
-    const commentsTheme = theme === 'dark' ? 'github-dark' : 'github-light';
+    const box = commentBox.current;
+    if (!box || !resolvedTheme) return;
+
+    const commentsTheme =
+      resolvedTheme === 'dark' ? 'github-dark' : 'github-light';
 
     const existingFrame =
-      commentBox.current?.querySelector<HTMLIFrameElement>('.utterances-frame');
+      box.querySelector<HTMLIFrameElement>('.utterances-frame');
     if (existingFrame) {
       existingFrame.contentWindow?.postMessage(
         { type: 'set-theme', theme: commentsTheme },
@@ -22,7 +26,10 @@ export const Comments = () => {
       return;
     }
 
-    if (!commentBox.current) return;
+    /* Guard against a second injection while the first script is still
+       loading (StrictMode re-runs and theme resolution both re-fire this
+       effect before the iframe exists) */
+    if (box.querySelector('script')) return;
 
     const commentScript = document.createElement('script');
     commentScript.async = true;
@@ -33,14 +40,8 @@ export const Comments = () => {
     commentScript.setAttribute('theme', commentsTheme);
     commentScript.setAttribute('crossorigin', 'anonymous');
 
-    commentBox.current.appendChild(commentScript);
-
-    return () => {
-      commentBox.current
-        ?.querySelectorAll('.utterances, script')
-        .forEach((el) => el.remove());
-    };
-  }, [theme]);
+    box.appendChild(commentScript);
+  }, [resolvedTheme]);
 
   return (
     <div className={styles.comments}>
