@@ -35,6 +35,20 @@ excerpt: 'Brief description'
 ---
 ```
 
+## Resume
+
+A printable resume lives at `/resume`, rendered from a single source of truth:
+`src/data/resume.ts`. Edit that file to update contact details, add an
+experience, or reorder skills.
+
+Jobs with no `bullets` and no `positions` render as compact "earlier roles" at
+the end of the Experience section; add either field to promote one to a full
+entry.
+
+The page is black and white and prints to A4 portrait via the browser's print
+dialog. `vercel.json` rewrites `resume.helderberto.com` to `/resume`; the
+subdomain itself is added in the Vercel dashboard (Settings → Domains).
+
 ## Contributing
 
 1. Fork the repo
