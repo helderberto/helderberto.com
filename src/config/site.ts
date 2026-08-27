@@ -4,6 +4,7 @@ export const siteConfig = {
   description:
     'Experienced Software Engineer with over a decade specializing in React, TypeScript, and modern web development. Sharing expert insights on software architecture, frontend best practices, and engineering leadership to help developers build scalable, high-performance applications.',
   url: 'https://helderberto.com',
+  resumeUrl: 'https://resume.helderberto.com',
   ogImage: '/social-cover.png',
   author: {
     name: 'Helder Burato Berto',

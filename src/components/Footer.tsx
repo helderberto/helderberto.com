@@ -17,9 +17,9 @@ export function Footer() {
           <Link href="/about" className={styles.link}>
             About
           </Link>
-          <Link href="/resume" className={styles.link}>
+          <a href={siteConfig.resumeUrl} className={styles.link}>
             Resume
-          </Link>
+          </a>
         </nav>
         <div className={styles.social}>
           <a
