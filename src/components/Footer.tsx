@@ -17,6 +17,9 @@ export function Footer() {
           <Link href="/about" className={styles.link}>
             About
           </Link>
+          <Link href="/resume" className={styles.link}>
+            Resume
+          </Link>
         </nav>
         <div className={styles.social}>
           <a
