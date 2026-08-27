@@ -7,7 +7,7 @@ export default function Resume() {
   return (
     <div className="rs-root">
       <div className="rs-toolbar rs-no-print">
-        <a href={siteConfig.url} className="rs-button rs-button--ghost">
+        <a href={siteConfig.homeUrl} className="rs-button rs-button--ghost">
           ← helderberto.com
         </a>
         <PrintButton />
