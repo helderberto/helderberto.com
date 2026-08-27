@@ -11,7 +11,7 @@
   font-size: 26pt;
   font-weight: 800;
   line-height: 1;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.02em;
   color: var(--rs-accent);
 }
 
@@ -37,8 +37,7 @@
 
 .summary {
   margin-top: 1mm;
-  font-size: 9pt;
-  color: var(--rs-muted);
+  font-size: 9.5pt;
 }
 
 .body {
@@ -64,7 +63,7 @@
 }
 
 .job + .job {
-  margin-top: 2.5mm;
+  margin-top: 4mm;
 }
 
 .jobTitle {
@@ -88,7 +87,7 @@
 }
 
 .bullets li {
-  margin-bottom: 0.7mm;
+  margin-bottom: 1.2mm;
   font-size: 9.5pt;
 }
 
@@ -160,9 +159,9 @@
 
 .summaryTitle {
   margin-top: 2.5mm;
-  font-size: 8pt;
+  font-size: 8.5pt;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--rs-muted);
+  color: var(--rs-ink);
 }
