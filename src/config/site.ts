@@ -2,7 +2,7 @@ export const siteConfig = {
   name: 'Helder Burato Berto',
   title: 'Helder Burato Berto',
   description:
-    'Experienced Software Engineer with over a decade specializing in React, TypeScript, and modern web development. Sharing expert insights on software architecture, front-end best practices, and engineering leadership to help developers build scalable, high-performance applications.',
+    'Experienced Software Engineer with over a decade specializing in React, TypeScript, and modern web development. Sharing expert insights on software architecture, frontend best practices, and engineering leadership to help developers build scalable, high-performance applications.',
   url: 'https://helderberto.com',
   ogImage: '/social-cover.png',
   author: {

@@ -24,7 +24,7 @@ export default async function Home() {
         <p className={styles.heroRole}>{siteConfig.author.role}</p>
         <p className={styles.heroTagline}>
           I build modern web apps with React and TypeScript, sharing insights on
-          architecture, front-end engineering, and best practices for scalable
+          architecture, frontend engineering, and best practices for scalable
           development.
         </p>
         <div className={styles.heroSocial}>
