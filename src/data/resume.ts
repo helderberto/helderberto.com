@@ -34,7 +34,7 @@ export const resume = {
     { label: 'github.com/helderberto', href: 'https://github.com/helderberto' },
   ],
   summary:
-    'Senior Software Engineer with 15+ years building scalable web applications, specialized in frontend architecture. Expert in TypeScript, React, and modern frontend systems. At PagerDuty, drives frontend architecture strategy and technical decisions behind large-scale legacy-to-React migrations, and mentors engineers.',
+    'Senior Software Engineer with 15+ years across agencies, consultancies, and product platforms, the last decade focused on frontend architecture for large-scale applications. Previously founded and ran a software company. A decade of remote work with distributed teams in Brazil, the US, and Europe.',
   skills: [
     {
       group: 'Architecture',
