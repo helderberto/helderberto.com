@@ -185,8 +185,8 @@ export const resume = {
       tech: ['JavaScript', 'Angular', 'Ionic', 'PHP', 'CakePHP', 'WordPress'],
     },
     {
-      role: 'CTO',
-      company: 'Project Commerce LTDA',
+      role: 'Full Stack Developer',
+      company: 'Project Commerce',
       location: 'Brazil (Remote)',
       period: 'Jan. 2017 - Aug. 2017',
     },
