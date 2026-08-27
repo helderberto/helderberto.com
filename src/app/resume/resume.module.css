@@ -100,9 +100,6 @@
 .earlier {
   display: grid;
   gap: 1.5mm;
-}
-
-.earlier {
   margin-top: 2.5mm;
   border-top: 0.75pt solid var(--rs-line);
 }
