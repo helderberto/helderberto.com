@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import './resume.css';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Helder-Burato-Berto-Resume' },
+  title: 'Resume',
   description: resume.summary,
   alternates: { canonical: `${siteConfig.url}/resume` },
 };
