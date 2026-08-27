@@ -22,7 +22,7 @@ export type SkillGroup = {
 export const resume = {
   name: 'Helder Burato Berto',
   headline: 'Senior Software Engineer, Frontend',
-  location: 'Vila Nova de Famalicão, Braga, Portugal',
+  location: 'Braga, Portugal',
   phone: '+351 910 160 926',
   email: 'helder.burato@gmail.com',
   links: [
@@ -157,7 +157,7 @@ export const resume = {
     {
       role: 'Senior Frontend Engineer',
       company: 'Cheesecake Labs',
-      location: 'Brazil',
+      location: 'Brazil (Hybrid)',
       period: 'Jan. 2019 - Dec. 2020',
       bullets: [
         'Architected complex UI systems and frontend projects.',
@@ -198,14 +198,14 @@ export const resume = {
     },
     {
       role: 'Full Stack Developer',
-      company: 'Virtualiza Agência Interativa',
-      location: 'Brazil',
+      company: 'Virtualiza',
+      location: 'Brazil (On-site)',
       period: 'Mar. 2013 - Aug. 2015',
     },
     {
       role: 'Full Stack Developer',
       company: 'Burn web.studio',
-      location: 'Brazil',
+      location: 'Brazil (On-site)',
       period: 'May 2011 - Mar. 2013',
     },
   ] satisfies Experience[],

@@ -29,8 +29,7 @@ export default function ResumeLayout({
           sameAs: [siteConfig.social.linkedin, siteConfig.social.github],
           address: {
             '@type': 'PostalAddress',
-            addressLocality: 'Vila Nova de Famalicão',
-            addressRegion: 'Braga',
+            addressLocality: 'Braga',
             addressCountry: 'PT',
           },
           worksFor: {
