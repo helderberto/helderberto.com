@@ -78,6 +78,18 @@
   cursor: pointer;
 }
 
+.rs-button--ghost {
+  color: var(--rs-ink);
+  background: #fff;
+  border-color: var(--rs-line);
+  text-decoration: none;
+}
+
+.rs-button--ghost:hover {
+  text-decoration: none;
+  border-color: var(--rs-ink);
+}
+
 /* Screen-hidden, print-visible (e.g. phone number: printed CV only, not the web) */
 .rs-print-only {
   display: none;

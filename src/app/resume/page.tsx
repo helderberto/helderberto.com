@@ -1,3 +1,4 @@
+import { siteConfig } from '@/config/site';
 import { detailedExperience, earlierExperience, resume } from '@/data/resume';
 import { PrintButton } from './PrintButton';
 import styles from './resume.module.css';
@@ -6,6 +7,9 @@ export default function Resume() {
   return (
     <div className="rs-root">
       <div className="rs-toolbar rs-no-print">
+        <a href={siteConfig.url} className="rs-button rs-button--ghost">
+          ← helderberto.com
+        </a>
         <PrintButton />
       </div>
 
