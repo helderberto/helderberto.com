@@ -1,0 +1,134 @@
+@page {
+  size: A4 portrait;
+  margin: 10mm 12mm;
+}
+
+.rs-root {
+  --rs-accent: #000000;
+  --rs-ink: #000000;
+  --rs-muted: #4a4a4a;
+  --rs-line: #a6a6a6;
+  --rs-line-soft: #d4d4d4;
+
+  color-scheme: light;
+  color: var(--rs-ink);
+  background: #e6e6e6;
+  font-size: 10pt;
+  line-height: 1.36;
+  padding: 2rem 1rem 4rem;
+  min-height: 100vh;
+}
+
+.rs-sheet {
+  width: 210mm;
+  min-height: 297mm;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 12mm;
+  background: #fff;
+  box-shadow:
+    0 1px 3px rgb(17 21 28 / 12%),
+    0 12px 32px rgb(17 21 28 / 10%);
+}
+
+.rs-root h1,
+.rs-root h2,
+.rs-root h3,
+.rs-root h4 {
+  letter-spacing: -0.01em;
+}
+
+.rs-root address {
+  font-style: normal;
+}
+
+.rs-root a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.rs-root a:hover {
+  text-decoration: underline;
+}
+
+.rs-avoid-break {
+  break-inside: avoid;
+}
+
+.rs-toolbar {
+  width: 210mm;
+  max-width: 100%;
+  margin: 0 auto 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11pt;
+}
+
+.rs-button {
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--rs-accent);
+  border: 1px solid var(--rs-accent);
+  border-radius: 0.375rem;
+  padding: 0.375rem 0.875rem;
+  cursor: pointer;
+}
+
+/* Screen-hidden, print-visible (e.g. phone number: printed CV only, not the web) */
+.rs-print-only {
+  display: none;
+}
+
+@media print {
+  .rs-no-print {
+    display: none !important;
+  }
+
+  .rs-print-only {
+    display: revert;
+  }
+
+  .rs-root {
+    padding: 0;
+    background: #fff;
+  }
+
+  .rs-sheet {
+    width: auto;
+    min-height: 0;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .rs-root * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* Resume routes render as a standalone document: drop the site chrome. */
+/* next-themes writes color-scheme inline on <html>; in dark mode the UA paints
+   the whole page canvas #121212, which shows up as black margins when printing.
+   Only !important can beat an inline style. */
+html:has(.rs-root),
+body:has(.rs-root) {
+  background: #fff !important;
+  background-image: none !important;
+  color-scheme: light !important;
+}
+
+body:has(.rs-root) > header,
+body:has(.rs-root) > footer {
+  display: none;
+}
+
+body:has(.rs-root) > main {
+  max-width: none;
+  padding: 0;
+}

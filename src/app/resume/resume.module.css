@@ -1,0 +1,168 @@
+.masthead {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8mm;
+  align-items: end;
+  padding-bottom: 2mm;
+  border-bottom: 2pt solid var(--rs-accent);
+}
+
+.name {
+  font-size: 26pt;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--rs-accent);
+}
+
+.headline {
+  margin-top: 1.5mm;
+  font-size: 12pt;
+  font-weight: 500;
+  color: var(--rs-ink);
+}
+
+.contact {
+  display: grid;
+  gap: 0.6mm;
+  font-size: 9pt;
+  color: var(--rs-muted);
+  text-align: right;
+}
+
+.contact strong {
+  color: var(--rs-ink);
+  font-weight: 600;
+}
+
+.summary {
+  margin-top: 1mm;
+  font-size: 9pt;
+  color: var(--rs-muted);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 1.9fr 1fr;
+  gap: 9mm;
+  margin-top: 3mm;
+}
+
+.sectionTitle {
+  font-size: 8.5pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rs-ink);
+  border-bottom: 0.75pt solid var(--rs-ink);
+  padding-bottom: 1mm;
+  margin-bottom: 2.5mm;
+}
+
+.section + .section {
+  margin-top: 5mm;
+}
+
+.job + .job {
+  margin-top: 2.5mm;
+}
+
+.jobTitle {
+  font-size: 11pt;
+  font-weight: 700;
+}
+
+.jobMeta {
+  font-size: 8.5pt;
+  color: var(--rs-muted);
+}
+
+.positionBlock + .positionBlock {
+  margin-top: 2.5mm;
+}
+
+.bullets {
+  list-style: disc;
+  margin: 1.5mm 0 0;
+  padding-left: 4mm;
+}
+
+.bullets li {
+  margin-bottom: 0.7mm;
+  font-size: 9.5pt;
+}
+
+.tech {
+  margin-top: 1.4mm;
+  font-size: 8.5pt;
+  color: var(--rs-muted);
+}
+
+.earlier {
+  display: grid;
+  gap: 1.5mm;
+}
+
+.earlier {
+  margin-top: 2.5mm;
+  border-top: 0.75pt solid var(--rs-line);
+}
+
+.earlierRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3mm;
+  font-size: 8.5pt;
+  padding: 0.8mm 0;
+  border-top: 0.5pt solid var(--rs-line-soft);
+}
+
+.earlierRow span:last-child {
+  color: var(--rs-muted);
+  font-size: 8pt;
+  white-space: nowrap;
+}
+
+.skillGroup + .skillGroup {
+  margin-top: 3mm;
+}
+
+.skillGroup dt {
+  font-size: 9pt;
+  font-weight: 700;
+}
+
+.skillGroup dd {
+  font-size: 9pt;
+  color: var(--rs-muted);
+  margin-top: 0.5mm;
+}
+
+.footnote {
+  font-size: 8.5pt;
+  color: var(--rs-muted);
+  border-top: 0.5pt solid var(--rs-line-soft);
+  padding-top: 1.5mm;
+}
+
+.footnote + .footnote {
+  margin-top: 1.5mm;
+}
+
+.footnote strong {
+  color: var(--rs-ink);
+  font-weight: 700;
+}
+
+.bullets li::marker {
+  color: var(--rs-accent);
+}
+
+.summaryTitle {
+  margin-top: 2.5mm;
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rs-muted);
+}
