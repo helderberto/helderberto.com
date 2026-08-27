@@ -42,11 +42,11 @@ export const resume = {
         'Frontend Architecture',
         'Design Systems',
         'Micro Frontends',
-        'Scalable Web Applications',
+        'Technical Standards',
       ],
     },
     {
-      group: 'Languages & Frameworks',
+      group: 'Frontend',
       items: [
         'TypeScript',
         'JavaScript',
@@ -54,21 +54,7 @@ export const resume = {
         'Redux',
         'Next.js',
         'React Native',
-        'HTML',
-      ],
-    },
-    {
-      group: 'Styling',
-      items: ['CSS', 'CSS Modules', 'CSS-in-JS (Emotion)'],
-    },
-    {
-      group: 'AI Tools',
-      items: [
-        'Cursor',
-        'Claude Code & Cowork',
-        'ChatGPT',
-        'GitHub Copilot',
-        'Spec-driven Development',
+        'CSS',
       ],
     },
     {
@@ -76,26 +62,23 @@ export const resume = {
       items: [
         'Jest',
         'Vitest',
+        'React Testing Library',
         'Cypress',
         'Playwright',
-        'React Testing Library',
       ],
     },
     {
-      group: 'Backend & Data',
-      items: ['Node.js', 'GraphQL', 'PHP', 'MySQL', 'PostgreSQL', 'MongoDB'],
-    },
-    {
-      group: 'Tooling & Practices',
+      group: 'AI Tools',
       items: [
-        'Git',
-        'Docker',
-        'CI/CD',
-        'ESLint',
-        'Prettier',
-        'Scrum',
-        'Kanban',
+        'Cursor',
+        'Claude Code & Cowork',
+        'GitHub Copilot',
+        'Spec-driven Development',
       ],
+    },
+    {
+      group: 'Tooling',
+      items: ['Vite', 'Node.js', 'GraphQL', 'Docker', 'CI/CD'],
     },
   ] satisfies SkillGroup[],
   experience: [
