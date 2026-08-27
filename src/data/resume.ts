@@ -174,6 +174,16 @@ export const resume = {
       ],
     },
     {
+      role: 'Frontend Engineer',
+      company: 'D3',
+      location: 'São Paulo, Brazil (Remote)',
+      period: 'Mar. 2018 - Jan. 2019',
+      bullets: [
+        'Built scalable frontend applications for large-brand clients including Centauro and BrasilPrev (Banco do Brasil).',
+      ],
+      tech: ['JavaScript', 'React', 'CSS', 'React Native'],
+    },
+    {
       role: 'Founder & CTO',
       company: 'Applann Digital',
       location: 'Brazil (Remote)',
