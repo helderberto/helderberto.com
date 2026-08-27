@@ -14,7 +14,7 @@
   color: var(--rs-ink);
   background: #e6e6e6;
   font-size: 10pt;
-  line-height: 1.36;
+  line-height: 1.42;
   padding: 2rem 1rem 4rem;
   min-height: 100vh;
 }
@@ -29,6 +29,14 @@
   box-shadow:
     0 1px 3px rgb(17 21 28 / 12%),
     0 12px 32px rgb(17 21 28 / 10%);
+}
+
+/* Print-safe font stack, not the site's Inter: Chrome emits subsetted variable
+   webfonts as out-of-order glyph runs, so PDF text extraction returns scrambled
+   words ("Sof tware", "Helder B urat o") and resume parsers misread the document. */
+.rs-root,
+.rs-root * {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .rs-root h1,
