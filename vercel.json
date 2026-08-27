@@ -1,9 +1,15 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/",
+      "src": "^/x-routes-test$",
+      "dest": "/resume",
+      "override": true
+    },
+    {
+      "src": "^/$",
       "has": [{ "type": "host", "value": "resume.helderberto.com" }],
-      "destination": "/resume"
+      "dest": "/resume",
+      "override": true
     }
   ]
 }
