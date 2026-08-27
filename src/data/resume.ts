@@ -160,7 +160,7 @@ export const resume = {
       location: 'Brazil (Hybrid)',
       period: 'Jan. 2019 - Dec. 2020',
       bullets: [
-        'Architected complex UI systems and frontend projects.',
+        'Architected complex UI systems across web and mobile apps (React Native).',
         'Mentored colleagues and facilitated knowledge sharing across a chapter of ~20 frontend engineers.',
         'Led project planning and client negotiations.',
       ],
