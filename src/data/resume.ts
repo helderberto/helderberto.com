@@ -202,7 +202,7 @@ export const resume = {
   ] satisfies Experience[],
   education: [
     {
-      program: 'Information Systems',
+      program: 'Coursework in Information Systems',
       school: 'Esucri',
       location: 'Criciúma, Brazil',
       period: '2009 - 2012',
