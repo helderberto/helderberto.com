@@ -206,7 +206,6 @@ export const resume = {
       school: 'Esucri',
       location: 'Criciúma, Brazil',
       period: '2009 - 2012',
-      status: 'not completed',
     },
   ],
   languages: [

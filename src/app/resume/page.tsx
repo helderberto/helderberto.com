@@ -124,7 +124,7 @@ export default function Resume() {
                 {resume.education
                   .map(
                     (item) =>
-                      `${item.program}, ${item.school}, ${item.location} (${item.period}, ${item.status})`,
+                      `${item.program}, ${item.school}, ${item.location} (${item.period})`,
                   )
                   .join(' · ')}
               </p>
