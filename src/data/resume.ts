@@ -188,11 +188,6 @@ export const resume = {
       company: 'Applann Digital',
       location: 'Brazil (Remote)',
       period: 'Oct. 2016 - Oct. 2018',
-      bullets: [
-        'Developed full-stack applications hands-on while hiring and leading contractor teams through full project lifecycles.',
-        'Handled client relations, project planning, and business development.',
-      ],
-      tech: ['JavaScript', 'Angular', 'Ionic', 'PHP', 'CakePHP', 'WordPress'],
     },
     {
       role: 'Full Stack Developer',
