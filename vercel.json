@@ -1,11 +1,6 @@
 {
   "routes": [
     {
-      "src": "^/x-routes-test$",
-      "dest": "/resume",
-      "override": true
-    },
-    {
       "src": "^/$",
       "has": [{ "type": "host", "value": "resume.helderberto.com" }],
       "dest": "/resume",
