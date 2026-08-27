@@ -109,16 +109,19 @@ export const resume = {
           level: 'Senior Software Engineer (SDE IV), Frontend',
           period: 'Jul. 2024 - Present',
           bullets: [
-            'Serve on the Frontend Architecture Strategy Team within the Frontend Platform org, defining technology standards and UI building patterns adopted across product teams.',
-            'Drive architectural decisions behind large-scale migrations from legacy frameworks (Ember, Backbone) to React.',
-            'Architect and deliver highly scalable frontend applications and mentor engineers on architecture and technical strategy.',
+            'Define frontend technology standards and UI building patterns on the Frontend Architecture Strategy Team, adopted by product teams across the Frontend Platform org.',
+            'Authored the cross-company guidelines for TypeScript adoption, Vite migration, local storage, and source-map handling.',
+            'Migrated high-complexity legacy surfaces from Ember and Backbone to React, including the incident timeline and the incident list, one of the highest-traffic pages in the product.',
+            'Introduced visual regression testing to a business-critical frontend application, catching breaking UI changes before they reach customers.',
+            'Mentor SDE II-III engineers on frontend architecture and technical strategy.',
           ],
         },
         {
           level: 'Senior Software Engineer (SDE III), Frontend',
           period: 'Jul. 2022 - Jul. 2024',
           bullets: [
-            'Architected and delivered web applications for incident management on the Incident Management Services team.',
+            'Architected and shipped incident-management features on the Incident Management Services team, including the Incident Responders tool and incident service reassignment.',
+            'Contributed to the founding effort of the internal design system.',
           ],
         },
       ],
@@ -139,8 +142,8 @@ export const resume = {
       location: 'Portugal (Remote)',
       period: 'Jan. 2021 - Jul. 2022',
       bullets: [
-        'Developed the back-office platform end to end, from micro-frontend React modules to GraphQL backends-for-frontends (Apollo).',
-        'Co-led frontend development of the CMS for Farfetch Platform Solutions.',
+        'Built the back-office platform end to end, from micro-frontend React modules to a NestJS backend-for-frontend wrapping REST services in GraphQL.',
+        'Co-led frontend development of the CMS behind Farfetch Platform Solutions, used by luxury retail brands including Harrods and Chanel.',
       ],
       tech: [
         'TypeScript',
@@ -160,8 +163,8 @@ export const resume = {
       location: 'Brazil (Hybrid)',
       period: 'Jan. 2019 - Dec. 2020',
       bullets: [
-        'Architected complex web and mobile (React Native) UI systems.',
-        'Mentored colleagues and facilitated knowledge sharing across a chapter of ~20 frontend engineers.',
+        'Architected complex web and mobile (React Native) UI systems for clients including Agriness, AES Tietê, and Skyroam.',
+        'Led a chapter of ~20 frontend engineers, setting conventions and technical standards aligned with company OKRs.',
         'Led project planning and client negotiations.',
       ],
       tech: [
