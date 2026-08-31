@@ -10,10 +10,26 @@
   --rs-line: #a6a6a6;
   --rs-line-soft: #d4d4d4;
 
+  /* Type scale in pt (print-native unit for font sizes) */
+  --rs-text-2xs: 8.5pt;
+  --rs-text-xs: 9pt;
+  --rs-text-sm: 9.5pt;
+  --rs-text-base: 10pt;
+  --rs-text-md: 11pt;
+  --rs-text-lg: 12pt;
+  --rs-text-2xl: 26pt;
+
+  /* Spacing scale in mm (print-native unit for page geometry) */
+  --rs-gap-2xs: 0.8mm;
+  --rs-gap-xs: 1.2mm;
+  --rs-gap-sm: 1.5mm;
+  --rs-gap-md: 2.5mm;
+  --rs-gap-lg: 4mm;
+
   color-scheme: light;
   color: var(--rs-ink);
   background: #e6e6e6;
-  font-size: 10pt;
+  font-size: var(--rs-text-base);
   line-height: 1.42;
   padding: 2rem 1rem 4rem;
   min-height: 100vh;
@@ -72,7 +88,7 @@
   gap: 0.5rem;
   align-items: center;
   justify-content: space-between;
-  font-size: 11pt;
+  font-size: var(--rs-text-md);
 }
 
 .rs-button {

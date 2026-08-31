@@ -1,14 +1,10 @@
 .masthead {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 8mm;
-  align-items: end;
-  padding-bottom: 2mm;
+  padding-bottom: var(--rs-gap-md);
   border-bottom: 2pt solid var(--rs-accent);
 }
 
 .name {
-  font-size: 26pt;
+  font-size: var(--rs-text-2xl);
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.02em;
@@ -16,18 +12,16 @@
 }
 
 .headline {
-  margin-top: 1.5mm;
-  font-size: 12pt;
+  margin-top: var(--rs-gap-sm);
+  font-size: var(--rs-text-lg);
   font-weight: 500;
   color: var(--rs-ink);
 }
 
 .contact {
-  display: grid;
-  gap: 0.6mm;
-  font-size: 9pt;
+  margin-top: var(--rs-gap-sm);
+  font-size: var(--rs-text-xs);
   color: var(--rs-muted);
-  text-align: right;
 }
 
 .contact strong {
@@ -36,118 +30,89 @@
 }
 
 .summary {
-  margin-top: 1mm;
-  font-size: 9.5pt;
-}
-
-.body {
-  display: grid;
-  grid-template-columns: 1.9fr 1fr;
-  gap: 9mm;
-  margin-top: 3mm;
+  margin-top: var(--rs-gap-xs);
+  font-size: var(--rs-text-sm);
 }
 
 .sectionTitle {
-  font-size: 8.5pt;
+  font-size: var(--rs-text-2xs);
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--rs-ink);
   border-bottom: 0.75pt solid var(--rs-ink);
-  padding-bottom: 1mm;
-  margin-bottom: 2.5mm;
+  padding-bottom: var(--rs-gap-xs);
+  margin-bottom: var(--rs-gap-md);
 }
 
-.section + .section {
-  margin-top: 5mm;
+.section {
+  margin-top: var(--rs-gap-lg);
 }
 
 .job + .job {
-  margin-top: 4mm;
+  margin-top: var(--rs-gap-lg);
 }
 
 .jobTitle {
-  font-size: 11pt;
+  font-size: var(--rs-text-md);
   font-weight: 700;
 }
 
 .jobMeta {
-  font-size: 8.5pt;
+  font-size: var(--rs-text-2xs);
   color: var(--rs-muted);
 }
 
 .positionBlock + .positionBlock {
-  margin-top: 2.5mm;
+  margin-top: var(--rs-gap-md);
 }
 
 .bullets {
   list-style: disc;
-  margin: 1.5mm 0 0;
+  margin: var(--rs-gap-sm) 0 0;
   padding-left: 4mm;
 }
 
 .bullets li {
-  margin-bottom: 1.2mm;
-  font-size: 9.5pt;
+  margin-bottom: var(--rs-gap-xs);
+  font-size: var(--rs-text-sm);
 }
 
 .tech {
-  margin-top: 1.4mm;
-  font-size: 8.5pt;
+  margin-top: var(--rs-gap-xs);
+  font-size: var(--rs-text-2xs);
   color: var(--rs-muted);
 }
 
 .earlier {
-  display: grid;
-  gap: 1.5mm;
-  margin-top: 2.5mm;
+  margin-top: var(--rs-gap-md);
   border-top: 0.75pt solid var(--rs-line);
 }
 
 .earlierRow {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 3mm;
-  font-size: 8.5pt;
-  padding: 0.8mm 0;
+  font-size: var(--rs-text-2xs);
+  padding: var(--rs-gap-2xs) 0;
   border-top: 0.5pt solid var(--rs-line-soft);
 }
 
-.earlierRow span:last-child {
-  color: var(--rs-muted);
-  font-size: 8pt;
-  white-space: nowrap;
-}
-
-.skillGroup + .skillGroup {
-  margin-top: 3mm;
-}
-
-.skillGroup dt {
-  font-size: 9pt;
+.earlierRow strong {
   font-weight: 700;
 }
 
-.skillGroup dd {
-  font-size: 9pt;
-  color: var(--rs-muted);
-  margin-top: 0.5mm;
+.skillRow {
+  font-size: var(--rs-text-sm);
 }
 
-.footnote {
-  font-size: 8.5pt;
-  color: var(--rs-muted);
-  border-top: 0.5pt solid var(--rs-line-soft);
-  padding-top: 1.5mm;
+.skillRow + .skillRow {
+  margin-top: var(--rs-gap-2xs);
 }
 
-.footnote + .footnote {
-  margin-top: 1.5mm;
-}
-
-.footnote strong {
-  color: var(--rs-ink);
+.skillRow strong {
   font-weight: 700;
+}
+
+.inlineRow {
+  font-size: var(--rs-text-sm);
 }
 
 .bullets li::marker {
@@ -155,8 +120,8 @@
 }
 
 .summaryTitle {
-  margin-top: 2.5mm;
-  font-size: 8.5pt;
+  margin-top: var(--rs-gap-md);
+  font-size: var(--rs-text-2xs);
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
