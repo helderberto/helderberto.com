@@ -40,6 +40,7 @@ export const resume = {
       group: 'Architecture',
       items: [
         'Frontend Architecture',
+        'Legacy Modernization',
         'Design Systems',
         'Micro Frontends',
         'Technical Standards',
@@ -78,7 +79,17 @@ export const resume = {
     },
     {
       group: 'Tooling',
-      items: ['Vite', 'Node.js', 'GraphQL', 'Docker', 'CI/CD'],
+      items: [
+        'Vite',
+        'Node.js',
+        'GraphQL',
+        'Docker',
+        'CI/CD (GitHub Actions, Buildkite)',
+      ],
+    },
+    {
+      group: 'Observability',
+      items: ['DataDog', 'BugSnag'],
     },
   ] satisfies SkillGroup[],
   experience: [
