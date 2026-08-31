@@ -111,6 +111,16 @@ export default function Resume() {
         </section>
 
         <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Certifications</h2>
+          {resume.certifications.map((certification) => (
+            <p key={certification.href} className={styles.inlineRow}>
+              <a href={certification.href}>{certification.name}</a> —{' '}
+              {certification.issuer}
+            </p>
+          ))}
+        </section>
+
+        <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Languages</h2>
           <p className={styles.inlineRow}>
             {resume.languages

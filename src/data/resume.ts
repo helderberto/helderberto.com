@@ -208,6 +208,23 @@ export const resume = {
       period: '2009 - 2012',
     },
   ],
+  certifications: [
+    {
+      name: 'PagerDuty Foundational Practitioner Certification',
+      issuer: 'PagerDuty',
+      href: 'https://www.credly.com/badges/2bfe6577-a2f2-45e3-9a22-5147e2865f69/linked_in_profile',
+    },
+    {
+      name: 'Claude Code in Action',
+      issuer: 'Anthropic',
+      href: 'https://verify.skilljar.com/c/923kypaztd7s',
+    },
+    {
+      name: 'Front-End System Design',
+      issuer: 'Frontend Masters',
+      href: 'https://static.frontendmasters.com/ud/c/4a94c72cc6/gkuyfreSHY/frontend-system-design.pdf',
+    },
+  ],
   languages: [
     { name: 'Portuguese', level: 'Native' },
     { name: 'English', level: 'Fluent, Professional' },

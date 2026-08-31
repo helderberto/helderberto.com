@@ -115,6 +115,10 @@
   font-size: var(--rs-text-sm);
 }
 
+.inlineRow + .inlineRow {
+  margin-top: var(--rs-gap-2xs);
+}
+
 .bullets li::marker {
   color: var(--rs-accent);
 }
