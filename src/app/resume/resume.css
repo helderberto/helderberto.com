@@ -19,6 +19,8 @@
   --rs-text-lg: 12pt;
   --rs-text-2xl: 26pt;
 
+  --rs-leading: 1.5;
+
   /* Spacing scale in mm (print-native unit for page geometry) */
   --rs-gap-2xs: 0.8mm;
   --rs-gap-xs: 1.2mm;
@@ -30,7 +32,7 @@
   color: var(--rs-ink);
   background: #e6e6e6;
   font-size: var(--rs-text-base);
-  line-height: 1.42;
+  line-height: var(--rs-leading);
   padding: 2rem 1rem 4rem;
   min-height: 100vh;
 }
