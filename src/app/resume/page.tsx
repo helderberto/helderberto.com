@@ -115,7 +115,7 @@ export default function Resume() {
           {resume.certifications.map((certification) => (
             <p key={certification.href} className={styles.inlineRow}>
               <a href={certification.href}>{certification.name}</a> —{' '}
-              {certification.issuer}
+              {certification.issuer}, {certification.issued}
             </p>
           ))}
         </section>

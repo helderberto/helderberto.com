@@ -221,19 +221,22 @@ export const resume = {
   ],
   certifications: [
     {
-      name: 'PagerDuty Foundational Practitioner Certification',
-      issuer: 'PagerDuty',
-      href: 'https://www.credly.com/badges/2bfe6577-a2f2-45e3-9a22-5147e2865f69/linked_in_profile',
+      name: 'Claude Code for Real Engineers',
+      issuer: 'AIhero',
+      issued: 'Apr. 2026',
+      href: 'https://res.cloudinary.com/total-typescript/image/upload/v1782990632/certificate/c42ed24f-c7de-4511-a178-d1c4a9386432/ai-coding-for-real-engineers-m0k0w.png',
     },
     {
       name: 'Claude Code in Action',
       issuer: 'Anthropic',
+      issued: 'Mar. 2026',
       href: 'https://verify.skilljar.com/c/923kypaztd7s',
     },
     {
-      name: 'Front-End System Design',
-      issuer: 'Frontend Masters',
-      href: 'https://static.frontendmasters.com/ud/c/4a94c72cc6/gkuyfreSHY/frontend-system-design.pdf',
+      name: 'PagerDuty Foundational Practitioner Certification',
+      issuer: 'PagerDuty',
+      issued: 'Sep. 2022',
+      href: 'https://www.credly.com/badges/2bfe6577-a2f2-45e3-9a22-5147e2865f69/linked_in_profile',
     },
   ],
   languages: [
