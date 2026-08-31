@@ -34,7 +34,7 @@ export const resume = {
     { label: 'github.com/helderberto', href: 'https://github.com/helderberto' },
   ],
   summary:
-    'Senior Software Engineer with 15+ years across agencies, consultancies, and product platforms, the last decade focused on frontend architecture for large-scale applications. Previously founded and ran a software company. A decade of remote work with distributed teams in Brazil, the US, and Europe.',
+    'Senior Software Engineer with 15+ years across agencies, consultancies, and product platforms, the last decade focused on frontend architecture for large-scale React/TypeScript applications. Previously founded and ran a software company. A decade of remote work with distributed teams in Brazil, the US, and Europe.',
   skills: [
     {
       group: 'Architecture',
