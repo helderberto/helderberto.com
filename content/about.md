@@ -39,4 +39,4 @@ While I stay up-to-date with the latest technologies, I always prioritize solid 
 
 ## Let's Connect
 
-Find me on [LinkedIn](https://www.linkedin.com/in/helderberto/), [GitHub](https://github.com/helderberto), or reach out via [email](mailto:helder.burato@gmail.com).
+Find me on [LinkedIn](https://www.linkedin.com/in/helderberto/), [GitHub](https://github.com/helderberto), or reach out via [email](mailto:helder@helderberto.com).
