@@ -22,9 +22,7 @@ export default function Resume() {
             <span className="rs-print-only"> · {resume.phone}</span>
             <span>
               {' · '}
-              <a href={`mailto:${resume.email}`}>
-                <strong>{resume.email}</strong>
-              </a>
+              <a href={`mailto:${resume.email}`}>{resume.email}</a>
             </span>
             {resume.links.map((link) => (
               <span key={link.href}>

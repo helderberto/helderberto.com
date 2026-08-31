@@ -24,11 +24,6 @@
   color: var(--rs-muted);
 }
 
-.contact strong {
-  color: var(--rs-ink);
-  font-weight: 600;
-}
-
 .summary {
   margin-top: var(--rs-gap-xs);
   font-size: var(--rs-text-sm);
