@@ -50,9 +50,12 @@
 /* Print-safe font stack, not the site's Inter: Chrome emits subsetted variable
    webfonts as out-of-order glyph runs, so PDF text extraction returns scrambled
    words ("Sof tware", "Helder B urat o") and resume parsers misread the document. */
+/* No ligatures: "fi"/"ff" ligature glyphs extract as single characters
+   ("Deﬁne", "eﬀort") and break keyword matching in weaker resume parsers. */
 .rs-root,
 .rs-root * {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-variant-ligatures: none;
 }
 
 .rs-root h1,
