@@ -221,9 +221,9 @@ export const resume = {
   ],
   certifications: [
     {
-      name: 'Claude Code for Real Engineers',
+      name: 'AI Coding for Real Engineers',
       issuer: 'AIhero',
-      issued: 'Apr. 2026',
+      issued: 'Jul. 2026',
       href: 'https://res.cloudinary.com/total-typescript/image/upload/v1782990632/certificate/c42ed24f-c7de-4511-a178-d1c4a9386432/ai-coding-for-real-engineers-m0k0w.png',
     },
     {
