@@ -24,7 +24,7 @@ export const resume = {
   headline: 'Senior Software Engineer, Frontend',
   location: 'Braga, Portugal',
   phone: '+351 910 160 926',
-  email: 'helder.burato@gmail.com',
+  email: 'helder@helderberto.com',
   links: [
     { label: 'helderberto.com', href: 'https://helderberto.com' },
     {
