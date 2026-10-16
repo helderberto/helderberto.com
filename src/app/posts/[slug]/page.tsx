@@ -1,6 +1,7 @@
 import { Comments } from '@/components/Comments';
 import { JsonLd } from '@/components/JsonLd';
 import { MarkdownContent } from '@/components/MarkdownContent';
+import { PageTransition } from '@/components/PageTransition';
 import { PostHeader } from '@/components/PostHeader';
 import { sharedOpenGraph, sharedTwitter } from '@/app/shared-metadata';
 import { siteConfig } from '@/config/site';
@@ -86,19 +87,21 @@ export default async function Page({ params }: Props) {
   };
 
   return (
-    <article className={styles.article} aria-labelledby="post-title">
-      <JsonLd data={jsonLd} />
-      <PostHeader
-        title={post.title}
-        date={post.date}
-        readingTime={post.readingTime}
-      />
-      <div className={`${styles.content} ${styles.markdownContent}`}>
-        <MarkdownContent content={post.content!} />
-      </div>
-      <section aria-label="Comments" className={styles.comments}>
-        <Comments />
-      </section>
-    </article>
+    <PageTransition>
+      <article className={styles.article} aria-labelledby="post-title">
+        <JsonLd data={jsonLd} />
+        <PostHeader
+          title={post.title}
+          date={post.date}
+          readingTime={post.readingTime}
+        />
+        <div className={`${styles.content} ${styles.markdownContent}`}>
+          <MarkdownContent content={post.content!} />
+        </div>
+        <section aria-label="Comments" className={styles.comments}>
+          <Comments />
+        </section>
+      </article>
+    </PageTransition>
   );
 }
