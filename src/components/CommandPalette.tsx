@@ -110,7 +110,9 @@ export function CommandPalette({ posts }: CommandPaletteProps) {
         group: 'Actions',
         label: 'Copy page URL',
         icon: Copy,
-        run: () => navigator.clipboard.writeText(window.location.href),
+        run: () => {
+          navigator.clipboard.writeText(window.location.href).catch(() => {});
+        },
       },
     ];
     const connect: PaletteItem[] = [

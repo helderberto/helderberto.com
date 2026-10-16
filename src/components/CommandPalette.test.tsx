@@ -280,6 +280,26 @@ describe('CommandPalette', () => {
       expect(writeText).toHaveBeenCalledWith(window.location.href);
     });
 
+    it('handles a denied clipboard', async () => {
+      const { user, dialog } = await openPalette();
+      let handled = false;
+      vi.stubGlobal('navigator', {
+        clipboard: {
+          writeText: () => {
+            const denied = Promise.reject(new Error('denied'));
+            vi.spyOn(denied, 'catch').mockImplementation((onRejected) => {
+              handled = true;
+              return Promise.prototype.catch.call(denied, onRejected);
+            });
+            return denied;
+          },
+        },
+      });
+      await user.click(screen.getByRole('option', { name: 'Copy page URL' }));
+      expect(handled).toBe(true);
+      expect(dialog.open).toBe(false);
+    });
+
     it.each([
       ['GitHub', 'https://github.com/helderberto'],
       ['LinkedIn', 'https://www.linkedin.com/in/helderberto/'],

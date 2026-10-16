@@ -9,6 +9,8 @@ export default defineConfig({
     exclude: [...configDefaults.exclude, '.claude/**'],
     setupFiles: ['./vitest.setup.ts'],
     restoreMocks: true,
+    unstubGlobals: true,
+    unstubEnvs: true,
     coverage: {
       provider: 'istanbul',
       include: ['src/**/*.{ts,tsx}'],
