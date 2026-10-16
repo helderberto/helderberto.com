@@ -106,6 +106,7 @@
 }
 
 .dark {
+  color-scheme: dark;
   --background: #0a0d12;
   --foreground: #e6eaf0;
   --primary: #3b82f6;
@@ -139,6 +140,16 @@
 /* Base */
 html {
   overflow-x: clip;
+  accent-color: var(--primary);
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--background);
+}
+
+[id] {
+  scroll-margin-top: 5rem;
 }
 
 body:has(dialog[open]) {
@@ -184,6 +195,7 @@ h6 {
   line-height: var(--line-height-heading);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.03em;
+  text-wrap: balance;
 }
 
 code {
@@ -233,6 +245,25 @@ pre[class*='language-'] {
   background: none !important;
 }
 
+.skip-link {
+  position: absolute;
+  top: var(--spacing-responsive-sm);
+  left: var(--spacing-responsive-sm);
+  z-index: 100;
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: var(--background);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -245,6 +276,38 @@ pre[class*='language-'] {
   border-width: 0;
 }
 
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-old(.page) {
+  animation: 150ms ease-out both page-fade reverse;
+}
+
+::view-transition-new(.page) {
+  animation:
+    210ms ease-in 150ms both page-fade,
+    400ms ease-out both page-rise;
+}
+
+@keyframes page-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes page-rise {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -252,5 +315,12 @@ pre[class*='language-'] {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
   }
 }

@@ -1,7 +1,10 @@
 import { Comments } from '@/components/Comments';
 import { JsonLd } from '@/components/JsonLd';
 import { MarkdownContent } from '@/components/MarkdownContent';
+import { PageTransition } from '@/components/PageTransition';
 import { PostHeader } from '@/components/PostHeader';
+import { PostNavigation } from '@/components/PostNavigation';
+import { ReadingProgress } from '@/components/ReadingProgress';
 import { sharedOpenGraph, sharedTwitter } from '@/app/shared-metadata';
 import { siteConfig } from '@/config/site';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
@@ -66,6 +69,11 @@ export default async function Page({ params }: Props) {
     notFound();
   }
 
+  const posts = await getAllPosts();
+  const index = posts.findIndex((p) => p.slug === slug);
+  const newer = posts[index - 1];
+  const older = posts[index + 1];
+
   const url = new URL(`/posts/${slug}`, siteConfig.url).toString();
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -88,19 +96,25 @@ export default async function Page({ params }: Props) {
   };
 
   return (
-    <article className={styles.article} aria-labelledby="post-title">
-      <JsonLd data={jsonLd} />
-      <PostHeader
-        title={post.title}
-        date={post.date}
-        readingTime={post.readingTime}
-      />
-      <div className={`${styles.content} ${styles.markdownContent}`}>
-        <MarkdownContent content={post.content!} />
-      </div>
-      <section aria-label="Comments" className={styles.comments}>
-        <Comments />
-      </section>
-    </article>
+    <>
+      <ReadingProgress />
+      <PageTransition>
+        <article className={styles.article} aria-labelledby="post-title">
+          <JsonLd data={jsonLd} />
+          <PostHeader
+            title={post.title}
+            date={post.date}
+            readingTime={post.readingTime}
+          />
+          <div className={`${styles.content} ${styles.markdownContent}`}>
+            <MarkdownContent content={post.content!} />
+          </div>
+          <PostNavigation previous={older} next={newer} />
+          <section aria-label="Comments" className={styles.comments}>
+            <Comments />
+          </section>
+        </article>
+      </PageTransition>
+    </>
   );
 }

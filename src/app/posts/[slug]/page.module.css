@@ -59,6 +59,7 @@
   line-height: var(--line-height-reading);
   margin-bottom: var(--reading-margin-paragraph);
   color: var(--foreground);
+  text-wrap: pretty;
 }
 
 .markdownContent ul,
@@ -130,7 +131,7 @@
 }
 
 .markdownContent pre {
-  margin: var(--content-spacing-heading) 0 !important;
+  margin: var(--reading-margin-paragraph) 0 !important;
   overflow-x: auto;
   max-width: 100%;
 }

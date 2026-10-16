@@ -1,0 +1,16 @@
+.anchor {
+  margin-left: 0.375em;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.heading:hover .anchor,
+.anchor:focus-visible {
+  opacity: 1;
+}
+
+.anchor:hover {
+  color: var(--primary);
+}

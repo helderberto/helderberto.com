@@ -1,3 +1,4 @@
+import { PageTransition } from '@/components/PageTransition';
 import SearchPosts from '@/components/SearchPosts';
 import { siteConfig } from '@/config/site';
 import { getAllPosts } from '@/lib/posts';
@@ -18,7 +19,7 @@ export default async function Home() {
   const posts = await getAllPosts();
 
   return (
-    <>
+    <PageTransition>
       <section className={styles.hero}>
         <h1 className={styles.heroTitle}>Helder Burato Berto</h1>
         <p className={styles.heroRole}>{siteConfig.author.role}</p>
@@ -52,6 +53,6 @@ export default async function Home() {
       <section aria-label="Blog Posts">
         <SearchPosts initialPosts={posts} />
       </section>
-    </>
+    </PageTransition>
   );
 }
