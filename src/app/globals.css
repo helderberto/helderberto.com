@@ -245,6 +245,25 @@ pre[class*='language-'] {
   background: none !important;
 }
 
+.skip-link {
+  position: absolute;
+  top: var(--spacing-responsive-sm);
+  left: var(--spacing-responsive-sm);
+  z-index: 100;
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: var(--background);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
