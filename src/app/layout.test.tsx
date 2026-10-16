@@ -1,6 +1,6 @@
 import * as posts from '@/lib/posts';
 import { render, screen } from '@testing-library/react';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import RootLayout, { metadata, viewport } from './layout';
 
 vi.mock('next/font/google', () => ({
@@ -41,12 +41,6 @@ beforeEach(() => {
       removeListener: vi.fn(),
     })),
   );
-  Element.prototype.scrollIntoView = vi.fn();
-});
-
-afterEach(() => {
-  vi.unstubAllGlobals();
-  vi.unstubAllEnvs();
 });
 
 describe('RootLayout', () => {

@@ -1,6 +1,6 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import SearchPosts from './SearchPosts';
 
 const posts = [
@@ -30,10 +30,6 @@ function yearGroups() {
 }
 
 describe('SearchPosts', () => {
-  afterEach(() => {
-    vi.unstubAllEnvs();
-  });
-
   it('groups posts by year, newest year first', () => {
     renderSearch();
     expect(yearGroups()).toEqual([

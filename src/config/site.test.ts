@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 const loadSiteConfig = async (env: string) => {
   vi.stubEnv('NODE_ENV', env);
@@ -7,10 +7,6 @@ const loadSiteConfig = async (env: string) => {
 };
 
 describe('siteConfig', () => {
-  afterEach(() => {
-    vi.unstubAllEnvs();
-  });
-
   it('links to the live site and resume in production', async () => {
     const config = await loadSiteConfig('production');
 

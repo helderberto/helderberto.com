@@ -6,7 +6,8 @@ import { CodeBlock } from './CodeBlock';
 
 function renderBlock() {
   const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
-  const writeText = vi.spyOn(navigator.clipboard, 'writeText');
+  const writeText = vi.fn<(text: string) => Promise<void>>();
+  vi.stubGlobal('navigator', { clipboard: { writeText } });
   render(<CodeBlock className="lang-js">const a = 1;</CodeBlock>);
   return {
     user,

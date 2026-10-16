@@ -1,14 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import PostCard from './PostCard';
 
 const post = { slug: 'hello', title: 'Hello', date: '2024-01-01', excerpt: '' };
 
 describe('PostCard', () => {
-  afterEach(() => {
-    vi.unstubAllEnvs();
-  });
-
   it('links to the post', () => {
     render(<PostCard post={post} />);
     expect(screen.getByRole('link', { name: 'Hello' })).toHaveAttribute(
