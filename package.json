@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "npx serve@latest out",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
     "format": "eslint . --fix",
     "lint-staged": "lint-staged",
     "prepare": "husky",

@@ -1,5 +1,6 @@
 # helderberto.com
 
+[![CI](https://github.com/helderberto/helderberto.com/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/helderberto/helderberto.com/actions/workflows/ci.yml)
 [![Vercel](https://img.shields.io/badge/vercel-deployed-brightgreen)](https://helderberto.com)
 
 Personal blog built with Next.js, TypeScript, and CSS Modules.
@@ -21,6 +22,7 @@ npm run dev    # development server (localhost:3000)
 npm run build  # production build
 npm run start  # serve static export (out/)
 npm run lint   # ESLint
+npm run typecheck  # TypeScript
 npm test       # unit tests (Vitest)
 npm run test:coverage  # tests + coverage (80% minimum)
 ```

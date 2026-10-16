@@ -7,10 +7,10 @@ Personal blog. Next.js 16 App Router, React 19, TypeScript, CSS Modules. Deploye
 Run before every commit. All must pass with no warnings in the output.
 
 ```bash
-npm run lint && npx tsc --noEmit && npm run test:coverage && npm run build
+npm run lint && npm run typecheck && npm run test:coverage && npm run build
 ```
 
-Coverage below 80% on lines, functions, branches or statements fails `test:coverage`.
+Coverage below 80% on lines, functions, branches or statements fails `test:coverage`. CI (`.github/workflows/ci.yml`) runs the same steps on every PR and push to `main`. Vercel deploys previews itself.
 
 ## Testing
 
