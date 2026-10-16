@@ -1,5 +1,6 @@
 import Markdown from 'markdown-to-jsx';
 import { CodeBlock } from './CodeBlock';
+import { HeadingAnchor } from './HeadingAnchor';
 
 interface MarkdownContentProps {
   content: string;
@@ -20,6 +21,9 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
           },
           code: {
             component: CodeBlock,
+          },
+          h2: {
+            component: HeadingAnchor,
           },
         },
       }}

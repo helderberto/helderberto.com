@@ -148,6 +148,10 @@ html {
   color: var(--background);
 }
 
+[id] {
+  scroll-margin-top: 5rem;
+}
+
 body:has(dialog[open]) {
   overflow: hidden;
 }
