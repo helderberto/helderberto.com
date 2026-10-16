@@ -130,7 +130,7 @@
 }
 
 .markdownContent pre {
-  margin: var(--content-spacing-heading) 0 !important;
+  margin: var(--reading-margin-paragraph) 0 !important;
   overflow-x: auto;
   max-width: 100%;
 }
