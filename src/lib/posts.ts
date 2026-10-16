@@ -15,13 +15,18 @@ export interface Post {
   lastModified?: string;
 }
 
+type PostFrontmatter = Pick<
+  Post,
+  'title' | 'date' | 'excerpt' | 'tags' | 'lastModified'
+>;
+
 export async function getAllPosts(): Promise<Post[]> {
   const fileNames = fs.readdirSync(postsDirectory);
   const posts = fileNames.map((fileName) => {
     const slug = fileName.replace(/\.md$/, '');
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data } = matter(fileContents);
+    const { data } = matter<PostFrontmatter>(fileContents);
 
     return {
       slug,
@@ -37,7 +42,7 @@ export async function getAllPosts(): Promise<Post[]> {
 export async function getPostBySlug(slug: string): Promise<Post> {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
+  const { data, content } = matter<PostFrontmatter>(fileContents);
 
   // Calculate reading time (average 200 words per minute)
   const wordCount = content.split(/\s+/g).length;
