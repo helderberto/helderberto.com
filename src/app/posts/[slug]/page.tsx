@@ -2,6 +2,7 @@ import { Comments } from '@/components/Comments';
 import { JsonLd } from '@/components/JsonLd';
 import { MarkdownContent } from '@/components/MarkdownContent';
 import { PostHeader } from '@/components/PostHeader';
+import { PostNavigation } from '@/components/PostNavigation';
 import { sharedOpenGraph, sharedTwitter } from '@/app/shared-metadata';
 import { siteConfig } from '@/config/site';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
@@ -64,6 +65,11 @@ export default async function Page({ params }: Props) {
     notFound();
   }
 
+  const posts = await getAllPosts();
+  const index = posts.findIndex((p) => p.slug === slug);
+  const newer = posts[index - 1];
+  const older = posts[index + 1];
+
   const url = new URL(`/posts/${slug}`, siteConfig.url).toString();
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -96,6 +102,7 @@ export default async function Page({ params }: Props) {
       <div className={`${styles.content} ${styles.markdownContent}`}>
         <MarkdownContent content={post.content!} />
       </div>
+      <PostNavigation previous={older} next={newer} />
       <section aria-label="Comments" className={styles.comments}>
         <Comments />
       </section>
