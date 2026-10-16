@@ -59,6 +59,7 @@
   line-height: var(--line-height-reading);
   margin-bottom: var(--reading-margin-paragraph);
   color: var(--foreground);
+  text-wrap: pretty;
 }
 
 .markdownContent ul,
