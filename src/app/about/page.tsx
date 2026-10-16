@@ -29,12 +29,13 @@ export default function AboutPage() {
     <PageTransition>
       <article className={styles.about} aria-label="About Me">
         <Image
-          src="/about-photo.jpg"
+          src="/about-photo.webp"
           alt="Helder Burato Berto smiling in sunglasses at a marina"
           width={640}
           height={640}
           className={styles.photo}
-          preload
+          loading="eager"
+          fetchPriority="high"
         />
         <div className={styles.content}>
           {title ? <h1>{title}</h1> : null}

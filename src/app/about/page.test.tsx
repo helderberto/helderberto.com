@@ -23,6 +23,15 @@ describe('AboutPage', () => {
     ).toBeInTheDocument();
   });
 
+  it('loads the photo as a high-priority WebP', () => {
+    render(<AboutPage />);
+
+    const photo = screen.getByRole('img', { name: /Helder Burato Berto/ });
+    expect(photo.getAttribute('src')).toContain('about-photo.webp');
+    expect(photo).toHaveAttribute('fetchpriority', 'high');
+    expect(photo).toHaveAttribute('loading', 'eager');
+  });
+
   it('promotes the leading heading to the page title once', () => {
     vi.spyOn(fs, 'readFileSync').mockReturnValue(
       '---\nlayout: about\n---\n\n# Hi there\n\nBody text',
