@@ -19,7 +19,7 @@ npm install
 ```bash
 npm run dev    # development server (localhost:3000)
 npm run build  # production build
-npm run start  # production server
+npm run start  # serve static export (out/)
 npm run lint   # ESLint
 ```
 
