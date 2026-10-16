@@ -2,6 +2,7 @@ import { Comments } from '@/components/Comments';
 import { JsonLd } from '@/components/JsonLd';
 import { MarkdownContent } from '@/components/MarkdownContent';
 import { PostHeader } from '@/components/PostHeader';
+import { ReadingProgress } from '@/components/ReadingProgress';
 import { sharedOpenGraph, sharedTwitter } from '@/app/shared-metadata';
 import { siteConfig } from '@/config/site';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
@@ -88,6 +89,7 @@ export default async function Page({ params }: Props) {
   return (
     <article className={styles.article} aria-labelledby="post-title">
       <JsonLd data={jsonLd} />
+      <ReadingProgress />
       <PostHeader
         title={post.title}
         date={post.date}
