@@ -37,7 +37,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.title,
     description: post.excerpt,
     openGraph: {
-      ...sharedOpenGraph,
+      locale: sharedOpenGraph.locale,
+      siteName: sharedOpenGraph.siteName,
       title: post.title,
       description: post.excerpt,
       type: 'article',
@@ -46,7 +47,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
     },
     twitter: {
-      ...sharedTwitter,
+      card: sharedTwitter.card,
+      creator: sharedTwitter.creator,
       title: post.title,
       description: post.excerpt,
     },
