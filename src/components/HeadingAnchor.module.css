@@ -1,0 +1,17 @@
+.anchor {
+  color: inherit;
+  text-decoration: none;
+}
+
+.anchor::after {
+  content: '#' / '';
+  margin-left: 0.375em;
+  color: var(--muted-foreground);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.heading:hover .anchor::after,
+.anchor:focus-visible::after {
+  opacity: 1;
+}

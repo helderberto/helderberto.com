@@ -1,6 +1,11 @@
 {
   "routes": [
     {
+      "src": "^/posts/[^/]+/opengraph-image$",
+      "headers": { "Content-Type": "image/png" },
+      "continue": true
+    },
+    {
       "src": "^/$",
       "has": [{ "type": "host", "value": "resume.helderberto.com" }],
       "dest": "/resume",

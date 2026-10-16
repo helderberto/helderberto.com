@@ -1,9 +1,14 @@
 import { Comments } from '@/components/Comments';
 import { JsonLd } from '@/components/JsonLd';
 import { MarkdownContent } from '@/components/MarkdownContent';
+import { PageTransition } from '@/components/PageTransition';
 import { PostHeader } from '@/components/PostHeader';
+import { PostNavigation } from '@/components/PostNavigation';
+import { ReadingProgress } from '@/components/ReadingProgress';
+import { TableOfContents } from '@/components/TableOfContents';
 import { sharedOpenGraph, sharedTwitter } from '@/app/shared-metadata';
 import { siteConfig } from '@/config/site';
+import { getHeadings } from '@/lib/headings';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -37,7 +42,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.title,
     description: post.excerpt,
     openGraph: {
-      ...sharedOpenGraph,
+      locale: sharedOpenGraph.locale,
+      siteName: sharedOpenGraph.siteName,
       title: post.title,
       description: post.excerpt,
       type: 'article',
@@ -46,7 +52,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
     },
     twitter: {
-      ...sharedTwitter,
+      card: sharedTwitter.card,
+      creator: sharedTwitter.creator,
       title: post.title,
       description: post.excerpt,
     },
@@ -63,6 +70,11 @@ export default async function Page({ params }: Props) {
   if (!post) {
     notFound();
   }
+
+  const posts = await getAllPosts();
+  const index = posts.findIndex((p) => p.slug === slug);
+  const newer = posts[index - 1];
+  const older = posts[index + 1];
 
   const url = new URL(`/posts/${slug}`, siteConfig.url).toString();
   const jsonLd = {
@@ -86,19 +98,26 @@ export default async function Page({ params }: Props) {
   };
 
   return (
-    <article className={styles.article} aria-labelledby="post-title">
-      <JsonLd data={jsonLd} />
-      <PostHeader
-        title={post.title}
-        date={post.date}
-        readingTime={post.readingTime}
-      />
-      <div className={`${styles.content} ${styles.markdownContent}`}>
-        <MarkdownContent content={post.content!} />
-      </div>
-      <section aria-label="Comments" className={styles.comments}>
-        <Comments />
-      </section>
-    </article>
+    <>
+      <ReadingProgress />
+      <PageTransition>
+        <article className={styles.article} aria-labelledby="post-title">
+          <JsonLd data={jsonLd} />
+          <PostHeader
+            title={post.title}
+            date={post.date}
+            readingTime={post.readingTime}
+          />
+          <TableOfContents headings={getHeadings(post.content!)} />
+          <div className={`${styles.content} ${styles.markdownContent}`}>
+            <MarkdownContent content={post.content!} />
+          </div>
+          <PostNavigation previous={older} next={newer} />
+          <section aria-label="Comments" className={styles.comments}>
+            <Comments />
+          </section>
+        </article>
+      </PageTransition>
+    </>
   );
 }
