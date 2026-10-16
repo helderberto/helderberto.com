@@ -1,13 +1,12 @@
-import { ViewTransition } from 'react';
+import styles from './PageTransition.module.css';
 
 interface PageTransitionProps {
   children: React.ReactNode;
 }
 
+// CSS-only enter animation. A route change mounts a fresh wrapper, so the
+// animation replays. No View Transition snapshots, so the old page (and its
+// images) never lingers over the new one.
 export function PageTransition({ children }: Readonly<PageTransitionProps>) {
-  return (
-    <ViewTransition enter="page" exit="page" default="none">
-      {children}
-    </ViewTransition>
-  );
+  return <div className={styles.page}>{children}</div>;
 }
