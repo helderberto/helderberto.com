@@ -18,7 +18,14 @@ import {
 import type { LucideIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useRouter } from 'next/navigation';
-import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  Fragment,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from 'react';
 import styles from './CommandPalette.module.css';
 
 interface PaletteItem {
@@ -29,6 +36,12 @@ interface PaletteItem {
   run: () => void;
 }
 
+// Node exposes navigator too, so detect the OS only in the browser.
+const subscribeToNothing = () => () => {};
+const getClientModifierKey = () =>
+  /Mac|iP/.test(navigator.platform) ? '⌘' : 'Ctrl';
+const getServerModifierKey = () => '⌘';
+
 interface CommandPaletteProps {
   posts: Post[];
 }
@@ -38,10 +51,10 @@ export function CommandPalette({ posts }: CommandPaletteProps) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
-  const [modifierKey] = useState(() =>
-    typeof navigator !== 'undefined' && !/Mac|iP/.test(navigator.platform)
-      ? 'Ctrl'
-      : '⌘',
+  const modifierKey = useSyncExternalStore(
+    subscribeToNothing,
+    getClientModifierKey,
+    getServerModifierKey,
   );
   const router = useRouter();
   const { setTheme } = useTheme();
@@ -209,9 +222,7 @@ export function CommandPalette({ posts }: CommandPaletteProps) {
       >
         <Search className={styles.triggerIcon} aria-hidden="true" />
         <span className={styles.triggerLabel}>Search</span>
-        <kbd className={styles.kbd} suppressHydrationWarning>
-          {modifierKey} K
-        </kbd>
+        <kbd className={styles.kbd}>{modifierKey} K</kbd>
       </button>
 
       <dialog
