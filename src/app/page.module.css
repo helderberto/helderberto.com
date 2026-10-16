@@ -21,6 +21,7 @@
       rgba(var(--glow-rgb-2), 0.06),
       transparent 60%
     );
+  mask-image: radial-gradient(50% 100% at 50% 0%, #000 40%, transparent);
   pointer-events: none;
   z-index: -1;
 }

@@ -80,6 +80,9 @@ export default async function RootLayout({
         />
       </head>
       <body>
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <JsonLd
           data={{
             '@context': 'https://schema.org',
@@ -106,7 +109,9 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <Header posts={posts} />
-          <main className={styles.main}>{children}</main>
+          <main id="main" className={styles.main}>
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
         {process.env.VERCEL && <Analytics />}
