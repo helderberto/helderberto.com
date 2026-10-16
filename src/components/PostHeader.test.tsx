@@ -1,12 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { PostHeader } from './PostHeader';
 
 describe('PostHeader', () => {
-  afterEach(() => {
-    vi.unstubAllEnvs();
-  });
-
   it('shows the title and the date in UTC', () => {
     vi.stubEnv('TZ', 'America/Sao_Paulo');
     render(<PostHeader title="Hello" date="2024-01-01" />);

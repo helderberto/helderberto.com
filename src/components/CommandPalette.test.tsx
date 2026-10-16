@@ -2,7 +2,7 @@ import { act, render, screen } from '@testing-library/react';
 import userEvent, { type UserEvent } from '@testing-library/user-event';
 import { useTheme } from 'next-themes';
 import { renderToString } from 'react-dom/server';
-import { beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CommandPalette } from './CommandPalette';
 
 const push = vi.hoisted(() => vi.fn());
@@ -18,18 +18,6 @@ const posts = Array.from({ length: 6 }, (_, index) => ({
 }));
 
 const setTheme = vi.fn();
-
-beforeAll(() => {
-  // jsdom lacks these browser APIs.
-  HTMLDialogElement.prototype.showModal = function showModal() {
-    this.open = true;
-  };
-  HTMLDialogElement.prototype.close = function close() {
-    this.open = false;
-    this.dispatchEvent(new Event('close'));
-  };
-  Element.prototype.scrollIntoView = () => {};
-});
 
 beforeEach(() => {
   push.mockReset();
@@ -70,19 +58,19 @@ function selectedOption() {
 describe('CommandPalette', () => {
   describe('rendering', () => {
     it('shows the Ctrl shortcut off Apple platforms', () => {
-      vi.spyOn(navigator, 'platform', 'get').mockReturnValue('Win32');
+      vi.stubGlobal('navigator', { platform: 'Win32' });
       renderPalette();
       expect(screen.getByText('Ctrl K')).toBeInTheDocument();
     });
 
     it('shows the ⌘ shortcut on Apple platforms', () => {
-      vi.spyOn(navigator, 'platform', 'get').mockReturnValue('MacIntel');
+      vi.stubGlobal('navigator', { platform: 'MacIntel' });
       renderPalette();
       expect(screen.getByText('⌘ K')).toBeInTheDocument();
     });
 
     it('renders ⌘ on the server before the platform is known', () => {
-      vi.spyOn(navigator, 'platform', 'get').mockReturnValue('Win32');
+      vi.stubGlobal('navigator', { platform: 'Win32' });
       const server = document.createElement('div');
       server.innerHTML = renderToString(<CommandPalette posts={posts} />);
       expect(server).toHaveTextContent('⌘ K');
@@ -275,7 +263,8 @@ describe('CommandPalette', () => {
 
     it('copies the page URL', async () => {
       const { user } = await openPalette();
-      const writeText = vi.spyOn(navigator.clipboard, 'writeText');
+      const writeText = vi.fn(() => Promise.resolve());
+      vi.stubGlobal('navigator', { clipboard: { writeText } });
       await user.click(screen.getByRole('option', { name: 'Copy page URL' }));
       expect(writeText).toHaveBeenCalledWith(window.location.href);
     });
@@ -305,7 +294,8 @@ describe('CommandPalette', () => {
       ['LinkedIn', 'https://www.linkedin.com/in/helderberto/'],
       ['RSS feed', '/feed.xml'],
     ])('opens %s in a new tab', async (label, url) => {
-      const open = vi.spyOn(window, 'open').mockReturnValue(null);
+      const open = vi.fn(() => null);
+      vi.stubGlobal('open', open);
       const { user } = await openPalette();
       await user.click(screen.getByRole('option', { name: label }));
       expect(open).toHaveBeenCalledWith(url, '_blank', 'noopener');

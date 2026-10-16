@@ -1,7 +1,7 @@
 import { render, screen, within } from '@testing-library/react';
 import { useTheme } from 'next-themes';
 import { usePathname } from 'next/navigation';
-import { beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import Header from './Header';
 
 vi.mock('next/navigation', () => ({
@@ -9,11 +9,6 @@ vi.mock('next/navigation', () => ({
   useRouter: () => ({ push: vi.fn() }),
 }));
 vi.mock('next-themes', () => ({ useTheme: vi.fn() }));
-
-beforeAll(() => {
-  // jsdom lacks scrollIntoView, which the command palette calls on mount.
-  Element.prototype.scrollIntoView = () => {};
-});
 
 beforeEach(() => {
   vi.mocked(useTheme).mockReturnValue({

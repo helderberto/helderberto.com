@@ -19,9 +19,10 @@ beforeEach(() => {
 describe('PrintButton', () => {
   it('prints with the PDF filename as the document title', async () => {
     let titleWhilePrinting = '';
-    const print = vi.spyOn(window, 'print').mockImplementation(() => {
+    const print = vi.fn(() => {
       titleWhilePrinting = document.title;
     });
+    vi.stubGlobal('print', print);
 
     await clickPrint();
 
@@ -30,7 +31,7 @@ describe('PrintButton', () => {
   });
 
   it('restores the page title after printing', async () => {
-    vi.spyOn(window, 'print').mockImplementation(() => {});
+    vi.stubGlobal('print', vi.fn());
 
     await clickPrint();
     window.dispatchEvent(new Event('afterprint'));
@@ -39,7 +40,7 @@ describe('PrintButton', () => {
   });
 
   it('stops restoring the title once printing is done', async () => {
-    vi.spyOn(window, 'print').mockImplementation(() => {});
+    vi.stubGlobal('print', vi.fn());
 
     await clickPrint();
     window.dispatchEvent(new Event('afterprint'));

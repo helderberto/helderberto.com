@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { useTheme } from 'next-themes';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ThemeProvider } from './ThemeProvider';
 
 function CurrentTheme() {
@@ -18,10 +18,6 @@ describe('ThemeProvider', () => {
         removeListener: vi.fn(),
       })),
     );
-  });
-
-  afterEach(() => {
-    vi.unstubAllGlobals();
   });
 
   it('provides the theme to its children', () => {
