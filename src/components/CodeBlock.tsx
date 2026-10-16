@@ -20,6 +20,7 @@ interface CodeBlockProps {
 
 export function CodeBlock({ children, className }: CodeBlockProps) {
   const codeRef = useRef<HTMLElement>(null);
+  const resetTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -28,11 +29,14 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
     }
   }, [children]);
 
+  useEffect(() => () => clearTimeout(resetTimer.current), []);
+
   async function copy() {
     try {
       await navigator.clipboard.writeText(codeRef.current?.textContent ?? '');
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      clearTimeout(resetTimer.current);
+      resetTimer.current = setTimeout(() => setCopied(false), 2000);
     } catch {
       setCopied(false);
     }
