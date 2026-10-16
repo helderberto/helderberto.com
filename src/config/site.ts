@@ -12,7 +12,7 @@ export const siteConfig = {
   ogImage: '/social-cover.png',
   author: {
     name: 'Helder Burato Berto',
-    email: 'helder@helderberto.com',
+    email: 'hello@helderberto.com',
     role: 'Software Engineer',
   },
   social: {
