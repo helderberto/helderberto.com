@@ -22,7 +22,7 @@ export default function SearchPosts({ initialPosts }: SearchPostsProps) {
     const grouped: { [year: string]: Post[] } = {};
 
     posts.forEach((post) => {
-      const year = new Date(post.date).getFullYear().toString();
+      const year = new Date(post.date).getUTCFullYear().toString();
       if (!grouped[year]) {
         grouped[year] = [];
       }

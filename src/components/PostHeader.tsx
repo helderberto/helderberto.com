@@ -11,6 +11,7 @@ export function PostHeader({ title, date, readingTime }: PostHeaderProps) {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
+    timeZone: 'UTC',
   });
 
   return (
