@@ -1,0 +1,11 @@
+import { describe, expect, it } from 'vitest';
+import robots from './robots';
+
+describe('robots', () => {
+  it('allows all crawlers and points to the sitemap', () => {
+    expect(robots()).toEqual({
+      rules: { userAgent: '*', allow: '/' },
+      sitemap: 'https://helderberto.com/sitemap.xml',
+    });
+  });
+});
