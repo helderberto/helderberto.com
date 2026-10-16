@@ -21,6 +21,8 @@ npm run dev    # development server (localhost:3000)
 npm run build  # production build
 npm run start  # serve static export (out/)
 npm run lint   # ESLint
+npm test       # unit tests (Vitest)
+npm run test:coverage  # tests + coverage (80% minimum)
 ```
 
 ## Posts
