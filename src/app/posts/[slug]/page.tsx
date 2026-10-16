@@ -2,6 +2,7 @@ import { Comments } from '@/components/Comments';
 import { JsonLd } from '@/components/JsonLd';
 import { MarkdownContent } from '@/components/MarkdownContent';
 import { PostHeader } from '@/components/PostHeader';
+import { sharedOpenGraph, sharedTwitter } from '@/app/shared-metadata';
 import { siteConfig } from '@/config/site';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
 import { Metadata } from 'next';
@@ -36,6 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.title,
     description: post.excerpt,
     openGraph: {
+      ...sharedOpenGraph,
       title: post.title,
       description: post.excerpt,
       type: 'article',
@@ -44,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
     },
     twitter: {
-      card: 'summary_large_image',
+      ...sharedTwitter,
       title: post.title,
       description: post.excerpt,
     },

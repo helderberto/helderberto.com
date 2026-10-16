@@ -32,7 +32,7 @@ export default function AboutPage() {
         width={640}
         height={640}
         className={styles.photo}
-        priority
+        preload
       />
       <div className={styles.content}>
         {title ? <h1>{title}</h1> : null}

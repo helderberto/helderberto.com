@@ -24,7 +24,7 @@ const Header = ({ posts }: HeaderProps) => {
             width={32}
             height={32}
             className={styles.profileImage}
-            priority
+            loading="eager"
           />
         </Link>
 

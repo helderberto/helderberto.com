@@ -8,6 +8,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import { sharedOpenGraph, sharedTwitter } from './shared-metadata';
 import './globals.css';
 import styles from './layout.module.css';
 
@@ -32,27 +33,16 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   openGraph: {
+    ...sharedOpenGraph,
     type: 'website',
-    locale: 'en_US',
     url: new URL(siteConfig.url),
     title: siteConfig.title,
     description: siteConfig.description,
-    siteName: siteConfig.name,
-    images: [
-      {
-        url: '/social-cover.png',
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
-    ],
   },
   twitter: {
-    card: 'summary_large_image',
+    ...sharedTwitter,
     title: siteConfig.title,
     description: siteConfig.description,
-    images: ['/social-cover.png'],
-    creator: '@helderburato',
   },
   icons: {
     icon: [
