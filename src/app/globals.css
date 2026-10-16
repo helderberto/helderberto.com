@@ -276,38 +276,6 @@ pre[class*='language-'] {
   border-width: 0;
 }
 
-::view-transition {
-  pointer-events: none;
-}
-
-::view-transition-old(.page) {
-  animation: 150ms ease-out both page-fade reverse;
-}
-
-::view-transition-new(.page) {
-  animation:
-    210ms ease-in 150ms both page-fade,
-    400ms ease-out both page-rise;
-}
-
-@keyframes page-fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes page-rise {
-  from {
-    transform: translateY(10px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -315,12 +283,5 @@ pre[class*='language-'] {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-
-  ::view-transition-old(*),
-  ::view-transition-new(*),
-  ::view-transition-group(*) {
-    animation-duration: 0s !important;
-    animation-delay: 0s !important;
   }
 }
