@@ -1,0 +1,79 @@
+.toc {
+  margin-bottom: var(--content-spacing-heading);
+}
+
+.details {
+  border: 0.0625rem solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.summary,
+.toc::before {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.summary {
+  padding: var(--spacing-responsive-sm) var(--spacing-responsive-md);
+  cursor: pointer;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-responsive-xs);
+  margin: 0;
+  padding: 0 var(--spacing-responsive-md) var(--spacing-responsive-sm);
+  list-style: none;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-snug);
+}
+
+.link {
+  color: var(--muted-foreground);
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--primary);
+}
+
+/* Floats into the right margin with a zero-width margin box, so the prose keeps its width. */
+@media (min-width: 80rem) {
+  .toc {
+    position: sticky;
+    top: 5rem;
+    float: right;
+    width: 12rem;
+    max-height: calc(100vh - 6rem);
+    margin: 0 -14.5rem 0 2.5rem;
+    overflow-y: auto;
+  }
+
+  .toc::before {
+    content: 'On this page' / '';
+    display: block;
+    margin-bottom: var(--spacing-responsive-sm);
+  }
+
+  .details {
+    border: none;
+    background: none;
+  }
+
+  .details::details-content {
+    content-visibility: visible;
+  }
+
+  .summary {
+    display: none;
+  }
+
+  .list {
+    padding: 0;
+  }
+}
