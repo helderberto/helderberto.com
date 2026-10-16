@@ -10,4 +10,14 @@ describe('getHeadings', () => {
       { id: 'second', text: 'Second' },
     ]);
   });
+
+  it('drops inline nodes without text', () => {
+    expect(getHeadings('## Hi ![alt](x.png) there')).toEqual([
+      { id: 'hi--there', text: 'Hi  there' },
+    ]);
+  });
+
+  it('returns empty list without h2', () => {
+    expect(getHeadings('# Title\n\nBody\n\n### Deep')).toEqual([]);
+  });
 });
