@@ -23,7 +23,7 @@
     "@types/prismjs": "1.26.6",
     "@vercel/analytics": "2.0.1",
     "@vercel/speed-insights": "2.0.0",
-    "gray-matter": "2.0.1",
+    "gray-matter": "4.0.3",
     "lucide-react": "0.563.0",
     "markdown-to-jsx": "9.10.3",
     "next": "16.4.2",
