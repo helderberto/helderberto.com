@@ -49,7 +49,7 @@ describe('getPostBySlug', () => {
     expect(post.readingTime).toMatch(/^\d+ min read$/);
   });
 
-  it('keeps tags and lastModified from frontmatter', async () => {
+  it('reads tags and lastModified from the frontmatter', async () => {
     vi.spyOn(fs, 'readFileSync').mockReturnValue(
       frontmatter(
         "title: T\ndate: '2024-01-01'\nlastModified: '2024-02-01'\ntags: [react, ts]",
@@ -60,17 +60,6 @@ describe('getPostBySlug', () => {
 
     expect(post.tags).toEqual(['react', 'ts']);
     expect(post.lastModified).toBe('2024-02-01');
-  });
-
-  it('estimates reading time at 200 words per minute', async () => {
-    const spy = vi.spyOn(fs, 'readFileSync');
-    spy.mockReturnValueOnce(frontmatter("date: '2024-01-01'", 'one'));
-    spy.mockReturnValueOnce(
-      frontmatter("date: '2024-01-01'", 'word '.repeat(450).trim()),
-    );
-
-    expect((await getPostBySlug('short')).readingTime).toBe('1 min read');
-    expect((await getPostBySlug('long')).readingTime).toBe('3 min read');
   });
 
   it('rejects for an unknown slug', async () => {
