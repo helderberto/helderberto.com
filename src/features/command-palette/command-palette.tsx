@@ -1,34 +1,13 @@
 'use client';
 
-import { siteConfig } from '@/config/site';
 import { useClientSnapshot } from '@/hooks/use-client-snapshot';
-import type { Post } from '@/types/post';
-import {
-  Copy,
-  FileText,
-  Github,
-  Home,
-  Linkedin,
-  Monitor,
-  Moon,
-  Rss,
-  Search,
-  Sun,
-  User,
-} from '@/lib/lucide-react';
-import type { LucideIcon } from '@/lib/lucide-react';
+import { Search } from '@/lib/lucide-react';
 import { useTheme } from '@/lib/next-themes';
+import type { Post } from '@/types/post';
 import { useRouter } from 'next/navigation';
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import styles from './command-palette.module.css';
-
-interface PaletteItem {
-  id: string;
-  group: string;
-  label: string;
-  icon: LucideIcon;
-  run: () => void;
-}
+import { getPaletteItems, type PaletteItem } from './palette-items';
 
 // Node exposes navigator too, so detect the OS only in the browser.
 const getClientModifierKey = () =>
@@ -51,95 +30,16 @@ export function CommandPalette({ posts }: CommandPaletteProps) {
   const router = useRouter();
   const { setTheme } = useTheme();
 
-  const items = useMemo(() => {
-    const navigation: PaletteItem[] = [
-      {
-        id: 'nav-home',
-        group: 'Navigation',
-        label: 'Home',
-        icon: Home,
-        run: () => router.push('/'),
-      },
-      {
-        id: 'nav-about',
-        group: 'Navigation',
-        label: 'About',
-        icon: User,
-        run: () => router.push('/about'),
-      },
-    ];
-    const postItems: PaletteItem[] = posts.map((post) => ({
-      id: `post-${post.slug}`,
-      group: 'Posts',
-      label: post.title,
-      icon: FileText,
-      run: () => router.push(`/posts/${post.slug}`),
-    }));
-    const actions: PaletteItem[] = [
-      {
-        id: 'action-theme-light',
-        group: 'Actions',
-        label: 'Theme: Light',
-        icon: Sun,
-        run: () => setTheme('light'),
-      },
-      {
-        id: 'action-theme-dark',
-        group: 'Actions',
-        label: 'Theme: Dark',
-        icon: Moon,
-        run: () => setTheme('dark'),
-      },
-      {
-        id: 'action-theme-system',
-        group: 'Actions',
-        label: 'Theme: System',
-        icon: Monitor,
-        run: () => setTheme('system'),
-      },
-      {
-        id: 'action-copy',
-        group: 'Actions',
-        label: 'Copy page URL',
-        icon: Copy,
-        run: () => {
-          navigator.clipboard.writeText(window.location.href).catch(() => {});
-        },
-      },
-    ];
-    const connect: PaletteItem[] = [
-      {
-        id: 'connect-github',
-        group: 'Connect',
-        label: 'GitHub',
-        icon: Github,
-        run: () => window.open(siteConfig.social.github, '_blank', 'noopener'),
-      },
-      {
-        id: 'connect-linkedin',
-        group: 'Connect',
-        label: 'LinkedIn',
-        icon: Linkedin,
-        run: () =>
-          window.open(siteConfig.social.linkedin, '_blank', 'noopener'),
-      },
-      {
-        id: 'connect-rss',
-        group: 'Connect',
-        label: 'RSS feed',
-        icon: Rss,
-        run: () => window.open('/feed.xml', '_blank', 'noopener'),
-      },
-    ];
-
-    const normalized = query.trim().toLowerCase();
-    if (!normalized) {
-      return [...navigation, ...postItems.slice(0, 5), ...actions, ...connect];
-    }
-    return [...navigation, ...postItems, ...actions, ...connect].filter(
-      (item) => item.label.toLowerCase().includes(normalized),
-    );
-  }, [posts, query, router, setTheme]);
+  const items = useMemo(
+    () =>
+      getPaletteItems({
+        posts,
+        query,
+        navigate: (href) => router.push(href),
+        setTheme,
+      }),
+    [posts, query, router, setTheme],
+  );
 
   const openPalette = () => {
     setQuery('');
