@@ -47,6 +47,17 @@
   --syntax-function: #df8e1d;
   --syntax-keyword: #8839ef;
 
+  /* Diagrams: built from the tokens above, so both themes follow */
+  --diagram-surface: var(--surface);
+  --diagram-node-bg: color-mix(in srgb, var(--primary) 7%, var(--surface));
+  --diagram-node-border: color-mix(in srgb, var(--primary) 75%, var(--surface));
+  --diagram-text: var(--foreground);
+  --diagram-line: var(--muted-foreground);
+  --diagram-group-bg: color-mix(in srgb, var(--muted) 60%, var(--surface));
+  --diagram-group-border: var(--border);
+  --diagram-group-text: var(--muted-foreground);
+  --diagram-label-bg: var(--surface);
+
   /* Layout */
   --blur-header: 0.75rem;
   --max-width: 68rem;

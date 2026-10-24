@@ -1,0 +1,36 @@
+.figure {
+  max-width: 100%;
+  margin: 0;
+}
+
+.frame {
+  overflow-x: auto;
+  padding: clamp(0.5rem, 3vw, 1.5rem);
+  border-radius: var(--radius-xl);
+  background: var(--diagram-surface);
+  border: 0.0625rem solid var(--border);
+  text-align: center;
+}
+
+.frame:focus-visible {
+  outline: 0.125rem solid var(--primary);
+  outline-offset: 0.125rem;
+}
+
+/* Fit the column, but never shrink text below 75% of its size: past that,
+   the frame scrolls sideways instead. */
+.frame :global(svg) {
+  width: max(
+    min(100%, var(--diagram-width, 100%)),
+    calc(var(--diagram-width, 0rem) * 0.75)
+  );
+  max-width: none !important;
+  height: auto;
+}
+
+.caption {
+  margin-top: 0.5rem;
+  font-size: var(--font-size-sm);
+  color: var(--muted-foreground);
+  text-align: center;
+}

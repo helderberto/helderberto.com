@@ -16,7 +16,8 @@
     "prepare": "husky",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "diagrams": "node scripts/render-diagrams.mjs"
   },
   "dependencies": {
     "@giscus/react": "3.1.0",
@@ -57,6 +58,8 @@
     "husky": "9.1.7",
     "jsdom": "29.1.1",
     "lint-staged": "17.6.0",
+    "mermaid": "11.17.2",
+    "playwright": "1.63.0",
     "prettier": "3.9.10",
     "typescript": "6.0.3",
     "vitest": "5.0.5"

@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import fs from 'node:fs';
+import { describe, expect, it, vi } from 'vitest';
 import { MarkdownContent } from './MarkdownContent';
 
 describe('MarkdownContent', () => {
@@ -12,6 +13,17 @@ describe('MarkdownContent', () => {
     expect(
       screen.getByRole('button', { name: 'Copy code' }),
     ).toBeInTheDocument();
+  });
+
+  it('renders mermaid fences as diagrams', () => {
+    vi.spyOn(fs, 'readFileSync').mockReturnValue(
+      '<svg role="img" aria-label="A to B"></svg>',
+    );
+    render(
+      <MarkdownContent content={'```mermaid\nflowchart LR\n  A --> B\n```'} />,
+    );
+    expect(screen.getByRole('img', { name: 'A to B' })).toBeInTheDocument();
+    expect(screen.queryByRole('code')).not.toBeInTheDocument();
   });
 
   it('renders inline code without a copy button', () => {
