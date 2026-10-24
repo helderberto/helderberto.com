@@ -1,4 +1,5 @@
-import * as posts from '@/lib/posts';
+import * as posts from '@/features/posts';
+import type { Post } from '@/types/post';
 import { render, screen } from '@testing-library/react';
 import { notFound } from 'next/navigation';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -16,13 +17,13 @@ vi.mock('next-themes', () => ({
 
 vi.mock('@giscus/react', () => ({ default: () => null }));
 
-const list: posts.Post[] = [
+const list: Post[] = [
   { slug: 'newest', title: 'Newest Post', date: '2024-03-01', excerpt: '' },
   { slug: 'middle', title: 'Middle Post', date: '2024-02-01', excerpt: '' },
   { slug: 'oldest', title: 'Oldest Post', date: '2024-01-01', excerpt: '' },
 ];
 
-const post = (slug: string, content = 'Hello body'): posts.Post => ({
+const post = (slug: string, content = 'Hello body'): Post => ({
   ...list.find((p) => p.slug === slug)!,
   excerpt: `${slug} excerpt`,
   content,

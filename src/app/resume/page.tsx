@@ -1,7 +1,11 @@
-import { PageTransition } from '@/components/PageTransition';
+import { PageTransition } from '@/components';
 import { siteConfig } from '@/config/site';
-import { detailedExperience, earlierExperience, resume } from '@/data/resume';
-import { PrintButton } from './PrintButton';
+import {
+  detailedExperience,
+  earlierExperience,
+  PrintButton,
+  resume,
+} from '@/features/resume';
 import styles from './resume.module.css';
 
 export default function Resume() {

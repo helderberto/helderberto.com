@@ -1,5 +1,5 @@
 import { siteConfig } from '@/config/site';
-import { getPostBySlug } from '@/lib/posts';
+import { getPostBySlug } from '@/features/posts';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { ImageResponse } from 'next/og';

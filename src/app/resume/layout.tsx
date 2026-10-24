@@ -1,6 +1,6 @@
-import { JsonLd } from '@/components/JsonLd';
+import { JsonLd } from '@/components';
 import { siteConfig } from '@/config/site';
-import { resume } from '@/data/resume';
+import { resume } from '@/features/resume';
 import type { Metadata } from 'next';
 import './resume.css';
 

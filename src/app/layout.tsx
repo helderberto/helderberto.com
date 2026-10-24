@@ -1,13 +1,11 @@
-import { Footer } from '@/components/Footer';
-import Header from '@/components/Header';
-import { JsonLd } from '@/components/JsonLd';
-import { ThemeProvider } from '@/components/ThemeProvider';
+import { Footer, Header, JsonLd } from '@/components';
+import { ThemeProvider } from '@/features/theme';
 import { siteConfig } from '@/config/site';
-import { getAllPosts } from '@/lib/posts';
+import { getAllPosts } from '@/features/posts';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
-import { sharedOpenGraph, sharedTwitter } from './shared-metadata';
+import { sharedOpenGraph, sharedTwitter } from '@/config/shared-metadata';
 import './globals.css';
 import styles from './layout.module.css';
 

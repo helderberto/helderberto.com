@@ -1,4 +1,4 @@
-import * as posts from '@/lib/posts';
+import * as posts from '@/features/posts';
 import { describe, expect, it, vi } from 'vitest';
 import sitemap from './sitemap';
 

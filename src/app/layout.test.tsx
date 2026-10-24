@@ -1,4 +1,4 @@
-import * as posts from '@/lib/posts';
+import * as posts from '@/features/posts';
 import { render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import RootLayout, { metadata, viewport } from './layout';
