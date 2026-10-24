@@ -4,7 +4,7 @@ date: '2026-10-24'
 excerpt: 'My workflow changes with every new tool and model, so I version it. In v3, each step that used to be a prompt is a skill, and each "please remember to" is a check that fails.'
 ---
 
-My AI coding workflow changes every few months. New tools ship, models get better, and the steps that needed hand-holding last spring now run on their own. So I stopped calling it "my workflow" and started giving it version numbers.
+My AI coding workflow changes every few months, so I give it version numbers. New tools ship, models get better, and steps that needed hand-holding last spring now run on their own.
 
 [v1](/posts/how-i-use-claude-code-to-build-features) was plan mode and a hand-written `SPEC.md`. [v2](/posts/why-i-built-tracerkit) turned that into TracerKit.
 
@@ -22,7 +22,7 @@ The ideas from TracerKit survived: interviews before specs, tracer-bullet ticket
 
 ## Standing on two repos
 
-I didn't design this from scratch. Most of it comes from two repos I learned a lot from, and I took what I think is the best of each.
+I didn't design v3 from scratch. Most of it comes from two repos, and I took what I think is the best of each.
 
 From [Matt Pocock's skills](https://github.com/mattpocock/skills) I took the shape of the flow:
 
@@ -102,7 +102,7 @@ The `visual-review` skill, in UI mode, drives a real browser through the Chrome 
 
 It takes a screenshot before the change, performs the interactions I name, takes another screenshot, and reports console errors, failed requests and accessibility issues.
 
-The rule I care most about is in its report: console output gets reported even on a pass. Silent regressions show up there first, often while every test is still green.
+The rule I care most about: it reports console output even on a pass. Silent regressions show up there first, often while every test is still green.
 
 The skill also knows its limits. It never starts the dev server itself, because ports and running servers are my state, not the agent's. And when a flow is worth checking on every change, it hands off to `tdd` for an end-to-end test.
 
@@ -127,8 +127,8 @@ Before reading code to guess a cause, the agent has to show one command that rep
 ```mermaid
 flowchart TD
   accTitle: The debug loop
-  accDescr: Build a feedback loop that fails, reproduce and minimise, list ranked hypotheses, test each one against the loop until it goes green, then fix and keep the loop as a regression test.
-  loop[Failing loop] --> repro[Reproduce + minimise] --> hyp[3-5 ranked hypotheses]
+  accDescr: Build a feedback loop that fails, reproduce and minimize, list ranked hypotheses, test each one against the loop until it goes green, then fix and keep the loop as a regression test.
+  loop[Failing loop] --> repro[Reproduce + minimize] --> hyp[3-5 ranked hypotheses]
   hyp --> test{Loop goes green?}
   test -- no, next hypothesis --> hyp
   test -- yes --> fix[Fix + regression test]
@@ -136,7 +136,7 @@ flowchart TD
 
 Only then does it list 3 to 5 ranked hypotheses, each with a prediction that could prove it wrong. That stops the agent from fixing the first plausible cause, which is the habit that wasted most of my debugging sessions.
 
-The loop does most of the work. Once it goes red, finding the cause is mostly bisecting and testing hypotheses against it.
+The loop does most of the work. Once it exists, finding the cause is mostly bisecting and testing hypotheses against it.
 
 ## The flow improves itself
 
