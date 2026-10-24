@@ -18,7 +18,7 @@ const postsDir = join(root, 'posts');
 const outDir = join(root, 'diagrams');
 const require = createRequire(import.meta.url);
 
-// Keep in sync with src/lib/diagrams.ts. diagrams.test.ts fails if they drift.
+// Keep in sync with src/features/markdown/diagrams.ts. diagrams.test.ts fails if they drift.
 const hash = (source) =>
   createHash('sha256').update(source.trim()).digest('hex').slice(0, 12);
 const blocks = (markdown) =>
