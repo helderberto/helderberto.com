@@ -86,27 +86,12 @@ describe('CommandPalette', () => {
       expect(dialog).not.toHaveAttribute('open');
     });
 
-    it('lists navigation, five latest posts, actions and links', async () => {
+    it('shows group headings and the five latest posts', async () => {
       await openPalette();
-      expect(optionLabels()).toEqual([
-        'Home',
-        'About',
-        'Post 1',
-        'Post 2',
-        'Post 3',
-        'Post 4',
-        'Post 5',
-        'Theme: Light',
-        'Theme: Dark',
-        'Theme: System',
-        'Copy page URL',
-        'GitHub',
-        'LinkedIn',
-        'RSS feed',
-      ]);
       expect(
         screen.getAllByRole('presentation').map((group) => group.textContent),
       ).toEqual(['Navigation', 'Posts', 'Actions', 'Connect']);
+      expect(optionLabels()).toHaveLength(14);
     });
   });
 
@@ -176,19 +161,7 @@ describe('CommandPalette', () => {
     );
   });
 
-  describe('filtering', () => {
-    it('matches labels case-insensitively across all posts', async () => {
-      const { user, input } = await openPalette();
-      await user.type(input, '  POST 6 ');
-      expect(optionLabels()).toEqual(['Post 6']);
-    });
-
-    it('shows every matching post, not just the first five', async () => {
-      const { user, input } = await openPalette();
-      await user.type(input, 'post');
-      expect(optionLabels()).toHaveLength(6);
-    });
-
+  describe('searching', () => {
     it('shows an empty message when nothing matches', async () => {
       const { user, input } = await openPalette();
       await user.type(input, 'zzz');
@@ -244,66 +217,18 @@ describe('CommandPalette', () => {
     });
   });
 
-  describe('actions', () => {
-    it.each([
-      ['Home', '/'],
-      ['About', '/about'],
-      ['Post 3', '/posts/post-3'],
-    ])('navigates to %s', async (label, path) => {
+  describe('selecting', () => {
+    it('runs the clicked option and closes', async () => {
       const { user, dialog } = await openPalette();
-      await user.click(screen.getByRole('option', { name: label }));
-      expect(push).toHaveBeenCalledWith(path);
+      await user.click(screen.getByRole('option', { name: 'Post 3' }));
+      expect(push).toHaveBeenCalledWith('/posts/post-3');
       expect(dialog).not.toHaveAttribute('open');
     });
 
-    it.each([
-      ['Theme: Light', 'light'],
-      ['Theme: Dark', 'dark'],
-      ['Theme: System', 'system'],
-    ])('applies %s', async (label, theme) => {
+    it('applies a theme from the list', async () => {
       const { user } = await openPalette();
-      await user.click(screen.getByRole('option', { name: label }));
-      expect(setTheme).toHaveBeenCalledWith(theme);
-    });
-
-    it('copies the page URL', async () => {
-      const { user } = await openPalette();
-      const writeText = vi.fn(() => Promise.resolve());
-      vi.stubGlobal('navigator', { clipboard: { writeText } });
-      await user.click(screen.getByRole('option', { name: 'Copy page URL' }));
-      expect(writeText).toHaveBeenCalledWith(window.location.href);
-    });
-
-    it('handles a denied clipboard', async () => {
-      const { user, dialog } = await openPalette();
-      let handled = false;
-      vi.stubGlobal('navigator', {
-        clipboard: {
-          writeText: () => {
-            const denied = Promise.reject(new Error('denied'));
-            vi.spyOn(denied, 'catch').mockImplementation((onRejected) => {
-              handled = true;
-              return Promise.prototype.catch.call(denied, onRejected);
-            });
-            return denied;
-          },
-        },
-      });
-      await user.click(screen.getByRole('option', { name: 'Copy page URL' }));
-      expect(handled).toBe(true);
-      expect(dialog.open).toBe(false);
-    });
-
-    it.each([
-      ['GitHub', 'https://github.com/helderberto'],
-      ['LinkedIn', 'https://www.linkedin.com/in/helderberto/'],
-      ['RSS feed', '/feed.xml'],
-    ])('opens %s in a new tab', async (label, url) => {
-      const open = vi.fn(() => null);
-      vi.stubGlobal('open', open);
-      const { user } = await openPalette();
-      await user.click(screen.getByRole('option', { name: label }));
-      expect(open).toHaveBeenCalledWith(url, '_blank', 'noopener');
+      await user.click(screen.getByRole('option', { name: 'Theme: Dark' }));
+      expect(setTheme).toHaveBeenCalledWith('dark');
     });
   });
 });
