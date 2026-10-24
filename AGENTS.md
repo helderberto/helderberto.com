@@ -53,6 +53,8 @@ Vitest, React Testing Library and jsdom, with Istanbul coverage. Tests sit next 
 ## UI
 
 - Use the design tokens in `src/app/globals.css`, with light values in `:root` and dark values in `.dark`.
+- Colors are always CSS variables. Never write a color literal in a component or CSS module: add or reuse a token, deriving new ones from existing tokens with `color-mix()` so both themes follow.
+- Use `rem` for font sizes, spacing and other lengths (`0.0625rem` for hairlines), so the layout follows the reader's text size.
 - Prefer CSS over JS. Add client JS only when CSS can't do it.
 - Respect `prefers-reduced-motion`.
 - Fonts are the system stack (`--font-sans`). Don't add web fonts.
@@ -74,3 +76,11 @@ Posts render ` ```mermaid ` fences as static, theme-aware SVG with no client JS 
 
 - Conventional commits, one concern per commit.
 - Work on feature branches. Never push to `main`.
+
+## Pull requests
+
+- Keep PRs small: one concern each, ideally under ~400 changed lines excluding lockfiles and generated files. Split bigger work into stacked PRs, each based on the branch below it, and say so in Context.
+- Title is a conventional commit (`feat(posts): …`).
+- Fill every section of `.github/pull_request_template.md`: Context (why), Summary (what), Evidence, Merge danger.
+- Evidence shows before and after: screenshots for UI changes (390px and desktop, light and dark), test output, or measurements such as bytes, timings or contrast. Never invent evidence; say what you couldn't verify.
+- Add a mermaid diagram to the Summary when a flow, branch or structure is easier to see than to read. Keep it small and mark what changed.
