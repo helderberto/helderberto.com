@@ -9,9 +9,11 @@
 
 :root {
   /* Fonts */
+  /* System fonts: SF Pro on Apple devices, Segoe UI on Windows, Roboto on
+     Android. Nothing to download. */
   --font-sans:
-    var(--font-inter), ui-sans-serif, system-ui, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji';
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace;
 
   /* Colors — Light */

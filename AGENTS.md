@@ -55,6 +55,7 @@ Vitest, React Testing Library and jsdom, with Istanbul coverage. Tests sit next 
 - Use the design tokens in `src/app/globals.css`, with light values in `:root` and dark values in `.dark`.
 - Prefer CSS over JS. Add client JS only when CSS can't do it.
 - Respect `prefers-reduced-motion`.
+- Fonts are the system stack (`--font-sans`). Don't add web fonts.
 - Use semantic HTML first and ARIA as a last resort. Keep focus visible, and make everything keyboard reachable.
 - For UI changes, compare the built `out/` HTML against a baseline build (text, meta, JSON-LD). Every difference must be intended.
 
