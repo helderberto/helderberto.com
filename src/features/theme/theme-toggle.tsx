@@ -1,8 +1,8 @@
 'use client';
 
+import { useClientSnapshot } from '@/hooks/use-client-snapshot';
 import { Monitor, Moon, Sun } from '@/lib/lucide-react';
 import { useTheme } from '@/lib/next-themes';
-import { useSyncExternalStore } from 'react';
 import styles from './theme-toggle.module.css';
 
 const themeOrder = ['light', 'dark', 'system'] as const;
@@ -10,12 +10,9 @@ type ThemeOption = (typeof themeOrder)[number];
 
 const themeIcons = { light: Sun, dark: Moon, system: Monitor };
 
-const emptySubscribe = () => () => {};
-
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const mounted = useSyncExternalStore(
-    emptySubscribe,
+  const mounted = useClientSnapshot(
     () => true,
     () => false,
   );

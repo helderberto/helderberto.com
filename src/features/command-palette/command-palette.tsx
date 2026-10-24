@@ -1,6 +1,7 @@
 'use client';
 
 import { siteConfig } from '@/config/site';
+import { useClientSnapshot } from '@/hooks/use-client-snapshot';
 import type { Post } from '@/types/post';
 import {
   Copy,
@@ -18,14 +19,7 @@ import {
 import type { LucideIcon } from '@/lib/lucide-react';
 import { useTheme } from '@/lib/next-themes';
 import { useRouter } from 'next/navigation';
-import {
-  Fragment,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  useSyncExternalStore,
-} from 'react';
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import styles from './command-palette.module.css';
 
 interface PaletteItem {
@@ -37,7 +31,6 @@ interface PaletteItem {
 }
 
 // Node exposes navigator too, so detect the OS only in the browser.
-const subscribeToNothing = () => () => {};
 const getClientModifierKey = () =>
   /Mac|iP/.test(navigator.platform) ? '⌘' : 'Ctrl';
 const getServerModifierKey = () => '⌘';
@@ -51,8 +44,7 @@ export function CommandPalette({ posts }: CommandPaletteProps) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
-  const modifierKey = useSyncExternalStore(
-    subscribeToNothing,
+  const modifierKey = useClientSnapshot(
     getClientModifierKey,
     getServerModifierKey,
   );
