@@ -36,7 +36,6 @@ From [Addy Osmani's agent-skills](https://github.com/addyosmani/agent-skills) I 
 - `frontend-ui-engineering`, for decisions to make before writing a component
 - `source-driven-development`, so code follows the docs for the installed version
 - `security-and-hardening` and `performance-optimization`
-- `browser-testing-with-devtools`, for checking UI in a real browser
 
 Then I cut each one down to what changes the agent's behavior in my projects, and gave them one namespace: `/hb:`.
 
@@ -94,18 +93,6 @@ It takes the next unblocked ticket, works test-first, runs the project's checks 
 
 I no longer write those prompts. I wrote them once, as skills, and now I refine the skills. I made the case for this in [Skills Are the New CLI](/posts/skills-are-the-new-cli).
 
-## MCPs let the agent see the page
-
-Type-checked is not the same as working. For frontend code, the agent needs to see what the user sees.
-
-The `visual-review` skill, in UI mode, drives a real browser through the Chrome DevTools MCP.
-
-It takes a screenshot before the change, performs the interactions I name, takes another screenshot, and reports console errors, failed requests and accessibility issues.
-
-The rule I care most about: it reports console output even on a pass. Silent regressions show up there first, often while every test is still green.
-
-The skill also knows its limits. It never starts the dev server itself, because ports and running servers are my state, not the agent's. And when a flow is worth checking on every change, it hands off to `tdd` for an end-to-end test.
-
 ## Guardrails over instructions
 
 Instructions in a prompt get skipped under pressure. A check that fails does not. So most of my guardrails are things that exit with an error:
@@ -146,7 +133,7 @@ This is where moving off TracerKit pays off. A retro finding becomes a one-line 
 
 ## Wrapping up
 
-In v1, the spec was the memory. It still is. What changed is everything around it. The prompts I kept retyping are skills, the reminders I kept giving are checks, and the browser is something the agent can look at.
+In v1, the spec was the memory. It still is. What changed is everything around it. The prompts I kept retyping are skills, and the reminders I kept giving are checks.
 
 This flow will change again with the next tool or model. When it does, it will be a commit to [agent-skills](https://github.com/helderberto/agent-skills), and v4.
 
