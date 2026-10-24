@@ -1,4 +1,4 @@
-import { EmptyState } from '@/components/EmptyState';
+import { EmptyState } from '@/components';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 

@@ -1,15 +1,16 @@
-import { Comments } from '@/components/Comments';
-import { JsonLd } from '@/components/JsonLd';
-import { MarkdownContent } from '@/components/MarkdownContent';
-import { PageTransition } from '@/components/PageTransition';
-import { PostHeader } from '@/components/PostHeader';
-import { PostNavigation } from '@/components/PostNavigation';
-import { ReadingProgress } from '@/components/ReadingProgress';
-import { TableOfContents } from '@/components/TableOfContents';
-import { sharedOpenGraph, sharedTwitter } from '@/app/shared-metadata';
+import { JsonLd, PageTransition } from '@/components';
+import { sharedOpenGraph, sharedTwitter } from '@/config/shared-metadata';
 import { siteConfig } from '@/config/site';
-import { getHeadings } from '@/lib/headings';
-import { getAllPosts, getPostBySlug } from '@/lib/posts';
+import { getHeadings, MarkdownContent } from '@/features/markdown';
+import {
+  Comments,
+  getAllPosts,
+  getPostBySlug,
+  PostHeader,
+  PostNavigation,
+  ReadingProgress,
+  TableOfContents,
+} from '@/features/posts';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import styles from './page.module.css';

@@ -1,4 +1,4 @@
-import * as resumeData from '@/data/resume';
+import * as resumeData from '@/features/resume';
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import Resume from './page';

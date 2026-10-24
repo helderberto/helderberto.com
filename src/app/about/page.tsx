@@ -1,5 +1,5 @@
-import { MarkdownContent } from '@/components/MarkdownContent';
-import { PageTransition } from '@/components/PageTransition';
+import { MarkdownContent } from '@/features/markdown';
+import { PageTransition } from '@/components';
 import fs from 'fs';
 import matter from 'gray-matter';
 import { Metadata } from 'next';

@@ -1,4 +1,4 @@
-import * as posts from '@/lib/posts';
+import * as posts from '@/features/posts';
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import Home, { metadata } from './page';
