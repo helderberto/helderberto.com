@@ -8,7 +8,9 @@ interface TableOfContentsProps {
 }
 
 export function TableOfContents({ headings }: Readonly<TableOfContentsProps>) {
-  if (headings.length < MIN_HEADINGS) return null;
+  if (headings.length < MIN_HEADINGS) {
+    return null;
+  }
 
   return (
     <nav aria-label="Table of contents" className={styles.toc}>

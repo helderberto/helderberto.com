@@ -5,9 +5,10 @@ import { Search } from '@/lib/lucide-react';
 import { useTheme } from '@/lib/next-themes';
 import type { Post } from '@/types/post';
 import { useRouter } from 'next/navigation';
-import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import styles from './command-palette.module.css';
 import { getPaletteItems, type PaletteItem } from './palette-items';
+import { PaletteList } from './palette-list';
 
 // Node exposes navigator too, so detect the OS only in the browser.
 const getClientModifierKey = () =>
@@ -66,7 +67,9 @@ export function CommandPalette({ posts }: CommandPaletteProps) {
 
   useEffect(() => {
     const dialog = dialogRef.current;
-    if (!dialog) return;
+    if (!dialog) {
+      return;
+    }
     if (open && !dialog.open) {
       dialog.showModal();
     }
@@ -88,7 +91,9 @@ export function CommandPalette({ posts }: CommandPaletteProps) {
   };
 
   const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (items.length === 0) return;
+    if (items.length === 0) {
+      return;
+    }
     if (event.key === 'ArrowDown') {
       event.preventDefault();
       setActiveIndex((index) => (index + 1) % items.length);
@@ -100,7 +105,9 @@ export function CommandPalette({ posts }: CommandPaletteProps) {
     if (event.key === 'Enter') {
       event.preventDefault();
       const item = items[activeIndex];
-      if (item) select(item);
+      if (item) {
+        select(item);
+      }
     }
   };
 
@@ -124,7 +131,9 @@ export function CommandPalette({ posts }: CommandPaletteProps) {
         className={styles.dialog}
         onClose={() => setOpen(false)}
         onClick={(event) => {
-          if (event.target === dialogRef.current) setOpen(false);
+          if (event.target === dialogRef.current) {
+            setOpen(false);
+          }
         }}
         aria-label="Command palette"
       >
@@ -150,38 +159,12 @@ export function CommandPalette({ posts }: CommandPaletteProps) {
           />
         </div>
 
-        <ul
-          id="command-palette-listbox"
-          role="listbox"
-          aria-label="Results"
-          className={styles.list}
-        >
-          {items.map((item, index) => {
-            const showGroup =
-              index === 0 || items[index - 1].group !== item.group;
-            const Icon = item.icon;
-            return (
-              <Fragment key={item.id}>
-                {showGroup && (
-                  <li role="presentation" className={styles.groupLabel}>
-                    {item.group}
-                  </li>
-                )}
-                <li
-                  id={item.id}
-                  role="option"
-                  aria-selected={index === activeIndex}
-                  className={styles.option}
-                  onClick={() => select(item)}
-                  onMouseMove={() => setActiveIndex(index)}
-                >
-                  <Icon className={styles.optionIcon} aria-hidden="true" />
-                  <span className={styles.optionLabel}>{item.label}</span>
-                </li>
-              </Fragment>
-            );
-          })}
-        </ul>
+        <PaletteList
+          items={items}
+          activeIndex={activeIndex}
+          onSelect={select}
+          onActivate={setActiveIndex}
+        />
 
         {items.length === 0 && (
           <p className={styles.empty}>No results for &quot;{query}&quot;</p>

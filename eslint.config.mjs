@@ -7,6 +7,17 @@ const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   prettier,
+  {
+    files: ['src/**/*.{ts,tsx}'],
+    rules: {
+      curly: ['error', 'all'],
+      'max-params': ['error', 2],
+      'max-lines': [
+        'error',
+        { max: 200, skipBlankLines: true, skipComments: true },
+      ],
+    },
+  },
   globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
 ]);
 
