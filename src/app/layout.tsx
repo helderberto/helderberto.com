@@ -7,16 +7,9 @@ import { getAllPosts } from '@/lib/posts';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
 import { sharedOpenGraph, sharedTwitter } from './shared-metadata';
 import './globals.css';
 import styles from './layout.module.css';
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-});
 
 export const viewport: Viewport = {
   themeColor: [
@@ -69,7 +62,7 @@ export default async function RootLayout({
   const posts = await getAllPosts();
 
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Next 16.3 stopped emitting metadata alternates.types in static export */}
         <link
