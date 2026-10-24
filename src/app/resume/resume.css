@@ -108,7 +108,7 @@
   font-weight: 600;
   color: var(--rs-paper);
   background: var(--rs-accent);
-  border: 1px solid var(--rs-accent);
+  border: 0.0625rem solid var(--rs-accent);
   border-radius: 0.375rem;
   padding: 0.375rem 0.875rem;
   cursor: pointer;
