@@ -1,5 +1,6 @@
 import type { Post } from '@/types/post';
 import Link from 'next/link';
+import { formatPostDate } from './format-post-date';
 import styles from './post-card.module.css';
 
 interface PostCardProps {
@@ -7,20 +8,10 @@ interface PostCardProps {
 }
 
 export const PostCard = ({ post }: PostCardProps) => {
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric',
-      timeZone: 'UTC',
-    });
-  };
-
   return (
     <li className={styles.item}>
       <time className={styles.date} dateTime={post.date}>
-        {formatDate(post.date)}
+        {formatPostDate(post.date, 'short')}
       </time>
       <Link href={`/posts/${post.slug}`} className={styles.title}>
         {post.title}
