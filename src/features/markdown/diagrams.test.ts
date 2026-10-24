@@ -15,7 +15,9 @@ function postBlocks() {
 }
 
 function renderedNames() {
-  if (!fs.existsSync(diagramsDirectory)) return [];
+  if (!fs.existsSync(diagramsDirectory)) {
+    return [];
+  }
   return fs
     .readdirSync(diagramsDirectory)
     .filter((file) => file.endsWith('.svg'))
@@ -66,7 +68,9 @@ describe('diagrams', () => {
         [...svg.matchAll(/var\((--diagram-[\w-]+)\)/g)].map((m) => m[1]),
       );
       expect(used.size).toBeGreaterThan(0);
-      for (const token of used) expect(globals).toContain(`${token}:`);
+      for (const token of used) {
+        expect(globals).toContain(`${token}:`);
+      }
       expect(svg).not.toMatch(/#fe00[0-9a-f]{2}|rgba?\(254, ?0,/i);
     }
   });

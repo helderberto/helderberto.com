@@ -7,7 +7,9 @@ interface HeadingAnchorProps {
 }
 
 export function HeadingAnchor({ id, children }: Readonly<HeadingAnchorProps>) {
-  if (!id) return <h2>{children}</h2>;
+  if (!id) {
+    return <h2>{children}</h2>;
+  }
 
   return (
     <h2 id={id} className={styles.heading}>

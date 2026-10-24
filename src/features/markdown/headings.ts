@@ -4,9 +4,12 @@ import type { Heading } from '@/types/heading';
 function textOf(nodes: MarkdownToJSX.ASTNode[]): string {
   return nodes
     .map((node) => {
-      if ('text' in node && typeof node.text === 'string') return node.text;
-      if ('children' in node && Array.isArray(node.children))
+      if ('text' in node && typeof node.text === 'string') {
+        return node.text;
+      }
+      if ('children' in node && Array.isArray(node.children)) {
         return textOf(node.children);
+      }
       return '';
     })
     .join('');
