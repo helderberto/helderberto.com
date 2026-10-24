@@ -1,5 +1,5 @@
 import * as resumeData from '@/features/resume';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@/lib/testing-library';
 import { describe, expect, it, vi } from 'vitest';
 import Resume from './page';
 

@@ -1,6 +1,11 @@
-import { act, render, screen } from '@testing-library/react';
-import userEvent, { type UserEvent } from '@testing-library/user-event';
-import { useTheme } from 'next-themes';
+import {
+  act,
+  render,
+  screen,
+  type UserEvent,
+  userEvent,
+} from '@/lib/testing-library';
+import { useTheme } from '@/lib/next-themes';
 import { renderToString } from 'react-dom/server';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CommandPalette } from './command-palette';

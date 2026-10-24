@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@/lib/testing-library';
 import fs from 'fs';
 import { describe, expect, it, vi } from 'vitest';
 import AboutPage from './page';

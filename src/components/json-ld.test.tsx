@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render } from '@/lib/testing-library';
 import { describe, expect, it } from 'vitest';
 import { JsonLd } from './json-ld';
 

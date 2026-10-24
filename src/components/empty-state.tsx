@@ -1,4 +1,4 @@
-import { FileSearch } from 'lucide-react';
+import { FileSearch } from '@/lib/lucide-react';
 import styles from './empty-state.module.css';
 
 interface EmptyStateProps {

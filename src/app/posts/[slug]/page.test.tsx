@@ -1,6 +1,6 @@
 import * as posts from '@/features/posts';
 import type { Post } from '@/types/post';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@/lib/testing-library';
 import { notFound } from 'next/navigation';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import Page, { generateMetadata, generateStaticParams } from './page';

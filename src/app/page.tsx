@@ -1,7 +1,7 @@
 import { PageTransition } from '@/components';
 import { getAllPosts, SearchPosts } from '@/features/posts';
 import { siteConfig } from '@/config/site';
-import { Github, Linkedin } from 'lucide-react';
+import { Github, Linkedin } from '@/lib/lucide-react';
 import { Metadata } from 'next';
 import styles from './page.module.css';
 

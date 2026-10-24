@@ -1,15 +1,7 @@
 'use client';
 
-import Prism from 'prismjs';
-import 'prismjs/components/prism-bash';
-import 'prismjs/components/prism-css';
-import 'prismjs/components/prism-javascript';
-import 'prismjs/components/prism-json';
-import 'prismjs/components/prism-jsx';
-import 'prismjs/components/prism-tsx';
-import 'prismjs/components/prism-typescript';
-import 'prismjs/themes/prism-tomorrow.css';
-import { Check, Copy } from 'lucide-react';
+import { Prism } from '@/lib/prismjs';
+import { Check, Copy } from '@/lib/lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import styles from './code-block.module.css';
 

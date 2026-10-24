@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@/lib/testing-library';
 import fs from 'node:fs';
 import { describe, expect, it, vi } from 'vitest';
 import { MarkdownContent } from './markdown-content';
