@@ -6,9 +6,7 @@ excerpt: 'My workflow changes with every new tool and model, so I version it. In
 
 My AI coding workflow changes every few months, so I give it version numbers. New tools ship, models get better, and steps that needed hand-holding last spring now run on their own.
 
-[v1](/posts/how-i-use-claude-code-to-build-features) was plan mode and a hand-written `SPEC.md`. [v2](/posts/why-i-built-tracerkit) turned that into TracerKit.
-
-This post is v3, where every step lives in [helderberto/agent-skills](https://github.com/helderberto/agent-skills).
+[v1](/posts/how-i-use-claude-code-to-build-features) was plan mode and a hand-written `SPEC.md`. [v2](/posts/why-i-built-tracerkit) turned that into TracerKit. This post is v3: every step now lives in [helderberto/agent-skills](https://github.com/helderberto/agent-skills).
 
 The idea of v3 fits in one line: each step that used to be a prompt is now a skill, and each "please remember to" is now a check that fails.
 
@@ -66,7 +64,9 @@ Not every task needs all of them. `/hb:triage` sizes the work and names where to
 
 ## Skills replace prompts
 
-Take the same dark mode toggle from v1. Back then, I opened plan mode and wrote a paragraph asking Claude to discuss the approach and generate a spec. Now it starts with one command:
+I no longer write the prompts from v1. I wrote them once, as skills, and now I refine the skills. I made the case for this in [Skills Are the New CLI](/posts/skills-are-the-new-cli).
+
+Take the same dark mode toggle. In v1, I opened plan mode and wrote a paragraph asking Claude to discuss the approach and generate a spec. Now it starts with one command:
 
 ```plaintext
 /hb:grill dark mode
@@ -91,7 +91,7 @@ Building is one command too:
 
 It takes the next unblocked ticket, works test-first, runs the project's checks and commits. With `--all`, it fans tickets out to parallel subagents after one approval.
 
-I no longer write those prompts. I wrote them once, as skills, and now I refine the skills. I made the case for this in [Skills Are the New CLI](/posts/skills-are-the-new-cli).
+Two commands close it out. `/hb:review` sends the diff to several reviewers and merges their findings into one ranked verdict. `/hb:to-pr` runs the checks, pushes, opens the PR and watches CI.
 
 ## Guardrails over instructions
 
@@ -111,6 +111,8 @@ The agent can be fast because it can't quietly skip these. I wrote more about wh
 
 Before reading code to guess a cause, the agent has to show one command that reproduces the bug. It must fail on the exact symptom, give the same result every run, and finish in seconds. A failing test, a curl, a headless browser script.
 
+Only then does it list 3 to 5 ranked hypotheses, each with a prediction that could prove it wrong. That stops the agent from fixing the first plausible cause, which is the habit that wasted most of my debugging sessions.
+
 ```mermaid
 flowchart TD
   accTitle: The debug loop
@@ -121,10 +123,6 @@ flowchart TD
   test -- yes --> fix[Fix + regression test]
 ```
 
-Only then does it list 3 to 5 ranked hypotheses, each with a prediction that could prove it wrong. That stops the agent from fixing the first plausible cause, which is the habit that wasted most of my debugging sessions.
-
-The loop does most of the work. Once it exists, finding the cause is mostly bisecting and testing hypotheses against it.
-
 ## The flow improves itself
 
 The last step is `/hb:retro`. It reads the session and suggests changes to the environment, not the code: a missing check, a rule in `AGENTS.md` that should be a lint rule, a file the agent took too long to find.
@@ -133,7 +131,7 @@ This is where moving off TracerKit pays off. A retro finding becomes a one-line 
 
 ## Wrapping up
 
-In v1, the spec was the memory. It still is. What changed is everything around it. The prompts I kept retyping are skills, and the reminders I kept giving are checks.
+The spec is still at the center, as it was in v1. What changed is everything around it. The prompts I kept retyping are skills, and the reminders I kept giving are checks.
 
 This flow will change again with the next tool or model. When it does, it will be a commit to [agent-skills](https://github.com/helderberto/agent-skills), and v4.
 
