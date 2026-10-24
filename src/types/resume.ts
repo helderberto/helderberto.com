@@ -1,10 +1,10 @@
-export type Position = {
+export interface Position {
   level: string;
   period: string;
   bullets: string[];
-};
+}
 
-export type Experience = {
+export interface Experience {
   role: string;
   company: string;
   location: string;
@@ -12,9 +12,9 @@ export type Experience = {
   positions?: Position[];
   bullets?: string[];
   tech?: string[];
-};
+}
 
-export type SkillGroup = {
+export interface SkillGroup {
   group: string;
   items: string[];
-};
+}
