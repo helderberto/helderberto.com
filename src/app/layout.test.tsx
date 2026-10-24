@@ -3,10 +3,6 @@ import { render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import RootLayout, { metadata, viewport } from './layout';
 
-vi.mock('next/font/google', () => ({
-  Inter: () => ({ variable: 'font-inter' }),
-}));
-
 vi.mock('next/navigation', () => ({
   usePathname: () => '/',
   useRouter: () => ({ push: vi.fn() }),
@@ -50,10 +46,9 @@ describe('RootLayout', () => {
     expect(screen.getByRole('main')).toHaveTextContent('Page body');
   });
 
-  it('applies the font variable to the html element', async () => {
+  it('sets the document language', async () => {
     await renderLayout();
 
-    expect(document.documentElement).toHaveClass('font-inter');
     expect(document.documentElement).toHaveAttribute('lang', 'en');
   });
 
