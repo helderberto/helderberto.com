@@ -1,19 +1,10 @@
-import { JsonLd, PageTransition } from '@/components';
 import { sharedOpenGraph, sharedTwitter } from '@/config/shared-metadata';
 import { siteConfig } from '@/config/site';
-import { getHeadings, MarkdownContent } from '@/features/markdown';
-import {
-  Comments,
-  getAllPosts,
-  getPostBySlug,
-  PostHeader,
-  PostNavigation,
-  ReadingProgress,
-  TableOfContents,
-} from '@/features/posts';
+import { getHeadings } from '@/features/markdown';
+import { getAllPosts, getPostBySlug } from '@/features/posts';
+import { PostView } from '@/views/post-view';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import styles from './page.module.css';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -99,26 +90,12 @@ export default async function Page({ params }: Props) {
   };
 
   return (
-    <>
-      <ReadingProgress />
-      <PageTransition>
-        <article className={styles.article} aria-labelledby="post-title">
-          <JsonLd data={jsonLd} />
-          <PostHeader
-            title={post.title}
-            date={post.date}
-            readingTime={post.readingTime}
-          />
-          <TableOfContents headings={getHeadings(post.content!)} />
-          <div className={`${styles.content} ${styles.markdownContent}`}>
-            <MarkdownContent content={post.content!} />
-          </div>
-          <PostNavigation previous={older} next={newer} />
-          <section aria-label="Comments" className={styles.comments}>
-            <Comments />
-          </section>
-        </article>
-      </PageTransition>
-    </>
+    <PostView
+      post={post}
+      headings={getHeadings(post.content!)}
+      older={older}
+      newer={newer}
+      jsonLd={jsonLd}
+    />
   );
 }

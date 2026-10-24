@@ -1,7 +1,6 @@
 import { render, screen } from '@/lib/testing-library';
-import fs from 'fs';
-import { describe, expect, it, vi } from 'vitest';
-import AboutPage from './page';
+import { describe, expect, it } from 'vitest';
+import AboutPage, { metadata } from './page';
 
 describe('AboutPage', () => {
   it('renders the about content from markdown', () => {
@@ -15,41 +14,7 @@ describe('AboutPage', () => {
     );
   });
 
-  it('shows the author photo', () => {
-    render(<AboutPage />);
-
-    expect(
-      screen.getByRole('img', { name: /Helder Burato Berto smiling/ }),
-    ).toBeInTheDocument();
-  });
-
-  it('loads the photo as a high-priority WebP', () => {
-    render(<AboutPage />);
-
-    const photo = screen.getByRole('img', { name: /Helder Burato Berto/ });
-    expect(photo.getAttribute('src')).toContain('about-photo.webp');
-    expect(photo).toHaveAttribute('fetchpriority', 'high');
-    expect(photo).toHaveAttribute('loading', 'eager');
-  });
-
-  it('promotes the leading heading to the page title once', () => {
-    vi.spyOn(fs, 'readFileSync').mockReturnValue(
-      '---\nlayout: about\n---\n\n# Hi there\n\nBody text',
-    );
-    render(<AboutPage />);
-
-    expect(
-      screen.getByRole('heading', { level: 1, name: 'Hi there' }),
-    ).toBeInTheDocument();
-    expect(screen.getAllByRole('heading')).toHaveLength(1);
-    expect(screen.getByText('Body text')).toBeInTheDocument();
-  });
-
-  it('renders the body without a title when there is no leading heading', () => {
-    vi.spyOn(fs, 'readFileSync').mockReturnValue('Just some text');
-    render(<AboutPage />);
-
-    expect(screen.queryByRole('heading')).not.toBeInTheDocument();
-    expect(screen.getByText('Just some text')).toBeInTheDocument();
+  it('sets the canonical url', () => {
+    expect(metadata.alternates?.canonical).toBe('/about');
   });
 });

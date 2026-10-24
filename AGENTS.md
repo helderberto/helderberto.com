@@ -12,13 +12,32 @@ npm run lint && npm run typecheck && npm run test:coverage && npm run build
 
 Coverage below 80% on lines, functions, branches or statements fails `test:coverage`. CI (`.github/workflows/ci.yml`) runs the same steps on every PR and push to `main`. Vercel deploys previews itself.
 
+## Structure
+
+```
+src/
+├── app/          routes: load data, set metadata, render a view
+├── views/        one view per page, composing features and components
+├── features/     about, command-palette, markdown, posts, resume, theme
+├── components/   shared UI, imported from '@/components'
+├── hooks/        hooks shared across features
+├── types/        domain types (post, heading, resume)
+├── lib/          one wrapper per third-party library
+└── config/       site config and shared metadata
+```
+
+- Import a feature only through its `index.ts` (`@/features/posts`), shared UI through `@/components`, and third-party libraries through `@/lib/<library>`. Next.js and React are imported directly.
+- Kebab-case file names, named exports. Default exports only where Next.js requires them (`page.tsx`, `layout.tsx`, route files).
+- Every implementation file has a sibling test; barrels and type-only files don't.
+- Split a file past ~300 lines or with more than one concern, keeping its import path.
+
 ## Testing
 
-Vitest, React Testing Library and jsdom, with Istanbul coverage. Tests sit next to the source as `*.test.ts(x)`.
+Vitest, React Testing Library and jsdom, with Istanbul coverage. Tests sit next to the source as `*.test.ts(x)` and import Testing Library from `@/lib/testing-library`.
 
 ### Mocking
 
-- Spy on your own code with `vi.spyOn`, e.g. `vi.spyOn(posts, 'getPostBySlug')` after `import * as posts from '@/lib/posts'`, or `vi.spyOn(fs, 'readFileSync')`.
+- Spy on your own code with `vi.spyOn`, e.g. `vi.spyOn(posts, 'getPostBySlug')` after `import * as posts from '@/features/posts'`, or `vi.spyOn(fs, 'readFileSync')`.
 - Use `vi.mock` only for third-party packages, and only when needed: `next/navigation`, `next-themes`, `@giscus/react`, `next/og`, `next/font/google`, `@vercel/*`.
 - Never `vi.mock` a project module.
 - Stub browser globals with `vi.stubGlobal`: `navigator`, `matchMedia`, `open`, `print`, and anything else on `window`.
@@ -63,9 +82,9 @@ Vitest, React Testing Library and jsdom, with Istanbul coverage. Tests sit next 
 
 ## Diagrams
 
-Posts render ` ```mermaid ` fences as static, theme-aware SVG with no client JS (`src/components/Mermaid.tsx`). Diagram colors are the `--diagram-*` tokens in `globals.css`: restyle there, no re-render needed.
+Posts render ` ```mermaid ` fences as static, theme-aware SVG with no client JS (`src/features/markdown/mermaid.tsx`). Diagram colors are the `--diagram-*` tokens in `globals.css`: restyle there, no re-render needed.
 
-- After adding or editing a diagram, run `npm run diagrams`. It renders each block to `diagrams/<hash>.svg` in a headless browser, measuring labels with Inter (about as wide as the system fonts readers get; labels are centered and box padding absorbs the difference), and deletes unused files. Commit the SVGs: the build inlines them, and `src/lib/diagrams.test.ts` fails when one is missing or stale. First run on a machine: `npx playwright install chromium`.
+- After adding or editing a diagram, run `npm run diagrams`. It renders each block to `diagrams/<hash>.svg` in a headless browser, measuring labels with Inter (about as wide as the system fonts readers get; labels are centered and box padding absorbs the difference), and deletes unused files. Commit the SVGs: the build inlines them, and `src/features/markdown/diagrams.test.ts` fails when one is missing or stale. First run on a machine: `npx playwright install chromium`.
 - Use a diagram only for branches, loops or groups. A straight sequence stays a list or a sentence.
 - Keep a diagram about 400px wide or less so it fits a phone without scrolling: at most about 6 boxes per row or column, with short labels.
 - Group long flows into `subgraph`s with `direction TB`, laid out `LR`. Link the subgraphs to each other, not the nodes inside them: an edge into a subgraph's node makes Mermaid ignore its direction.

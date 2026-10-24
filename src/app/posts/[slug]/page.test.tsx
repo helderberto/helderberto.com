@@ -37,7 +37,7 @@ beforeEach(() => {
 });
 
 describe('post page', () => {
-  it('renders the post title and body', async () => {
+  it('renders the requested post', async () => {
     vi.spyOn(posts, 'getPostBySlug').mockResolvedValue(post('middle'));
     render(await Page(params('middle')));
 
@@ -73,27 +73,6 @@ describe('post page', () => {
     render(await Page(params('oldest')));
     expect(
       screen.queryByRole('link', { name: /Previous post/ }),
-    ).not.toBeInTheDocument();
-  });
-
-  it('shows a table of contents for posts with enough sections', async () => {
-    const content = ['One', 'Two', 'Three', 'Four']
-      .map((h) => `## ${h}\n\ntext`)
-      .join('\n\n');
-    vi.spyOn(posts, 'getPostBySlug').mockResolvedValue(post('middle', content));
-    render(await Page(params('middle')));
-
-    expect(
-      screen.getByRole('navigation', { name: 'Table of contents' }),
-    ).toBeInTheDocument();
-  });
-
-  it('hides the table of contents for short posts', async () => {
-    vi.spyOn(posts, 'getPostBySlug').mockResolvedValue(post('middle'));
-    render(await Page(params('middle')));
-
-    expect(
-      screen.queryByRole('navigation', { name: 'Table of contents' }),
     ).not.toBeInTheDocument();
   });
 

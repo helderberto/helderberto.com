@@ -42,7 +42,7 @@ excerpt: 'Brief description'
 ## Resume
 
 A printable resume lives at `/resume`, rendered from a single source of truth:
-`src/data/resume.ts`. Edit that file to update contact details, add an
+`src/features/resume/resume-data.ts`. Edit that file to update contact details, add an
 experience, or reorder skills.
 
 Jobs with no `bullets` and no `positions` render as compact "earlier roles" at
