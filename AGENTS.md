@@ -21,7 +21,8 @@ src/
 ├── features/     about, command-palette, markdown, posts, resume, theme
 ├── components/   shared UI, imported from '@/components'
 ├── hooks/        hooks shared across features
-├── types/        domain types (post, heading, resume)
+├── types/        domain types and DTOs (post, heading, resume)
+├── utils/        helpers shared by two or more features (none yet)
 ├── lib/          one wrapper per third-party library
 └── config/       site config and shared metadata
 ```
@@ -29,7 +30,11 @@ src/
 - Import a feature only through its `index.ts` (`@/features/posts`), shared UI through `@/components`, and third-party libraries through `@/lib/<library>`. Next.js and React are imported directly.
 - Kebab-case file names, named exports. Default exports only where Next.js requires them (`page.tsx`, `layout.tsx`, route files).
 - Every implementation file has a sibling test; barrels and type-only files don't.
-- Split a file past ~300 lines or with more than one concern, keeping its import path.
+- External data gets a DTO type in `src/types` and a mapper to the domain type in its feature (`PostFrontmatterDto` → `toPost` in `features/posts/post-mapper.ts`). The rest of the app sees domain types only.
+- A helper used by one feature lives in that feature (`features/posts/format-post-date.ts`). Move it to `src/utils/` when a second feature needs it.
+- Functions take at most two parameters; pass an options object beyond that.
+- ESLint enforces braces on every `if`, two parameters and 200 lines per file (`curly`, `max-params`, `max-lines`). Split a file by concern before it gets there, keeping its import path.
+- Next.js conventions win where they collide with these rules: default exports and fixed names for route files.
 
 ## Testing
 
@@ -73,7 +78,8 @@ Vitest, React Testing Library and jsdom, with Istanbul coverage. Tests sit next 
 
 - Use the design tokens in `src/app/globals.css`, with light values in `:root` and dark values in `.dark`.
 - Colors are always CSS variables. Never write a color literal in a component or CSS module: add or reuse a token, deriving new ones from existing tokens with `color-mix()` so both themes follow.
-- Use `rem` for font sizes, spacing and other lengths (`0.0625rem` for hairlines), so the layout follows the reader's text size.
+- Use `rem` for font sizes, spacing and other lengths (`0.0625rem` for hairlines), so the layout follows the reader's text size. The printed resume keeps `pt` and `mm` for its A4 page.
+- Plain CSS: CSS Modules per component, global tokens in `globals.css`. No CSS-in-JS or utility frameworks.
 - Prefer CSS over JS. Add client JS only when CSS can't do it.
 - Respect `prefers-reduced-motion`.
 - Fonts are the system stack (`--font-sans`). Don't add web fonts.
