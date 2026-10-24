@@ -1,7 +1,8 @@
 import fs from 'fs';
-import { matter } from '@/lib/gray-matter';
-import type { Post } from '@/types/post';
+import { parseMarkdown } from '@/lib/gray-matter';
+import type { Post, PostFrontmatterDto } from '@/types/post';
 import path from 'path';
+import { toPost, toPostSummary } from './post-mapper';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
@@ -10,15 +11,11 @@ export async function getAllPosts(): Promise<Post[]> {
   const posts = fileNames.map((fileName) => {
     const slug = fileName.replace(/\.md$/, '');
     const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data } = matter(fileContents);
+    const { data } = parseMarkdown<PostFrontmatterDto>(
+      fs.readFileSync(fullPath, 'utf8'),
+    );
 
-    return {
-      slug,
-      title: data.title,
-      date: data.date,
-      excerpt: data.excerpt,
-    };
+    return toPostSummary(slug, data);
   });
 
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -26,21 +23,9 @@ export async function getAllPosts(): Promise<Post[]> {
 
 export async function getPostBySlug(slug: string): Promise<Post> {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
+  const file = parseMarkdown<PostFrontmatterDto>(
+    fs.readFileSync(fullPath, 'utf8'),
+  );
 
-  // Calculate reading time (average 200 words per minute)
-  const wordCount = content.split(/\s+/g).length;
-  const readingTime = Math.ceil(wordCount / 200) + ' min read';
-
-  return {
-    slug,
-    title: data.title,
-    date: data.date,
-    excerpt: data.excerpt,
-    content,
-    tags: data.tags || [],
-    readingTime,
-    lastModified: data.lastModified || data.date,
-  };
+  return toPost(slug, file);
 }
