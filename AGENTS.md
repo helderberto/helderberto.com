@@ -58,6 +58,17 @@ Vitest, React Testing Library and jsdom, with Istanbul coverage. Tests sit next 
 - Use semantic HTML first and ARIA as a last resort. Keep focus visible, and make everything keyboard reachable.
 - For UI changes, compare the built `out/` HTML against a baseline build (text, meta, JSON-LD). Every difference must be intended.
 
+## Diagrams
+
+Posts render ` ```mermaid ` fences as static, theme-aware SVG with no client JS (`src/components/Mermaid.tsx`). Diagram colors are the `--diagram-*` tokens in `globals.css`: restyle there, no re-render needed.
+
+- After adding or editing a diagram, run `npm run diagrams`. It renders each block to `diagrams/<hash>.svg` in a headless browser, measuring labels with Inter (about as wide as the system fonts readers get; labels are centered and box padding absorbs the difference), and deletes unused files. Commit the SVGs: the build inlines them, and `src/lib/diagrams.test.ts` fails when one is missing or stale. First run on a machine: `npx playwright install chromium`.
+- Use a diagram only for branches, loops or groups. A straight sequence stays a list or a sentence.
+- Keep a diagram about 400px wide or less so it fits a phone without scrolling: at most about 6 boxes per row or column, with short labels.
+- Group long flows into `subgraph`s with `direction TB`, laid out `LR`. Link the subgraphs to each other, not the nodes inside them: an edge into a subgraph's node makes Mermaid ignore its direction.
+- Always add `accTitle:` (shown as the caption) and `accDescr:` (read by screen readers). Put branches and loops in `accDescr` in words: screen readers don't announce arrows.
+- Check new diagrams in the built site at 390px wide, light and dark.
+
 ## Git
 
 - Conventional commits, one concern per commit.

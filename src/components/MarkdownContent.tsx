@@ -1,6 +1,7 @@
 import Markdown from 'markdown-to-jsx';
 import { CodeBlock } from './CodeBlock';
 import { HeadingAnchor } from './HeadingAnchor';
+import { Mermaid } from './Mermaid';
 
 interface MarkdownContentProps {
   content: string;
@@ -9,6 +10,17 @@ interface MarkdownContentProps {
 // CodeBlock renders its own pre, so drop the one markdown-to-jsx adds.
 function Unwrapped({ children }: Readonly<{ children: React.ReactNode }>) {
   return children;
+}
+
+// Fenced ```mermaid blocks become diagrams; everything else stays code.
+function Code({
+  className,
+  children,
+}: Readonly<{ className?: string; children: React.ReactNode }>) {
+  if (/(?:^|\s)lang-mermaid(?:\s|$)/.test(className ?? '')) {
+    return <Mermaid chart={String(children)} />;
+  }
+  return <CodeBlock className={className}>{children}</CodeBlock>;
 }
 
 export function MarkdownContent({ content }: MarkdownContentProps) {
@@ -20,7 +32,7 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
             component: Unwrapped,
           },
           code: {
-            component: CodeBlock,
+            component: Code,
           },
           h2: {
             component: HeadingAnchor,
