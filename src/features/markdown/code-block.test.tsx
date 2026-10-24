@@ -1,6 +1,5 @@
-import { act, render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import Prism from 'prismjs';
+import { act, render, screen, userEvent } from '@/lib/testing-library';
+import { Prism } from '@/lib/prismjs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { CodeBlock } from './code-block';
 

@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import { useTheme } from 'next-themes';
+import { render, screen } from '@/lib/testing-library';
+import { useTheme } from '@/lib/next-themes';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ThemeProvider } from './theme-provider';
 

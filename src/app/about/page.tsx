@@ -1,7 +1,7 @@
 import { MarkdownContent } from '@/features/markdown';
 import { PageTransition } from '@/components';
 import fs from 'fs';
-import matter from 'gray-matter';
+import { matter } from '@/lib/gray-matter';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import path from 'path';

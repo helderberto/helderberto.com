@@ -1,7 +1,7 @@
 'use client';
 
 import type { Post } from '@/types/post';
-import { Search } from 'lucide-react';
+import { Search } from '@/lib/lucide-react';
 import { useState } from 'react';
 import { EmptyState } from '@/components';
 import { PostCard } from './post-card';

@@ -1,5 +1,5 @@
 import * as posts from '@/features/posts';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@/lib/testing-library';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import RootLayout, { metadata, viewport } from './layout';
 

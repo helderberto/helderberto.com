@@ -1,4 +1,4 @@
-import { parser, RuleType, type MarkdownToJSX } from 'markdown-to-jsx';
+import { parser, RuleType, type MarkdownToJSX } from '@/lib/markdown-to-jsx';
 import type { Heading } from '@/types/heading';
 
 function textOf(nodes: MarkdownToJSX.ASTNode[]): string {

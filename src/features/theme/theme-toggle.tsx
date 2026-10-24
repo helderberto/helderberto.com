@@ -1,7 +1,7 @@
 'use client';
 
-import { Monitor, Moon, Sun } from 'lucide-react';
-import { useTheme } from 'next-themes';
+import { Monitor, Moon, Sun } from '@/lib/lucide-react';
+import { useTheme } from '@/lib/next-themes';
 import { useSyncExternalStore } from 'react';
 import styles from './theme-toggle.module.css';
 

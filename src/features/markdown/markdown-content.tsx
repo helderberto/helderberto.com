@@ -1,4 +1,4 @@
-import Markdown from 'markdown-to-jsx';
+import { Markdown } from '@/lib/markdown-to-jsx';
 import { CodeBlock } from './code-block';
 import { HeadingAnchor } from './heading-anchor';
 import { Mermaid } from './mermaid';

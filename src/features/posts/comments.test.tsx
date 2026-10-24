@@ -1,6 +1,6 @@
-import Giscus from '@giscus/react';
-import { render } from '@testing-library/react';
-import { useTheme } from 'next-themes';
+import { Giscus } from '@/lib/giscus';
+import { render } from '@/lib/testing-library';
+import { useTheme } from '@/lib/next-themes';
 import { describe, expect, it, vi } from 'vitest';
 import { Comments } from './comments';
 

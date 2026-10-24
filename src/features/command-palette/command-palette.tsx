@@ -14,9 +14,9 @@ import {
   Search,
   Sun,
   User,
-} from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
-import { useTheme } from 'next-themes';
+} from '@/lib/lucide-react';
+import type { LucideIcon } from '@/lib/lucide-react';
+import { useTheme } from '@/lib/next-themes';
 import { useRouter } from 'next/navigation';
 import {
   Fragment,

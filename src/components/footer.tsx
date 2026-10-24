@@ -1,5 +1,5 @@
 import { siteConfig } from '@/config/site';
-import { Github, Linkedin, Rss } from 'lucide-react';
+import { Github, Linkedin, Rss } from '@/lib/lucide-react';
 import Link from 'next/link';
 import styles from './footer.module.css';
 

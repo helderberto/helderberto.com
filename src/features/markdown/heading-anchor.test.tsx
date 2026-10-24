@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@/lib/testing-library';
 import { describe, expect, it } from 'vitest';
 import { HeadingAnchor } from './heading-anchor';
 

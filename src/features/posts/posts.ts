@@ -1,5 +1,5 @@
 import fs from 'fs';
-import matter from 'gray-matter';
+import { matter } from '@/lib/gray-matter';
 import type { Post } from '@/types/post';
 import path from 'path';
 

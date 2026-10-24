@@ -1,5 +1,5 @@
-import { render, screen, within } from '@testing-library/react';
-import { useTheme } from 'next-themes';
+import { render, screen, within } from '@/lib/testing-library';
+import { useTheme } from '@/lib/next-themes';
 import { usePathname } from 'next/navigation';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Header } from './header';

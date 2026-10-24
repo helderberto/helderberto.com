@@ -1,8 +1,8 @@
 'use client';
 
 import { siteConfig } from '@/config/site';
-import Giscus from '@giscus/react';
-import { useTheme } from 'next-themes';
+import { Giscus } from '@/lib/giscus';
+import { useTheme } from '@/lib/next-themes';
 import styles from './comments.module.css';
 
 export const Comments = () => {

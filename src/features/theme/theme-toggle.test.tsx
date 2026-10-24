@@ -1,6 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { useTheme } from 'next-themes';
+import { render, screen, userEvent } from '@/lib/testing-library';
+import { useTheme } from '@/lib/next-themes';
 import { renderToString } from 'react-dom/server';
 import { describe, expect, it, vi } from 'vitest';
 import { ThemeToggle } from './theme-toggle';

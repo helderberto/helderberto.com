@@ -1,5 +1,5 @@
 import * as posts from '@/features/posts';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@/lib/testing-library';
 import { readFileSync } from 'node:fs';
 import type { ReactElement } from 'react';
 import { describe, expect, it, vi } from 'vitest';

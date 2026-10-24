@@ -1,5 +1,4 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen, userEvent } from '@/lib/testing-library';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { PrintButton } from './print-button';
 
