@@ -14,9 +14,9 @@ The idea of v3 fits in one line: each step that used to be a prompt is now a ski
 
 ## Why I moved off TracerKit (v2)
 
-TracerKit worked, but it was a separate tool with its own release cycle. Every tweak to a step meant a change there, a release, and an update in each project.
+TracerKit worked, but it was a separate tool with its own release cycle. Every tweak to a step meant a change there, a release, and an update in each project. I wanted a simpler way to ship updates and add new skills.
 
-I was already keeping my other skills in agent-skills. Moving the spec flow next to them put everything in one place. Now a change to any step is one Markdown edit and one commit.
+I was already keeping my other skills in agent-skills. Moving the spec flow next to them put everything in one place. Now changing a step or adding a skill is one commit.
 
 The ideas from TracerKit survived: interviews before specs, tracer-bullet tickets, verification before a task counts as done. They live in the same repo as the rest of my skills.
 
