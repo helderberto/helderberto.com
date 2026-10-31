@@ -4,31 +4,50 @@ date: '2026-10-31'
 excerpt: "Agents write the code but can't see it run. Browser MCP servers give you and the agent the same view of the page: debug it, improve Core Web Vitals, and migrate legacy code without regressions."
 ---
 
-Coding agents write frontend code fast, but they can't see it run. When the page breaks, you open DevTools, copy the error, and paste it back into the chat.
+Coding agents write frontend code fast, but they can't see it run. Take a signup form that fails on submit.
 
-You become the agent's eyes. Browser access through MCP changes that: the agent reads the browser too, so you both look at the same evidence.
+<!-- TODO: swap the signup example for a real bug from your own work. -->
 
-This doesn't replace the engineer. It gives you more ways to debug, and you still decide what's a bug and what the right fix is.
+## The Old Way
+
+1. The agent changes the form.
+2. You open the page, click submit, and nothing happens.
+3. You open DevTools, find a 422 in the Network tab, and copy the response.
+4. You paste it into the chat. The agent guesses a fix.
+5. You reload. Now the console shows a `TypeError`. You copy and paste again.
+
+You're the agent's eyes, and most of your time goes to copying, not thinking.
+
+## The New Way
+
+1. You ask: "Submit the signup form on localhost:3000 and tell me why it fails."
+2. The agent clicks submit, reads the 422 response and the console, and matches them to the code.
+3. It explains the cause and proposes a fix.
+4. You check that explanation against what you see in the browser, then approve or push back.
 
 ```mermaid
-flowchart LR
-  accTitle: Before and after browser access
-  accDescr: Before, the agent writes code, the browser shows an error, and you paste that error back to the agent. After, the agent writes code and reads the browser directly through MCP, with no one in between.
-  subgraph Before
+flowchart TB
+  accTitle: The old way and the new way
+  accDescr: In the old way, the agent writes code, the browser shows an error, and you copy that error back to the agent. In the new way, the agent reads the browser through MCP and reports its findings to you, and you validate them before it continues.
+  subgraph Old
     direction TB
     a1[Agent] -- writes code --> b1[Browser]
     b1 -- error --> y1[You]
     y1 -- paste --> a1
   end
-  subgraph After
+  subgraph New
     direction TB
     a2[Agent] -- writes code --> b2[Browser]
     b2 -- MCP --> a2
+    a2 -- findings --> y2[You]
+    y2 -- validate --> a2
   end
-  Before ~~~ After
+  Old ~~~ New
 ```
 
-<!-- TODO: one short real example of the old copy-paste loop, from your own work. -->
+The copy-paste is gone. You're still there, in a different role.
+
+This is human in the loop (HITL): the agent gathers evidence, and you validate it. Don't trust it 100%. It can misread a trace, or silence an error instead of fixing it. The HITL notes in this post mark where to look yourself.
 
 ## What Chrome DevTools MCP Gives the Agent
 
@@ -80,15 +99,21 @@ flowchart TD
   fixed -- yes --> ship[Ship]
 ```
 
+> **HITL:** Keep the browser window visible while the agent works. When it says the bug is fixed, reproduce it yourself before you believe it.
+
 The next two sections show the loop with each signal.
 
 ### Console Errors
 
 <!-- TODO: a real story. The error, the prompt you used, what the agent found, and where you had to step in. -->
 
+> **HITL:** An error that disappears isn't always fixed. Check the diff: the agent may have wrapped it in a `try/catch` or removed the code that logged it.
+
 ### Network Requests
 
 <!-- TODO: a real story. A failed request, CORS error, or wrong payload the agent matched against the code. -->
+
+> **HITL:** Check the request against the API contract, not the agent's reading of it. Changing the frontend to accept a broken response hides a backend bug.
 
 ## Improving Core Web Vitals
 
@@ -96,7 +121,7 @@ Performance work is where browser access helps most. Without it, the agent guess
 
 That turns "this might be faster" into numbers. The agent proposes a change, reruns the trace, and keeps it only if LCP or CLS improves.
 
-You still choose the trade-offs. Preloading an image or inlining CSS can win a metric and cost something else, and that call is yours.
+> **HITL:** Read the trace yourself before accepting a change. One run is noise, so ask for several. And the trade-offs are yours: preloading an image or inlining CSS can win a metric and cost something else.
 
 <!-- TODO: a real story. The trace, what the agent found, the fix, and before/after numbers. -->
 
@@ -120,11 +145,15 @@ Write down what must stay the same. This is the contract, and every test after i
 
 The idea is the same as in [MigFlow](/posts/migflow-contracts-for-ai-migrations): agents need a contract, not a tutorial.
 
+> **HITL:** You write or approve the contract. The agent can draft it from the legacy page, but it can't know which behavior your users depend on.
+
 ### Cover the Legacy Page with Tests
 
 Many legacy projects have no end-to-end tests. With [Playwright MCP](https://github.com/microsoft/playwright-mcp), the agent walks through the legacy page in a real browser and writes a Playwright test for each line of the contract.
 
-Run them against the legacy page first. They must pass there, so they describe what the page does today, quirks included. Review them: some quirks are bugs you'll want to fix, not keep.
+Run them against the legacy page first. They must pass there, so they describe what the page does today, quirks included.
+
+> **HITL:** Read every test. A test that passes no matter what protects nothing. Some quirks it captures are bugs you'll want to fix, not keep.
 
 Playwright's `toHaveScreenshot()` saves screenshots of the legacy page as the baseline. Visual changes then show up as a pixel diff, not a judgment call.
 
@@ -145,6 +174,8 @@ flowchart TD
   debug --> migrate
   pass -- yes --> review[You review and ship]
 ```
+
+> **HITL:** When a test fails, you decide whether the page or the test is wrong. Don't let the agent update a screenshot baseline or loosen an assertion to go green without your OK.
 
 The tests stay in CI after the migration, so the next change is covered too.
 
@@ -167,12 +198,13 @@ flowchart TD
 
 These tools collect evidence. They don't decide what it means.
 
-Watch the browser while the agent works. Read the trace yourself when a number looks off. Question a fix that makes the error disappear without explaining it.
+Every HITL note above comes down to the same habit: keep your eyes on the browser, and treat the agent's conclusions as claims to check, not facts.
 
 The agent gets eyes on the browser. You keep the judgment.
 
 ## Limits
 
+- The agent can be confidently wrong. It will explain a wrong cause as clearly as a right one.
 - It's slower than reading the code when the bug is obvious.
 - Traces and logs fill the context window, so ask for the specific signal you need.
 - The agent can read cookies and local storage. Use a separate Chrome profile, not the one with your accounts.
