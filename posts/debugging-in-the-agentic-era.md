@@ -79,7 +79,7 @@ Two MCP servers give an agent a browser. [MCP](https://modelcontextprotocol.io) 
 
 ### Playwright MCP
 
-[Playwright MCP](https://github.com/microsoft/playwright-mcp) is Microsoft's. It drives Chromium, Firefox, and WebKit, can make a single request fail, and helps the agent write end-to-end tests you can rerun.
+[Playwright MCP](https://github.com/microsoft/playwright-mcp) is Microsoft's MCP server for browser automation. It drives Chromium, Firefox, and WebKit, can make a single request fail, and helps the agent write end-to-end tests you can rerun.
 
 ### Installing Them
 
@@ -128,7 +128,7 @@ flowchart TD
 
 ## The Debug Loop
 
-Start with the success path. With browser access, every fix follows the same loop. The agent changes the code, reloads the page, and reads the signals. You review what it found and steer it when it chases the wrong cause.
+Start with the success path: the flow working end to end. With browser access, getting there follows the same loop every time. The agent changes the code, reloads the page, and reads the signals. You review what it found and steer it when it chases the wrong cause.
 
 ```mermaid
 flowchart TD
@@ -170,7 +170,7 @@ Each server does this differently:
 - **Playwright MCP** fails one request: `browser_route` makes an endpoint return a 500, a 404, or a malformed body.
 - **Chrome DevTools MCP** degrades the whole page: `emulate` sets Slow 3G, offline mode, or CPU throttling. It can't mock a single request.
 
-A prompt that combines both: "Make `POST /api/signup` return a 500, submit the form, and screenshot what the user sees. Then try it on Slow 3G."
+My prompt, combining both: "Make `POST /api/signup` return a 500, submit the form, and screenshot what the user sees. Then try it on Slow 3G."
 
 ### Slow
 
@@ -213,9 +213,9 @@ Slow requests are one side of speed. The other is how fast the page loads and se
 
 Without it, the agent guesses from the code. With it, the agent records a trace, sees which element is the LCP and what shifts the layout, and measures again after each change.
 
-That turns "this might be faster" into numbers. The agent proposes a change, reruns the trace, and keeps it only if LCP or CLS improves.
-
 My prompt: "Record a performance trace of the home page with the CPU throttled 4x. Tell me the LCP element and what shifts the layout, then suggest one change at a time."
+
+That turns "this might be faster" into numbers. The agent proposes a change, reruns the trace, and keeps it only if LCP or CLS improves.
 
 > **HITL:** Read the trace yourself before accepting a change. One run is noise, so ask for several. And the trade-offs are yours: preloading an image or inlining CSS can win a metric and cost something else.
 
@@ -225,7 +225,7 @@ An accessible page works for every customer: people on a keyboard, on a screen r
 
 Chrome DevTools MCP runs a Lighthouse audit and reads the accessibility tree, the names and roles a screen reader announces. It also turns on the settings some customers rely on: forced colors, higher contrast, and reduced motion.
 
-A prompt to start: "Run a Lighthouse accessibility audit on /signup, then tab through the form and tell me where the focus goes."
+My prompt: "Run a Lighthouse accessibility audit on /signup, then tab through the form and tell me where the focus goes."
 
 Lock the fixes in with [axe](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/playwright) in your Playwright tests:
 
