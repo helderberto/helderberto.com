@@ -1,7 +1,7 @@
 ---
 title: 'Debugging in the Agentic Era'
 date: '2026-10-31'
-excerpt: "Agents write the code but can't see it run. Browser access through MCP lets them read the console, network, and Core Web Vitals themselves."
+excerpt: "Agents write the code but can't see it run. Browser MCP servers let them debug the page, compare a migration against the legacy version, and lock the result in with end-to-end tests."
 ---
 
 Coding agents write frontend code fast, but they can't see it run. When the page breaks, you open DevTools, copy the error, and paste it back into the chat.
@@ -91,17 +91,64 @@ The next three sections show the loop with each signal.
 
 <!-- TODO: a real story. The trace, the LCP or CLS problem, the fix, and before/after numbers. -->
 
+## Validating a Migration
+
+The same tools catch the worst migration bug: a new page that looks almost like the old one. The agent can open both versions and compare them, instead of you clicking through each page by hand.
+
+### Start with a Contract
+
+Before the agent touches the code, write down what must stay the same. This is the contract, and every check after it tests against it.
+
+```markdown
+## Contract: /checkout
+
+- Same visible text and layout at 390px and 1280px
+- Same API requests, in the same order, with the same payloads
+- No new console errors or warnings
+- LCP and CLS no worse than the legacy page
+- Every action reachable with the keyboard
+```
+
+The idea is the same as in [MigFlow](/posts/migflow-contracts-for-ai-migrations): agents need a contract, not a tutorial.
+
+### Compare Legacy and New
+
+With Chrome DevTools MCP, the agent opens the legacy and new pages at the same viewport. It compares screenshots, console messages, network requests, and Core Web Vitals, then fixes the new page until the contract holds.
+
+```mermaid
+flowchart TD
+  accTitle: Validating a migration
+  accDescr: Write the contract first. The agent compares the legacy and new pages with Chrome DevTools MCP. If the contract doesn't hold, it fixes the new page and compares again. When it holds, Playwright end-to-end tests lock the contract in.
+  contract[Write the contract] --> compare[Compare legacy and new]
+  compare --> holds{Contract holds?}
+  holds -- no --> fix[Fix the new page]
+  fix --> compare
+  holds -- yes --> tests[Lock in with e2e tests]
+```
+
+<!-- TODO: a real migration from your work. What differed between the pages, and did the agent catch it? -->
+
+### Lock It In with End-to-End Tests
+
+A comparison proves the migration once. Tests keep it true after the agent is gone.
+
+With [Playwright MCP](https://github.com/microsoft/playwright-mcp), the agent walks through the page in a real browser and writes Playwright tests from the contract. Each line in the contract becomes at least one test that runs in CI.
+
+Screenshots compared by the agent are a judgment call. Playwright's `toHaveScreenshot()` makes them a pixel diff, so visual regressions fail the build.
+
+<!-- TODO: a short example test from one contract line, e.g. the API requests or the screenshot check. -->
+
 ## Chrome DevTools MCP or Playwright MCP?
 
-Both give agents a browser, but for different jobs. Chrome DevTools MCP is for debugging one page in depth. [Playwright MCP](https://github.com/microsoft/playwright-mcp) is for checking other browsers and writing tests you can rerun.
+Use both, for different jobs. Chrome DevTools MCP is for looking inside one page: debugging, comparing, and measuring. Playwright MCP is for tests you can rerun, including in Firefox and Safari.
 
 ```mermaid
 flowchart TD
   accTitle: Choosing a browser MCP server
-  accDescr: If you need console, network, or performance data from Chrome, use Chrome DevTools MCP. If you need Firefox or Safari, or tests you can rerun, use Playwright MCP.
+  accDescr: To debug, compare pages, or measure performance in Chrome, use Chrome DevTools MCP. To write end-to-end tests or check Firefox and Safari, use Playwright MCP.
   need{What do you need?}
-  need -- console, network, performance --> devtools[Chrome DevTools MCP]
-  need -- other browsers, rerunnable tests --> playwright[Playwright MCP]
+  need -- "debug, compare,<br>measure" --> devtools[Chrome DevTools MCP]
+  need -- "e2e tests,<br>other browsers" --> playwright[Playwright MCP]
 ```
 
 ## Limits
@@ -117,5 +164,7 @@ flowchart TD
 The agent no longer needs you to read the browser for it. Your job is to judge what it finds.
 
 Start with one prompt in any agent: "Open localhost:3000, list the console errors, and fix them."
+
+Migrating a page? Write the contract first, then ask: "Compare the legacy and new pages against this contract, and write Playwright tests for each line."
 
 <!-- TODO: tie back to /posts/ai-writes-code-you-own-quality in one sentence. -->
