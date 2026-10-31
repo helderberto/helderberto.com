@@ -4,31 +4,43 @@ date: '2026-10-31'
 excerpt: "Agents write the code but can't see it run. Browser access through MCP lets them read the console, network, and Core Web Vitals themselves."
 ---
 
-<!-- TODO: hook. Describe your old loop in 2-3 short paragraphs: the agent writes code, you open DevTools, copy the error, paste it back. You were the eyes. -->
+Coding agents write frontend code fast, but they can't see it run. When the page breaks, you open DevTools, copy the error, and paste it back into the chat.
 
-Coding agents write frontend code fast. But they can't see it run. When something breaks, you open DevTools, copy the error, and paste it back into the chat.
+You become the agent's eyes. Browser access through MCP removes that step: the agent reads the browser itself, and you review the result.
 
-You become the translator between the browser and the agent.
+```mermaid
+flowchart LR
+  accTitle: Before and after browser access
+  accDescr: Before, the agent writes code, the browser shows an error, and you paste that error back to the agent. After, the agent writes code and reads the browser directly through MCP, with no one in between.
+  subgraph Before
+    direction TB
+    a1[Agent] -- writes code --> b1[Browser]
+    b1 -- error --> y1[You]
+    y1 -- paste --> a1
+  end
+  subgraph After
+    direction TB
+    a2[Agent] -- writes code --> b2[Browser]
+    b2 -- MCP --> a2
+  end
+  Before ~~~ After
+```
 
-## The Shift
+<!-- TODO: one short real example of the old copy-paste loop, from your own work. -->
 
-<!-- TODO: debugging used to mean you reading the signals. Now the agent reads them, and you judge the result. -->
+## What Chrome DevTools MCP Gives the Agent
 
-Debugging used to mean reading the signals yourself: console errors, failed requests, slow paints. In agentic development, the agent can read those signals directly. Your job moves from collecting evidence to judging it.
+[Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) is Google's MCP server for Chrome. It lets an agent open pages, click, and read the same data you see in DevTools:
 
-<!-- TODO: mermaid diagram of the loop, before (agent → you → DevTools → you → agent) and after (agent ↔ Chrome). Needs accTitle/accDescr, then `npm run diagrams`. -->
+- **Console**: errors, warnings, and logs
+- **Network**: requests, status codes, and payloads
+- **Performance**: traces with Core Web Vitals like LCP and CLS
 
-## Chrome DevTools MCP
-
-<!-- TODO: one paragraph on what it is and a link to MCP. Verify tool names against the current README. -->
-
-[Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) is an MCP server that lets an agent drive a real Chrome through the DevTools protocol. It sees the same data you see in DevTools.
-
-Because [MCP](https://modelcontextprotocol.io) is an open standard, it isn't tied to one tool. The same server works in Claude Code, Cursor, VS Code with Copilot, Codex, and Gemini CLI.
+[MCP](https://modelcontextprotocol.io) is an open standard, so this isn't a Claude Code feature. The same server works in Cursor, VS Code with Copilot, Codex, and Gemini CLI.
 
 ## Installing It
 
-Most clients take the same config:
+Most agents read the same config:
 
 ```json
 {
@@ -47,32 +59,63 @@ In Claude Code, one command adds it:
 claude mcp add chrome-devtools -- npx chrome-devtools-mcp@latest
 ```
 
-<!-- TODO: where the config goes in Cursor and VS Code (link to their docs), how to confirm with /mcp, and a first prompt to check it works. -->
+Run `/mcp` to confirm it's connected. Then ask the agent to open your local app and list the console messages.
 
-## Reading the Console
+<!-- TODO: verify the commands against the README. Add where the config file lives in Cursor and VS Code, and the option to attach to a Chrome you already have open. -->
 
-<!-- TODO: a real story. The error, the prompt you used, what the agent found and fixed without you pasting anything. -->
+## The Debug Loop
 
-## Inspecting the Network
+With browser access, every fix follows the same loop. The agent changes the code, reloads the page, and reads the signals. It repeats until they're clean, then hands the fix to you.
+
+```mermaid
+flowchart TD
+  accTitle: The agent's debug loop
+  accDescr: The agent edits the code, reloads the page, and reads the console, network, and performance trace. If problems remain, it edits again. When the signals are clean, you review the fix.
+  edit[Agent edits code] --> reload[Reload page] --> read[Read console, network, trace]
+  read --> clean{Signals clean?}
+  clean -- no --> edit
+  clean -- yes --> review[You review the fix]
+```
+
+The next three sections show the loop with each signal.
+
+### Console Errors
+
+<!-- TODO: a real story. The error, the prompt you used, and what the agent found and fixed without you pasting anything. -->
+
+### Network Requests
 
 <!-- TODO: a real story. A failed request, CORS error, or wrong payload the agent matched against the code. -->
 
-## Measuring Core Web Vitals
+### Core Web Vitals
 
-<!-- TODO: a real story. A performance trace showing LCP or CLS, the fix, and before/after numbers. -->
+<!-- TODO: a real story. The trace, the LCP or CLS problem, the fix, and before/after numbers. -->
 
-## Debugging Becomes Evidence
+## Chrome DevTools MCP or Playwright MCP?
 
-<!-- TODO: the agent collects traces, screenshots, and numbers, then checks its own fix. Link to /posts/ai-writes-code-you-own-quality. -->
+Both give agents a browser, but for different jobs. Chrome DevTools MCP is for debugging one page in depth. [Playwright MCP](https://github.com/microsoft/playwright-mcp) is for checking other browsers and writing tests you can rerun.
+
+```mermaid
+flowchart TD
+  accTitle: Choosing a browser MCP server
+  accDescr: If you need console, network, or performance data from Chrome, use Chrome DevTools MCP. If you need Firefox or Safari, or tests you can rerun, use Playwright MCP.
+  need{What do you need?}
+  need -- console, network, performance --> devtools[Chrome DevTools MCP]
+  need -- other browsers, rerunnable tests --> playwright[Playwright MCP]
+```
 
 ## Limits
 
-<!-- TODO: what you've hit in practice. -->
-
 - It's slower than reading the code when the bug is obvious.
-- Traces and logs fill the context window.
-- Use a separate Chrome profile so the agent doesn't touch your signed-in sessions.
+- Traces and logs fill the context window, so ask for the specific signal you need.
+- The agent can read cookies and local storage. Use a separate Chrome profile, not the one with your accounts.
+
+<!-- TODO: anything else you've hit in practice. -->
 
 ## Try It
 
-<!-- TODO: restate the takeaway in one or two sentences, plus one prompt readers can paste into any agent. -->
+The agent no longer needs you to read the browser for it. Your job is to judge what it finds.
+
+Start with one prompt in any agent: "Open localhost:3000, list the console errors, and fix them."
+
+<!-- TODO: tie back to /posts/ai-writes-code-you-own-quality in one sentence. -->
