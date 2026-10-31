@@ -61,13 +61,13 @@ Browser access lets the agent put a page through every scenario your customers h
 | [Slow](#testing-slow-and-failing-requests)  | A loading state, no double submits         |
 | [Error](#testing-slow-and-failing-requests) | A clear message, their input kept, a retry |
 | [Performance](#improving-core-web-vitals)   | Fast loading, no layout shifts             |
-| [Accessible](#checking-accessibility)       | Works with a keyboard and a screen reader  |
+| [Accessibility](#checking-accessibility)    | Works with a keyboard and a screen reader  |
 
 The rest of this post shows how to set it up, then walks through each one.
 
 ## The Tools
 
-Two MCP servers give an agent a browser. [MCP](https://modelcontextprotocol.io) is an open standard, so neither is a Claude Code feature. Both work in Cursor, VS Code with Copilot, Codex, and Gemini CLI.
+Two MCP servers give an agent a browser. [MCP](https://modelcontextprotocol.io) is an open standard, so neither is tied to Claude Code. Both work in Cursor, VS Code with Copilot, Codex, and Gemini CLI.
 
 ### Chrome DevTools MCP
 
@@ -128,7 +128,7 @@ flowchart TD
 
 ## The Debug Loop
 
-With browser access, every fix follows the same loop. The agent changes the code, reloads the page, and reads the signals. You review what it found and steer it when it chases the wrong cause.
+Start with the success path. With browser access, every fix follows the same loop. The agent changes the code, reloads the page, and reads the signals. You review what it found and steer it when it chases the wrong cause.
 
 ```mermaid
 flowchart TD
@@ -155,7 +155,7 @@ The two signals you'll read most are console errors and network requests.
 
 <!-- TODO: a real story. A failed request, CORS error, or wrong payload the agent matched against the code. -->
 
-> **HITL:** Check the request against the API contract, not the agent's reading of it. Changing the frontend to accept a broken response hides a backend bug.
+> **HITL:** Check the request against the API spec, not the agent's reading of it. Changing the frontend to accept a broken response hides a backend bug.
 
 ## Testing Slow and Failing Requests
 
@@ -219,7 +219,7 @@ That turns "this might be faster" into numbers. The agent proposes a change, rer
 
 ## Checking Accessibility
 
-An accessible page works for every customer: people on a keyboard, on a screen reader, or who need more contrast or less motion. The agent can check much of this in the browser.
+An accessible page works for every customer: people on a keyboard, on a screen reader, or who need more contrast or less motion. The agent can check part of this in the browser.
 
 Chrome DevTools MCP runs a Lighthouse audit and reads the accessibility tree, the names and roles a screen reader announces. It also turns on the settings some customers rely on: forced colors, higher contrast, and reduced motion.
 
@@ -269,15 +269,17 @@ Many legacy projects have no end-to-end tests. With Playwright MCP, the agent wa
 
 Run them against the legacy page first. They must pass there, so they describe what the page does today, quirks included.
 
-> **HITL:** Read every test. A test that passes no matter what protects nothing. Some quirks it captures are bugs you'll want to fix, not keep.
-
 Playwright's `toHaveScreenshot()` saves screenshots of the legacy page as the baseline. Visual changes then show up as a pixel diff, not a judgment call.
+
+> **HITL:** Read every test. A test that passes no matter what protects nothing. Some quirks it captures are bugs you'll want to fix, not keep.
 
 <!-- TODO: a short example test from one contract line, e.g. the API requests or the screenshot check. -->
 
 ### Migrate and Rerun the Same Tests
 
 Now migrate, and run the same tests against the new page. A failing test is a regression. When one fails, the agent uses Chrome DevTools MCP to compare both pages and find out why.
+
+The tests stay in CI after the migration, so the next change is covered too.
 
 ```mermaid
 flowchart TD
@@ -292,8 +294,6 @@ flowchart TD
 ```
 
 > **HITL:** When a test fails, you decide whether the page or the test is wrong. Don't let the agent update a screenshot baseline or loosen an assertion to go green without your OK.
-
-The tests stay in CI after the migration, so the next change is covered too.
 
 <!-- TODO: a real migration from your work. What did the tests catch? -->
 
