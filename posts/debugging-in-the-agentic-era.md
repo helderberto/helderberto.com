@@ -1,7 +1,7 @@
 ---
 title: 'Debugging in the Agentic Era'
 date: '2026-10-31'
-excerpt: 'Agents write the code but can't see it run. Browser access through MCP lets them read the console, network, and Core Web Vitals themselves.'
+excerpt: "Agents write the code but can't see it run. Browser access through MCP lets them read the console, network, and Core Web Vitals themselves."
 ---
 
 <!-- TODO: hook. Describe your old loop in 2-3 short paragraphs: the agent writes code, you open DevTools, copy the error, paste it back. You were the eyes. -->
