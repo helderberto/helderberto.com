@@ -1,7 +1,7 @@
 ---
 title: 'Debugging in the Agentic Era'
 date: '2026-10-31'
-excerpt: "Agents write the code but can't see it run. Chrome DevTools MCP and Playwright MCP let them test every scenario in a real browser: success, slow, error, and performance. You keep the judgment."
+excerpt: "Agents write the code but can't see it run. Chrome DevTools MCP and Playwright MCP let them test every scenario in a real browser: success, slow, error, performance, and accessibility. You keep the judgment."
 ---
 
 Coding agents write frontend code fast, but they can't see it run. Take a signup form that fails on submit.
@@ -61,6 +61,7 @@ Browser access lets the agent put a page through every scenario your customers h
 | [Slow](#testing-slow-and-failing-requests)  | A loading state, no double submits         |
 | [Error](#testing-slow-and-failing-requests) | A clear message, their input kept, a retry |
 | [Performance](#improving-core-web-vitals)   | Fast loading, no layout shifts             |
+| [Accessible](#checking-accessibility)       | Works with a keyboard and a screen reader  |
 
 The rest of this post shows how to set it up, then walks through each one.
 
@@ -75,7 +76,8 @@ Two MCP servers give an agent a browser. [MCP](https://modelcontextprotocol.io) 
 - **Console**: errors, warnings, and logs
 - **Network**: requests, status codes, and payloads
 - **Performance**: traces with Core Web Vitals like LCP and CLS
-- **Emulation**: slow networks, offline mode, CPU throttling, dark mode, and reduced motion
+- **Accessibility**: Lighthouse audits and the accessibility tree
+- **Emulation**: slow networks, offline mode, CPU throttling, dark mode, reduced motion, and forced colors
 
 ### Playwright MCP
 
@@ -215,9 +217,33 @@ That turns "this might be faster" into numbers. The agent proposes a change, rer
 
 <!-- TODO: a real story. The trace, what the agent found, the fix, and before/after numbers. -->
 
+## Checking Accessibility
+
+An accessible page works for every customer: people on a keyboard, on a screen reader, or who need more contrast or less motion. The agent can check much of this in the browser.
+
+Chrome DevTools MCP runs a Lighthouse audit and reads the accessibility tree, the names and roles a screen reader announces. It also turns on the settings some customers rely on: forced colors, higher contrast, and reduced motion.
+
+A prompt to start: "Run a Lighthouse accessibility audit on /signup, then tab through the form and tell me where the focus goes."
+
+Lock the fixes in with [axe](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/playwright) in your Playwright tests:
+
+```ts
+import AxeBuilder from '@axe-core/playwright';
+
+test('signup has no detectable accessibility violations', async ({ page }) => {
+  await page.goto('/signup');
+  const results = await new AxeBuilder({ page }).analyze();
+  expect(results.violations).toEqual([]);
+});
+```
+
+> **HITL:** Automated checks catch only some accessibility issues. A clean audit doesn't mean the page works with a screen reader. Tab through it yourself, and try VoiceOver or NVDA on the flows that matter.
+
+<!-- TODO: a real accessibility issue the agent found or missed. -->
+
 ## Migrating Legacy Code Without Regressions
 
-A migration has to keep all four scenarios working. The worst migration bug is a new page that looks almost like the old one, so capture how the legacy page behaves before you change anything.
+A migration has to keep every scenario working. The worst migration bug is a new page that looks almost like the old one, so capture how the legacy page behaves before you change anything.
 
 ### Start with a Contract
 
@@ -290,7 +316,7 @@ Migrating a page? Write the contract, then ask: "Write Playwright tests for this
 
 ## A Tool in the Engineer's Hands
 
-Success, slow, error, performance: the agent can now put a page through every scenario and bring you the evidence. That's a powerful tool in the engineer's hands.
+Success, slow, error, performance, accessibility: the agent can now put a page through every scenario and bring you the evidence. That's a powerful tool in the engineer's hands.
 
 It doesn't decide what the evidence means. Every HITL note above comes down to the same habit: keep your eyes on the browser, and treat the agent's conclusions as claims to check, not facts.
 
