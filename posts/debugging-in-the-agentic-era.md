@@ -1,12 +1,14 @@
 ---
 title: 'Debugging in the Agentic Era'
 date: '2026-10-31'
-excerpt: "Agents write the code but can't see it run. Browser MCP servers let them debug the page, compare a migration against the legacy version, and lock the result in with end-to-end tests."
+excerpt: "Agents write the code but can't see it run. Browser MCP servers give you and the agent the same view of the page: debug it, improve Core Web Vitals, and migrate legacy code without regressions."
 ---
 
 Coding agents write frontend code fast, but they can't see it run. When the page breaks, you open DevTools, copy the error, and paste it back into the chat.
 
-You become the agent's eyes. Browser access through MCP removes that step: the agent reads the browser itself, and you review the result.
+You become the agent's eyes. Browser access through MCP changes that: the agent reads the browser too, so you both look at the same evidence.
+
+This doesn't replace the engineer. It gives you more ways to debug, and you still decide what's a bug and what the right fix is.
 
 ```mermaid
 flowchart LR
@@ -65,39 +67,46 @@ Run `/mcp` to confirm it's connected. Then ask the agent to open your local app 
 
 ## The Debug Loop
 
-With browser access, every fix follows the same loop. The agent changes the code, reloads the page, and reads the signals. It repeats until they're clean, then hands the fix to you.
+With browser access, every fix follows the same loop. The agent changes the code, reloads the page, and reads the signals. You review what it found and steer it when it chases the wrong cause.
 
 ```mermaid
 flowchart TD
-  accTitle: The agent's debug loop
-  accDescr: The agent edits the code, reloads the page, and reads the console, network, and performance trace. If problems remain, it edits again. When the signals are clean, you review the fix.
-  edit[Agent edits code] --> reload[Reload page] --> read[Read console, network, trace]
-  read --> clean{Signals clean?}
-  clean -- no --> edit
-  clean -- yes --> review[You review the fix]
+  accTitle: The debug loop
+  accDescr: The agent edits the code, reloads the page, and reads the console, network, and performance trace. You review what it found. If the issue isn't fixed, you steer the agent and it edits again. When it's fixed, you ship.
+  edit[Agent edits code] --> reload[Reload page] --> read[Agent reads signals]
+  read --> review[You review findings]
+  review --> fixed{Fixed?}
+  fixed -- no, you steer --> edit
+  fixed -- yes --> ship[Ship]
 ```
 
-The next three sections show the loop with each signal.
+The next two sections show the loop with each signal.
 
 ### Console Errors
 
-<!-- TODO: a real story. The error, the prompt you used, and what the agent found and fixed without you pasting anything. -->
+<!-- TODO: a real story. The error, the prompt you used, what the agent found, and where you had to step in. -->
 
 ### Network Requests
 
 <!-- TODO: a real story. A failed request, CORS error, or wrong payload the agent matched against the code. -->
 
-### Core Web Vitals
+## Improving Core Web Vitals
 
-<!-- TODO: a real story. The trace, the LCP or CLS problem, the fix, and before/after numbers. -->
+Performance work is where browser access helps most. Without it, the agent guesses from the code. With it, the agent records a trace, sees which element is the LCP and what shifts the layout, and measures again after each change.
 
-## Validating a Migration
+That turns "this might be faster" into numbers. The agent proposes a change, reruns the trace, and keeps it only if LCP or CLS improves.
 
-The same tools catch the worst migration bug: a new page that looks almost like the old one. The agent can open both versions and compare them, instead of you clicking through each page by hand.
+You still choose the trade-offs. Preloading an image or inlining CSS can win a metric and cost something else, and that call is yours.
+
+<!-- TODO: a real story. The trace, what the agent found, the fix, and before/after numbers. -->
+
+## Migrating Legacy Code Without Regressions
+
+The worst migration bug is a new page that looks almost like the old one. To catch it, capture how the legacy page behaves before you change anything.
 
 ### Start with a Contract
 
-Before the agent touches the code, write down what must stay the same. This is the contract, and every check after it tests against it.
+Write down what must stay the same. This is the contract, and every test after it checks against it.
 
 ```markdown
 ## Contract: /checkout
@@ -111,32 +120,35 @@ Before the agent touches the code, write down what must stay the same. This is t
 
 The idea is the same as in [MigFlow](/posts/migflow-contracts-for-ai-migrations): agents need a contract, not a tutorial.
 
-### Compare Legacy and New
+### Cover the Legacy Page with Tests
 
-With Chrome DevTools MCP, the agent opens the legacy and new pages at the same viewport. It compares screenshots, console messages, network requests, and Core Web Vitals, then fixes the new page until the contract holds.
+Many legacy projects have no end-to-end tests. With [Playwright MCP](https://github.com/microsoft/playwright-mcp), the agent walks through the legacy page in a real browser and writes a Playwright test for each line of the contract.
+
+Run them against the legacy page first. They must pass there, so they describe what the page does today, quirks included. Review them: some quirks are bugs you'll want to fix, not keep.
+
+Playwright's `toHaveScreenshot()` saves screenshots of the legacy page as the baseline. Visual changes then show up as a pixel diff, not a judgment call.
+
+<!-- TODO: a short example test from one contract line, e.g. the API requests or the screenshot check. -->
+
+### Migrate and Rerun the Same Tests
+
+Now migrate, and run the same tests against the new page. A failing test is a regression. When one fails, the agent uses Chrome DevTools MCP to compare both pages and find out why.
 
 ```mermaid
 flowchart TD
-  accTitle: Validating a migration
-  accDescr: Write the contract first. The agent compares the legacy and new pages with Chrome DevTools MCP. If the contract doesn't hold, it fixes the new page and compares again. When it holds, Playwright end-to-end tests lock the contract in.
-  contract[Write the contract] --> compare[Compare legacy and new]
-  compare --> holds{Contract holds?}
-  holds -- no --> fix[Fix the new page]
-  fix --> compare
-  holds -- yes --> tests[Lock in with e2e tests]
+  accTitle: Migrating without regressions
+  accDescr: Write the contract, then cover the legacy page with Playwright tests. Migrate the code and run the same tests. If they fail, debug with Chrome DevTools MCP and migrate again. When they pass, you review and ship.
+  contract[Write the contract] --> cover[Test the legacy page]
+  cover --> migrate[Migrate the code]
+  migrate --> pass{Same tests pass?}
+  pass -- no --> debug[Debug with DevTools MCP]
+  debug --> migrate
+  pass -- yes --> review[You review and ship]
 ```
 
-<!-- TODO: a real migration from your work. What differed between the pages, and did the agent catch it? -->
+The tests stay in CI after the migration, so the next change is covered too.
 
-### Lock It In with End-to-End Tests
-
-A comparison proves the migration once. Tests keep it true after the agent is gone.
-
-With [Playwright MCP](https://github.com/microsoft/playwright-mcp), the agent walks through the page in a real browser and writes Playwright tests from the contract. Each line in the contract becomes at least one test that runs in CI.
-
-Screenshots compared by the agent are a judgment call. Playwright's `toHaveScreenshot()` makes them a pixel diff, so visual regressions fail the build.
-
-<!-- TODO: a short example test from one contract line, e.g. the API requests or the screenshot check. -->
+<!-- TODO: a real migration from your work. What did the tests catch? -->
 
 ## Chrome DevTools MCP or Playwright MCP?
 
@@ -151,6 +163,14 @@ flowchart TD
   need -- "e2e tests,<br>other browsers" --> playwright[Playwright MCP]
 ```
 
+## You're Still the Engineer
+
+These tools collect evidence. They don't decide what it means.
+
+Watch the browser while the agent works. Read the trace yourself when a number looks off. Question a fix that makes the error disappear without explaining it.
+
+The agent gets eyes on the browser. You keep the judgment.
+
 ## Limits
 
 - It's slower than reading the code when the bug is obvious.
@@ -161,10 +181,8 @@ flowchart TD
 
 ## Try It
 
-The agent no longer needs you to read the browser for it. Your job is to judge what it finds.
+Start with one prompt in any agent: "Open localhost:3000, list the console errors, and explain the cause before fixing anything."
 
-Start with one prompt in any agent: "Open localhost:3000, list the console errors, and fix them."
-
-Migrating a page? Write the contract first, then ask: "Compare the legacy and new pages against this contract, and write Playwright tests for each line."
+Migrating a page? Write the contract, then ask: "Write Playwright tests for this contract and run them against the legacy page." Run the same tests after the migration.
 
 <!-- TODO: tie back to /posts/ai-writes-code-you-own-quality in one sentence. -->
