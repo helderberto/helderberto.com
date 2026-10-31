@@ -56,6 +56,7 @@ This is human in the loop (HITL): the agent gathers evidence, and you validate i
 - **Console**: errors, warnings, and logs
 - **Network**: requests, status codes, and payloads
 - **Performance**: traces with Core Web Vitals like LCP and CLS
+- **Emulation**: slow networks, offline mode, CPU throttling, dark mode, and reduced motion
 
 [MCP](https://modelcontextprotocol.io) is an open standard, so this isn't a Claude Code feature. The same server works in Cursor, VS Code with Copilot, Codex, and Gemini CLI.
 
@@ -125,6 +126,43 @@ That turns "this might be faster" into numbers. The agent proposes a change, rer
 
 <!-- TODO: a real story. The trace, what the agent found, the fix, and before/after numbers. -->
 
+## Testing How Errors Feel to Customers
+
+Customers rarely see a crash. They see a failure handled badly: a spinner that never stops, a blank page, a form that loses what they typed. The agent can break things on purpose and show you what they see.
+
+Each server breaks things differently:
+
+- **Playwright MCP** mocks one request. Its `browser_route` tool makes an endpoint return a 500, a 404, or a malformed body. Start it with `npx @playwright/mcp@latest --caps=network` to enable it.
+- **Chrome DevTools MCP** degrades the whole page. Its `emulate` tool sets Slow 3G, offline mode, or CPU throttling. It can't block or mock a single request.
+
+A prompt that combines both: "Make `POST /api/signup` return a 500, submit the form, and screenshot what the user sees. Then try it on Slow 3G."
+
+For each error state, check what the customer gets:
+
+- A message in plain words that says what to do next, not a stack trace or raw JSON
+- Their input still in the form
+- A retry that works
+- A loading state that ends
+- Focus moved to the error, and the error announced to screen readers
+
+Once an error state looks right, lock it in with Playwright's `page.route()` so it stays that way:
+
+```ts
+test('signup keeps the input and offers a retry when the API fails', async ({ page }) => {
+  await page.route('**/api/signup', (route) => route.fulfill({ status: 500 }));
+  await page.goto('/signup');
+  await page.getByLabel('Email').fill('ada@example.com');
+  await page.getByRole('button', { name: 'Sign up' }).click();
+
+  await expect(page.getByRole('alert')).toContainText('Try again');
+  await expect(page.getByLabel('Email')).toHaveValue('ada@example.com');
+});
+```
+
+> **HITL:** The agent can confirm an error message appears. Only you can judge whether it helps. Read each error state as a customer would: is it clear, kind, and does it say what to do next?
+
+<!-- TODO: a real error state you improved this way, with before/after screenshots. -->
+
 ## Migrating Legacy Code Without Regressions
 
 The worst migration bug is a new page that looks almost like the old one. To catch it, capture how the legacy page behaves before you change anything.
@@ -183,15 +221,15 @@ The tests stay in CI after the migration, so the next change is covered too.
 
 ## Chrome DevTools MCP or Playwright MCP?
 
-Use both, for different jobs. Chrome DevTools MCP is for looking inside one page: debugging, comparing, and measuring. Playwright MCP is for tests you can rerun, including in Firefox and Safari.
+Use both, for different jobs. Chrome DevTools MCP is for looking inside one page: debugging, comparing, and measuring. Playwright MCP is for mocking failed requests and writing tests you can rerun, including in Firefox and Safari.
 
 ```mermaid
 flowchart TD
   accTitle: Choosing a browser MCP server
-  accDescr: To debug, compare pages, or measure performance in Chrome, use Chrome DevTools MCP. To write end-to-end tests or check Firefox and Safari, use Playwright MCP.
+  accDescr: To debug, compare pages, or measure performance in Chrome, use Chrome DevTools MCP. To write end-to-end tests, mock failed requests, or check Firefox and Safari, use Playwright MCP.
   need{What do you need?}
   need -- "debug, compare,<br>measure" --> devtools[Chrome DevTools MCP]
-  need -- "e2e tests,<br>other browsers" --> playwright[Playwright MCP]
+  need -- "e2e tests, mocks,<br>other browsers" --> playwright[Playwright MCP]
 ```
 
 ## You're Still the Engineer
