@@ -49,6 +49,19 @@ The copy-paste is gone. You're still there, in a different role.
 
 This is human in the loop (HITL): the agent gathers evidence, and you validate it. Don't trust it 100%. It can misread a trace, or silence an error instead of fixing it. The HITL notes in this post mark where to look yourself.
 
+## Cover Every Scenario
+
+Browser access lets the agent put a page through every scenario your customers hit, not only the one where everything works:
+
+| Scenario                                    | What the customer should get               |
+| ------------------------------------------- | ------------------------------------------ |
+| [Success](#the-debug-loop)                  | The flow works end to end                  |
+| [Slow](#testing-slow-and-failing-requests)  | A loading state, no double submits         |
+| [Error](#testing-slow-and-failing-requests) | A clear message, their input kept, a retry |
+| [Performance](#improving-core-web-vitals)   | Fast loading, no layout shifts             |
+
+The rest of this post shows how to set it up, then walks through each one.
+
 ## What Chrome DevTools MCP Gives the Agent
 
 [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) is Google's MCP server for Chrome. It lets an agent open pages, click, and read the same data you see in DevTools:
@@ -126,29 +139,40 @@ That turns "this might be faster" into numbers. The agent proposes a change, rer
 
 <!-- TODO: a real story. The trace, what the agent found, the fix, and before/after numbers. -->
 
-## Testing How Errors Feel to Customers
+## Testing Slow and Failing Requests
 
-Customers rarely see a crash. They see a failure handled badly: a spinner that never stops, a blank page, a form that loses what they typed. The agent can break things on purpose and show you what they see.
+Customers rarely see a crash. They see a failure handled badly: a spinner that never stops, a blank page, a form that loses what they typed. The agent can slow things down or break them on purpose and show you what customers see.
 
-Each server breaks things differently:
+Each server does this differently:
 
 - **Playwright MCP** mocks one request. Its `browser_route` tool makes an endpoint return a 500, a 404, or a malformed body. Start it with `npx @playwright/mcp@latest --caps=network` to enable it.
 - **Chrome DevTools MCP** degrades the whole page. Its `emulate` tool sets Slow 3G, offline mode, or CPU throttling. It can't block or mock a single request.
 
 A prompt that combines both: "Make `POST /api/signup` return a 500, submit the form, and screenshot what the user sees. Then try it on Slow 3G."
 
-For each error state, check what the customer gets:
+### Slow
+
+On Slow 3G or with the CPU throttled, check what the customer gets:
+
+- A loading state that shows up right away and ends, with an error if it takes too long
+- A submit button they can't press twice
+- Content that doesn't jump around when it arrives
+
+### Error
+
+With a request failing, check what the customer gets:
 
 - A message in plain words that says what to do next, not a stack trace or raw JSON
 - Their input still in the form
 - A retry that works
-- A loading state that ends
 - Focus moved to the error, and the error announced to screen readers
 
-Once an error state looks right, lock it in with Playwright's `page.route()` so it stays that way:
+Once a state looks right, lock it in with Playwright's `page.route()` so it stays that way:
 
 ```ts
-test('signup keeps the input and offers a retry when the API fails', async ({ page }) => {
+test('signup keeps the input and offers a retry when the API fails', async ({
+  page,
+}) => {
   await page.route('**/api/signup', (route) => route.fulfill({ status: 500 }));
   await page.goto('/signup');
   await page.getByLabel('Email').fill('ada@example.com');
@@ -232,11 +256,11 @@ flowchart TD
   need -- "e2e tests, mocks,<br>other browsers" --> playwright[Playwright MCP]
 ```
 
-## You're Still the Engineer
+## A Tool in the Engineer's Hands
 
-These tools collect evidence. They don't decide what it means.
+Success, slow, error, performance: the agent can now put a page through every scenario and bring you the evidence. That's a powerful tool in the engineer's hands.
 
-Every HITL note above comes down to the same habit: keep your eyes on the browser, and treat the agent's conclusions as claims to check, not facts.
+It doesn't decide what the evidence means. Every HITL note above comes down to the same habit: keep your eyes on the browser, and treat the agent's conclusions as claims to check, not facts.
 
 The agent gets eyes on the browser. You keep the judgment.
 
@@ -252,6 +276,8 @@ The agent gets eyes on the browser. You keep the judgment.
 ## Try It
 
 Start with one prompt in any agent: "Open localhost:3000, list the console errors, and explain the cause before fixing anything."
+
+Then try the other scenarios on one page: "Load the checkout page on Slow 3G, then with the payment request failing, and screenshot what the customer sees in each case."
 
 Migrating a page? Write the contract, then ask: "Write Playwright tests for this contract and run them against the legacy page." Run the same tests after the migration.
 
