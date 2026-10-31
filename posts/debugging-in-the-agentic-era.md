@@ -4,9 +4,7 @@ date: '2026-10-31'
 excerpt: "Agents write the code but can't see it run. Chrome DevTools MCP and Playwright MCP let them test every scenario in a real browser: success, slow, error, performance, and accessibility. You keep the judgment."
 ---
 
-Coding agents write frontend code fast, but they can't see it run. Take a signup form that fails on submit.
-
-<!-- TODO: swap the signup example for a real bug from your own work. -->
+Coding agents write frontend code fast, but they can't see it run. This is the flow I use to fix that, with a signup form that fails on submit as the example.
 
 ## The Old Way
 
@@ -92,7 +90,7 @@ Most agents read the same config:
   "mcpServers": {
     "chrome-devtools": {
       "command": "npx",
-      "args": ["chrome-devtools-mcp@latest"]
+      "args": ["-y", "chrome-devtools-mcp@latest"]
     },
     "playwright": {
       "command": "npx",
@@ -102,16 +100,18 @@ Most agents read the same config:
 }
 ```
 
-The `--caps=network` flag turns on Playwright MCP's request mocking. In Claude Code, two commands add both:
+The `--caps=network` flag turns on Playwright MCP's request mocking. In Cursor, add the config under Settings > MCP. In VS Code, both READMEs have one-click install buttons.
+
+In Claude Code, two commands add both:
 
 ```bash
-claude mcp add chrome-devtools -- npx chrome-devtools-mcp@latest
+claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest
 claude mcp add playwright -- npx @playwright/mcp@latest --caps=network
 ```
 
 Run `/mcp` to confirm they're connected. Then ask the agent to open your local app and list the console messages.
 
-<!-- TODO: verify the commands against both READMEs. Add where the config file lives in Cursor and VS Code, and the option to attach to a Chrome you already have open. -->
+By default, Chrome DevTools MCP starts its own Chrome. To use the one you already have open, add `--autoConnect`. It needs Chrome 144 or later, with remote debugging allowed at `chrome://inspect/#remote-debugging`.
 
 ### Which One When
 
@@ -147,13 +147,17 @@ The two signals you'll read most are console errors and network requests.
 
 ### Console Errors
 
-<!-- TODO: a real story. The error, the prompt you used, what the agent found, and where you had to step in. -->
+My prompt: "Open /signup, submit the form, and list the console errors. Explain the cause before changing anything."
+
+The agent reads the error and its stack trace, opens the file it points to, and tells you what it thinks went wrong. You read that explanation before any code changes.
 
 > **HITL:** An error that disappears isn't always fixed. Check the diff: the agent may have wrapped it in a `try/catch` or removed the code that logged it.
 
 ### Network Requests
 
-<!-- TODO: a real story. A failed request, CORS error, or wrong payload the agent matched against the code. -->
+My prompt: "Submit the form and show me the request and response for `/api/signup`. Compare the payload with what the backend expects."
+
+The agent lists the requests, opens the failing one, and compares its body with the code that builds it. A misnamed field or a missing header shows up right there.
 
 > **HITL:** Check the request against the API spec, not the agent's reading of it. Changing the frontend to accept a broken response hides a backend bug.
 
@@ -203,8 +207,6 @@ test('signup keeps the input and offers a retry when the API fails', async ({
 
 > **HITL:** The agent can confirm an error message appears. Only you can judge whether it helps. Read each error state as a customer would: is it clear, kind, and does it say what to do next?
 
-<!-- TODO: a real error state you improved this way, with before/after screenshots. -->
-
 ## Improving Core Web Vitals
 
 Slow requests are one side of speed. The other is how fast the page loads and settles, and that's where browser access helps most.
@@ -213,9 +215,9 @@ Without it, the agent guesses from the code. With it, the agent records a trace,
 
 That turns "this might be faster" into numbers. The agent proposes a change, reruns the trace, and keeps it only if LCP or CLS improves.
 
-> **HITL:** Read the trace yourself before accepting a change. One run is noise, so ask for several. And the trade-offs are yours: preloading an image or inlining CSS can win a metric and cost something else.
+My prompt: "Record a performance trace of the home page with the CPU throttled 4x. Tell me the LCP element and what shifts the layout, then suggest one change at a time."
 
-<!-- TODO: a real story. The trace, what the agent found, the fix, and before/after numbers. -->
+> **HITL:** Read the trace yourself before accepting a change. One run is noise, so ask for several. And the trade-offs are yours: preloading an image or inlining CSS can win a metric and cost something else.
 
 ## Checking Accessibility
 
@@ -238,8 +240,6 @@ test('signup has no detectable accessibility violations', async ({ page }) => {
 ```
 
 > **HITL:** Automated checks catch only some accessibility issues. A clean audit doesn't mean the page works with a screen reader. Tab through it yourself, and try VoiceOver or NVDA on the flows that matter.
-
-<!-- TODO: a real accessibility issue the agent found or missed. -->
 
 ## Migrating Legacy Code Without Regressions
 
@@ -269,11 +269,18 @@ Many legacy projects have no end-to-end tests. With Playwright MCP, the agent wa
 
 Run them against the legacy page first. They must pass there, so they describe what the page does today, quirks included.
 
-Playwright's `toHaveScreenshot()` saves screenshots of the legacy page as the baseline. Visual changes then show up as a pixel diff, not a judgment call.
+Playwright's `toHaveScreenshot()` saves screenshots of the legacy page as the baseline. Visual changes then show up as a pixel diff, not a judgment call:
+
+```ts
+test('checkout looks the same as the legacy page', async ({ page }) => {
+  await page.goto('/checkout');
+  await expect(page).toHaveScreenshot('checkout.png', { fullPage: true });
+});
+```
+
+Create the baseline from the legacy page with `npx playwright test --update-snapshots`. After that, every run compares against it.
 
 > **HITL:** Read every test. A test that passes no matter what protects nothing. Some quirks it captures are bugs you'll want to fix, not keep.
-
-<!-- TODO: a short example test from one contract line, e.g. the API requests or the screenshot check. -->
 
 ### Migrate and Rerun the Same Tests
 
@@ -295,16 +302,13 @@ flowchart TD
 
 > **HITL:** When a test fails, you decide whether the page or the test is wrong. Don't let the agent update a screenshot baseline or loosen an assertion to go green without your OK.
 
-<!-- TODO: a real migration from your work. What did the tests catch? -->
-
 ## Limits
 
 - The agent can be confidently wrong. It will explain a wrong cause as clearly as a right one.
 - It's slower than reading the code when the bug is obvious.
 - Traces and logs fill the context window, so ask for the specific signal you need.
-- The agent can read cookies and local storage. Use a separate Chrome profile, not the one with your accounts.
-
-<!-- TODO: anything else you've hit in practice. -->
+- The agent can read cookies and local storage. Add `--isolated` for a temporary profile, and be careful with `--autoConnect`, which uses the Chrome you're signed in to.
+- Performance traces may send page URLs to Google's CrUX API. Add `--no-performance-crux` when you debug internal URLs.
 
 ## Try It
 
@@ -320,6 +324,6 @@ Success, slow, error, performance, accessibility: the agent can now put a page t
 
 It doesn't decide what the evidence means. Every HITL note above comes down to the same habit: keep your eyes on the browser, and treat the agent's conclusions as claims to check, not facts.
 
-The agent gets eyes on the browser. You keep the judgment.
+As I wrote in [AI Writes Code. You Own Quality.](/posts/ai-writes-code-you-own-quality), speed without judgment means shipping bugs faster. Browser access doesn't change who owns the fix. It gives you better evidence to own it with.
 
-<!-- TODO: tie back to /posts/ai-writes-code-you-own-quality in one sentence. -->
+The agent gets eyes on the browser. You keep the judgment.
