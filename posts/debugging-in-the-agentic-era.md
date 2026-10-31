@@ -1,7 +1,7 @@
 ---
 title: 'Debugging in the Agentic Era'
 date: '2026-10-31'
-excerpt: "Agents write the code but can't see it run. Browser MCP servers give you and the agent the same view of the page: debug it, improve Core Web Vitals, and migrate legacy code without regressions."
+excerpt: "Agents write the code but can't see it run. Chrome DevTools MCP and Playwright MCP let them test every scenario in a real browser: success, slow, error, and performance. You keep the judgment."
 ---
 
 Coding agents write frontend code fast, but they can't see it run. Take a signup form that fails on submit.
@@ -47,7 +47,9 @@ flowchart TB
 
 The copy-paste is gone. You're still there, in a different role.
 
-This is human in the loop (HITL): the agent gathers evidence, and you validate it. Don't trust it 100%. It can misread a trace, or silence an error instead of fixing it. The HITL notes in this post mark where to look yourself.
+This is human in the loop (HITL): the agent gathers evidence, and you validate it. Don't trust it 100%. It can misread a trace, or silence an error instead of fixing it.
+
+The HITL notes in this post mark where to look yourself.
 
 ## Cover Every Scenario
 
@@ -62,18 +64,24 @@ Browser access lets the agent put a page through every scenario your customers h
 
 The rest of this post shows how to set it up, then walks through each one.
 
-## What Chrome DevTools MCP Gives the Agent
+## The Tools
 
-[Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) is Google's MCP server for Chrome. It lets an agent open pages, click, and read the same data you see in DevTools:
+Two MCP servers give an agent a browser. [MCP](https://modelcontextprotocol.io) is an open standard, so neither is a Claude Code feature. Both work in Cursor, VS Code with Copilot, Codex, and Gemini CLI.
+
+### Chrome DevTools MCP
+
+[Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) is Google's MCP server for Chrome. It lets the agent open pages, click, and read what you see in DevTools:
 
 - **Console**: errors, warnings, and logs
 - **Network**: requests, status codes, and payloads
 - **Performance**: traces with Core Web Vitals like LCP and CLS
 - **Emulation**: slow networks, offline mode, CPU throttling, dark mode, and reduced motion
 
-[MCP](https://modelcontextprotocol.io) is an open standard, so this isn't a Claude Code feature. The same server works in Cursor, VS Code with Copilot, Codex, and Gemini CLI.
+### Playwright MCP
 
-## Installing It
+[Playwright MCP](https://github.com/microsoft/playwright-mcp) is Microsoft's. It drives Chromium, Firefox, and WebKit, can make a single request fail, and helps the agent write end-to-end tests you can rerun.
+
+### Installing Them
 
 Most agents read the same config:
 
@@ -83,20 +91,38 @@ Most agents read the same config:
     "chrome-devtools": {
       "command": "npx",
       "args": ["chrome-devtools-mcp@latest"]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest", "--caps=network"]
     }
   }
 }
 ```
 
-In Claude Code, one command adds it:
+The `--caps=network` flag turns on Playwright MCP's request mocking. In Claude Code, two commands add both:
 
 ```bash
 claude mcp add chrome-devtools -- npx chrome-devtools-mcp@latest
+claude mcp add playwright -- npx @playwright/mcp@latest --caps=network
 ```
 
-Run `/mcp` to confirm it's connected. Then ask the agent to open your local app and list the console messages.
+Run `/mcp` to confirm they're connected. Then ask the agent to open your local app and list the console messages.
 
-<!-- TODO: verify the commands against the README. Add where the config file lives in Cursor and VS Code, and the option to attach to a Chrome you already have open. -->
+<!-- TODO: verify the commands against both READMEs. Add where the config file lives in Cursor and VS Code, and the option to attach to a Chrome you already have open. -->
+
+### Which One When
+
+Use both, for different jobs. Chrome DevTools MCP looks inside one page: debugging, comparing, and measuring. Playwright MCP fails requests on purpose and writes tests you can rerun in any browser.
+
+```mermaid
+flowchart TD
+  accTitle: Choosing a browser MCP server
+  accDescr: To debug, compare pages, or measure performance in Chrome, use Chrome DevTools MCP. To write end-to-end tests, mock failed requests, or check Firefox and Safari, use Playwright MCP.
+  need{What do you need?}
+  need -- "debug, compare,<br>measure" --> devtools[Chrome DevTools MCP]
+  need -- "e2e tests, mocks,<br>other browsers" --> playwright[Playwright MCP]
+```
 
 ## The Debug Loop
 
@@ -115,7 +141,7 @@ flowchart TD
 
 > **HITL:** Keep the browser window visible while the agent works. When it says the bug is fixed, reproduce it yourself before you believe it.
 
-The next two sections show the loop with each signal.
+The two signals you'll read most are console errors and network requests.
 
 ### Console Errors
 
@@ -129,24 +155,14 @@ The next two sections show the loop with each signal.
 
 > **HITL:** Check the request against the API contract, not the agent's reading of it. Changing the frontend to accept a broken response hides a backend bug.
 
-## Improving Core Web Vitals
-
-Performance work is where browser access helps most. Without it, the agent guesses from the code. With it, the agent records a trace, sees which element is the LCP and what shifts the layout, and measures again after each change.
-
-That turns "this might be faster" into numbers. The agent proposes a change, reruns the trace, and keeps it only if LCP or CLS improves.
-
-> **HITL:** Read the trace yourself before accepting a change. One run is noise, so ask for several. And the trade-offs are yours: preloading an image or inlining CSS can win a metric and cost something else.
-
-<!-- TODO: a real story. The trace, what the agent found, the fix, and before/after numbers. -->
-
 ## Testing Slow and Failing Requests
 
 Customers rarely see a crash. They see a failure handled badly: a spinner that never stops, a blank page, a form that loses what they typed. The agent can slow things down or break them on purpose and show you what customers see.
 
 Each server does this differently:
 
-- **Playwright MCP** mocks one request. Its `browser_route` tool makes an endpoint return a 500, a 404, or a malformed body. Start it with `npx @playwright/mcp@latest --caps=network` to enable it.
-- **Chrome DevTools MCP** degrades the whole page. Its `emulate` tool sets Slow 3G, offline mode, or CPU throttling. It can't block or mock a single request.
+- **Playwright MCP** fails one request: `browser_route` makes an endpoint return a 500, a 404, or a malformed body.
+- **Chrome DevTools MCP** degrades the whole page: `emulate` sets Slow 3G, offline mode, or CPU throttling. It can't mock a single request.
 
 A prompt that combines both: "Make `POST /api/signup` return a 500, submit the form, and screenshot what the user sees. Then try it on Slow 3G."
 
@@ -187,9 +203,21 @@ test('signup keeps the input and offers a retry when the API fails', async ({
 
 <!-- TODO: a real error state you improved this way, with before/after screenshots. -->
 
+## Improving Core Web Vitals
+
+Slow requests are one side of speed. The other is how fast the page loads and settles, and that's where browser access helps most.
+
+Without it, the agent guesses from the code. With it, the agent records a trace, sees which element is the LCP and what shifts the layout, and measures again after each change.
+
+That turns "this might be faster" into numbers. The agent proposes a change, reruns the trace, and keeps it only if LCP or CLS improves.
+
+> **HITL:** Read the trace yourself before accepting a change. One run is noise, so ask for several. And the trade-offs are yours: preloading an image or inlining CSS can win a metric and cost something else.
+
+<!-- TODO: a real story. The trace, what the agent found, the fix, and before/after numbers. -->
+
 ## Migrating Legacy Code Without Regressions
 
-The worst migration bug is a new page that looks almost like the old one. To catch it, capture how the legacy page behaves before you change anything.
+A migration has to keep all four scenarios working. The worst migration bug is a new page that looks almost like the old one, so capture how the legacy page behaves before you change anything.
 
 ### Start with a Contract
 
@@ -211,7 +239,7 @@ The idea is the same as in [MigFlow](/posts/migflow-contracts-for-ai-migrations)
 
 ### Cover the Legacy Page with Tests
 
-Many legacy projects have no end-to-end tests. With [Playwright MCP](https://github.com/microsoft/playwright-mcp), the agent walks through the legacy page in a real browser and writes a Playwright test for each line of the contract.
+Many legacy projects have no end-to-end tests. With Playwright MCP, the agent walks through the legacy page in a real browser and writes a Playwright test for each line of the contract.
 
 Run them against the legacy page first. They must pass there, so they describe what the page does today, quirks included.
 
@@ -243,27 +271,6 @@ The tests stay in CI after the migration, so the next change is covered too.
 
 <!-- TODO: a real migration from your work. What did the tests catch? -->
 
-## Chrome DevTools MCP or Playwright MCP?
-
-Use both, for different jobs. Chrome DevTools MCP is for looking inside one page: debugging, comparing, and measuring. Playwright MCP is for mocking failed requests and writing tests you can rerun, including in Firefox and Safari.
-
-```mermaid
-flowchart TD
-  accTitle: Choosing a browser MCP server
-  accDescr: To debug, compare pages, or measure performance in Chrome, use Chrome DevTools MCP. To write end-to-end tests, mock failed requests, or check Firefox and Safari, use Playwright MCP.
-  need{What do you need?}
-  need -- "debug, compare,<br>measure" --> devtools[Chrome DevTools MCP]
-  need -- "e2e tests, mocks,<br>other browsers" --> playwright[Playwright MCP]
-```
-
-## A Tool in the Engineer's Hands
-
-Success, slow, error, performance: the agent can now put a page through every scenario and bring you the evidence. That's a powerful tool in the engineer's hands.
-
-It doesn't decide what the evidence means. Every HITL note above comes down to the same habit: keep your eyes on the browser, and treat the agent's conclusions as claims to check, not facts.
-
-The agent gets eyes on the browser. You keep the judgment.
-
 ## Limits
 
 - The agent can be confidently wrong. It will explain a wrong cause as clearly as a right one.
@@ -280,5 +287,13 @@ Start with one prompt in any agent: "Open localhost:3000, list the console error
 Then try the other scenarios on one page: "Load the checkout page on Slow 3G, then with the payment request failing, and screenshot what the customer sees in each case."
 
 Migrating a page? Write the contract, then ask: "Write Playwright tests for this contract and run them against the legacy page." Run the same tests after the migration.
+
+## A Tool in the Engineer's Hands
+
+Success, slow, error, performance: the agent can now put a page through every scenario and bring you the evidence. That's a powerful tool in the engineer's hands.
+
+It doesn't decide what the evidence means. Every HITL note above comes down to the same habit: keep your eyes on the browser, and treat the agent's conclusions as claims to check, not facts.
+
+The agent gets eyes on the browser. You keep the judgment.
 
 <!-- TODO: tie back to /posts/ai-writes-code-you-own-quality in one sentence. -->
