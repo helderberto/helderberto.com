@@ -128,7 +128,9 @@ flowchart TD
 
 ## The Debug Loop
 
-Start with the success path: the flow working end to end. With browser access, getting there follows the same loop every time. The agent changes the code, reloads the page, and reads the signals. You review what it found and steer it when it chases the wrong cause.
+Start with the success path: the flow working end to end. With browser access, getting there follows the same loop every time.
+
+The agent changes the code, reloads the page, and reads the signals. You review what it found and steer it when it chases the wrong cause.
 
 ```mermaid
 flowchart TD
